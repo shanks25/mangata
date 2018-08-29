@@ -125,7 +125,7 @@
                         <!-- Feature Block Starts -->
                         <div class="feature-block col-md-4 col-sm-4 col-xs-12">
                             <img src="{{ asset('assets/user/img/feature-3.png')}}" class="feature-img">
-                            <h4 class="feature-tit">Lightning-Fast Delivery</h4>
+                            <h4 class="feature-tit">Fast Delivery</h4>
                             <p class="feature-txt">Experience {{Setting::get('site_title')}}'s superfast delivery for food delivered fresh &amp; on time</p>
                         </div>
                         <!-- Feature Block Ends -->
@@ -194,7 +194,7 @@
     <!-- Sidebar JS -->
     <script src="{{ asset('assets/user/js/asidebar.jquery.js')}}"></script>
     <!-- Map JS -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC808NpIO-MZ_C-nXv21zGFDKC1OUm_MkQ"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxP5mncL8s0G4evVEZRpcmHy6f8YcO3wI"></script>
     <script src="{{ asset('assets/user/js/jquery.googlemap.js')}}"></script>
     <!-- Incrementing JS -->
     <script src="{{ asset('assets/user/js/incrementing.js')}}"></script>
