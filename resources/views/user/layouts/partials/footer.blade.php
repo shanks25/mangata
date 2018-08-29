@@ -9,7 +9,7 @@
                             <a href="{{url('/aboutus')}}" class="foot-item">About</a>
                             <a href="{{url('/')}}" class="foot-item">Team</a>
                             <a href="{{url('/')}}" class="foot-item">Carriers</a>
-                            <a href="{{url('/')}}" class="foot-item">Foodie Blog</a>
+                            <a href="{{url('/')}}" class="foot-item">DitchTheKitch Blog</a>
                         </div>
                     </div>
                     <!-- Foot Block Ends -->
