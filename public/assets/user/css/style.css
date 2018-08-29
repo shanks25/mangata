@@ -89,13 +89,13 @@ button:focus {
 
 .cmn-btn {
     color: #fff;
-    background-color: #fc8019;
+    background-color: #dd1c1c;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12);
     padding: 15px;
     font-size: 14px;
     font-weight: 600;
     color: #fff;
-    border: 1px solid #fc8019;
+    border: 1px solid #dd1c1c;
     transition: all .2s ease-in;
     display: inline-block;
 }
@@ -114,7 +114,7 @@ button:focus {
 }
 
 .theme-color {
-    color: #fc8019;
+    color: #dd1c1c;
 }
 
 .p-80 {
@@ -198,8 +198,8 @@ Header Page
 }
 
 .nav-address:hover .sub-address {
-    color: #fc8019;
-    border-color: #fc8019;
+    color: #dd1c1c;
+    border-color: #dd1c1c;
 }
 
 .nav-address-name {
@@ -218,7 +218,7 @@ Header Page
 }
 
 .address-arrow {
-    color: #fc8019;
+    color: #dd1c1c;
     font-size: 20px;
     vertical-align: middle;
     line-height: 0;
@@ -233,7 +233,7 @@ Header Page
 }
 
 .navbar-default .navbar-nav>li>a:hover {
-    color: #fc8019;
+    color: #dd1c1c;
 }
 
 .navbar-default .navbar-nav>li>a i {
@@ -249,7 +249,7 @@ Header Page
 .cart-count {
     font-size: 12px;
     padding: 4px;
-    background-color: #fc8019;
+    background-color: #dd1c1c;
     color: #fff;
     border-radius: 100%;
     vertical-align: middle;
@@ -292,7 +292,7 @@ Login Page
 
 .login-btn {
     color: #fff;
-    background-color: #fc8019;
+    background-color: #dd1c1c;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12);
     font-size: 14px;
     font-weight: 600;
@@ -308,7 +308,7 @@ Login Page
 }
 
 .theme-link {
-    color: #fc8019;
+    color: #dd1c1c;
     font-weight: 600;
     font-size: 14px;
     text-transform: uppercase;
@@ -317,7 +317,7 @@ Login Page
 
 .theme-link:hover,
 .theme-link:focus {
-    color: #fc8019;
+    color: #dd1c1c;
     opacity: .9;
 }
 
@@ -345,7 +345,7 @@ Login Page
 }
 
 .login-item:hover {
-    color: #fc8019;
+    color: #dd1c1c;
 }
 
 .login-menu {
@@ -403,7 +403,7 @@ Login Page
 
 .log-location-search:focus {
     outline: 0;
-    border-color: #fc8019;
+    border-color: #dd1c1c;
     box-shadow: 0 2px 8px #d4d5d9;
 }
 
@@ -420,7 +420,7 @@ Login Page
 }
 
 .log-search-btn {
-    background-color: #fc8019;
+    background-color: #dd1c1c;
     font-size: 16px;
     font-weight: 700;
     letter-spacing: .53px;
@@ -545,7 +545,7 @@ Login Page
 }
 
 .foot-places-outer {
-    background-color: #fc8019;
+    background-color: #dd1c1c;
     padding: 50px 0px;
 }
 
@@ -590,7 +590,7 @@ Login Page
 }
 
 .social-login-item:hover {
-    color: #fc8019;
+    color: #dd1c1c;
 }
 
 .or {
@@ -607,7 +607,7 @@ Login Page
     bottom: 0px;
     right: 68%;
     height: 1px;
-    background: #fc8019;
+    background: #dd1c1c;
     z-index: -1;
 }
 
@@ -619,7 +619,7 @@ Login Page
     bottom: 0px;
     right: 0px;
     height: 1px;
-    background: #fc8019;
+    background: #dd1c1c;
     z-index: -1;
 }
 
@@ -1046,8 +1046,8 @@ Home Page
 }
 
 .filter-icon {
-    color: #fc8019;
-    border: 1.5px solid #fc8019;
+    color: #dd1c1c;
+    border: 1.5px solid #dd1c1c;
     padding: 8px;
     border-radius: 100%;
     position: absolute;
@@ -1433,13 +1433,13 @@ input[type=radio]:focus {
 
 .show-btn {
     color: #fff;
-    background-color: #fc8019;
+    background-color: #dd1c1c;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12);
     font-size: 14px;
     font-weight: 600;
     padding: 15px 25px;
     text-transform: uppercase;
-    border: 1px solid #fc8019;
+    border: 1px solid #dd1c1c;
     display: inline-block;
     border: 0px;
 }
@@ -1479,9 +1479,9 @@ input[type=radio]:focus {
 }
 
 .food-filters-item.active {
-    color: #fc8019;
+    color: #dd1c1c;
     font-weight: 600;
-    border-right: 3px solid #fc8019;
+    border-right: 3px solid #dd1c1c;
 }
 
 .food-filters.food-filters-fixed {
@@ -1768,7 +1768,7 @@ p:last-child {
 }
 
 .gps:hover .gps-tit {
-    color: #fc8019;
+    color: #dd1c1c;
 }
 
 .gps-txt {
@@ -1807,7 +1807,7 @@ p:last-child {
 }
 
 .saved-address-box:hover .save-add-tit {
-    color: #fc8019;
+    color: #dd1c1c;
 }
 
 .save-add-txt {
@@ -2056,7 +2056,7 @@ Checkout Page
 .change-btn {
     text-transform: uppercase;
     font-weight: 600;
-    color: #fc8019;
+    color: #dd1c1c;
     font-size: 14px;
 }
 
@@ -2181,7 +2181,7 @@ Checkout Page
 }
 
 .link-acc {
-    color: #fc8019;
+    color: #dd1c1c;
     font-weight: 600;
     text-transform: uppercase;
 }
@@ -2419,7 +2419,7 @@ label {
     margin-top: 20px;
     padding: 20px;
     border: 0px;
-    background: #fc8019;
+    background: #dd1c1c;
     color: #fff;
 }
 
@@ -2433,7 +2433,7 @@ label {
 .change-link {
     text-transform: uppercase;
     font-weight: 600;
-    color: #fc8019;
+    color: #dd1c1c;
     font-size: 14px;
     display: inline-block;
 }
@@ -2442,7 +2442,7 @@ label {
     -webkit-transform: translateY(-1px);
     -ms-transform: translateY(-1px);
     transform: translateY(-1px);
-    color: #fc8019;
+    color: #dd1c1c;
 }
 
 .coupon {
@@ -2463,12 +2463,12 @@ label {
 
 .coupon-right {
     font-weight: 600;
-    color: #fc8019;
+    color: #dd1c1c;
     text-transform: uppercase;
 }
 
 .common-form .input-group-addon {
-    background: #fc8019;
+    background: #dd1c1c;
     color: #fff;
     border-radius: 0px;
     padding: 25px 31px;
@@ -2534,13 +2534,13 @@ label {
 .apply-coupon {
     display: inline-block;
     padding: 0 20px;
-    color: #fc8019;
+    color: #dd1c1c;
     height: 40px;
     line-height: 40px;
     margin-top: 22px;
     font-weight: 600;
     font-size: 15px;
-    border: 1px solid #fc8019;
+    border: 1px solid #dd1c1c;
     text-transform: uppercase;
 }
 
@@ -2548,7 +2548,7 @@ label {
     -webkit-transform: translateY(-1px);
     -ms-transform: translateY(-1px);
     transform: translateY(-1px);
-    color: #fc8019;
+    color: #dd1c1c;
     box-shadow: 0 2px 8px #d4d5d9;
 }
 
@@ -2687,7 +2687,7 @@ Profile Page
 }
 
 .order-details-sec:hover .hotel-tit {
-    color: #fc8019;
+    color: #dd1c1c;
 }
 
 .deliver-txt {
@@ -2721,13 +2721,13 @@ Profile Page
 }
 
 .reorder-btn {
-    border: 1px solid #fc8019;
+    border: 1px solid #dd1c1c;
     padding: 10px 25px;
     margin-top: 10px;
     font-size: 14px;
     font-weight: 600;
     color: #fff;
-    background-color: #fc8019;
+    background-color: #dd1c1c;
     display: inline-block;
     margin-right: 10px;
     text-align: center;
@@ -2739,12 +2739,12 @@ Profile Page
 }
 
 .invoice-btn {
-    border: 1px solid #fc8019;
+    border: 1px solid #dd1c1c;
     padding: 10px 25px;
     margin-top: 10px;
     font-size: 14px;
     font-weight: 600;
-    color: #fc8019;
+    color: #dd1c1c;
     background-color: #fff;
     display: inline-block;
     margin-right: 10px;
@@ -2753,7 +2753,7 @@ Profile Page
 
 .invoice-btn:hover,
 .invoice-btn:focus {
-    color: #fc8019;
+    color: #dd1c1c;
 }
 
 .total-txt {
@@ -3235,8 +3235,8 @@ Ratings Page
     display: inline-block;
     margin-top: 10px;
     padding: 10px 15px;
-    background-color: #fc8019;
-    border: 1px solid #fc8019;
+    background-color: #dd1c1c;
+    border: 1px solid #dd1c1c;
     box-shadow: none;
     color: #fff;
 }
@@ -3265,12 +3265,12 @@ Ratings Page
 }
 
 .rate-btn {
-    border: 1px solid #fc8019;
+    border: 1px solid #dd1c1c;
     padding: 10px 25px;
     margin-top: 10px;
     font-size: 14px;
     font-weight: 600;
-    background-color: #fc8019;
+    background-color: #dd1c1c;
     color: #fff;
     display: inline-block;
     text-align: center;
@@ -3420,7 +3420,7 @@ Responsive Page
     }
 
     .food-filters-item.active {
-        border-left: 3px solid #fc8019;
+        border-left: 3px solid #dd1c1c;
     }
 
     .cart.cart-fixed {

@@ -194,7 +194,7 @@
     <!-- Sidebar JS -->
     <script src="{{ asset('assets/user/js/asidebar.jquery.js')}}"></script>
     <!-- Map JS -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxP5mncL8s0G4evVEZRpcmHy6f8YcO3wI"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTAjYPYni7iOMaOLiqqzkTKneF0bPuolo"></script>
     <script src="{{ asset('assets/user/js/jquery.googlemap.js')}}"></script>
     <!-- Incrementing JS -->
     <script src="{{ asset('assets/user/js/incrementing.js')}}"></script>
