@@ -43,7 +43,7 @@
                                     <td>{{$key+1}}</td>
                                     <td>{{$User->name}}</td>
                                     <td>
-                                    @if(Setting::get('DEMO_MODE')==1)
+                                    @if(Setting::get('DEMO_MODE')==0)
                                     {{$User->email}}
                                     @else
                                     {{substr($User->email, 0, 1).'****'.substr($User->email, strpos($User->email, "@"))}}

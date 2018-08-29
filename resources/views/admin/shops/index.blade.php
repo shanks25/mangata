@@ -76,7 +76,7 @@
 
                                                         <a href="{{ route('admin.products.index') }}?shop={{$User->id}}" class="btn btn-primary btn-darken-3 tab-order" > Menu List</a>
 
-                                                        @if(Setting::get('DEMO_MODE')==1)
+                                                        @if(Setting::get('DEMO_MODE')==0)
                                                         <a  class="table-btn btn btn-icon btn-success" href="{{ route('admin.shops.edit', $User->id) }}"><i class="fa fa-pencil-square-o"></i></a>
                                                         <button  class="table-btn btn btn-icon btn-danger" form="resource-delete-{{ $User->id }}" ><i class="fa fa-trash-o"></i></button>
                                                         @endif

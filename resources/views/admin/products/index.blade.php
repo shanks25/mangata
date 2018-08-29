@@ -47,7 +47,7 @@
                                     </td>
                                     <td>{{@$Product->categories[0]->name}}</td>
                                     <td>
-                                        @if(Setting::get('DEMO_MODE')==1)
+                                        @if(Setting::get('DEMO_MODE')==0)
                                         <a href="{{ route('admin.products.edit', $Product->id) }}?shop={{Request::get('shop')}}" class="table-btn btn btn-icon btn-success"><i class="fa fa-pencil-square-o"></i></a>
                                          <button  class="table-btn btn btn-icon btn-danger" form="resource-delete-{{ $Product->id }}" ><i class="fa fa-trash-o"></i></button> 
                                         @endif

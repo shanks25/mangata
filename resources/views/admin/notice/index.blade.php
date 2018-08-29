@@ -41,7 +41,7 @@
                         </td>
                         <td>{{ @$Notice->created_at }}</td>
                         <td>
-                            @if(Setting::get('DEMO_MODE')==1)
+                            @if(Setting::get('DEMO_MODE')==0)
                              <a href="{{ route('admin.notice.edit', $Notice->id) }}" class="table-btn btn btn-icon btn-success"><i class="fa fa-pencil-square-o"></i></a>
                             <!-- <button  class="table-btn btn  btn-danger" onclick="return confirm('Do You want To Remove This Notice?');" form="resource-delete-{{ $Notice->id }}" >Remove</button> -->
                             @endif

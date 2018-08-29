@@ -60,7 +60,7 @@
                                         <input type="hidden" class="rating" readonly value="3"/>
                                     </td>
                                     <td>
-                                        @if(Setting::get('DEMO_MODE')==1)
+                                        @if(Setting::get('DEMO_MODE')==0)
                                         <a href="{{ route('admin.users.edit', $User->id) }}" class="table-btn btn btn-icon btn-success"><i class="fa fa-pencil-square-o"></i></a>
                                         <button   class="table-btn btn btn-icon btn-danger" form="resource-delete-{{ $User->id }}" ><i class="fa fa-trash-o"></i></button>
                                         @endif

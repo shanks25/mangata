@@ -36,7 +36,7 @@
                         <td>{{ $Help->id }}</td>
                         <td>{{ @$Help->name }}</td>
                         <td>
-                            @if(Setting::get('DEMO_MODE')==1)
+                            @if(Setting::get('DEMO_MODE')==0)
                              <a href="{{ route('admin.disputehelp.edit', $Help->id) }}" class="table-btn btn btn-icon btn-success"><i class="fa fa-pencil-square-o"></i></a>
                              @endif
                             <!-- <button  class="table-btn btn  btn-danger" onclick="return confirm('Do You want To Remove This Dispute?');" form="resource-delete-{{ $Help->id }}" >Remove</button> -->

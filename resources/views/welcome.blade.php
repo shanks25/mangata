@@ -201,7 +201,7 @@
     <!-- Scripts -->
     <script src="{{ asset('assets/user/js/scripts.js')}}"></script>
     @include('user.layouts.partials.script')
-	<<!-- Start of LiveChat (www.livechatinc.com) code -->
+	{{--<!-- Start of LiveChat (www.livechatinc.com) code -->
          <script type="text/javascript">
               window.__lc = window.__lc || {};
               window.__lc.license = 8256261;
@@ -214,7 +214,7 @@
           <!-- End of LiveChat code -->
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-              <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113150309-2"></script>
+              <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113150309-2"></script>--}}
               <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}

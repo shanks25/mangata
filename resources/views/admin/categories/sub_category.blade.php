@@ -39,7 +39,7 @@
                                                 <td>
                                                    
                                                     <a href="{{ route('admin.categories.edit', $Category->id) }}?shop={{Request::get('shop')}}" class="table-btn btn btn-icon btn-success"><i class="fa fa-pencil-square-o"></i></a>
-                                                    @if(Setting::get('DEMO_MODE') == "1")
+                                                    @if(Setting::get('DEMO_MODE') == "0")
                                                     <button  class="table-btn btn btn-icon btn-danger" form="resource-delete-{{ $Category->id }}" ><i class="fa fa-trash-o"></i></button> 
                                                     @endif
                                                     <form id="resource-delete-{{ $Category->id }}" action="{{ route('admin.categories.destroy', $Category->id)}}" method="POST">

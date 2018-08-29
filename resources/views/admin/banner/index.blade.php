@@ -41,7 +41,7 @@
                         </td>
                         <td>{{ @$Banner->status }}</td>
                         <td>
-                        @if(Setting::get('DEMO_MODE')==1)
+                        @if(Setting::get('DEMO_MODE')==0)
                             <a href="{{ route('admin.banner.edit', $Banner->id) }}" class="table-btn btn btn-icon btn-success"><i class="fa fa-pencil-square-o"></i></a>
                             <button  class="table-btn btn  btn-danger" onclick="return confirm('Do You want To Remove This Banner?');" form="resource-delete-{{ $Banner->id }}" >Remove</button>
                             

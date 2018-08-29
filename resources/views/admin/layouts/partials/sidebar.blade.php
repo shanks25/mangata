@@ -106,7 +106,7 @@
                         </ul>
                     </li>
                     @endif
-                    @if(Setting::get('DEMO_MODE') == 1)
+                    @if(Setting::get('DEMO_MODE') == 0)
                 <li class=" nav-item">
                     <a href="{{ route('admin.translation.index') }}"><i class="fa fa-shopping-basket"></i><span data-i18n="" class="menu-title">@lang('menu.admin.translation')</span></a>
                 </li>
