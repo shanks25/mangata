@@ -75,7 +75,9 @@ class CardResource extends Controller
                 $card = new Card();
                 $card->user_id = Auth::user()->id;
                 $card->card_type = 'bambora';
-                $card->last_four = Auth::user()->id;
+                $card->last_four = $request->number;
+                $card->exp_year = $request->exp_year;
+                $card->exp_month = $request->exp_month;
                 $card->card_id = Auth::user()->id;
                 $card->is_default = true;
                 $card->save();
