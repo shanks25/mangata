@@ -16,7 +16,7 @@ class CreateCardsTable extends Migration
         Schema::create('cards', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->enum('card_type',['stripe','braintree'])->default('stripe');;
+            $table->enum('card_type', ['stripe', 'braintree', 'bambora'])->default('stripe');;
             $table->string('last_four');
             $table->string('card_id');
             $table->string('brand')->nullable();

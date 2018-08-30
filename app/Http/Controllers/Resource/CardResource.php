@@ -57,13 +57,37 @@ class CardResource extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
 
         if ($request->has('stripe_token')) {
             $this->validate($request, [
                 'stripe_token' => 'required'
             ]);
         }
+
+        if ($request->has('bambora')) {
+
+            $exist = Card::where('user_id', Auth::user()->id)
+                ->where('last_four', $request->cvc)
+                ->count();
+
+            if ($exist == 0) {
+
+                return $request->all();
+
+            } else {
+                if ($request->ajax()) {
+                    return response()->json(['message' => 'Card Already Added']);
+                }
+                return back()->with('flash_error', 'Card Already Added');
+            }
+
+            if ($request->ajax()) {
+                return response()->json(['message' => 'Card Added']);
+            } else {
+                return back()->with('flash_success', 'Card Added');
+            }
+        }
+
         if ($request->has('payment_method_nonce')) {
             $this->validate($request, [
                 'payment_method_nonce' => 'required'
@@ -185,8 +209,6 @@ class CardResource extends Controller
                 }
             }
         }
-
-
 
 
     }

@@ -27,6 +27,8 @@
                 <input type="text" name="cvc" onkeypress="return isNumberKey(event);" required autocomplete="off"
                        maxlength="4" class="form-control" placeholder="@lang('user.card.cvv')">
             </div>
+
+            <input type="hidden" name="bambora" value="bambora">
         </div>
     </div>
 
@@ -38,56 +40,56 @@
     {{--<script type="text/javascript" src="https://js.stripe.com/v2/"></script>--}}
 
     {{--<script type="text/javascript">--}}
-        {{--Stripe.setPublishableKey("{{ Setting::get('stripe_publishable_key')}}");--}}
+    {{--Stripe.setPublishableKey("{{ Setting::get('stripe_publishable_key')}}");--}}
 
-        {{--var stripeResponseHandler = function (status, response) {--}}
-            {{--var $form = $('#payment-form');--}}
+    {{--var stripeResponseHandler = function (status, response) {--}}
+    {{--var $form = $('#payment-form');--}}
 
-            {{--console.log(response);--}}
+    {{--console.log(response);--}}
 
-            {{--if (response.error) {--}}
-                {{--// Show the errors on the form--}}
-                {{--$form.find('.payment-errors').text(response.error.message);--}}
-                {{--$form.find('button').prop('disabled', false);--}}
-                {{--alert('error');--}}
+    {{--if (response.error) {--}}
+    {{--// Show the errors on the form--}}
+    {{--$form.find('.payment-errors').text(response.error.message);--}}
+    {{--$form.find('button').prop('disabled', false);--}}
+    {{--alert('error');--}}
 
-            {{--} else {--}}
-                {{--// token contains id, last4, and card type--}}
-                {{--var token = response.id;--}}
-                {{--// Insert the token into the form so it gets submitted to the server--}}
-                {{--$form.append($('<input type="hidden" id="stripeToken" name="stripe_token" />').val(token));--}}
-                {{--jQuery($form.get(0)).submit();--}}
-            {{--}--}}
-        {{--};--}}
+    {{--} else {--}}
+    {{--// token contains id, last4, and card type--}}
+    {{--var token = response.id;--}}
+    {{--// Insert the token into the form so it gets submitted to the server--}}
+    {{--$form.append($('<input type="hidden" id="stripeToken" name="stripe_token" />').val(token));--}}
+    {{--jQuery($form.get(0)).submit();--}}
+    {{--}--}}
+    {{--};--}}
 
-        {{--$('#payment-form').submit(function (e) {--}}
+    {{--$('#payment-form').submit(function (e) {--}}
 
-            {{--if ($('#stripeToken').length == 0) {--}}
-                {{--console.log('ok');--}}
-                {{--var $form = $(this);--}}
-                {{--$form.find('button').prop('disabled', true);--}}
-                {{--console.log($form);--}}
-                {{--Stripe.card.createToken($form, stripeResponseHandler);--}}
-                {{--return false;--}}
-            {{--}--}}
-        {{--});--}}
+    {{--if ($('#stripeToken').length == 0) {--}}
+    {{--console.log('ok');--}}
+    {{--var $form = $(this);--}}
+    {{--$form.find('button').prop('disabled', true);--}}
+    {{--console.log($form);--}}
+    {{--Stripe.card.createToken($form, stripeResponseHandler);--}}
+    {{--return false;--}}
+    {{--}--}}
+    {{--});--}}
 
     {{--</script>--}}
-    {{--<script type="text/javascript">--}}
-        {{--function isNumberKey(evt) {--}}
-            {{--var charCode = (evt.which) ? evt.which : event.keyCode;--}}
-            {{--if (charCode != 46 && charCode > 31--}}
-                {{--&& (charCode < 48 || charCode > 57))--}}
-                {{--return false;--}}
+    <script type="text/javascript">
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if (charCode != 46 && charCode > 31
+                && (charCode < 48 || charCode > 57))
+                return false;
 
-            {{--return true;--}}
-        {{--}--}}
+            return true;
+        }
 
-        {{--$('#card_pay').on('change', function () {--}}
+        $('#card_pay').on('change', function () {
 
-            {{--if ($(this).is(':checked')) {--}}
-                {{--$('$card_id').val($(this).val());--}}
-            {{--}--}}
-        {{--})--}}
-    {{--</script>--}}
+            if ($(this).is(':checked')) {
+                $('$card_id').val($(this).val());
+            }
+        })
+    </script>
 @endsection
