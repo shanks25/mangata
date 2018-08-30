@@ -15,12 +15,12 @@
             <div class="form-group col-md-4 col-sm-12">
                 <label>@lang('user.card.month')</label>
                 <input type="text" onkeypress="return isNumberKey(event);" maxlength="2" required autocomplete="off"
-                       class="form-control" name="exp-month" placeholder="MM">
+                       class="form-control" name="exp_month" placeholder="MM">
             </div>
             <div class="form-group col-md-4 col-sm-12">
                 <label>@lang('user.card.year')</label>
                 <input type="text" onkeypress="return isNumberKey(event);" maxlength="2" required autocomplete="off"
-                       name="exp-year" class="form-control" placeholder="YY">
+                       name="exp_year" class="form-control" placeholder="YY">
             </div>
             <div class="form-group col-md-4 col-sm-12">
                 <label>@lang('user.card.cvv')</label>
