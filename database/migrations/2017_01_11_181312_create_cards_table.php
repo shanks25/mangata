@@ -19,6 +19,8 @@ class CreateCardsTable extends Migration
             $table->enum('card_type', ['stripe', 'braintree', 'bambora'])->default('stripe');;
             $table->string('last_four');
             $table->string('card_id');
+            $table->string('exp_year')->nullable();
+            $table->string('exp_month')->nullable();
             $table->string('brand')->nullable();
             $table->integer('is_default')->default(0);
             $table->timestamps();

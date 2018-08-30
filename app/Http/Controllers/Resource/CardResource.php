@@ -72,7 +72,14 @@ class CardResource extends Controller
 
             if ($exist == 0) {
 
-                return $request->all();
+                $card = new Card();
+                $card->user_id = Auth::user()->id;
+                $card->card_type = 'bambora';
+                $card->last_four = Auth::user()->id;
+                $card->card_id = Auth::user()->id;
+                $card->is_default = true;
+                $card->save();
+
 
             } else {
                 if ($request->ajax()) {
