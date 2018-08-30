@@ -56,7 +56,7 @@ class SettingsTableSeeder extends Seeder
             ],
             [
                 'key' => 'payment_mode',
-                'value' => 'CASH'
+                'value' => 'bambora'
             ],
             [
                 'key' => 'manual_assign',
