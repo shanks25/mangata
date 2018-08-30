@@ -212,7 +212,6 @@ class SearchResource extends Controller
 
                     $cards = (new CardResource)->index($request);
 
-                    return $cards;
                     $Promocode = Promocode::with('pusage');
                     $Promocodes = $Promocode->where('status', 'ADDED')->where('expiration', '>', date("Y-m-d"))->get();
                     //dd($Promocodes);
