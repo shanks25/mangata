@@ -15,7 +15,7 @@ class ShopsTableSeeder extends Seeder
         DB::table('shops')->insert([
             [
                 'name' => 'Gary danko',
-                'email' => 'demo@foodie.com',
+                'email' => 'cl',
                 'password' => bcrypt('123456'),
                 'address' => 'Triplicane, Chennai, Tamil Nadu, India',
                 'maps_address' => 'Triplicane, Chennai, Tamil Nadu, India',
