@@ -231,6 +231,7 @@
                                                      <!--  <option @if(Setting::get('payment_mode') == "CASH") selected @endif value="CASH">CASH</option> -->
                                                       <option @if(Setting::get('payment_mode') == "stripe") selected @endif value="stripe"> CARD--Stripe</option>
                                                       <option @if(Setting::get('payment_mode') == "braintree") selected @endif value="braintree"> CARD -- Braintree</option>
+                                                      <option @if(Setting::get('payment_mode') == "bambora") selected @endif value="braintree"> CARD -- Bambora</option>
                                                   </select>
 
                                                     @if ($errors->has('payment_mode'))
