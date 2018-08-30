@@ -143,7 +143,7 @@
 
                                                 <div class="cards-list">
                                                 <?php $card_id = 0;?>
-                                                @unless($cards as $card)
+                                                @forelse($cards as $card)
                                                     @if(@$card->is_default)
                                                         <?php $card_id = $card->id; ?>
                                                         <!-- Saved Cards Box Starts -->
@@ -202,7 +202,7 @@
                                                         @endif
                                                     @empty
                                                         <div>@lang('home.payment.no_card')</div>
-                                                    @endunless
+                                                    @endforelse
                                                 </div>
                                                 <a href="#" class="add-card-box row m-0"
                                                    onclick="$('#addcard-sidebar').asidebar('open')">
