@@ -28,7 +28,7 @@ class SettingsTableSeeder extends Seeder
             ],
             [
                 'key' => 'site_copyright',
-                'value' => '&copy; '.date('Y').' Appoets'
+                'value' => '&copy; ' . date('Y') . ' Appoets'
             ],
             [
                 'key' => 'delivery_charge',
@@ -148,7 +148,7 @@ class SettingsTableSeeder extends Seeder
             ],
             [
                 'key' => 'DEMO_MODE',
-                'value' => '1'
+                'value' => '0'
             ],
             [
                 'key' => 'SUB_CATEGORY',
@@ -186,7 +186,7 @@ class SettingsTableSeeder extends Seeder
                 'key' => 'BRAINTREE_PRIVATE_KEY',
                 'value' => '721e48cc74fdf2dfaacc6c3410de2f27'
             ],
-             [
+            [
                 'key' => 'RIPPLE_KEY',
                 'value' => 'rEsaDShsYPmMZopoG3nNjutWJCk1Zn9cbX'
             ],
@@ -255,8 +255,6 @@ class SettingsTableSeeder extends Seeder
                 'value' => 'https://play.google.com/store/apps/details?id=com.foodie.app&hl=en'
             ],
 
-
-            
 
         ]);
     }

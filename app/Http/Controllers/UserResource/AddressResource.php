@@ -46,7 +46,8 @@ class AddressResource extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
+
         if($request->ajax()){
             $this->validate($request, [
                     'map_address' => 'required|string|max:255',
