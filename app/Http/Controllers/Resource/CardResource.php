@@ -86,7 +86,7 @@ class CardResource extends Controller
                     $card->save();
 
                 } catch (Exception $e) {
-                    $e->getMessage();
+                    dd($e);
                 }
 
 
