@@ -321,6 +321,7 @@
             var phoneNumber = document.getElementById("phone_number").value;
             var accessToken = $("#register_form #accessToken").val();
             var login_by = $("#register_form #login_by").val();
+            var csrf = $("input[name='_token']").val();
 
             $.ajax({
                 url: "{{url('/new/register')}}",
