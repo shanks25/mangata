@@ -233,7 +233,7 @@
                                                     <img src="{{asset('assets/user/img/non-veg.jpg')}}" class="veg-icon">
                                                     @endif
                                                     <div class="food-menu-details">
-                                                        <h5>{{$item->product->name}}</h5>
+                                                            <h5>{{$item->product->name}}</h5>
                                                         @if(count($item->cart_addons)>0)
                                                         <a href="#" class="custom-txt add_to_basket" 
                                                         data-id="{{$item->id}}"
