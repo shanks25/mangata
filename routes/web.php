@@ -170,6 +170,7 @@ Route::group(['prefix' => 'transporter'], function () {
     Route::post('newsletter', 'WelcomeController@newsletter')->name('newsletter');
 
     Route::post('/otp', 'Auth\RegisterController@OTP');
+    Route::post('/new/register', 'Auth\RegisterController@newRegister');
     Route::get('/dashboard', 'UserResource\OrderResource@orderprogress');
     Route::get('/profile', 'UserResource\ProfileController@index');
     Route::post('/profile', 'UserResource\ProfileController@update');

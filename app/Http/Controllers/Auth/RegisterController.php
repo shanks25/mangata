@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Twilio;
 use Session;
 use App\Http\Controllers\SocialLoginController;
+
 class RegisterController extends Controller
 {
     /*
@@ -49,20 +50,20 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
-    {   
-        if(isset($data['login_by'])){
+    {
+        if (isset($data['login_by'])) {
             return Validator::make($data, [
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
                 'phone' => 'required|unique:users|min:6',
-                'accessToken'=>'required',
+                'accessToken' => 'required',
                 'login_by' => 'required|in:manual,facebook,google'
             ]);
-        }else{
+        } else {
             return Validator::make($data, [
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
@@ -75,22 +76,22 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return User
      */
     protected function create(array $data)
-    {   
+    {
         $social_data = [];
-        if(isset($data['login_by'])){
+        if (isset($data['login_by'])) {
             $social_data = (new SocialLoginController)->getSocialId($data);
         }
         $User = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'phone' => $data['phone'],
-            'password' => isset($data['password'])?bcrypt($data['password']):bcrypt('123456'),
-            'login_by' => isset($data['login_by'])?$data['login_by']:'manual',
-            'social_unique_id' => isset($data['accessToken'])?@$social_data->id:''
+            'password' => isset($data['password']) ? bcrypt($data['password']) : bcrypt('123456'),
+            'login_by' => isset($data['login_by']) ? $data['login_by'] : 'manual',
+            'social_unique_id' => isset($data['accessToken']) ? @$social_data->id : ''
         ]);
 
         /*if(isset($data['login_by'])){
@@ -101,7 +102,7 @@ class RegisterController extends Controller
                     "access_token" => $userToken->accessToken
                 ]);
         }else{*/
-            return $User;
+        return $User;
         //}
     }
 
@@ -118,7 +119,7 @@ class RegisterController extends Controller
     /**
      * Handle a registration request for the application.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function apiregister(Request $request)
@@ -135,54 +136,59 @@ class RegisterController extends Controller
     /**
      * Handle a OTP request for the application.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
 
     public function OTP(Request $request)
-    {   
-        if($request->has('login_by')){
+    {
+        if ($request->has('login_by')) {
             $this->validate($request, [
                 'phone' => 'required|unique:users|min:6',
                 'login_by' => 'required',
                 'accessToken' => 'required'
-            ]);  
-        }else{
+            ]);
+        } else {
             $this->validate($request, [
                 'phone' => 'required|unique:users|min:6'
-            ]); 
+            ]);
 
-        }  
+        }
         try {
             $data = $request->all();
-            if($request->has('login_by')){
+            if ($request->has('login_by')) {
                 $social_data = (new SocialLoginController)->checkSocialLogin($request);
                 //dd($social_data);
-                if($social_data){
+                if ($social_data) {
                     return response()->json([
-                    'error' => trans('form.socialuser_exist'),
-                ], 422); 
+                        'error' => trans('form.socialuser_exist'),
+                    ], 422);
                 }
-            }
-            elseif(User::where('phone',$data['phone'])->first()){
+            } elseif (User::where('phone', $data['phone'])->first()) {
                 return response()->json([
                     'error' => trans('form.mobile_exist'),
-                ], 422); 
+                ], 422);
             }
-            $newotp = rand(100000,999999);
+            $newotp = rand(100000, 999999);
             $data['otp'] = $newotp;
             $msg_data = send_sms($data);
 
             //if($msg_data == null){
-                return response()->json([
-                    'message' => 'OTP Sent',
-                    'otp' => $newotp
-                ]);
+            return response()->json([
+                'message' => 'OTP Sent',
+                'otp' => $newotp
+            ]);
             //} 
             return response()->json(['error' => $msg_data], 422);
-            
+
         } catch (Exception $e) {
             return response()->json(['error' => trans('form.whoops')], 500);
         }
     }
+
+    public function newRegister()
+    {
+
+    }
+
 }

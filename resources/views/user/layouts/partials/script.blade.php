@@ -110,7 +110,7 @@
 
                     <div class="form-group row">
                         <div class="col-xs-12">
-                            <label>Phone Number</label>
+                            <label>Name</label>
                         </div>
 
                         <div class="col-xs-12 p-l-0">
@@ -121,7 +121,7 @@
 
                     <div class="form-group row">
                         <div class="col-xs-12">
-                            <label>Phone Number</label>
+                            <label>Email</label>
                         </div>
 
                         <div class="col-xs-12 p-l-0">
@@ -136,15 +136,22 @@
                             <label>Phone Number</label>
                         </div>
 
-                        {{--<div class="col-xs-3">--}}
-                        {{--<input type="text" id="country_code" name="country_code" class="form-control"--}}
-                        {{--placeholder="+56">--}}
-                        {{--</div>--}}
-
                         <div class="col-xs-12 p-l-0">
                             <input type="number" min="0" class="form-control phone-number" id="phone_number"
                                    name="phone_number" value="{{ old('phone_number') }}"
                                    placeholder="Enter Phone Number" required>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-xs-12">
+                            <label>Password</label>
+                        </div>
+
+                        <div class="col-xs-12 p-l-0">
+                            <input type="password" class="form-control form-white" id="password" name="password"
+                                   value="{{ old('password') }}" placeholder="Password">
                         </div>
 
                     </div>
@@ -154,14 +161,9 @@
                     <input type="hidden" id="login_by" value="manual" name="login_by"/>
                     <input type="hidden" name="accessToken" value="" id="accessToken"/>
 
-                    <div class="form-group mobile_otp_verfication" style="display: none;">
-                        <label>OTP</label>
-                        <input type="text" class="form-control " placeholder="Otp" name="otp" id="otp" value="">
-                    </div>
-
                     <div class="print-error-msg alert-danger error_otp"></div>
 
-                    <button type="button" onclick="login();" class="login-btn mobile_verfication">Verify Phone
+                    <button type="button" onclick="login();" class="login-btn">Verify Phone
                         Number
                     </button>
 
