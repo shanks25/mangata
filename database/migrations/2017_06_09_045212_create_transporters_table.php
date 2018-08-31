@@ -26,7 +26,7 @@ class CreateTransportersTable extends Migration
             $table->integer('rating')->default(5);
             $table->string('device_token')->nullable();
             $table->string('device_id')->nullable();
-            $table->string('is_active');
+            $table->boolean('is_active')->default(0);
             $table->enum('device_type', array('android', 'ios'))->nullable();
             $table->enum('status', [
                 'assessing',
