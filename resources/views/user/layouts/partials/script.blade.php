@@ -114,7 +114,7 @@
                         </div>
 
                         <div class="col-xs-12 p-l-0">
-                            <input type="text" class="form-control form-white" placeholder="Name" id="dname" name="name"
+                            <input type="text" class="form-control form-white" placeholder="Name" id="name" name="name"
                                    value="{{ old('name') }}">
                         </div>
                     </div>
@@ -125,7 +125,7 @@
                         </div>
 
                         <div class="col-xs-12 p-l-0">
-                            <input type="email" class="form-control form-white" id="demail" name="email"
+                            <input type="email" class="form-control form-white" id="email" name="email"
                                    value="{{ old('email') }}" placeholder="Email">
                         </div>
 
