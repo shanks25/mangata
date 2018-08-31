@@ -2,31 +2,30 @@
 
 namespace App\Http\Controllers\UserResource;
 
-use App\Http\Controllers\BamboraController;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use App\Http\Controllers\UserResource\CartResource;
-use Ramsey\Uuid\Uuid;
-use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
-use Auth;
-use App\Shop;
-use App\Order;
-use App\UserCart;
-use App\CartAddon;
-use App\ProductPrice;
-use App\OrderInvoice;
-use App\UserAddress;
-use App\OrderTiming;
-use App\OrderRating;
-use Setting;
-use App\Product;
-use Carbon\Carbon;
-use App\WalletPassbook;
-use App\Http\Controllers\SendPushNotification;
-use App\Http\Controllers\PaymentController;
 use App\Card;
+use App\CartAddon;
+use App\Http\Controllers\BamboraController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\SendPushNotification;
+use App\Order;
+use App\OrderInvoice;
+use App\OrderRating;
+use App\OrderTiming;
+use App\Product;
+use App\ProductPrice;
 use App\Promocode;
+use App\Shop;
+use App\UserAddress;
+use App\UserCart;
+use App\WalletPassbook;
+use Auth;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
+use Ramsey\Uuid\Uuid;
+use Setting;
+use Exception;
 
 class OrderResource extends Controller
 {
@@ -153,394 +152,401 @@ class OrderResource extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'user_address_id' => 'required|exists:user_addresses,id,deleted_at,NULL',
-            //'payment_mode' => 'required'
-        ]);
 
-        $User = $request->user()->id;
-        $CartItems = UserCart::with('cart_addons')->where('user_id', $User)->get();
-        $payment_status = 'pending';
-        $tot_qty = 0;
-        $tot_price = 0;
-        $tax = 0;
-        $discount = 0;
-        $net = 0;
-        $total_pay_user = 0;
-        $ripple_price = 0;
-        if (!$CartItems->isEmpty()) {
-            try {
-                // Shop finding logic goes here.
-                $Shop_id = Product::findOrFail($CartItems[0]->product_id)->shop_id;
+        try {
 
-                $Useraddress = UserAddress::findOrFail($request->user_address_id);
-                $longitude = $Useraddress->longitude;
-                $latitude = $Useraddress->latitude;
-                $distance = Setting::get('search_distance');
-                if (Setting::get('search_distance') > 0) {
-                    $Shop = Shop::select('shops.*')
-                        ->selectRaw("(6371 * acos( cos( radians('$latitude') ) * cos( radians(latitude) ) * cos( radians(longitude) - radians('$longitude') ) + sin( radians('$latitude') ) * sin( radians(latitude) ) ) ) AS distance")
-                        ->whereRaw("(6371 * acos( cos( radians('$latitude') ) * cos( radians(latitude) ) * cos( radians(longitude) - radians('$longitude') ) + sin( radians('$latitude') ) * sin( radians(latitude) ) ) ) <= $distance")
-                        ->where('status', 'active')->findOrFail($Shop_id);
-                } else {
-                    $Shop = Shop::findOrFail($Shop_id);
-                }
+            $this->validate($request, [
+                'user_address_id' => 'required|exists:user_addresses,id,deleted_at,NULL',
+                //'payment_mode' => 'required'
+            ]);
+
+            $User = $request->user()->id;
+            $CartItems = UserCart::with('cart_addons')->where('user_id', $User)->get();
+            $payment_status = 'pending';
+            $tot_qty = 0;
+            $tot_price = 0;
+            $tax = 0;
+            $discount = 0;
+            $net = 0;
+            $total_pay_user = 0;
+            $ripple_price = 0;
+            if (!$CartItems->isEmpty()) {
+                try {
+                    // Shop finding logic goes here.
+                    $Shop_id = Product::findOrFail($CartItems[0]->product_id)->shop_id;
+
+                    $Useraddress = UserAddress::findOrFail($request->user_address_id);
+                    $longitude = $Useraddress->longitude;
+                    $latitude = $Useraddress->latitude;
+                    $distance = Setting::get('search_distance');
+                    if (Setting::get('search_distance') > 0) {
+                        $Shop = Shop::select('shops.*')
+                            ->selectRaw("(6371 * acos( cos( radians('$latitude') ) * cos( radians(latitude) ) * cos( radians(longitude) - radians('$longitude') ) + sin( radians('$latitude') ) * sin( radians(latitude) ) ) ) AS distance")
+                            ->whereRaw("(6371 * acos( cos( radians('$latitude') ) * cos( radians(latitude) ) * cos( radians(longitude) - radians('$longitude') ) + sin( radians('$latitude') ) * sin( radians(latitude) ) ) ) <= $distance")
+                            ->where('status', 'active')->findOrFail($Shop_id);
+                    } else {
+                        $Shop = Shop::findOrFail($Shop_id);
+                    }
 
 
-                //  for calculating total amount
-                // this is repeated code because of validation
-                foreach ($CartItems as $Product) {
-                    $tot_qty = $Product->quantity;
-                    $tot_price += $Product->quantity * ProductPrice::where('product_id', $Product->product_id)->first()->price;
-                    $tot_price_addons = 0;
-                    if (count($Product->cart_addons) > 0) {
-                        foreach ($Product->cart_addons as $Cartaddon) {
+                    //  for calculating total amount
+                    // this is repeated code because of validation
+                    foreach ($CartItems as $Product) {
+                        $tot_qty = $Product->quantity;
+                        $tot_price += $Product->quantity * ProductPrice::where('product_id', $Product->product_id)->first()->price;
+                        $tot_price_addons = 0;
+                        if (count($Product->cart_addons) > 0) {
+                            foreach ($Product->cart_addons as $Cartaddon) {
 
-                            $tot_price_addons += $Cartaddon->quantity * $Cartaddon->addon_product->price;
+                                $tot_price_addons += $Cartaddon->quantity * $Cartaddon->addon_product->price;
+                            }
+                        }
+                        $tot_price += $tot_qty * $tot_price_addons;
+                        if ($Product->promocode_id) {
+                            $discount += $discount;
+                        }
+
+                        if ($request->has('promocode_id')) {
+                            $find_promo = Promocode::find($request->promocode_id);
+                            $discount += $find_promo->discount;
+                        }
+
+
+                        //$Product->order_id = $Order->id;
+                        /*$Product->save();
+                        $Product->delete();*/
+                    }
+
+
+                    $net = $tot_price;
+                    if ($Shop->offer_percent) {
+                        if ($tot_price > $Shop->offer_min_amount) {
+                            //$discount = roundPrice(($tot_price*($Order->shop->offer_percent/100)));
+                            $discount = ($tot_price * ($Shop->offer_percent / 100));
+                            //if()
+                            $net = $tot_price - $discount;
                         }
                     }
-                    $tot_price += $tot_qty * $tot_price_addons;
-                    if ($Product->promocode_id) {
-                        $discount += $discount;
-                    }
+                    $total_wallet_balance = 0;
+                    $tax = ($net * Setting::get('tax') / 100);
+                    $total_net = roundPrice($net + $tax + Setting::get('delivery_charge'));
+                    $payable = $total_net;
 
-                    if ($request->has('promocode_id')) {
-                        $find_promo = Promocode::find($request->promocode_id);
-                        $discount += $find_promo->discount;
-                    }
-
-
-                    //$Product->order_id = $Order->id;
-                    /*$Product->save();
-                    $Product->delete();*/
-                }
-
-
-                $net = $tot_price;
-                if ($Shop->offer_percent) {
-                    if ($tot_price > $Shop->offer_min_amount) {
-                        //$discount = roundPrice(($tot_price*($Order->shop->offer_percent/100)));
-                        $discount = ($tot_price * ($Shop->offer_percent / 100));
-                        //if()
-                        $net = $tot_price - $discount;
-                    }
-                }
-                $total_wallet_balance = 0;
-                $tax = ($net * Setting::get('tax') / 100);
-                $total_net = roundPrice($net + $tax + Setting::get('delivery_charge'));
-                $payable = $total_net;
-
-                if ($request->wallet) {
-                    if ($request->user()->wallet_balance > $total_net) {
-                        $total_wallet_balance_left = $request->user()->wallet_balance - $total_net;
-                        $request->user()->wallet_balance = $total_wallet_balance_left;
-                        $request->user()->save();
-                        $total_wallet_balance = $total_net;
-                        $payable = 0;
-                        $payment_status = 'success';
-                        $request->payment_mode = 'wallet';
-                        WalletPassbook::create([
-                            'user_id' => $request->user()->id,
-                            'amount' => $total_wallet_balance,
-                            'status' => 'DEBITED',
-                            'message' => trans('form.invoice.message', ['price' => $total_wallet_balance, 'order_id' => ''])
-                        ]);
-                    } else {
-                        //$total_net = $total_net - $request->user()->wallet_balance;
-                        $total_wallet_balance = $request->user()->wallet_balance;
-                        if ($total_wallet_balance > 0) {
-                            $request->user()->wallet_balance = 0;
+                    if ($request->wallet) {
+                        if ($request->user()->wallet_balance > $total_net) {
+                            $total_wallet_balance_left = $request->user()->wallet_balance - $total_net;
+                            $request->user()->wallet_balance = $total_wallet_balance_left;
                             $request->user()->save();
-                            $payable = ($total_net - $total_wallet_balance);
+                            $total_wallet_balance = $total_net;
+                            $payable = 0;
+                            $payment_status = 'success';
+                            $request->payment_mode = 'wallet';
                             WalletPassbook::create([
                                 'user_id' => $request->user()->id,
-                                'amount' => $request->user()->wallet_balance,
+                                'amount' => $total_wallet_balance,
                                 'status' => 'DEBITED',
-                                'message' => trans('form.invoice.message', ['price' => $request->user()->wallet_balance, 'order_id' => ''])
+                                'message' => trans('form.invoice.message', ['price' => $total_wallet_balance, 'order_id' => ''])
                             ]);
-
-                        }
-                    }
-                }
-
-            } catch (ModelNotFoundException $e) {
-
-                if ($request->ajax()) {
-                    return response()->json(['message' => trans('order.address_out_of_range')], 422);
-                }
-                return back()->with('flash_failure', trans('order.address_out_of_range'));
-
-            } catch (Exception $e) {
-                return response()->json(['message' => trans('order.order_shop_not_found')], 404);
-            }
-
-            try {
-                if ($request->has('payment_mode')) {
-                    if ($request->payment_mode == 'stripe') {
-                        if ($request->card_id) {
-                            $Card = Card::where('user_id', Auth::user()->id)->where('id', $request->card_id)->firstorFail();
                         } else {
-                            $Card = Card::where('user_id', Auth::user()->id)->where('is_default', 1)->firstorFail();
+                            //$total_net = $total_net - $request->user()->wallet_balance;
+                            $total_wallet_balance = $request->user()->wallet_balance;
+                            if ($total_wallet_balance > 0) {
+                                $request->user()->wallet_balance = 0;
+                                $request->user()->save();
+                                $payable = ($total_net - $total_wallet_balance);
+                                WalletPassbook::create([
+                                    'user_id' => $request->user()->id,
+                                    'amount' => $request->user()->wallet_balance,
+                                    'status' => 'DEBITED',
+                                    'message' => trans('form.invoice.message', ['price' => $request->user()->wallet_balance, 'order_id' => ''])
+                                ]);
+
+                            }
                         }
                     }
-                    if ($request->payment_mode == 'braintree') {
-                        //if($request->payment_card!='PayPalAccount' || $request->payment_card!='CreditCard'){
-                        if (!$request->has('payment_card')) {
 
-                            if ($request->has('card_id')) {
+                } catch (ModelNotFoundException $e) {
+
+                    if ($request->ajax()) {
+                        return response()->json(['message' => trans('order.address_out_of_range')], 422);
+                    }
+                    return back()->with('flash_failure', trans('order.address_out_of_range'));
+
+                } catch (Exception $e) {
+                    return response()->json(['message' => trans('order.order_shop_not_found')], 404);
+                }
+
+                try {
+                    if ($request->has('payment_mode')) {
+                        if ($request->payment_mode == 'stripe') {
+                            if ($request->card_id) {
                                 $Card = Card::where('user_id', Auth::user()->id)->where('id', $request->card_id)->firstorFail();
                             } else {
                                 $Card = Card::where('user_id', Auth::user()->id)->where('is_default', 1)->firstorFail();
                             }
                         }
-                    }
-                }
-            } catch (ModelNotFoundException $e) {
+                        if ($request->payment_mode == 'braintree') {
+                            //if($request->payment_card!='PayPalAccount' || $request->payment_card!='CreditCard'){
+                            if (!$request->has('payment_card')) {
 
-                dd($e);
-
-                if ($request->ajax()) {
-                    return response()->json(['error' => trans('order.card.no_card_exist')], 422);
-                }
-                return back()->with('flash_failure', trans('order.card.no_card_exist'));
-            }
-
-            try {
-                $payment_id = 0;
-                if ($request->has('payment_mode')) {
-
-                    if ($request->payment_mode == 'bambora') {
-
-                        $request->payable = $payable;
-
-                        if ($payable != 0) {
-
-                            $payment = (new BamboraController())->makePayment($request);
-
-                            if (isset($payment['id'])) {
-                                $payment_id = $payment['id'];
-                                $payment_status = 'success';
-                                $total_pay_user = $payable;
-                            } else {
-                                if ($request->ajax()) {
-                                    return response()->json(['error' => trans('order.payment.failed')], 422);
+                                if ($request->has('card_id')) {
+                                    $Card = Card::where('user_id', Auth::user()->id)->where('id', $request->card_id)->firstorFail();
                                 } else {
-                                    return back()->with('flash_error', trans('order.payment.failed'));
+                                    $Card = Card::where('user_id', Auth::user()->id)->where('is_default', 1)->firstorFail();
                                 }
                             }
                         }
                     }
+                } catch (ModelNotFoundException $e) {
 
-                    if ($request->payment_mode == 'stripe') {
-                        $request->payable = $payable;
-                        if ($payable != 0) {
-                            $payment = (new PaymentController)->payment($request);
-                            if (isset($payment['id'])) {
-                                $payment_id = $payment['id'];
-                                $payment_status = 'success';
-                                $total_pay_user = $payable;
-                            } else {
-                                if ($request->ajax()) {
-                                    return response()->json(['error' => trans('order.payment.failed')], 422);
-                                } else {
-                                    return back()->with('flash_error', trans('order.payment.failed'));
-                                }
-                            }
-                        }
+                    dd($e);
+
+                    if ($request->ajax()) {
+                        return response()->json(['error' => trans('order.card.no_card_exist')], 422);
                     }
-
-                    if ($request->payment_mode == 'braintree') {
-                        $request->payable = $payable;
-                        if ($payable != 0) {
-                            $payment = (new PaymentController)->payment($request);
-                            if (isset($payment->id)) {
-                                $payment_id = $payment->id;
-                                $payment_status = 'success';
-                                $total_pay_user = $payable;
-                            } else {
-                                if ($request->ajax()) {
-                                    return response()->json(['error' => trans('order.payment.failed')], 422);
-                                } else {
-                                    return back()->with('flash_error', trans('order.payment.failed'));
-                                }
-                            }
-                        }
-
-                    }
-                    if ($request->payment_mode == 'ripple') {
-                        $request->payable = $payable;
-                        if ($payable != 0) {
-
-                            if (isset($request->payment_id)) {
-                                $payment_id = $request->payment_id;
-                                $payment_status = 'success';
-                                $total_pay_user = $payable;
-                                $ripple_price = $request->amount;
-                            } else {
-                                if ($request->ajax()) {
-                                    return response()->json(['error' => trans('order.payment.failed')], 422);
-                                } else {
-                                    return back()->with('flash_error', trans('order.payment.failed'));
-                                }
-                            }
-                        }
-
-                        //exit;
-                    }
-
-                    if ($request->payment_mode == 'eather') {
-                        $request->payable = $payable;
-                        if ($payable != 0) {
-
-                            if (isset($request->payment_id)) {
-                                $payment_id = $request->payment_id;
-                                $payment_status = 'success';
-                                $total_pay_user = $payable;
-                                $ripple_price = $request->amount;
-                            } else {
-                                if ($request->ajax()) {
-                                    return response()->json(['error' => trans('order.payment.failed')], 422);
-                                } else {
-                                    return back()->with('flash_error', trans('order.payment.failed'));
-                                }
-                            }
-                        }
-
-                        exit;
-                    }
-                }
-            } catch (Exception $e) {
-
-                dd($e);
-
-                if ($request->ajax()) {
-                    return response()->json(['message' => trans('form.whoops')], 422);
-                }
-                return back()->with('flash_failure', trans('form.whoops'));
-            }
-
-
-            try {
-                $details = "https://maps.googleapis.com/maps/api/directions/json?origin=" . $Shop->latitude . "," . $Shop->longitude . "&destination=" . $Useraddress->latitude . "," . $Useraddress->longitude . "&mode=driving&key=" . env('GOOGLE_MAP_KEY');
-                $json = curl($details);
-                $details = json_decode($json, TRUE);
-                if (count($details['routes']) > 0) {
-                    $route_key = $details['routes'][0]['overview_polyline']['points'];
-                } else {
-                    $route_key = '';
+                    return back()->with('flash_failure', trans('order.card.no_card_exist'));
                 }
 
-                if ($request->has('delivery_date')) {
+                try {
+                    $payment_id = 0;
+                    if ($request->has('payment_mode')) {
 
-                    $delivery_date = $request->delivery_date;
-                    if (Carbon::parse($delivery_date)->format('Y-m-d') . ' 00:00:00' == Carbon::today()) {
-                        $schedule_status = 0;
+                        if ($request->payment_mode == 'bambora') {
+
+                            $request->payable = $payable;
+
+                            if ($payable != 0) {
+
+                                $payment = (new BamboraController())->makePayment($request);
+
+                                if (isset($payment['id'])) {
+                                    $payment_id = $payment['id'];
+                                    $payment_status = 'success';
+                                    $total_pay_user = $payable;
+                                } else {
+                                    if ($request->ajax()) {
+                                        return response()->json(['error' => trans('order.payment.failed')], 422);
+                                    } else {
+                                        return back()->with('flash_error', trans('order.payment.failed'));
+                                    }
+                                }
+                            }
+                        }
+
+                        if ($request->payment_mode == 'stripe') {
+                            $request->payable = $payable;
+                            if ($payable != 0) {
+                                $payment = (new PaymentController)->payment($request);
+                                if (isset($payment['id'])) {
+                                    $payment_id = $payment['id'];
+                                    $payment_status = 'success';
+                                    $total_pay_user = $payable;
+                                } else {
+                                    if ($request->ajax()) {
+                                        return response()->json(['error' => trans('order.payment.failed')], 422);
+                                    } else {
+                                        return back()->with('flash_error', trans('order.payment.failed'));
+                                    }
+                                }
+                            }
+                        }
+
+                        if ($request->payment_mode == 'braintree') {
+                            $request->payable = $payable;
+                            if ($payable != 0) {
+                                $payment = (new PaymentController)->payment($request);
+                                if (isset($payment->id)) {
+                                    $payment_id = $payment->id;
+                                    $payment_status = 'success';
+                                    $total_pay_user = $payable;
+                                } else {
+                                    if ($request->ajax()) {
+                                        return response()->json(['error' => trans('order.payment.failed')], 422);
+                                    } else {
+                                        return back()->with('flash_error', trans('order.payment.failed'));
+                                    }
+                                }
+                            }
+
+                        }
+                        if ($request->payment_mode == 'ripple') {
+                            $request->payable = $payable;
+                            if ($payable != 0) {
+
+                                if (isset($request->payment_id)) {
+                                    $payment_id = $request->payment_id;
+                                    $payment_status = 'success';
+                                    $total_pay_user = $payable;
+                                    $ripple_price = $request->amount;
+                                } else {
+                                    if ($request->ajax()) {
+                                        return response()->json(['error' => trans('order.payment.failed')], 422);
+                                    } else {
+                                        return back()->with('flash_error', trans('order.payment.failed'));
+                                    }
+                                }
+                            }
+
+                            //exit;
+                        }
+
+                        if ($request->payment_mode == 'eather') {
+                            $request->payable = $payable;
+                            if ($payable != 0) {
+
+                                if (isset($request->payment_id)) {
+                                    $payment_id = $request->payment_id;
+                                    $payment_status = 'success';
+                                    $total_pay_user = $payable;
+                                    $ripple_price = $request->amount;
+                                } else {
+                                    if ($request->ajax()) {
+                                        return response()->json(['error' => trans('order.payment.failed')], 422);
+                                    } else {
+                                        return back()->with('flash_error', trans('order.payment.failed'));
+                                    }
+                                }
+                            }
+
+                            exit;
+                        }
+                    }
+                } catch (Exception $e) {
+
+                    dd($e);
+
+                    if ($request->ajax()) {
+                        return response()->json(['message' => trans('form.whoops')], 422);
+                    }
+                    return back()->with('flash_failure', trans('form.whoops'));
+                }
+
+
+                try {
+                    $details = "https://maps.googleapis.com/maps/api/directions/json?origin=" . $Shop->latitude . "," . $Shop->longitude . "&destination=" . $Useraddress->latitude . "," . $Useraddress->longitude . "&mode=driving&key=" . env('GOOGLE_MAP_KEY');
+                    $json = curl($details);
+                    $details = json_decode($json, TRUE);
+                    if (count($details['routes']) > 0) {
+                        $route_key = $details['routes'][0]['overview_polyline']['points'];
                     } else {
-                        $schedule_status = 1;
+                        $route_key = '';
                     }
 
-                } else {
+                    if ($request->has('delivery_date')) {
 
-                    $delivery_date = date('Y-m-d H:i');
-                    $schedule_status = 0;
-                }
-                $newotp = rand(100000, 999999);
-                $Order = Order::create([
-                    'invoice_id' => Uuid::uuid4()->toString(),
-                    'user_id' => $User,
-                    'shop_id' => $Shop->id,
-                    'user_address_id' => $request->user_address_id,
-                    'route_key' => $route_key,
-                    'note' => $request->note,
-                    'schedule_status' => $schedule_status,
-                    'delivery_date' => $delivery_date,
-                    'order_otp' => $newotp
-                ]);
-            } catch (ModelNotFoundException $e) {
-                if ($request->ajax()) {
-                    return response()->json(['error' => trans('order.card.no_card_exist')], 422);
-                }
-                return back()->with('flash_failure', trans('order.card.no_card_exist'));
-            } catch (Exception $e) {
-                if ($request->ajax()) {
-                    return response()->json(['error' => trans('order.not_created')], 422);
-                }
-                return back()->with('flash_failure', trans('order.not_created'));
-            }
+                        $delivery_date = $request->delivery_date;
+                        if (Carbon::parse($delivery_date)->format('Y-m-d') . ' 00:00:00' == Carbon::today()) {
+                            $schedule_status = 0;
+                        } else {
+                            $schedule_status = 1;
+                        }
 
+                    } else {
 
-            try {
-
-
-                if ($Order->id && $tot_qty) {
-
-                    $Order_invoice = OrderInvoice::create([
-                        'order_id' => $Order->id,
-                        'quantity' => $tot_qty,
-                        'gross' => $tot_price,
-                        'discount' => $discount,
-                        'wallet_amount' => $total_wallet_balance,
-                        'delivery_charge' => Setting::get('delivery_charge'),
-                        'tax' => $tax,
-                        'net' => $total_net,
-                        'payable' => $payable,
-                        'paid' => ($payment_status == 'success') ? 1 : 0,
-                        'status' => $payment_status,
-                        'payment_id' => $payment_id,
-                        'total_pay' => $total_pay_user,
-                        'ripple_price' => $ripple_price,
-                        'payment_mode' => $request->payment_mode ? $request->payment_mode : 'cash'
+                        $delivery_date = date('Y-m-d H:i');
+                        $schedule_status = 0;
+                    }
+                    $newotp = rand(100000, 999999);
+                    $Order = Order::create([
+                        'invoice_id' => Uuid::uuid4()->toString(),
+                        'user_id' => $User,
+                        'shop_id' => $Shop->id,
+                        'user_address_id' => $request->user_address_id,
+                        'route_key' => $route_key,
+                        'note' => $request->note,
+                        'schedule_status' => $schedule_status,
+                        'delivery_date' => $delivery_date,
+                        'order_otp' => $newotp
                     ]);
-                    //site_sendmail($Order);
-                } else {
-                    $Order->delete();
+                } catch (ModelNotFoundException $e) {
+                    if ($request->ajax()) {
+                        return response()->json(['error' => trans('order.card.no_card_exist')], 422);
+                    }
+                    return back()->with('flash_failure', trans('order.card.no_card_exist'));
+                } catch (Exception $e) {
+                    if ($request->ajax()) {
+                        return response()->json(['error' => trans('order.not_created')], 422);
+                    }
+                    return back()->with('flash_failure', trans('order.not_created'));
                 }
 
-            } catch (ModelNotFoundException $e) {
-                if ($request->ajax()) {
-                    return response()->json(['error' => trans('order.invoice_not_created')], 422);
-                }
-                return back()->with('flash_failure', trans('order.invoice_not_created'));
-            } catch (Exception $e) {
-                if ($request->ajax()) {
-                    return response()->json(['error' => trans('order.not_created')], 422);
-                }
-                return back()->with('flash_failure', trans('order.not_created'));
-            }
+
+                try {
 
 
-            OrderTiming::create([
-                'order_id' => $Order->id,
-                'status' => 'ORDERED'
-            ]);
-            $push_message = trans('order.order_created', ['id' => $Order->id]);
-            (new SendPushNotification)->sendPushToUser($User, $push_message);
+                    if ($Order->id && $tot_qty) {
 
-            if ($Order->id && $Order_invoice->id) {
-                foreach ($CartItems as $Product) {
-                    $Product->order_id = $Order->id;
-                    $Product->save();
-                    $Product->delete();
+                        $Order_invoice = OrderInvoice::create([
+                            'order_id' => $Order->id,
+                            'quantity' => $tot_qty,
+                            'gross' => $tot_price,
+                            'discount' => $discount,
+                            'wallet_amount' => $total_wallet_balance,
+                            'delivery_charge' => Setting::get('delivery_charge'),
+                            'tax' => $tax,
+                            'net' => $total_net,
+                            'payable' => $payable,
+                            'paid' => ($payment_status == 'success') ? 1 : 0,
+                            'status' => $payment_status,
+                            'payment_id' => $payment_id,
+                            'total_pay' => $total_pay_user,
+                            'ripple_price' => $ripple_price,
+                            'payment_mode' => $request->payment_mode ? $request->payment_mode : 'cash'
+                        ]);
+                        //site_sendmail($Order);
+                    } else {
+                        $Order->delete();
+                    }
+
+                } catch (ModelNotFoundException $e) {
+                    if ($request->ajax()) {
+                        return response()->json(['error' => trans('order.invoice_not_created')], 422);
+                    }
+                    return back()->with('flash_failure', trans('order.invoice_not_created'));
+                } catch (Exception $e) {
+                    if ($request->ajax()) {
+                        return response()->json(['error' => trans('order.not_created')], 422);
+                    }
+                    return back()->with('flash_failure', trans('order.not_created'));
                 }
-                // order otp push notification
-                $push_message = trans('order.order_otp', ['otp' => $newotp]);
+
+
+                OrderTiming::create([
+                    'order_id' => $Order->id,
+                    'status' => 'ORDERED'
+                ]);
+                $push_message = trans('order.order_created', ['id' => $Order->id]);
                 (new SendPushNotification)->sendPushToUser($User, $push_message);
 
-                if ($request->ajax()) {
-                    return Order::find($Order->id);
+                if ($Order->id && $Order_invoice->id) {
+                    foreach ($CartItems as $Product) {
+                        $Product->order_id = $Order->id;
+                        $Product->save();
+                        $Product->delete();
+                    }
+                    // order otp push notification
+                    $push_message = trans('order.order_otp', ['otp' => $newotp]);
+                    (new SendPushNotification)->sendPushToUser($User, $push_message);
+
+                    if ($request->ajax()) {
+                        return Order::find($Order->id);
+                    }
+                    return redirect('orders/' . $Order->id)->with('flash_success', trans('order.created'));
+                } else {
+                    if ($request->ajax()) {
+                        return response()->json(['message' => trans('form.whoops')], 422);
+                    }
+                    return back()->with('flash_failure', trans('form.whoops'));
                 }
-                return redirect('orders/' . $Order->id)->with('flash_success', trans('order.created'));
             } else {
                 if ($request->ajax()) {
-                    return response()->json(['message' => trans('form.whoops')], 422);
+                    return response()->json(['message' => trans('form.order.cart_empty')], 422);
                 }
                 return back()->with('flash_failure', trans('form.whoops'));
             }
-        } else {
-            if ($request->ajax()) {
-                return response()->json(['message' => trans('form.order.cart_empty')], 422);
-            }
-            return back()->with('flash_failure', trans('form.whoops'));
+
+        } catch (Exception $e) {
+            dd($e);
         }
     }
 
