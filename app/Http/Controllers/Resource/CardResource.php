@@ -66,7 +66,7 @@ class CardResource extends Controller
 
         if ($request->has('bambora')) {
 
-            return $request->all();
+//            return $request->all();
 
             $exist = Card::where('user_id', Auth::user()->id)
                 ->where('last_four', $request->cvc)
@@ -74,15 +74,20 @@ class CardResource extends Controller
 
             if ($exist == 0) {
 
-                $card = new Card();
-                $card->user_id = Auth::user()->id;
-                $card->card_type = 'bambora';
-                $card->last_four = $request->number;
-                $card->exp_year = $request->exp_year;
-                $card->exp_month = $request->exp_month;
-                $card->card_id = Auth::user()->id;
-                $card->is_default = true;
-                $card->save();
+                try {
+                    $card = new Card();
+                    $card->user_id = Auth::user()->id;
+                    $card->card_type = 'bambora';
+                    $card->last_four = $request->number;
+                    $card->exp_year = $request->exp_year;
+                    $card->exp_month = $request->exp_month;
+                    $card->card_id = Auth::user()->id;
+                    $card->is_default = true;
+                    $card->save();
+
+                } catch (Exception $e) {
+                    $e->getMessage();
+                }
 
 
             } else {
