@@ -58,8 +58,6 @@ class CardResource extends Controller
     public function store(Request $request)
     {
 
-        return $request;
-
         if ($request->has('stripe_token')) {
             $this->validate($request, [
                 'stripe_token' => 'required'
@@ -67,6 +65,8 @@ class CardResource extends Controller
         }
 
         if ($request->has('bambora')) {
+
+            return $request;
 
             $exist = Card::where('user_id', Auth::user()->id)
                 ->where('last_four', $request->cvc)
