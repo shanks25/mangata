@@ -133,6 +133,7 @@ class UserController extends Controller
                 'address' => $request->address
             ]);
             return back()->with('flash_success', trans('home.delivery_boy.created'));
+            
         } catch (Exception $e) {
 
             dd($e);
