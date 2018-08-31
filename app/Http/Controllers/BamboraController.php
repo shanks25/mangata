@@ -30,6 +30,10 @@ class BamboraController extends Controller
 
     public function makePayment(MakePaymentRequest $request)
     {
+
+
+        return $request;
+
         try {
 
             $user = Auth::user();
