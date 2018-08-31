@@ -91,6 +91,9 @@ class AddressResource extends Controller
             }
             return back()->with('flash_success', trans('form.resource.created'));
         } catch (Exception $e) {
+
+            dd($e);
+
             if ($request->ajax()) {
                 return response()->json(['error' => trans('form.whoops')], 500);
             }
