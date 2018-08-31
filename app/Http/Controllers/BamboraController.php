@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Auth;
 class BamboraController extends Controller
 {
     //
-    private $merchant_id = '';
-    private $api_key = '';
+    private $merchant_id = '117686094';
+    private $api_key = 'ACc498AF0A16448F9958CDFb67889b55';
     private $api_version = 'v1';
     private $platform = 'api';
 
