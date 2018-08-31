@@ -46,9 +46,9 @@ Route::get('contact', function () {
     return view('welcome');
 });*/
 Route::get('/search', 'WelcomeController@search');
+
 Route::get('/enquiry-delivery', 'UserController@delivery');
 Route::post('/enquiry-delivery', 'UserController@delivery_store');
-
 
 Route::get('auth/facebook', 'SocialLoginController@redirectToFaceBook');
 Route::get('auth/facebook/callback', 'SocialLoginController@handleFacebookCallback');
@@ -172,44 +172,42 @@ Route::post('newsletter', 'WelcomeController@newsletter')->name('newsletter');
 Route::post('/otp', 'Auth\RegisterController@OTP');
 Route::post('/new/register', 'Auth\RegisterController@newRegister');
 
-Route::group(['middleware' => 'activation'], function () {
-    Route::get('/dashboard', 'UserResource\OrderResource@orderprogress');
-    Route::get('/profile', 'UserResource\ProfileController@index');
-    Route::post('/profile', 'UserResource\ProfileController@update');
-    Route::get('/changepassword', 'UserResource\ProfileController@changepassword');
-    Route::post('/setpassword', 'UserResource\ProfileController@password');
-    Route::resource('orders', 'UserResource\OrderResource');
-    Route::resource('useraddress', 'UserResource\AddressResource');
-    Route::get('/restaurants', 'UserResource\SearchResource@index');
-    Route::get('/restaurant/details', 'UserResource\SearchResource@show');
-    Route::post('mycart', 'UserResource\CartResource@addToCart');
-    Route::post('addcart', 'UserResource\CartResource@store');
-    Route::get('/clear/cart', 'UserResource\CartResource@clearCart');
-    Route::get('/track/order/{id}', 'UserResource\SearchResource@ordertrack');
-    Route::get('/product/details/{productid}/{cartId}/{shopname}/{productname}', 'UserResource\SearchResource@productDetails');
+Route::get('/dashboard', 'UserResource\OrderResource@orderprogress');
+Route::get('/profile', 'UserResource\ProfileController@index');
+Route::post('/profile', 'UserResource\ProfileController@update');
+Route::get('/changepassword', 'UserResource\ProfileController@changepassword');
+Route::post('/setpassword', 'UserResource\ProfileController@password');
+Route::resource('orders', 'UserResource\OrderResource');
+Route::resource('useraddress', 'UserResource\AddressResource');
+Route::get('/restaurants', 'UserResource\SearchResource@index');
+Route::get('/restaurant/details', 'UserResource\SearchResource@show');
+Route::post('mycart', 'UserResource\CartResource@addToCart');
+Route::post('addcart', 'UserResource\CartResource@store');
+Route::get('/clear/cart', 'UserResource\CartResource@clearCart');
+Route::get('/track/order/{id}', 'UserResource\SearchResource@ordertrack');
+Route::get('/product/details/{productid}/{cartId}/{shopname}/{productname}', 'UserResource\SearchResource@productDetails');
 // card
-    Route::resource('card', 'Resource\CardResource');
-    Route::get('payment', 'UserController@payment');
-    Route::post('payment/confirm', 'PaymentController@payment');
-    Route::any('cart/payment', 'UserController@order_payment');
-    Route::get('wallet', 'UserController@wallet');
-    Route::post('wallet', 'PaymentController@add_money');
-    Route::post('/rating', 'UserResource\OrderResource@rate_review');
-    Route::get('user/chat', 'UserResource\OrderResource@chatWithUser');
-    Route::get('addons/{id}', 'Resource\ProductResource@show');
-    Route::get('checkRipplePayment', 'PaymentController@checkRipplePayment');
-    Route::get('checkEtherPayment', 'PaymentController@checkEtherPayment');
+Route::resource('card', 'Resource\CardResource');
+Route::get('payment', 'UserController@payment');
+Route::post('payment/confirm', 'PaymentController@payment');
+Route::any('cart/payment', 'UserController@order_payment');
+Route::get('wallet', 'UserController@wallet');
+Route::post('wallet', 'PaymentController@add_money');
+Route::post('/rating', 'UserResource\OrderResource@rate_review');
+Route::get('user/chat', 'UserResource\OrderResource@chatWithUser');
+Route::get('addons/{id}', 'Resource\ProductResource@show');
+Route::get('checkRipplePayment', 'PaymentController@checkRipplePayment');
+Route::get('checkEtherPayment', 'PaymentController@checkEtherPayment');
 // swiggy design
-    Route::get('payments', 'UserController@payment');
-    Route::resource('favourite', 'Resource\FavoriteResource');
-    Route::get('offers', 'UserResource\SearchResource@offers');
-    Route::post('wallet/promocode', 'UserResource\WalletResource@store');
-    Route::post('/reorder', 'UserResource\OrderResource@reorder');
+Route::get('payments', 'UserController@payment');
+Route::resource('favourite', 'Resource\FavoriteResource');
+Route::get('offers', 'UserResource\SearchResource@offers');
+Route::post('wallet/promocode', 'UserResource\WalletResource@store');
+Route::post('/reorder', 'UserResource\OrderResource@reorder');
 
 //Route::get('/token','BraintreeTokenController@token');
 //Route::get('/payment','BraintreeTokenController@payment');
 // Route::post('/payment','BraintreeTokenController@do_payment');
-    /*  Route::get('faq','WelcomeController@faq');
-      Route::get('aboutus','WelcomeController@aboutus');
-      Route::get('termcondition','WelcomeController@termcondition');*/
-});
+/*  Route::get('faq','WelcomeController@faq');
+  Route::get('aboutus','WelcomeController@aboutus');
+  Route::get('termcondition','WelcomeController@termcondition');*/

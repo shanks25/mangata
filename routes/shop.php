@@ -6,6 +6,7 @@
 |--------------------------------------------------------------------------
 */
 
+
 Route::get('/home', 'ShopController@index')->name('home');
 //Route::resource('shops', 'Resource\ShopResource');
 
