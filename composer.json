@@ -21,7 +21,8 @@
         "maatwebsite/excel": "~2.1.0",
         "sly/notification-pusher": "2.2.13",
         "spatie/laravel-permission": "^2.7",
-        "stripe/stripe-php": "^4.4"
+        "stripe/stripe-php": "^4.4",
+        "bambora/payform": "^1.1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
