@@ -407,6 +407,9 @@ class OrderResource extends Controller
                     }
                 }
             } catch (Exception $e) {
+
+                dd($e);
+
                 if ($request->ajax()) {
                     return response()->json(['message' => trans('form.whoops')], 422);
                 }
