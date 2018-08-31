@@ -65,12 +65,12 @@
                                         @if ($User->is_active)
                                             <a class="table-btn btn btn-icon btn-danger"
                                                href="{{ route('admin.user.disable', $User->id) }}">
-                                                <i class="fa fa-trash-o"></i>
+                                                <i class="fa fa-times-circle"></i>
                                             </a>
                                         @else
                                             <a class="table-btn btn btn-icon btn-success"
                                                href="{{ route('admin.user.enable', $User->id) }}">
-                                                <i class="fa fa-trash-o"></i>
+                                                <i class="fa fa-check-circle"></i>
                                             </a>
                                         @endif
 
