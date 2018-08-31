@@ -316,7 +316,7 @@
             //$('#country_code').val(code);
 
             var name = document.getElementById("name").value;
-            var email = document.getElementById("emai;").value;
+            var email = document.getElementById("email").value;
             var password = document.getElementById("password").value;
             var phoneNumber = document.getElementById("phone_number").value;
             var accessToken = $("#register_form #accessToken").val();
