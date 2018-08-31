@@ -312,57 +312,51 @@
 
         function login() {
 
-            if (countryCode != '') {
-                //var code = $('.selected-dial-code').html();
-                //$('#country_code').val(code);
+            //var code = $('.selected-dial-code').html();
+            //$('#country_code').val(code);
 
-                var name = document.getElementById("name").value;
-                var email = document.getElementById("emai;").value;
-                var password = document.getElementById("password").value;
-                var phoneNumber = document.getElementById("phone_number").value;
-                var accessToken = $("#register_form #accessToken").val();
-                var login_by = $("#register_form #login_by").val();
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("emai;").value;
+            var password = document.getElementById("password").value;
+            var phoneNumber = document.getElementById("phone_number").value;
+            var accessToken = $("#register_form #accessToken").val();
+            var login_by = $("#register_form #login_by").val();
 
-                $.ajax({
-                    url: "{{url('/new/register')}}",
-                    type: 'POST',
-                    data: {
-                        phone_number: phoneNumber,
-                        name: name,
-                        email: email,
-                        password: password,
-                        '_token': csrf,
-                        'login_by': login_by,
-                        'accessToken': accessToken
-                    },
-                    success: function (data) {
-                        if ($.isEmptyObject(data.error)) {
-                            alert('success');
-                        } else {
-                            printErrorMsg(data.error, 'register_form');
-                        }
-                    },
-                    error: function (jqXhr, status) {
-                        if (jqXhr.status === 422) {
-                            $("#register_form .print-error-msg").html('');
-                            $("#register_form .common").html('<ul class="list-unstyled"><li class="error_error "></li></ul>');
-                            $("#register_form .print-error-msg").show();
-                            var errors = jqXhr.responseJSON;
-                            $.each(errors, function (key, value) {
-                                if (key == 'error') {
-                                    $("#register_form .common").find('ul').removeClass('alert-success').addClass('alert-danger');
-                                }
-                                $("#register_form").find(".error_" + key).html(value);
-                            });
-                        }
+            $.ajax({
+                url: "{{url('/new/register')}}",
+                type: 'POST',
+                data: {
+                    phone_number: phoneNumber,
+                    name: name,
+                    email: email,
+                    password: password,
+                    '_token': csrf,
+                    'login_by': login_by,
+                    'accessToken': accessToken
+                },
+                success: function (data) {
+                    if ($.isEmptyObject(data.error)) {
+                        alert('success');
+                    } else {
+                        printErrorMsg(data.error, 'register_form');
                     }
+                },
+                error: function (jqXhr, status) {
+                    if (jqXhr.status === 422) {
+                        $("#register_form .print-error-msg").html('');
+                        $("#register_form .common").html('<ul class="list-unstyled"><li class="error_error "></li></ul>');
+                        $("#register_form .print-error-msg").show();
+                        var errors = jqXhr.responseJSON;
+                        $.each(errors, function (key, value) {
+                            if (key == 'error') {
+                                $("#register_form .common").find('ul').removeClass('alert-success').addClass('alert-danger');
+                            }
+                            $("#register_form").find(".error_" + key).html(value);
+                        });
+                    }
+                }
 
-                });
-            } else {
-                $("#register_form").find(".error_phone").html('');
-                $("#register_form").find(".error_phone").html('Country code Required');
-
-            }
+            });
         }
 
         function smsLogin() {
