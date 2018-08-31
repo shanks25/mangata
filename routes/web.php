@@ -189,6 +189,7 @@ Route::get('/product/details/{productid}/{cartId}/{shopname}/{productname}', 'Us
 // card
 Route::resource('card', 'Resource\CardResource');
 Route::get('payment', 'UserController@payment');
+Route::post('bambora/payment', 'BamboraController@makePayment');
 Route::post('payment/confirm', 'PaymentController@payment');
 Route::any('cart/payment', 'UserController@order_payment');
 Route::get('wallet', 'UserController@wallet');

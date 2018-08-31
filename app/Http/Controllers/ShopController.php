@@ -85,7 +85,7 @@ class ShopController extends Controller
 
         } catch (Exception $e) {
 
-            dd($e);
+//            dd($e);
 
             return back()->with('flash_error', trans('form.whoops'));
         }
