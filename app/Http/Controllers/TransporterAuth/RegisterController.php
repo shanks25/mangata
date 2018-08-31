@@ -113,7 +113,6 @@ class RegisterController extends Controller
             if(Transporter::where('phone',$data['phone'])->first()){
                 return response()->json([
                     'phone' => 'this mobile is already exist!',
-                                
                     ]);
              }
 
