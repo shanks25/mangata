@@ -66,7 +66,7 @@ class CardResource extends Controller
 
         if ($request->has('bambora')) {
 
-            return $request;
+            return $request->all();
 
             $exist = Card::where('user_id', Auth::user()->id)
                 ->where('last_four', $request->cvc)
