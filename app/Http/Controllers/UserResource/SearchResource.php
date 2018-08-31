@@ -221,6 +221,9 @@ class SearchResource extends Controller
             //dd($Shop);
             return view('user.shop.show', compact('Shop', 'Cart', 'FeaturedProduct', 'Categories'));
         } catch (Exception $e) {
+
+            dd($e);
+
             if ($request->ajax()) {
                 return response()->json(['error' => trans('form.whoops')], 500);
             }

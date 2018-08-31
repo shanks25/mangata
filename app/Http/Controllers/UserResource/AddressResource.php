@@ -60,11 +60,6 @@ class AddressResource extends Controller
             } else {
 
                 $this->validate($request, [
-                    //'building' => 'required|string|max:255',
-                    //'city' => 'required|string|max:255',
-                    //'state' => 'required|string|max:255',
-                    //'country' => 'required|string|max:255',
-                    //'pincode' => 'required|string|max:255',
                     'map_address' => 'required|string|max:255',
                     'latitude' => 'required|numeric',
                     'longitude' => 'required|numeric',
