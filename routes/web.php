@@ -45,9 +45,9 @@ Route::get('contact', function () {
 /*Route::get('/', function () {
     return view('welcome');
 });*/
-Route::get('/search','WelcomeController@search');
-Route::get('/enquiry-delivery','UserController@delivery');
-Route::post('/enquiry-delivery','UserController@delivery_store');
+Route::get('/search', 'WelcomeController@search');
+Route::get('/enquiry-delivery', 'UserController@delivery');
+Route::post('/enquiry-delivery', 'UserController@delivery_store');
 
 
 Route::get('auth/facebook', 'SocialLoginController@redirectToFaceBook');
@@ -55,7 +55,7 @@ Route::get('auth/facebook/callback', 'SocialLoginController@handleFacebookCallba
 Route::get('auth/google', 'SocialLoginController@redirectToGoogle');
 Route::get('auth/google/callback', 'SocialLoginController@handleGoogleCallback');
 
-Route::post('/social/login','SocialLoginController@loginWithSocial');
+Route::post('/social/login', 'SocialLoginController@loginWithSocial');
 
 Route::get('/pushnotification', function () {
     $message = PushNotification::Message("Push Remote Rich Notifications",
@@ -71,34 +71,34 @@ Route::get('/pushnotification', function () {
                 'localized args',
             ),
             'launchImage' => 'image.jpg',
-            
-            'custom' => array("custom data"=>array('we'=>1), "mutable-content" => 1,
-                 "attachment-url"=> "https://raw.githubusercontent.com/Sweefties/iOS10-NewAPI-UserNotifications-Example/master/source/iOS10-NewAPI-UserNotifications-Example.jpg",
-                "media-url" => "https://i.imgur.com/t4WGJQx.jpg" )
+
+            'custom' => array("custom data" => array('we' => 1), "mutable-content" => 1,
+                "attachment-url" => "https://raw.githubusercontent.com/Sweefties/iOS10-NewAPI-UserNotifications-Example/master/source/iOS10-NewAPI-UserNotifications-Example.jpg",
+                "media-url" => "https://i.imgur.com/t4WGJQx.jpg")
         )
-    );   
+    );
 
 
-    if(Request::has('andriod')){
-    $test1 = \PushNotification::app('AndroidUser')
-                ->to(Request::get('andriod'))
-                ->send($message);
-                dd($test1);
+    if (Request::has('andriod')) {
+        $test1 = \PushNotification::app('AndroidUser')
+            ->to(Request::get('andriod'))
+            ->send($message);
+        dd($test1);
     }
-    if(Request::has('iosuser')){
-     $test = \PushNotification::app('IOSUser')
-                ->to(Request::get('iosuser'))
-                ->send($message);
-                
-                dd($test);
+    if (Request::has('iosuser')) {
+        $test = \PushNotification::app('IOSUser')
+            ->to(Request::get('iosuser'))
+            ->send($message);
+
+        dd($test);
     }
-    if(Request::has('iosprovider')){
-    $test = \PushNotification::app('IOSProvider')
-                ->to(Request::get('iosprovider'))
-                ->send($message);
-                dd($test);
+    if (Request::has('iosprovider')) {
+        $test = \PushNotification::app('IOSProvider')
+            ->to(Request::get('iosprovider'))
+            ->send($message);
+        dd($test);
     }
- });
+});
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', 'AdminAuth\LoginController@showLoginForm');
@@ -151,26 +151,28 @@ Route::group(['prefix' => 'transporter'], function () {
     Route::get('/home', 'TransporterController@index');
 });
 
-    Auth::routes();
-    Route::get('login',function(){
-        return redirect('/');
-    });
-    Route::post('login', 'Auth\LoginController@login')->name('login');
-    Route::get('register',function(){
-        return redirect('/');
-    });
-    Route::get('/home', 'UserController@showhome');
-    Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-    Route::post('/password/reset', 'Auth\ResetPasswordController@reset')->name('password.request');
-    Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
-    Route::get('/user/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+Auth::routes();
+Route::get('login', function () {
+    return redirect('/');
+});
+Route::post('login', 'Auth\LoginController@login')->name('login');
+Route::get('register', function () {
+    return redirect('/');
+});
+Route::get('/home', 'UserController@showhome');
+Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::post('/password/reset', 'Auth\ResetPasswordController@reset')->name('password.request');
+Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+Route::get('/user/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
 
-    Route::post('register', 'Auth\RegisterController@register')->name('register');
-    Route::post('shopreg', 'ShopController@register')->name('register');
-    Route::post('newsletter', 'WelcomeController@newsletter')->name('newsletter');
+Route::post('register', 'Auth\RegisterController@register')->name('register');
+Route::post('shopreg', 'ShopController@register')->name('register');
+Route::post('newsletter', 'WelcomeController@newsletter')->name('newsletter');
 
-    Route::post('/otp', 'Auth\RegisterController@OTP');
-    Route::post('/new/register', 'Auth\RegisterController@newRegister');
+Route::post('/otp', 'Auth\RegisterController@OTP');
+Route::post('/new/register', 'Auth\RegisterController@newRegister');
+
+Route::group(['middleware' => 'activation'], function () {
     Route::get('/dashboard', 'UserResource\OrderResource@orderprogress');
     Route::get('/profile', 'UserResource\ProfileController@index');
     Route::post('/profile', 'UserResource\ProfileController@update');
@@ -182,10 +184,10 @@ Route::group(['prefix' => 'transporter'], function () {
     Route::get('/restaurant/details', 'UserResource\SearchResource@show');
     Route::post('mycart', 'UserResource\CartResource@addToCart');
     Route::post('addcart', 'UserResource\CartResource@store');
-    Route::get('/clear/cart','UserResource\CartResource@clearCart');
-    Route::get('/track/order/{id}','UserResource\SearchResource@ordertrack');
-    Route::get('/product/details/{productid}/{cartId}/{shopname}/{productname}','UserResource\SearchResource@productDetails');
-    // card
+    Route::get('/clear/cart', 'UserResource\CartResource@clearCart');
+    Route::get('/track/order/{id}', 'UserResource\SearchResource@ordertrack');
+    Route::get('/product/details/{productid}/{cartId}/{shopname}/{productname}', 'UserResource\SearchResource@productDetails');
+// card
     Route::resource('card', 'Resource\CardResource');
     Route::get('payment', 'UserController@payment');
     Route::post('payment/confirm', 'PaymentController@payment');
@@ -195,18 +197,19 @@ Route::group(['prefix' => 'transporter'], function () {
     Route::post('/rating', 'UserResource\OrderResource@rate_review');
     Route::get('user/chat', 'UserResource\OrderResource@chatWithUser');
     Route::get('addons/{id}', 'Resource\ProductResource@show');
-    Route::get('checkRipplePayment','PaymentController@checkRipplePayment');
-    Route::get('checkEtherPayment','PaymentController@checkEtherPayment');
-    // swiggy design
+    Route::get('checkRipplePayment', 'PaymentController@checkRipplePayment');
+    Route::get('checkEtherPayment', 'PaymentController@checkEtherPayment');
+// swiggy design
     Route::get('payments', 'UserController@payment');
     Route::resource('favourite', 'Resource\FavoriteResource');
     Route::get('offers', 'UserResource\SearchResource@offers');
     Route::post('wallet/promocode', 'UserResource\WalletResource@store');
     Route::post('/reorder', 'UserResource\OrderResource@reorder');
-    
-    //Route::get('/token','BraintreeTokenController@token');
-    //Route::get('/payment','BraintreeTokenController@payment');
-   // Route::post('/payment','BraintreeTokenController@do_payment');
-  /*  Route::get('faq','WelcomeController@faq');
-    Route::get('aboutus','WelcomeController@aboutus');
-    Route::get('termcondition','WelcomeController@termcondition');*/
+
+//Route::get('/token','BraintreeTokenController@token');
+//Route::get('/payment','BraintreeTokenController@payment');
+// Route::post('/payment','BraintreeTokenController@do_payment');
+    /*  Route::get('faq','WelcomeController@faq');
+      Route::get('aboutus','WelcomeController@aboutus');
+      Route::get('termcondition','WelcomeController@termcondition');*/
+});

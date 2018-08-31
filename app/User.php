@@ -7,6 +7,7 @@ use App\Notifications\UserResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+
 class User extends Authenticatable
 {
     use SoftDeletes, HasApiTokens, Notifiable;
@@ -17,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'phone', 'email', 'avatar', 'password','device_id','device_type','device_token','wallet_balance','login_by','social_unique_id'
+        'name', 'phone', 'email', 'avatar', 'password', 'device_id', 'device_type', 'device_token', 'wallet_balance', 'login_by', 'social_unique_id'
     ];
 
     protected $currency = 1;
@@ -32,7 +33,13 @@ class User extends Authenticatable
     ];
 
 
-    public function findForPassport($username) {
+    public function isNotActivated()
+    {
+        return $this->is_active ? true : false;
+    }
+
+    public function findForPassport($username)
+    {
         return $this->where('phone', $username)->first();
     }
 
@@ -49,7 +56,7 @@ class User extends Authenticatable
      */
     public function wallet()
     {
-        return $this->hasMany('App\WalletPassbook')->orderBy('id','DESC');
+        return $this->hasMany('App\WalletPassbook')->orderBy('id', 'DESC');
     }
 
     /**
@@ -68,18 +75,18 @@ class User extends Authenticatable
         return $this->hasMany('App\Order');
     }
 
-     /**
+    /**
      * Orders
      */
     public function disputes()
     {
-        return $this->hasMany('App\OrderDispute','user_id','id')->withTrashed();
+        return $this->hasMany('App\OrderDispute', 'user_id', 'id')->withTrashed();
     }
 
     /**
      * Send the password reset notification.
      *
-     * @param  string  $token
+     * @param  string $token
      * @return void
      */
     public function sendPasswordResetNotification($token)
@@ -87,11 +94,11 @@ class User extends Authenticatable
         $this->notify(new UserResetPassword($token));
     }
 
-     /**
+    /**
      * Profile with cart details
      */
-    public function scopeProfile($query,$id)
+    public function scopeProfile($query, $id)
     {
-        return $query->with('addresses','cart','cart.cart_addons','cart.product','cart.product.addons','cart.product.prices','cart.product.images', 'cart.product.shop')->where('id',$id)->first();
+        return $query->with('addresses', 'cart', 'cart.cart_addons', 'cart.product', 'cart.product.addons', 'cart.product.prices', 'cart.product.images', 'cart.product.shop')->where('id', $id)->first();
     }
 }

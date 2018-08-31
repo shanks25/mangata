@@ -10,6 +10,8 @@ Route::get('/home', 'AdminController@index')->name('home');
 Route::get('{id}/profile', 'Resource\DisputeUserResource@edit')->name('dispute-user.edit');
 
 Route::resource('users', 'Resource\UserResource');
+Route::get('users/enable/{id}', 'AdminController@enableUser')->name('user.enable');
+Route::get('users/disable/{id}', 'AdminController@disableUser')->name('user.disable');
 Route::resource('transporters', 'Resource\TransporterResource');
 Route::resource('dispute-user', 'Resource\DisputeUserResource');
 Route::resource('categories', 'Resource\CategoryResource');
@@ -37,7 +39,7 @@ Route::post('/setting/add', 'AdminController@AccountSettingStore')->name('accset
 Route::get('/send/push', 'AdminController@push')->name('push');
 Route::post('/send/push', 'AdminController@send_push')->name('send.push');
 
-Route::get('/chat','Resource\DisputeResource@chatWithUser');
+Route::get('/chat', 'Resource\DisputeResource@chatWithUser');
 
 Route::post('/pages', 'AdminController@pages')->name('pages.update');
 
