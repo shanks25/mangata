@@ -57,6 +57,10 @@ class BamboraController extends Controller
             //Try to submit a Card Payment
             $result = $this->beanstream->payments()->makeCardPayment($this->payment_data, $this->complete);
 
+            if ($result->approved) {
+                return $result;
+            }
+
 
         }
 
