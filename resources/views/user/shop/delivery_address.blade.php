@@ -498,7 +498,7 @@
         </div>
     </div>
     <!-- Content Wrapper Ends -->
-    </div>
+
     <!-- Main Warapper Ends -->
 
     <!-- Location Sidebar Ends -->
