@@ -58,6 +58,8 @@ class CardResource extends Controller
     public function store(Request $request)
     {
 
+        return $request;
+
         if ($request->has('stripe_token')) {
             $this->validate($request, [
                 'stripe_token' => 'required'
