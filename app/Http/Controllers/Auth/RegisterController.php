@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Requests\RegisterUserRequest;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -186,8 +187,17 @@ class RegisterController extends Controller
         }
     }
 
-    public function newRegister()
+    public function newRegister(RegisterUserRequest $request)
     {
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone_number;
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        return response()->json(['message' => 'registration successful']);
 
     }
 
