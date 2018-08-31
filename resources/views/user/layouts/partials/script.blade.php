@@ -12,7 +12,7 @@
                 <div class="login-form-sec">
                     <h5 class="login-tit">Login</h5>
                     <div class="social-login">
-                        <a href="javascript::void(0);" onclick="FBLogin(2);" class="social-login-item"><i
+                        <a href="javascript:void(0);" onclick="FBLogin(2);" class="social-login-item"><i
                                     class="ion-social-facebook"></i></a>
                         <a id="sign-in-or-out-button" data-id="login" href="javascript:void(0);"
                            class="social-reg sign-in-or-out-button social-login-item"><i class="ion-social-google"></i></a>
@@ -94,7 +94,7 @@
                     {{ csrf_field() }}
 
                     <div class="social-login">
-                        <a href="javascript::void(0);" onclick="FBLogin(1);" class="social-login-item"><i
+                        <a href="javascript:void(0);" onclick="FBLogin(1);" class="social-login-item"><i
                                     class="ion-social-facebook"></i></a>
                         <a id="sign-in-or-out-button" data-id="register" href="javascript:void(0);"
                            class="social-reg sign-in-or-out-button social-login-item"><i class="ion-social-google"></i></a>
@@ -622,35 +622,36 @@
                 }
             });
         });
-        /*$('.login_btn').on('click',function(){
-                var password = document.getElementById("password").value;
-                var phoneNumber = document.getElementById("phone").value;
-                var csrf = $("input[name='_token']").val();;
-                $.ajax({
-                    url: "{{url('/login')}}",
-            type:'POST',
-            data:{ phone : phoneNumber,password:password,'_token':csrf },
-            success: function(data) { 
-                //window.location.href = "{{url('/home')}}";
-                if($('#latitude_cur').val()){
-                $('#my_map_form_current').submit();
-                }else{
-                    location.reload();
-                }
-            },
-            error:function(jqXhr,status) { 
-                if(jqXhr.status === 422) {
-                    $("#login_form_error ").find("ul").html('');
-                    $("#login_form_error").show();
-                    var errors = jqXhr.responseJSON;
-                    console.log(errors);
-                    $.each( errors , function( key, value ) { 
-                        $("#login_form_error").find("ul").append('<li>'+value+'</li>');
-                    }); 
-                } 
-            }
-        });
-    });*/
+        {{--$('.login_btn').on('click', function () {--}}
+        {{--var password = document.getElementById("password").value;--}}
+        {{--var phoneNumber = document.getElementById("phone").value;--}}
+        {{--var csrf = $("input[name='_token']").val();--}}
+        {{--;--}}
+        {{--$.ajax({--}}
+        {{--url: "{{url('/login')}}",--}}
+        {{--type: 'POST',--}}
+        {{--data: {phone: phoneNumber, password: password, '_token': csrf},--}}
+        {{--success: function (data) {--}}
+        {{--//window.location.href = "{{url('/home')}}";--}}
+        {{--if ($('#latitude_cur').val()) {--}}
+        {{--$('#my_map_form_current').submit();--}}
+        {{--} else {--}}
+        {{--location.reload();--}}
+        {{--}--}}
+        {{--},--}}
+        {{--error: function (jqXhr, status) {--}}
+        {{--if (jqXhr.status === 422) {--}}
+        {{--$("#login_form_error ").find("ul").html('');--}}
+        {{--$("#login_form_error").show();--}}
+        {{--var errors = jqXhr.responseJSON;--}}
+        {{--console.log(errors);--}}
+        {{--$.each(errors, function (key, value) {--}}
+        {{--$("#login_form_error").find("ul").append('<li>' + value + '</li>');--}}
+        {{--});--}}
+        {{--}--}}
+        {{--}--}}
+        {{--});--}}
+        {{--});--}}
 
         $('.dm').hide();
 
@@ -874,679 +875,380 @@
     </script>
     <script async defer src="https://apis.google.com/js/api.js"
             onload="this.onload=function(){};handleClientLoad()"
-            onreadystatechange="if (this.readyState === 'complete') this.onload()">
-    </script>
+            onreadystatechange="if (this.readyState === 'complete') this.onload()"/>
 
-    @else
-    <!--
-    Edit
-    Profile
-    Starts -->
-    < div
-    class
-    = "aside right-aside location"
-    id = "edit-profile-sidebar" >
-        < div
-    class
-    = "aside-header" >
-        < span
-    class
-    = "close"
-    data - dismiss = "aside" > < i
-    class
-    = "ion-close-round" > < /i></s
-    pan >
-    < h5
-    class
-    = "aside-tit" > Edit
-    Profile < /h5>
-    < /div>
-    < div
-    class
-    = "aside-contents" >
+@else
+    <!-- Edit Profile Starts -->
+    <div class="aside right-aside location" id="edit-profile-sidebar">
+        <div class="aside-header">
+            <span class="close" data-dismiss="aside"><i class="ion-close-round"></i></span>
+            <h5 class="aside-tit">Edit Profile</h5>
+        </div>
+        <div class="aside-contents">
 
-        <!-- Edit Profile Box Starts -->
-        < div
-    class
-    = "edit-profile-box" >
-        < form
-    action = "{{url('/profile')}}"
-    class
-    = "edit-profile-section"
-    method = "POST"
-    enctype = "multipart/form-data" >
-            {{csrf_field()}}
-        <!-- Edit Details Starts -->
-        < div
-    class
-    = "edit-details" >
-        < h6
-    class
-    = "edit-details-tit" > Phone
-    Number < /h6>
-    < div
-    class
-    = "row m-0" >
-        < p
-    class
-    = "pull-left edit-details-txt" >{{Auth::user()->phone}}< /p>
-        < a
-    href = "javascript:void(0);"
-    class
-    = "edit-link theme-link pull-right" > Change < /a>
-        < /div>
-        < /div>
-        <!-- Edit Details Ends -->
-        <!-- Edit form Section Starts -->
-        < div
-    class
-    = "edit-form-sec" >
-        < div
-    class
-    = "form-group" >
-        < input
-    type = "text"
-    name = "phone"
-    class
-    = "form-control"
-    value = "{{Auth::user()->phone}}" >
-        < /div>
-        < button
-    class
-    = "cmn-btn" > Update < /button>
-        < /div>
-        < /form>
-        <!-- Edit form Section Ends -->
-        < /div>
-        <!-- Edit Profile Box Ends -->
-        <!-- Edit Profile Box Starts -->
-        < div
-    class
-    = "edit-profile-box" >
-        <!-- Edit Details Starts -->
-        < form
-    action = "{{url('/profile')}}"
-    class
-    = "edit-profile-section"
-    method = "POST"
-    enctype = "multipart/form-data" >
-            {{csrf_field()}}
+            <!-- Edit Profile Box Starts -->
+            <div class="edit-profile-box">
+                <form action="{{url('/profile')}}" class="edit-profile-section" method="POST"
+                      enctype="multipart/form-data">
+                {{csrf_field()}}
+                <!-- Edit Details Starts -->
+                    <div class="edit-details">
+                        <h6 class="edit-details-tit">Phone Number</h6>
+                        <div class="row m-0">
+                            <p class="pull-left edit-details-txt">{{Auth::user()->phone}}</p>
+                            <a href="javascript:void(0);" class="edit-link theme-link pull-right">Change</a>
+                        </div>
+                    </div>
+                    <!-- Edit Details Ends -->
+                    <!-- Edit form Section Starts -->
+                    <div class="edit-form-sec">
+                        <div class="form-group">
+                            <input type="text" name="phone" class="form-control" value="{{Auth::user()->phone}}">
+                        </div>
+                        <button class="cmn-btn">Update</button>
+                    </div>
+                </form>
+                <!-- Edit form Section Ends -->
+            </div>
+            <!-- Edit Profile Box Ends -->
+            <!-- Edit Profile Box Starts -->
+            <div class="edit-profile-box">
+                <!-- Edit Details Starts -->
+                <form action="{{url('/profile')}}" class="edit-profile-section" method="POST"
+                      enctype="multipart/form-data">
+                    {{csrf_field()}}
 
-        < div
-    class
-    = "edit-details" >
-        < h6
-    class
-    = "edit-details-tit" > Email < /h6>
-        < div
-    class
-    = "row m-0" >
-        < p
-    class
-    = "pull-left edit-details-txt" >{{Auth::user()->email}}< /p>
-        < a
-    href = "javascript:void(0);"
-    class
-    = "edit-link theme-link pull-right" > Change < /a>
-        < /div>
-        < /div>
-        <!-- Edit Details Ends -->
-        <!-- Edit form Section Starts -->
-        < div
-    class
-    = "edit-form-sec" >
-        < div
-    class
-    = "form-group" >
-        < input
-    type = "text"
-    name = "email"
-    class
-    = "form-control"
-    value = "{{Auth::user()->email}}" >
-        < /div>
-        < button
-    class
-    = "cmn-btn" > Update < /button>
-        < /div>
-        < /form>
-        <!-- Edit form Section Ends -->
-        < /div>
-        <!-- Edit Profile Box Ends -->
-        <!-- Edit Profile Box Starts -->
-        < div
-    class
-    = "edit-profile-box" >
-        <!-- Edit Details Starts -->
-        < form
-    action = "{{url('/profile')}}"
-    class
-    = "edit-profile-section"
-    method = "POST"
-    enctype = "multipart/form-data" >
-            {{csrf_field()}}
-        < div
-    class
-    = "edit-details" >
-        < h6
-    class
-    = "edit-details-tit" > Password < /h6>
-        < div
-    class
-    = "row m-0" >
-        < p
-    class
-    = "pull-left edit-details-txt" > ** * * * * * * < /p>
-        < a
-    href = "javascript:void(0);"
-    class
-    = "edit-link theme-link pull-right" > Change < /a>
-        < /div>
-        < /div>
-        <!-- Edit Details Ends -->
-        <!-- Edit form Section Starts -->
-        < div
-    class
-    = "edit-form-sec" >
-        < div
-    class
-    = "form-group" >
-        < input
-    type = "password"
-    name = "password"
-    class
-    = "form-control"
-    value = "" >
-        < /div>
-        < button
-    class
-    = "cmn-btn" > Update < /button>
-        < /div>
-        < /form>
-        <!-- Edit form Section Ends -->
-        < /div>
-        <!-- Edit Profile Box Ends -->
-        < !-- < /form> -->
-        < /div>
-        < /div>
-        <!-- Edit Profile Sidebar Ends -->
+                    <div class="edit-details">
+                        <h6 class="edit-details-tit">Email</h6>
+                        <div class="row m-0">
+                            <p class="pull-left edit-details-txt">{{Auth::user()->email}}</p>
+                            <a href="javascript:void(0);" class="edit-link theme-link pull-right">Change</a>
+                        </div>
+                    </div>
+                    <!-- Edit Details Ends -->
+                    <!-- Edit form Section Starts -->
+                    <div class="edit-form-sec">
+                        <div class="form-group">
+                            <input type="text" name="email" class="form-control" value="{{Auth::user()->email}}">
+                        </div>
+                        <button class="cmn-btn">Update</button>
+                    </div>
+                </form>
+                <!-- Edit form Section Ends -->
+            </div>
+            <!-- Edit Profile Box Ends -->
+            <!-- Edit Profile Box Starts -->
+            <div class="edit-profile-box">
+                <!-- Edit Details Starts -->
+                <form action="{{url('/profile')}}" class="edit-profile-section" method="POST"
+                      enctype="multipart/form-data">
+                    {{csrf_field()}}
+                    <div class="edit-details">
+                        <h6 class="edit-details-tit">Password</h6>
+                        <div class="row m-0">
+                            <p class="pull-left edit-details-txt">********</p>
+                            <a href="javascript:void(0);" class="edit-link theme-link pull-right">Change</a>
+                        </div>
+                    </div>
+                    <!-- Edit Details Ends -->
+                    <!-- Edit form Section Starts -->
+                    <div class="edit-form-sec">
+                        <div class="form-group">
+                            <input type="password" name="password" class="form-control" value="">
+                        </div>
+                        <button class="cmn-btn">Update</button>
+                    </div>
+                </form>
+                <!-- Edit form Section Ends -->
+            </div>
+            <!-- Edit Profile Box Ends -->
+            <!-- </form> -->
+        </div>
+    </div>
+    <!-- Edit Profile Sidebar Ends -->
+@endif
 
 
-            @endif
+@if(Request::segment(1)=='restaurant' && Request::has('myaddress'))
+    <!-- Location Sidebar Starts -->
+    <div class="aside location" id="location-sidebar">
+        <div class="aside-header">
+            <span class="close" data-dismiss="aside"><i class="ion-close-round"></i></span>
+            <h5 class="aside-tit">Save Address</h5>
+        </div>
+        <div class="aside-contents">
+            <form action="{{route('useraddress.store')}}" method="POST" id="comon-form" class="common-form">
+                {{ csrf_field() }}
+                <div class="" id="my_map" style="width: 100%; height: 200px;"></div>
+                <div class="input-section">
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input class="form-control addr-mapaddrs" id="pac-input" name="map_address" type="text"
+                               value="">
+                        <input type="hidden" id="latitude" name="latitude" value="{{ old('latitude') }}" readonly
+                               required>
+                        <input type="hidden" id="longitude" name="longitude" value="{{ old('longitude') }}" readonly
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label>Door / Flat no.</label>
+                        <input class="form-control addr-building" name="building" type="text" value="23/573">
+                    </div>
+                    <div class="form-group">
+                        <label>Landmark</label>
+                        <input class="form-control addr-landmark" name="landmark" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>Address Type</label>
+                        <select class="form-control addr-type" name="type">
+                            @foreach($add_type as $item)
+                                <option value="{{$item}}">{{$item}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <button class="add-address-btn">Save &amp; Proceed</button>
+            </form>
+        </div>
+    </div>
+    <!-- Location Sidebar Ends -->
+@endif
+@if(Request::segment(1)=='restaurants' || Request::segment(1)=='restaurant')
+    <!-- Nav Location Sidebar Starts -->
+    <div class="aside location" id="nav-location-sidebar">
+        <div class="aside-header">
+            <span class="close" data-dismiss="aside"><i class="ion-close-round"></i></span>
+            <h5 class="aside-tit">Search Location</h5>
+        </div>
+        <div class="aside-contents">
+            <div class="aside-content-head">
+                <form action="{{url('restaurants')}}" id="my_map_form">
+                    <input type="text" id="pac-input" class="form-control search-loc-form pac-input"
+                           placeholder="Search for area,street name..." value="{{Session::get('search_loc')}}"
+                           name="search_loc">
+                    <input type="hidden" id="latitude" name="latitude" value="{{ Session::get('latitude') }}" readonly>
+                    <input type="hidden" id="longitude" name="longitude" value="{{ Session::get('longitude') }}"
+                           readonly>
+                    <div id="my_map" style="height:500px;width:500px;display: none"></div>
+                    <div id="map" style="height:500px;width:500px;display: none"></div>
+                </form>
+            </div>
+            <form action="{{url('restaurants')}}" id="my_map_form_current">
+                <input type="hidden" id="pac-input_cur" class="form-control search-loc-form"
+                       placeholder="Search for area,street name..." name="search_loc" value="{{ old('latitude') }}">
+                <input type="hidden" id="latitude_cur" name="latitude" value="{{ old('latitude') }}" readonly>
+                <input type="hidden" id="longitude_cur" name="longitude" value="{{ old('longitude') }}" readonly>
 
+            </form>
+            <a href="#" class="gps row m-0 my_map_form_current">
+                <div class="gps-left pull-left">
+                    <i class="ion-pinpoint"></i>
+                </div>
+                <div class="gps-right">
+                    <h6 class="gps-tit">GPS Location</h6>
+                    <p class="gps-txt">Using GPS</p>
+                </div>
+            </a>
+            <!--  <div class="saved-address">
+                <h6 class="avail-coupon-tit">Saved Address</h6>
+            <a href="#" class="saved-address-box row m-0">
+                <div class="save-add-left pull-left">
+                <i class="ion-ios-location-outline save-add-icon"></i>
+                </div>
+                <div class="save-add-right">
+                <h6 class="save-add-tit">Work</h6>
+                <p class="save-add-txt">Dry Hollow Rd, Cokeville, WY 83114, USA</p>
+            </div>
+            </a>
+            <a href="#" class="saved-address-box row m-0">
+                <div class="save-add-left pull-left">
+                <i class="ion-ios-location-outline save-add-icon"></i>
+                </div>
+                <div class="save-add-right">
+                <h6 class="save-add-tit">Others</h6>
+                <p class="save-add-txt">Dry Hollow Rd, Cokeville, WY 83114, USA</p>
+            </div>
+            </a>
+            <a href="#" class="saved-address-box row m-0">
+                <div class="save-add-left pull-left">
+                <i class="ion-ios-location-outline save-add-icon"></i>
+                </div>
+                <div class="save-add-right">
+                <h6 class="save-add-tit">Work</h6>
+                <p class="save-add-txt">Dry Hollow Rd, Cokeville, WY 83114, USA</p>
+            </div>
+            </a>
+            </div> -->
+        </div>
+    </div>
+@endif
+<!-- Nav Location Sidebar Ends -->
+<div class="aside-backdrop"></div>
+@if(Request::segment(1)=='' || Request::segment(1)=='restaurants' || Request::segment(1)=='useraddress' || Request::segment(1)=='orders' || Request::get('myaddress') || Request::segment(1)=='restaurant')
+    <script>
+        var map;
+        var input = document.getElementById('pac-input');
+        var latitude = document.getElementById('latitude');
+        var longitude = document.getElementById('longitude');
+        var input_cur = document.getElementById('pac-input_cur');
+        var latitude_cur = document.getElementById('latitude_cur');
+        var longitude_cur = document.getElementById('longitude_cur');
+        var address = document.getElementById('address');
 
-            @if(Request::segment(1)=='restaurant' && Request::has('myaddress'))
-        <!-- Location Sidebar Starts -->
-        < div
-    class
-    = "aside location"
-    id = "location-sidebar" >
-        < div
-    class
-    = "aside-header" >
-        < span
-    class
-    = "close"
-    data - dismiss = "aside" > < i
-    class
-    = "ion-close-round" > < /i></s
-    pan >
-    < h5
-    class
-    = "aside-tit" > Save
-    Address < /h5>
-    < /div>
-    < div
-    class
-    = "aside-contents" >
-        < form
-    action = "{{route('useraddress.store')}}"
-    method = "POST"
-    id = "comon-form"
-    class
-    = "common-form" >
-            {{ csrf_field() }}
-        < div
-    class
-    = ""
-    id = "my_map"
-    style = "width: 100%; height: 200px;" > < /div>
-        < div
-    class
-    = "input-section" >
-        < div
-    class
-    = "form-group" >
-        < label > Address < /label>
-        < input
-    class
-    = "form-control addr-mapaddrs"
-    id = "pac-input"
-    name = "map_address"
-    type = "text"
-    value = "" >
-        < input
-    type = "hidden"
-    id = "latitude"
-    name = "latitude"
-    value = "{{ old('latitude') }}"
-    readonly
-    required >
-    < input
-    type = "hidden"
-    id = "longitude"
-    name = "longitude"
-    value = "{{ old('longitude') }}"
-    readonly
-    required >
-    < /div>
-    < div
-    class
-    = "form-group" >
-        < label > Door / Flat
-    no. < /label>
-    < input
-    class
-    = "form-control addr-building"
-    name = "building"
-    type = "text"
-    value = "23/573" >
-        < /div>
-        < div
-    class
-    = "form-group" >
-        < label > Landmark < /label>
-        < input
-    class
-    = "form-control addr-landmark"
-    name = "landmark"
-    type = "text" >
-        < /div>
-        < div
-    class
-    = "form-group" >
-        < label > Address
-    Type < /label>
-    < select
-    class
-    = "form-control addr-type"
-    name = "type" >
-            @foreach($add_type as $item)
-        < option
-    value = "{{$item}}" >{{$item}}< /option>
-            @endforeach
-        < /select>
-        < /div>
-        < /div>
-        < button
-    class
-    = "add-address-btn" > Save &amp; Proceed < /button>
-        < /form>
-        < /div>
-        < /div>
-        <!-- Location Sidebar Ends -->
-            @endif
-            @if(Request::segment(1)=='restaurants' || Request::segment(1)=='restaurant')
-        <!-- Nav Location Sidebar Starts -->
-        < div
-    class
-    = "aside location"
-    id = "nav-location-sidebar" >
-        < div
-    class
-    = "aside-header" >
-        < span
-    class
-    = "close"
-    data - dismiss = "aside" > < i
-    class
-    = "ion-close-round" > < /i></s
-    pan >
-    < h5
-    class
-    = "aside-tit" > Search
-    Location < /h5>
-    < /div>
-    < div
-    class
-    = "aside-contents" >
-        < div
-    class
-    = "aside-content-head" >
-        < form
-    action = "{{url('restaurants')}}"
-    id = "my_map_form" >
-        < input
-    type = "text"
-    id = "pac-input"
-    class
-    = "form-control search-loc-form pac-input"
-    placeholder = "Search for area,street name..."
-    value = "{{Session::get('search_loc')}}"
-    name = "search_loc" >
-        < input
-    type = "hidden"
-    id = "latitude"
-    name = "latitude"
-    value = "{{ Session::get('latitude') }}"
-    readonly >
-    < input
-    type = "hidden"
-    id = "longitude"
-    name = "longitude"
-    value = "{{ Session::get('longitude') }}"
-    readonly >
-    < div
-    id = "my_map"
-    style = "height:500px;width:500px;display: none" > < /div>
-        < div
-    id = "map"
-    style = "height:500px;width:500px;display: none" > < /div>
-        < /form>
-        < /div>
-        < form
-    action = "{{url('restaurants')}}"
-    id = "my_map_form_current" >
-        < input
-    type = "hidden"
-    id = "pac-input_cur"
-    class
-    = "form-control search-loc-form"
-    placeholder = "Search for area,street name..."
-    name = "search_loc"
-    value = "{{ old('latitude') }}" >
-        < input
-    type = "hidden"
-    id = "latitude_cur"
-    name = "latitude"
-    value = "{{ old('latitude') }}"
-    readonly >
-    < input
-    type = "hidden"
-    id = "longitude_cur"
-    name = "longitude"
-    value = "{{ old('longitude') }}"
-    readonly >
+        function initMap() {
 
-    < /form>
-    < a
-    href = "#"
-    class
-    = "gps row m-0 my_map_form_current" >
-        < div
-    class
-    = "gps-left pull-left" >
-        < i
-    class
-    = "ion-pinpoint" > < /i>
-        < /div>
-        < div
-    class
-    = "gps-right" >
-        < h6
-    class
-    = "gps-tit" > GPS
-    Location < /h6>
-    < p
-    class
-    = "gps-txt" > Using
-    GPS < /p>
-    < /div>
-    < /a>
-    < !-- < div
-    class
-    = "saved-address" >
-        < h6
-    class
-    = "avail-coupon-tit" > Saved
-    Address < /h6>
-    < a
-    href = "#"
-    class
-    = "saved-address-box row m-0" >
-        < div
-    class
-    = "save-add-left pull-left" >
-        < i
-    class
-    = "ion-ios-location-outline save-add-icon" > < /i>
-        < /div>
-        < div
-    class
-    = "save-add-right" >
-        < h6
-    class
-    = "save-add-tit" > Work < /h6>
-        < p
-    class
-    = "save-add-txt" > Dry
-    Hollow
-    Rd, Cokeville, WY
-    83114, USA < /p>
-    < /div>
-    < /a>
-    < a
-    href = "#"
-    class
-    = "saved-address-box row m-0" >
-        < div
-    class
-    = "save-add-left pull-left" >
-        < i
-    class
-    = "ion-ios-location-outline save-add-icon" > < /i>
-        < /div>
-        < div
-    class
-    = "save-add-right" >
-        < h6
-    class
-    = "save-add-tit" > Others < /h6>
-        < p
-    class
-    = "save-add-txt" > Dry
-    Hollow
-    Rd, Cokeville, WY
-    83114, USA < /p>
-    < /div>
-    < /a>
-    < a
-    href = "#"
-    class
-    = "saved-address-box row m-0" >
-        < div
-    class
-    = "save-add-left pull-left" >
-        < i
-    class
-    = "ion-ios-location-outline save-add-icon" > < /i>
-        < /div>
-        < div
-    class
-    = "save-add-right" >
-        < h6
-    class
-    = "save-add-tit" > Work < /h6>
-        < p
-    class
-    = "save-add-txt" > Dry
-    Hollow
-    Rd, Cokeville, WY
-    83114, USA < /p>
-    < /div>
-    < /a>
-    < /div> -->
-    < /div>
-    < /div>
-    @endif
-    <!-- Nav Location Sidebar Ends -->
-    < div
-    class
-    = "aside-backdrop" > < /div>
-            @if(Request::segment(1)=='' || Request::segment(1)=='restaurants' || Request::segment(1)=='useraddress' || Request::segment(1)=='orders' || Request::get('myaddress') || Request::segment(1)=='restaurant')
-        < script >
-    var map;
-    var input = document.getElementById('pac-input');
-    var latitude = document.getElementById('latitude');
-    var longitude = document.getElementById('longitude');
-    var input_cur = document.getElementById('pac-input_cur');
-    var latitude_cur = document.getElementById('latitude_cur');
-    var longitude_cur = document.getElementById('longitude_cur');
-    var address = document.getElementById('address');
+            var userLocation = new google.maps.LatLng(
+                13.066239,
+                80.274816
+            );
 
-    function initMap() {
-
-        var userLocation = new google.maps.LatLng(
-            13.066239,
-            80.274816
-        );
-
-        map = new google.maps.Map(document.getElementById('my_map'), {
-            center: userLocation,
-            zoom: 15
-        });
-
-        var service = new google.maps.places.PlacesService(map);
-        var autocomplete = new google.maps.places.Autocomplete(input);
-        var infowindow = new google.maps.InfoWindow();
-
-        autocomplete.bindTo('bounds', map);
-
-        var infowindow = new google.maps.InfoWindow({
-            content: "Shop Location",
-        });
-
-        var marker = new google.maps.Marker({
-            map: map,
-            draggable: true,
-            anchorPoint: new google.maps.Point(0, -29)
-        });
-
-        marker.setVisible(true);
-        marker.setPosition(userLocation);
-        infowindow.open(map, marker);
-
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (location) {
-                console.log(location);
-                var userLocation = new google.maps.LatLng(
-                    location.coords.latitude,
-                    location.coords.longitude
-                );
-
-                latitude_cur.value = location.coords.latitude;
-                longitude_cur.value = location.coords.longitude;
-
-
-                //var latLngvar = location.coords.latitude+' '+location.coords.longitude+"   ";
-                var latlng = {lat: parseFloat(location.coords.latitude), lng: parseFloat(location.coords.longitude)};
-                getcustomaddress(latlng);
-                marker.setPosition(userLocation);
-                map.setCenter(userLocation);
-                map.setZoom(13);
-            });
-        } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
-        }
-
-        google.maps.event.addListener(map, 'click', updateMarker);
-        google.maps.event.addListener(marker, 'dragend', updateMarker);
-
-        function getcustomaddress(latLngvar) {
-            var geocoder = new google.maps.Geocoder();
-            console.log(latLngvar);
-            geocoder.geocode({'latLng': latLngvar}, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    //console.log(results[0]);
-                    if (results[0]) {
-
-                        input_cur.value = results[0].formatted_address;
-
-                        //updateForm(event.latLng.lat(), event.latLng.lng(), results[0].formatted_address);
-                    } else {
-                        alert('No Address Found');
-                    }
-                } else {
-                    alert('Geocoder failed due to: ' + status);
-                }
-            });
-        }
-
-        function updateMarker(event) {
-            var geocoder = new google.maps.Geocoder();
-            geocoder.geocode({'latLng': event.latLng}, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    if (results[0]) {
-                        input.value = results[0].formatted_address;
-                        updateForm(event.latLng.lat(), event.latLng.lng(), results[0].formatted_address);
-                    } else {
-                        alert('No Address Found');
-                    }
-                } else {
-                    alert('Geocoder failed due to: ' + status);
-                }
+            map = new google.maps.Map(document.getElementById('my_map'), {
+                center: userLocation,
+                zoom: 15
             });
 
-            marker.setPosition(event.latLng);
-            map.setCenter(event.latLng);
-        }
+            var service = new google.maps.places.PlacesService(map);
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            var infowindow = new google.maps.InfoWindow();
 
-        autocomplete.addListener('place_changed', function (event) {
-            marker.setVisible(false);
-            var place = autocomplete.getPlace();
+            autocomplete.bindTo('bounds', map);
 
-            if (place.hasOwnProperty('place_id')) {
-                if (!place.geometry) {
-                    window.alert("Autocomplete's returned place contains no geometry");
-                    return;
-                }
-                updateLocation(place.geometry.location);
+            var infowindow = new google.maps.InfoWindow({
+                content: "Shop Location",
+            });
+
+            var marker = new google.maps.Marker({
+                map: map,
+                draggable: true,
+                anchorPoint: new google.maps.Point(0, -29)
+            });
+
+            marker.setVisible(true);
+            marker.setPosition(userLocation);
+            infowindow.open(map, marker);
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (location) {
+                    console.log(location);
+                    var userLocation = new google.maps.LatLng(
+                        location.coords.latitude,
+                        location.coords.longitude
+                    );
+
+                    latitude_cur.value = location.coords.latitude;
+                    longitude_cur.value = location.coords.longitude;
+
+
+                    //var latLngvar = location.coords.latitude+' '+location.coords.longitude+"   ";
+                    var latlng = {
+                        lat: parseFloat(location.coords.latitude),
+                        lng: parseFloat(location.coords.longitude)
+                    };
+                    getcustomaddress(latlng);
+                    marker.setPosition(userLocation);
+                    map.setCenter(userLocation);
+                    map.setZoom(13);
+                });
             } else {
-                service.textSearch({
-                    query: place.name
-                }, function (results, status) {
-                    if (status == google.maps.places.PlacesServiceStatus.OK) {
-                        updateLocation(results[0].geometry.location, results[0].formatted_address);
-                        input.value = results[0].formatted_address;
+                // Browser doesn't support Geolocation
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
 
+            google.maps.event.addListener(map, 'click', updateMarker);
+            google.maps.event.addListener(marker, 'dragend', updateMarker);
+
+            function getcustomaddress(latLngvar) {
+                var geocoder = new google.maps.Geocoder();
+                console.log(latLngvar);
+                geocoder.geocode({'latLng': latLngvar}, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        //console.log(results[0]);
+                        if (results[0]) {
+
+                            input_cur.value = results[0].formatted_address;
+
+                            //updateForm(event.latLng.lat(), event.latLng.lng(), results[0].formatted_address);
+                        } else {
+                            alert('No Address Found');
+                        }
+                    } else {
+                        alert('Geocoder failed due to: ' + status);
                     }
                 });
             }
-        });
 
-        function updateLocation(location) {
-            map.setCenter(location);
-            marker.setPosition(location);
-            marker.setVisible(true);
-            infowindow.open(map, marker);
-            updateForm(location.lat(), location.lng(), input.value);
+            function updateMarker(event) {
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({'latLng': event.latLng}, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (results[0]) {
+                            input.value = results[0].formatted_address;
+                            updateForm(event.latLng.lat(), event.latLng.lng(), results[0].formatted_address);
+                        } else {
+                            alert('No Address Found');
+                        }
+                    } else {
+                        alert('Geocoder failed due to: ' + status);
+                    }
+                });
+
+                marker.setPosition(event.latLng);
+                map.setCenter(event.latLng);
+            }
+
+            autocomplete.addListener('place_changed', function (event) {
+                marker.setVisible(false);
+                var place = autocomplete.getPlace();
+
+                if (place.hasOwnProperty('place_id')) {
+                    if (!place.geometry) {
+                        window.alert("Autocomplete's returned place contains no geometry");
+                        return;
+                    }
+                    updateLocation(place.geometry.location);
+                } else {
+                    service.textSearch({
+                        query: place.name
+                    }, function (results, status) {
+                        if (status == google.maps.places.PlacesServiceStatus.OK) {
+                            updateLocation(results[0].geometry.location, results[0].formatted_address);
+                            input.value = results[0].formatted_address;
+
+                        }
+                    });
+                }
+            });
+
+            function updateLocation(location) {
+                map.setCenter(location);
+                marker.setPosition(location);
+                marker.setVisible(true);
+                infowindow.open(map, marker);
+                updateForm(location.lat(), location.lng(), input.value);
+            }
+
+            function updateForm(lat, lng, addr) {
+                console.log(lat, lng, addr);
+                latitude.value = lat;
+                longitude.value = lng;
+                @if(Request::get('search_loc'))
+                $('#my_map_form').submit();
+                @endif
+            }
         }
 
-        function updateForm(lat, lng, addr) {
-            console.log(lat, lng, addr);
-            latitude.value = lat;
-            longitude.value = lng;
-            @if(Request::get('search_loc'))
-            $('#my_map_form').submit();
-            @endif
-        }
-    }
+        $('.my_map_form_current').on('click', function () {
+            $('#my_map_form_current').submit();
+        })
 
-    $('.my_map_form_current').on('click', function () {
-        $('#my_map_form_current').submit();
-    })
-
-    /*$('.pac-input').on('blur',function(){
-        if($('#latitude').val()!=''){
-            $('#my_map_form').submit();
-        }
-    })*/
+        /*$('.pac-input').on('blur',function(){
+            if($('#latitude').val()!=''){
+                $('#my_map_form').submit();
+            }
+        })*/
 
     </script>
-
-
-
 @endif
+
 <script src="https://maps.googleapis.com/maps/api/js?key={{Setting::get('GOOGLE_MAP_KEY')}}&libraries=places&callback=initMap"
         async defer></script>
