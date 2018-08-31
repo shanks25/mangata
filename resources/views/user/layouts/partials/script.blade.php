@@ -108,11 +108,28 @@
                         </ul>
                     </div>
 
-                    <input type="text" class="form-control form-white" placeholder="Name" id="dname" name="name"
-                           value="{{ old('name') }}">
+                    <div class="form-group row">
+                        <div class="col-xs-12">
+                            <label>Phone Number</label>
+                        </div>
 
-                    <input type="email" class="form-control form-white" id="demail" name="email"
-                           value="{{ old('email') }}" placeholder="Email">
+                        <div class="col-xs-12 p-l-0">
+                            <input type="text" class="form-control form-white" placeholder="Name" id="dname" name="name"
+                                   value="{{ old('name') }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-xs-12">
+                            <label>Phone Number</label>
+                        </div>
+
+                        <div class="col-xs-12 p-l-0">
+                            <input type="email" class="form-control form-white" id="demail" name="email"
+                                   value="{{ old('email') }}" placeholder="Email">
+                        </div>
+
+                    </div>
 
                     <div class="form-group row">
                         <div class="col-xs-12">
