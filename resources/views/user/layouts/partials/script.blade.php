@@ -163,8 +163,7 @@
 
                     <div class="print-error-msg alert-danger error_otp"></div>
 
-                    <button type="button" onclick="login();" class="login-btn">Verify Phone
-                        Number
+                    <button type="button" onclick="login();" class="login-btn">Register
                     </button>
 
 
