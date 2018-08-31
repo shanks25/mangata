@@ -18,6 +18,7 @@ return [
         'address' => 'Address',
         'contact_details' => 'Contact Details',
         'rating' => 'Rating',
+        'status' => 'Status',
         'action' => 'Action',
         'no_record_found' => 'No Delivery People Available Now'
     ],
