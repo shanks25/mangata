@@ -296,6 +296,9 @@ class OrderResource extends Controller
                     }
                 }
             } catch (ModelNotFoundException $e) {
+
+                dd($e);
+
                 if ($request->ajax()) {
                     return response()->json(['error' => trans('order.card.no_card_exist')], 422);
                 }
