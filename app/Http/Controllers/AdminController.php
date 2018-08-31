@@ -543,9 +543,9 @@ class AdminController extends Controller
         }
     }
 
-    public function enableUser($id)
+    public function enableTransporter($id)
     {
-        $user = User::find($id);
+        $user = Transporter::find($id);
 
         if ($user) {
 
@@ -562,9 +562,9 @@ class AdminController extends Controller
 
     }
 
-    public function disableUser($id)
+    public function disableTransporter($id)
     {
-        $user = User::find($id);
+        $user = Transporter::find($id);
 
         if ($user) {
 

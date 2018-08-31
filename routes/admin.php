@@ -10,8 +10,8 @@ Route::get('/home', 'AdminController@index')->name('home');
 Route::get('{id}/profile', 'Resource\DisputeUserResource@edit')->name('dispute-user.edit');
 
 Route::resource('users', 'Resource\UserResource');
-Route::get('users/enable/{id}', 'AdminController@enableUser')->name('user.enable');
-Route::get('users/disable/{id}', 'AdminController@disableUser')->name('user.disable');
+Route::get('transporter/enable/{id}', 'AdminController@enableTransporter')->name('transporter.enable');
+Route::get('transporter/disable/{id}', 'AdminController@disableTransporter')->name('transporter.disable');
 Route::resource('transporters', 'Resource\TransporterResource');
 Route::resource('dispute-user', 'Resource\DisputeUserResource');
 Route::resource('categories', 'Resource\CategoryResource');
