@@ -327,7 +327,7 @@
                 url: "{{url('/new/register')}}",
                 type: 'POST',
                 data: {
-                    phone_number: phoneNumber,
+                    phone: phoneNumber,
                     name: name,
                     email: email,
                     password: password,
