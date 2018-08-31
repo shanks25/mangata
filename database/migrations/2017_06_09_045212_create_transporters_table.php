@@ -26,15 +26,16 @@ class CreateTransportersTable extends Migration
             $table->integer('rating')->default(5);
             $table->string('device_token')->nullable();
             $table->string('device_id')->nullable();
-            $table->enum('device_type',array('android','ios'))->nullable();
+            $table->string('is_active');
+            $table->enum('device_type', array('android', 'ios'))->nullable();
             $table->enum('status', [
-                    'assessing',
-                    'banned',
-                    'online',
-                    'offline',
-                    'riding',
-                    'unsettled'
-                ])->default('assessing');
+                'assessing',
+                'banned',
+                'online',
+                'offline',
+                'riding',
+                'unsettled'
+            ])->default('assessing');
 
             $table->rememberToken();
             $table->timestamps();

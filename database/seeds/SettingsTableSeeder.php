@@ -128,7 +128,7 @@ class SettingsTableSeeder extends Seeder
             ],
             [
                 'key' => 'GOOGLE_API_KEY',
-                'value' => 'AIzaSyAKGFZT_5uhpOOkma-GBOPamDw_mRIB-p8'
+                'value' => 'AIzaSyBTAjYPYni7iOMaOLiqqzkTKneF0bPuolo'
             ],
             [
                 'key' => 'ANDROID_ENV',
