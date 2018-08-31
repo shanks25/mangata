@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -71,7 +72,7 @@ class ShopController extends Controller
 
         try {
 
-            Restuarant::create([
+            Shop::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'phone' => $request->phone,
