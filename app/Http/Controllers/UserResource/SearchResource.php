@@ -32,70 +32,73 @@ class SearchResource extends Controller
      */
     public function index(Request $request)
     {
-        // try{
-        $user_id = NULL;
-        if ($request->has('user_id')) {
-            $user_id = $request->user_id ?: NULL;
-        }
-        if ($request->has('search_loc')) {
-            Session::put('search_loc', $request->search_loc);
-        }
-        if ($request->has('latitude')) {
-            Session::put('latitude', $request->latitude);
-        }
-        if ($request->has('longitude')) {
-            Session::put('longitude', $request->longitude);
-        }
-        $Products = Product::listsearch($user_id, $request->name);
-        $Shops = (new ShopResource)->filter($request);
-        if ($request->has('latitude') && $request->has('longitude')) {
-            $longitude = $request->longitude;
-            $latitude = $request->latitude;
-            if (Setting::get('search_distance') > 0) {
-                $distance = Setting::get('search_distance');
-                $BannerImage = ShopBanner::with('shop', 'product')
-                    ->whereHas('shop', function ($query) use ($latitude, $longitude, $distance) {
-                        //$query->where('content', 'like', 'foo%');
-                        $query->select('shops.*')
-                            ->selectRaw("(6371 * acos( cos( radians('$latitude') ) * cos( radians(shops.latitude) ) * cos( radians(shops.longitude) - radians('$longitude') ) + sin( radians('$latitude') ) * sin( radians(shops.latitude) ) ) ) AS distance")
-                            ->whereRaw("(6371 * acos( cos( radians('$latitude') ) * cos( radians(shops.latitude) ) * cos( radians(shops.longitude) - radians('$longitude') ) + sin( radians('$latitude') ) * sin( radians(shops.latitude) ) ) ) <= $distance");
-                    })->get();
+        try {
+            $user_id = NULL;
+            if ($request->has('user_id')) {
+                $user_id = $request->user_id ?: NULL;
+            }
+            if ($request->has('search_loc')) {
+                Session::put('search_loc', $request->search_loc);
+            }
+            if ($request->has('latitude')) {
+                Session::put('latitude', $request->latitude);
+            }
+            if ($request->has('longitude')) {
+                Session::put('longitude', $request->longitude);
+            }
+            $Products = Product::listsearch($user_id, $request->name);
+            $Shops = (new ShopResource)->filter($request);
+            if ($request->has('latitude') && $request->has('longitude')) {
+                $longitude = $request->longitude;
+                $latitude = $request->latitude;
+                if (Setting::get('search_distance') > 0) {
+                    $distance = Setting::get('search_distance');
+                    $BannerImage = ShopBanner::with('shop', 'product')
+                        ->whereHas('shop', function ($query) use ($latitude, $longitude, $distance) {
+                            //$query->where('content', 'like', 'foo%');
+                            $query->select('shops.*')
+                                ->selectRaw("(6371 * acos( cos( radians('$latitude') ) * cos( radians(shops.latitude) ) * cos( radians(shops.longitude) - radians('$longitude') ) + sin( radians('$latitude') ) * sin( radians(shops.latitude) ) ) ) AS distance")
+                                ->whereRaw("(6371 * acos( cos( radians('$latitude') ) * cos( radians(shops.latitude) ) * cos( radians(shops.longitude) - radians('$longitude') ) + sin( radians('$latitude') ) * sin( radians(shops.latitude) ) ) ) <= $distance");
+                        })->get();
+                } else {
+                    $BannerImage = ShopBanner::with('shop', 'product')->get();
+                }
             } else {
                 $BannerImage = ShopBanner::with('shop', 'product')->get();
             }
-        } else {
-            $BannerImage = ShopBanner::with('shop', 'product')->get();
-        }
-        $Cuisines = Cuisine::all();
-        //$shop = $Shops;
-        $Shops_new = clone $Shops;
-        $Shops_popular = clone $Shops;
-        $Shops_superfast = clone $Shops;
-        $Shops_offers = clone $Shops;
-        $Shops_vegiterian = clone $Shops;
-        //print_r(DB::getQueryLog()); exit;
-        $Shops = $Shops->get();
-        $data = [
-            'products' => $Products,
-            'shops' => $Shops
-        ];
-        if ($request->ajax()) {
-            return $data;
-        }
-        if ($request->get('v') == 'grid') {
-            return view('user.shop.index-grid', compact('Shops', 'Cuisines'));
-        } else
-            if ($request->get('v') == 'map') {
-                return view('user.shop.index-map', compact('Shops', 'Cuisines'));
-            } else {
-                return view('user.shop.index', compact('Shops', 'Cuisines', 'BannerImage', 'Shops_popular', 'Shops_superfast', 'Shops_offers', 'Shops_vegiterian', 'Shops_new'));
+            $Cuisines = Cuisine::all();
+            //$shop = $Shops;
+            $Shops_new = clone $Shops;
+            $Shops_popular = clone $Shops;
+            $Shops_superfast = clone $Shops;
+            $Shops_offers = clone $Shops;
+            $Shops_vegiterian = clone $Shops;
+            //print_r(DB::getQueryLog()); exit;
+            $Shops = $Shops->get();
+            $data = [
+                'products' => $Products,
+                'shops' => $Shops
+            ];
+            if ($request->ajax()) {
+                return $data;
             }
-        /* }catch(Exception $e){
-            if($request->ajax()){
+            if ($request->get('v') == 'grid') {
+                return view('user.shop.index-grid', compact('Shops', 'Cuisines'));
+            } else
+                if ($request->get('v') == 'map') {
+                    return view('user.shop.index-map', compact('Shops', 'Cuisines'));
+                } else {
+                    return view('user.shop.index', compact('Shops', 'Cuisines', 'BannerImage', 'Shops_popular', 'Shops_superfast', 'Shops_offers', 'Shops_vegiterian', 'Shops_new'));
+                }
+        } catch (Exception $e) {
+
+            dd($e);
+
+            if ($request->ajax()) {
                 return response()->json(['error' => trans('form.whoops')], 500);
             }
             return back()->with('flash_error', trans('form.whoops'));
-        }*/
+        }
     }
 
     /**
