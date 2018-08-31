@@ -337,7 +337,13 @@
                 },
                 success: function (data) {
                     if ($.isEmptyObject(data.error)) {
-                        alert('success');
+
+                        if ($('#latitude_cur').val()) {
+                            $('#my_map_form_current').submit();
+                        } else {
+                            location.reload();
+                        }
+
                     } else {
                         printErrorMsg(data.error, 'register_form');
                     }
