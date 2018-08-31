@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Card;
+use App\Http\Requests\MakePaymentRequest;
 use App\Http\Requests\StoreCardRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BamboraController extends Controller
 {
@@ -24,42 +27,39 @@ class BamboraController extends Controller
         $this->beanstream = new \Beanstream\Gateway($this->merchant_id, $this->api_key, $this->platform, $this->api_version);
     }
 
-    public function addCard(StoreCardRequest $request)
-    {
-        $this->payment_data = array(
-            'order_number' => 'a1b2c3',
-            'amount' => $request->amount,
-            'payment_method' => 'card',
-            'card' => array(
-                'name' => $request->name,
-                'number' => $request->number,
-                'expiry_month' => $request->exp_month,
-                'expiry_year' => $request->exp_year,
-                'cvd' => $request->cvc
-            )
-        );
-    }
 
-    public function makePayment()
+    public function makePayment(MakePaymentRequest $request)
     {
-        //Try to submit a Card Payment
-        try {
 
+        $user = Auth::user();
+
+        if ($request->card_id) {
+            $card = Card::where('user_id', $user->id)->where('id', $request->card_id)->first();
+        } else {
+            $card = Card::where('user_id', $user->id)->where('is_default', 1)->first();
+        }
+
+        if ($card) {
+
+            $this->payment_data = array(
+                'order_number' => 'ORD' . rand(),
+                'amount' => $request->payable,
+                'payment_method' => 'card',
+                'card' => array(
+                    'name' => $card->name,
+                    'number' => $card->number,
+                    'expiry_month' => $card->exp_month,
+                    'expiry_year' => $card->exp_year,
+                    'cvd' => $card->cvc
+                )
+            );
+
+            //Try to submit a Card Payment
             $result = $this->beanstream->payments()->makeCardPayment($this->payment_data, $this->complete);
 
-            /*
-             * Handle successful transaction, payment method returns
-             * transaction details as result, so $result contains that data
-             * in the form of associative array.
-             */
-        } catch (\Beanstream\Exception $e) {
-            /*
-             * Handle transaction error, $e->code can be checked for a
-             * specific error, e.g. 211 corresponds to transaction being
-             * DECLINED, 314 - to missing or invalid payment information
-             * etc.
-             */
+
         }
+
     }
 
 

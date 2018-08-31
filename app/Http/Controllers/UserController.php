@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Transporter;
 use Illuminate\Http\Request;
 use App\Shop;
 use App\EnquiryTransporter;
@@ -120,7 +121,8 @@ class UserController extends Controller
                 'address' => 'required' 
             ]);
         try{
-        EnquiryTransporter::create([
+
+        Transporter::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'phone' => $request->phone,
