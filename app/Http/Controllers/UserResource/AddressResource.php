@@ -50,14 +50,14 @@ class AddressResource extends Controller
 
         try {
 
-            if ($request->ajax()) {
-                $this->validate($request, [
-                    'map_address' => 'required|string|max:255',
-                    'latitude' => 'required|numeric',
-                    'longitude' => 'required|numeric',
-                    'type' => 'required|unique:user_addresses,type,NULL,id,deleted_at,NULL,user_id,' . $request->user()->id,
-                ]);
-            } else {
+//            if ($request->ajax()) {
+//                $this->validate($request, [
+//                    'map_address' => 'required|string|max:255',
+//                    'latitude' => 'required|numeric',
+//                    'longitude' => 'required|numeric',
+//                    'type' => 'required|unique:user_addresses,type,NULL,id,deleted_at,NULL,user_id,' . $request->user()->id,
+//                ]);
+//            } else {
 
                 $this->validate($request, [
                     'map_address' => 'required|string|max:255',
@@ -66,7 +66,7 @@ class AddressResource extends Controller
                     'type' => 'required'
                 ]);
 
-            }
+//            }
 
             //\Log::info('New user address:'.$request->user()->id, $request->all());
 
