@@ -130,10 +130,11 @@ class UserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'phone' => $request->phone,
-                'address' => $request->address
+                'address' => $request->address,
+                'password' => '12345678'
             ]);
             return back()->with('flash_success', trans('home.delivery_boy.created'));
-            
+
         } catch (Exception $e) {
 
             dd($e);
