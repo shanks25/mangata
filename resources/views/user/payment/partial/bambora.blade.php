@@ -8,7 +8,6 @@
                        placeholder="@lang('user.card.fullname')">
             </div>
             <div class="form-group col-md-12 col-sm-12">
-                <h1>OKK</h1>
                 <label>@lang('user.card.card_no')</label>
                 <input name="number" type="text" onkeypress="return isNumberKey(event);" required
                        autocomplete="off" maxlength="16" class="form-control" placeholder="@lang('user.card.card_no')">
