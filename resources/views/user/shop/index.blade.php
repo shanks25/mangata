@@ -70,15 +70,17 @@
                             </a>
                             <!-- Restaurant Filter Box Ends -->
 
-                            {{-- TODO fix error--}}
+                        {{-- TODO fix error--}}
 
-                            <!-- Restaurant Filter Box Starts -->
+                        <!-- Restaurant Filter Box Starts -->
                             <a href="#vegetarian" class="res-filter-box filter-scroll-menu">
                                 <span class="res-filter-icon"><i class="fa fa-envira"></i></span>
                                 <span class="res-filter-txt">
                                         <h6 class="res-filter-name">Vegetarian Options</h6>
                                         <p class="res-filter-option">
                                         <?php @$vegiterian = @$Shops_vegiterian->Veg(); ?>
+
+                                            <?php dd($vegiterian) ?>
                                             {{count(@$$vegiterian)}} Options</p>
                                     </span>
                             </a>
