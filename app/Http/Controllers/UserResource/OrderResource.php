@@ -423,8 +423,6 @@ class OrderResource extends Controller
                     }
                 } catch (Exception $e) {
 
-                    dd($e);
-
                     if ($request->ajax()) {
                         return response()->json(['message' => trans('form.whoops')], 422);
                     }
@@ -517,6 +515,9 @@ class OrderResource extends Controller
                     }
                     return back()->with('flash_failure', trans('order.invoice_not_created'));
                 } catch (Exception $e) {
+
+                    dd($e);
+
                     if ($request->ajax()) {
                         return response()->json(['error' => trans('order.not_created')], 422);
                     }
