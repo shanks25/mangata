@@ -12,16 +12,13 @@ class BamboraController extends Controller
 {
     //
     private $merchant_id = '117686094';
-    private $api_key = 'ACc498AF0A16448F9958CDFb67889b55';
+    private $api_key = 'Passcode MTE3Njg2MDk0OkcpelZhO0M1bUQhfiFie2o=';
     private $api_version = 'v1';
     private $platform = 'api';
 
-    private $beanstream;
-    private $payment_data;
-
     public $complete = TRUE; //set to FALSE for PA
 
-    public function makePayment(Request $request)
+    public function makePaymentNo(Request $request)
     {
 
         $user = Auth::user();
@@ -64,7 +61,7 @@ class BamboraController extends Controller
             $response = json_decode($rawResponse);
 
             if ($response[message] = 'approved') {
-                
+
             }
 
         }
@@ -126,7 +123,6 @@ class BamboraController extends Controller
 
     }
 
-
     function handleCallback()
     {
         $getParameters = $_GET;
@@ -158,8 +154,11 @@ class BamboraController extends Controller
         //$getParameters contains all the callback parameteres
     }
 
-    public function payment(MakePaymentRequest $request)
+    public function makePayment(MakePaymentRequest $request)
     {
+
+        //Create Beanstream Gateway
+        $beanstream = new \Beanstream\Gateway($this->merchant_id, $this->api_key, $this->platform, $this->api_version);
 
         try {
 
@@ -173,7 +172,7 @@ class BamboraController extends Controller
 
             if ($card) {
 
-                $this->payment_data = array(
+                $payment_data = array(
                     'order_number' => 'ORD' . rand(),
                     'amount' => $request->payable,
                     'payment_method' => 'card',
@@ -187,12 +186,9 @@ class BamboraController extends Controller
                 );
 
                 //Try to submit a Card Payment
-                $result = $this->beanstream->payments()->makeCardPayment($this->payment_data, $this->complete);
+                $result = $beanstream->payments()->makeCardPayment($payment_data, $this->complete);
 
-                if ($result->approved) {
-                    return $result;
-                }
-
+                dd($result);
 
             }
         } catch (\Exception $e) {
