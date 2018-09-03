@@ -99,11 +99,11 @@
                                         <div class="payment-content-left">
                                             <ul class="nav nav-tabs payment-tabs" role="tablist">
 
-                                                <li class="active">
-                                                    <a href="#cash" aria-controls="card" role="tab" data-toggle="tab"
-                                                       class="payment_mode_type cassh" data-id="cash"><span><i
-                                                                    class="mdi mdi-credit-card"></i></span> Cash</a>
-                                                </li>
+                                                {{--<li class="active">--}}
+                                                    {{--<a href="#cash" aria-controls="card" role="tab" data-toggle="tab"--}}
+                                                       {{--class="payment_mode_type cassh" data-id="cash"><span><i--}}
+                                                                    {{--class="mdi mdi-credit-card"></i></span> Cash</a>--}}
+                                                {{--</li>--}}
                                                 <li>
                                                     <a href="#card" aria-controls="card" role="tab" data-toggle="tab"
                                                        class="payment_mode_type" data-id="card"><span><i
