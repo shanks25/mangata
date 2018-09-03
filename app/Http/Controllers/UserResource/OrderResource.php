@@ -326,7 +326,7 @@ class OrderResource extends Controller
 
 
                                 $payment = (new BamboraController())->makePayment($request);
-                                
+
 //                                dd($payment);
 
                                 if (isset($payment['order_number'])) {
@@ -474,6 +474,9 @@ class OrderResource extends Controller
                     }
                     return back()->with('flash_failure', trans('order.card.no_card_exist'));
                 } catch (Exception $e) {
+
+                    dd($e);
+
                     if ($request->ajax()) {
                         return response()->json(['error' => trans('order.not_created')], 422);
                     }
