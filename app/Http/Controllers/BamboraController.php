@@ -192,9 +192,7 @@ class BamboraController extends Controller
                         'cvd' => $card->cvc
                     )
                 );
-
-                return $payment_data;
-
+                
                 //Try to submit a Card Payment
                 return $beanstream->payments()->makeCardPayment($payment_data, $this->complete);
 
