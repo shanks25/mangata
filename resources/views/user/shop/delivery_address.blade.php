@@ -155,7 +155,7 @@
                                                                     </div>
                                                                     <div class="saved-cards-box-center pull-left">
                                                                         <p class="card-number">XXX XXX
-                                                                            XXXX {{$card->last_four}}</p>
+                                                                            XXXX {{ str_pad(substr($card->last_four, -4), strlen($card->last_four), '*', STR_PAD_LEFT) }}</p>
                                                                         <!-- <p class="valid">Valid Till 10/2022</p> -->
                                                                     </div>
                                                                 </div>
@@ -221,64 +221,64 @@
                                             <!-- Netbanking Tab Starts -->
 
                                             <!-- Ripple Tab Starts -->
-                                            <div role="tabpanel" class="tab-pane fade" id="ripple">
-                                                <div class="crypto">
-                                                    <div class="crypto-head">
-                                                        <h5 class="bit-coin-tit">1 Ripple = {{$ripple_response->last}}
-                                                            USD</h5>
-                                                        <h6 class="bit-coin-txt">You want pay 20Ripple</h6>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Address</label>
-                                                        <input type="text" class="form-control"
-                                                               value="{{setting::get('RIPPLE_KEY')}}" name="" required>
-                                                    </div>
-                                                    <div class="crypto-img">
-                                                        <h6>Scan QR Code</h6>
-                                                        <img src="{{Setting::get('RIPPLE_BARCODE')}}">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Transaction ID</label>
-                                                        <input type="text" class="form-control"
-                                                               placeholder="Transaction ID" name="payment_id"
-                                                               id="transaction_id_ripple" required>
-                                                        <div id="ripple_form_error" class="ripple_error"></div>
-                                                    </div>
-                                                    <button type="button" onclick="checkpayment('ripple');"
-                                                            class="confirm-btn">Confirm
-                                                    </button>
-                                                </div>
-                                            </div>
+                                            {{--<div role="tabpanel" class="tab-pane fade" id="ripple">--}}
+                                                {{--<div class="crypto">--}}
+                                                    {{--<div class="crypto-head">--}}
+                                                        {{--<h5 class="bit-coin-tit">1 Ripple = {{$ripple_response->last}}--}}
+                                                            {{--USD</h5>--}}
+                                                        {{--<h6 class="bit-coin-txt">You want pay 20Ripple</h6>--}}
+                                                    {{--</div>--}}
+                                                    {{--<div class="form-group">--}}
+                                                        {{--<label>Address</label>--}}
+                                                        {{--<input type="text" class="form-control"--}}
+                                                               {{--value="{{setting::get('RIPPLE_KEY')}}" name="" required>--}}
+                                                    {{--</div>--}}
+                                                    {{--<div class="crypto-img">--}}
+                                                        {{--<h6>Scan QR Code</h6>--}}
+                                                        {{--<img src="{{Setting::get('RIPPLE_BARCODE')}}">--}}
+                                                    {{--</div>--}}
+                                                    {{--<div class="form-group">--}}
+                                                        {{--<label>Transaction ID</label>--}}
+                                                        {{--<input type="text" class="form-control"--}}
+                                                               {{--placeholder="Transaction ID" name="payment_id"--}}
+                                                               {{--id="transaction_id_ripple" required>--}}
+                                                        {{--<div id="ripple_form_error" class="ripple_error"></div>--}}
+                                                    {{--</div>--}}
+                                                    {{--<button type="button" onclick="checkpayment('ripple');"--}}
+                                                            {{--class="confirm-btn">Confirm--}}
+                                                    {{--</button>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
                                             <!-- Ripple Tab Ends -->
                                             <!-- Ethereum Tab Starts -->
-                                            <div role="tabpanel" class="tab-pane fade" id="ethereum">
-                                                <div class="crypto">
-                                                    <div class="crypto-head">
-                                                        <h5 class="bit-coin-tit">1 Ethereum
-                                                            = {{$ether_response->result->ethusd}} USD</h5>
-                                                        <h6 class="bit-coin-txt">You want pay 20 Ethereum</h6>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Address</label>
-                                                        <input type="text" class="form-control"
-                                                               placeholder="{{Setting::get('ETHER_KEY')}}" name="">
-                                                    </div>
-                                                    <div class="crypto-img">
-                                                        <h6>Scan QR Code</h6>
-                                                        <img src="{{Setting::get('ETHER_BARCODE')}}">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Transaction ID</label>
-                                                        <input type="text" name="payment_id" id="transaction_id_eather"
-                                                               class="form-control" placeholder="Transaction ID"
-                                                               name="">
-                                                        <div id="eather_form_error" class="ripple_error"></div>
-                                                    </div>
-                                                    <button type="button" onclick="checkpayment('eather');"
-                                                            class="confirm-btn">Confirm
-                                                    </button>
-                                                </div>
-                                            </div>
+                                            {{--<div role="tabpanel" class="tab-pane fade" id="ethereum">--}}
+                                                {{--<div class="crypto">--}}
+                                                    {{--<div class="crypto-head">--}}
+                                                        {{--<h5 class="bit-coin-tit">1 Ethereum--}}
+                                                            {{--= {{$ether_response->result->ethusd}} USD</h5>--}}
+                                                        {{--<h6 class="bit-coin-txt">You want pay 20 Ethereum</h6>--}}
+                                                    {{--</div>--}}
+                                                    {{--<div class="form-group">--}}
+                                                        {{--<label>Address</label>--}}
+                                                        {{--<input type="text" class="form-control"--}}
+                                                               {{--placeholder="{{Setting::get('ETHER_KEY')}}" name="">--}}
+                                                    {{--</div>--}}
+                                                    {{--<div class="crypto-img">--}}
+                                                        {{--<h6>Scan QR Code</h6>--}}
+                                                        {{--<img src="{{Setting::get('ETHER_BARCODE')}}">--}}
+                                                    {{--</div>--}}
+                                                    {{--<div class="form-group">--}}
+                                                        {{--<label>Transaction ID</label>--}}
+                                                        {{--<input type="text" name="payment_id" id="transaction_id_eather"--}}
+                                                               {{--class="form-control" placeholder="Transaction ID"--}}
+                                                               {{--name="">--}}
+                                                        {{--<div id="eather_form_error" class="ripple_error"></div>--}}
+                                                    {{--</div>--}}
+                                                    {{--<button type="button" onclick="checkpayment('eather');"--}}
+                                                            {{--class="confirm-btn">Confirm--}}
+                                                    {{--</button>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
                                             <!-- Ethereum Tab Ends -->
                                             <!-- Bitcoin Tab Starts -->
                                             <div role="tabpanel" class="tab-pane fade" id="bitcoin">
