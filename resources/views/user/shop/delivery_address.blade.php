@@ -281,29 +281,29 @@
                                             {{--</div>--}}
                                             <!-- Ethereum Tab Ends -->
                                             <!-- Bitcoin Tab Starts -->
-                                            <div role="tabpanel" class="tab-pane fade" id="bitcoin">
-                                                <div class="crypto">
-                                                    <div class="crypto-head">
-                                                        <h5 class="bit-coin-tit">1 Bitcoin = $40.00</h5>
-                                                        <h6 class="bit-coin-txt">You want pay 20 Bitcoin</h6>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Address</label>
-                                                        <input type="text" class="form-control"
-                                                               placeholder="1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX" name="">
-                                                    </div>
-                                                    <div class="crypto-img">
-                                                        <h6>Scan QR Code</h6>
-                                                        <!-- <img src="img/barcode.png"> -->
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Transaction ID</label>
-                                                        <input type="text" class="form-control"
-                                                               placeholder="Transaction ID" name="">
-                                                    </div>
-                                                    <button class="confirm-btn">Confirm</button>
-                                                </div>
-                                            </div>
+                                            {{--<div role="tabpanel" class="tab-pane fade" id="bitcoin">--}}
+                                                {{--<div class="crypto">--}}
+                                                    {{--<div class="crypto-head">--}}
+                                                        {{--<h5 class="bit-coin-tit">1 Bitcoin = $40.00</h5>--}}
+                                                        {{--<h6 class="bit-coin-txt">You want pay 20 Bitcoin</h6>--}}
+                                                    {{--</div>--}}
+                                                    {{--<div class="form-group">--}}
+                                                        {{--<label>Address</label>--}}
+                                                        {{--<input type="text" class="form-control"--}}
+                                                               {{--placeholder="1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX" name="">--}}
+                                                    {{--</div>--}}
+                                                    {{--<div class="crypto-img">--}}
+                                                        {{--<h6>Scan QR Code</h6>--}}
+                                                        {{--<!-- <img src="img/barcode.png"> -->--}}
+                                                    {{--</div>--}}
+                                                    {{--<div class="form-group">--}}
+                                                        {{--<label>Transaction ID</label>--}}
+                                                        {{--<input type="text" class="form-control"--}}
+                                                               {{--placeholder="Transaction ID" name="">--}}
+                                                    {{--</div>--}}
+                                                    {{--<button class="confirm-btn">Confirm</button>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
                                             <!-- Bitcoin Tab Ends -->
                                         </div>
                                     </div>
