@@ -327,7 +327,7 @@ class OrderResource extends Controller
 
                                 $payment = (new BamboraController())->makePayment($request);
 
-                                return $payment;
+//                                return $payment;
 
                                 dd($payment);
 
