@@ -313,6 +313,7 @@ class OrderResource extends Controller
 
                         if ($request->payment_mode == 'bambora') {
 
+                            return $request;
 
                             $request->payable = $payable;
 

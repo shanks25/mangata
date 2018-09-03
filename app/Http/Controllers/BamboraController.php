@@ -18,6 +18,11 @@ class BamboraController extends Controller
 
     public $complete = TRUE; //set to FALSE for PA
 
+//    public function __construct()
+//    {
+//        $this->middleware('auth');
+//    }
+
     public function makePaymentNo(Request $request)
     {
 
@@ -154,7 +159,7 @@ class BamboraController extends Controller
         //$getParameters contains all the callback parameteres
     }
 
-    public function makePayment(MakePaymentRequest $request)
+    public function makePayment(Request $request)
     {
 
         return $request;
