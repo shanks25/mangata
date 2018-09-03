@@ -35,30 +35,30 @@
                     <!-- Food Section Left Starts -->
                     <div class="food-sec-left col-md-3 col-sm-4 col-xs-12">
                         <!-- Restaurant Filters Starts -->
-                        {{--<div class="restaurant-filters">--}}
-                            {{--<!-- Restaurant Filter Box Starts -->--}}
-                            {{--<a href="#popular" class="res-filter-box filter-scroll-menu active">--}}
-                                {{--<span class="res-filter-icon"><i class="ion-fireball"></i></span>--}}
-                                {{--<span class="res-filter-txt">--}}
-                                        {{--<h6 class="res-filter-name">Popular</h6>--}}
-                                        {{--<p class="res-filter-option">--}}
-                                        {{--<?php @$Popularity = @$Shops_popular->Popularity(); ?>--}}
-                                            {{--{{count($Popularity)}} Options</p>--}}
-                                    {{--</span>--}}
-                            {{--</a>--}}
-                            {{--<!-- Restaurant Filter Box Ends -->--}}
-                            {{--<!-- Restaurant Filter Box Starts -->--}}
-                            {{--<a href="#fast" class="res-filter-box filter-scroll-menu">--}}
-                                {{--<span class="res-filter-icon"><i class="ion-ios-timer-outline"></i></span>--}}
-                                {{--<span class="res-filter-txt">--}}
-                                        {{--<h6 class="res-filter-name">Super Fast Delivery</h6>--}}
-                                        {{--<p class="res-filter-option">--}}
-                                         {{--<?php @$Fastdelivery = @$Shops_superfast->Fastdelivery(); ?>--}}
-                                            {{--{{count(@$Fastdelivery)}} Options</p>--}}
-                                    {{--</span>--}}
-                            {{--</a>--}}
-                            {{--<!-- Restaurant Filter Box Ends -->--}}
-                            {{--<!-- Restaurant Filter Box Starts -->--}}
+                        <div class="restaurant-filters">
+                            <!-- Restaurant Filter Box Starts -->
+                            <a href="#popular" class="res-filter-box filter-scroll-menu active">
+                                <span class="res-filter-icon"><i class="ion-fireball"></i></span>
+                                <span class="res-filter-txt">
+                                        <h6 class="res-filter-name">Popular</h6>
+                                        <p class="res-filter-option">
+                                        <?php @$Popularity = @$Shops_popular->Popularity(); ?>
+                                            {{count($Popularity)}} Options</p>
+                                    </span>
+                            </a>
+                            <!-- Restaurant Filter Box Ends -->
+                            <!-- Restaurant Filter Box Starts -->
+                            <a href="#fast" class="res-filter-box filter-scroll-menu">
+                                <span class="res-filter-icon"><i class="ion-ios-timer-outline"></i></span>
+                                <span class="res-filter-txt">
+                                        <h6 class="res-filter-name">Super Fast Delivery</h6>
+                                        <p class="res-filter-option">
+                                         <?php @$Fastdelivery = @$Shops_superfast->Fastdelivery(); ?>
+                                            {{count(@$Fastdelivery)}} Options</p>
+                                    </span>
+                            </a>
+                            <!-- Restaurant Filter Box Ends -->
+                            <!-- Restaurant Filter Box Starts -->
                             {{--<a href="#offers" class="res-filter-box filter-scroll-menu">--}}
                                 {{--<span class="res-filter-icon"><i class="fa fa-gift"></i></span>--}}
                                 {{--<span class="res-filter-txt">--}}
@@ -99,8 +99,8 @@
                                         {{--<p class="res-filter-option">{{count($Shops)}} Restaurants</p>--}}
                                     {{--</span>--}}
                             {{--</a>--}}
-                            {{--<!-- Restaurant Filter Box Ends -->--}}
-                        {{--</div>--}}
+                            <!-- Restaurant Filter Box Ends -->
+                        </div>
                         <!-- Restaurant Filters Ends -->
                     </div>
                     <!-- Food Section Left Ends -->
