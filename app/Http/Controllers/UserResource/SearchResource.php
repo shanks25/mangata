@@ -84,12 +84,13 @@ class SearchResource extends Controller
                 'shops' => $Shops
             ];
 
-            dd($data);
-
             if ($request->ajax()) {
                 return $data;
             }
             if ($request->get('v') == 'grid') {
+
+                dd($data);
+
                 return view('user.shop.index-grid', compact('Shops', 'Cuisines'));
             } else
                 if ($request->get('v') == 'map') {
@@ -97,6 +98,7 @@ class SearchResource extends Controller
                 } else {
                     return view('user.shop.index', compact('Shops', 'Cuisines', 'BannerImage', 'Shops_popular', 'Shops_superfast', 'Shops_offers', 'Shops_vegiterian', 'Shops_new'));
                 }
+
         } catch (Exception $e) {
 
             dd($e);
