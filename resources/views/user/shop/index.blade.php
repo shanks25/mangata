@@ -29,12 +29,12 @@
         </div>
         <!-- Intro Banner Ends -->
         <!-- Food Section Starts -->
-        {{--<div class="food-section-outer">--}}
-            {{--<div class="container">--}}
-                {{--<div class="food-section row" id="filter-menu">--}}
-                    {{--<!-- Food Section Left Starts -->--}}
-                    {{--<div class="food-sec-left col-md-3 col-sm-4 col-xs-12">--}}
-                        {{--<!-- Restaurant Filters Starts -->--}}
+        <div class="food-section-outer">
+            <div class="container">
+                <div class="food-section row" id="filter-menu">
+                    <!-- Food Section Left Starts -->
+                    <div class="food-sec-left col-md-3 col-sm-4 col-xs-12">
+                        <!-- Restaurant Filters Starts -->
                         {{--<div class="restaurant-filters">--}}
                             {{--<!-- Restaurant Filter Box Starts -->--}}
                             {{--<a href="#popular" class="res-filter-box filter-scroll-menu active">--}}
@@ -101,229 +101,229 @@
                             {{--</a>--}}
                             {{--<!-- Restaurant Filter Box Ends -->--}}
                         {{--</div>--}}
-                        {{--<!-- Restaurant Filters Ends -->--}}
-                    {{--</div>--}}
-                    {{--<!-- Food Section Left Ends -->--}}
-                    {{--<!-- Food Section Right Starts -->--}}
-                    {{--<div class="food-sec-right col-md-9 col-sm-8 col-xs-12">--}}
-                        {{--<!-- Restaurant Filter List Starts -->--}}
-                        {{--<div class="res-filter-list-section" id="popular">--}}
-                            {{--<!-- Restaurant Filter Head Starts -->--}}
-                            {{--<div class="res-filter-list-head">--}}
-                                {{--<h5>Popular</h5>--}}
-                            {{--</div>--}}
+                        <!-- Restaurant Filters Ends -->
+                    </div>
+                    <!-- Food Section Left Ends -->
+                    <!-- Food Section Right Starts -->
+                    <div class="food-sec-right col-md-9 col-sm-8 col-xs-12">
+                        <!-- Restaurant Filter List Starts -->
+                        <div class="res-filter-list-section" id="popular">
+                            <!-- Restaurant Filter Head Starts -->
+                            <div class="res-filter-list-head">
+                                <h5>Popular</h5>
+                            </div>
 
-                            {{--<div class="restaurant-list row">--}}
-                                {{--<!-- Restaurant Filter Head Ends -->--}}
-                            {{--@forelse(@$Popularity as $Shop)--}}
-                                {{--<!-- Restaurant List Starts -->--}}
+                            <div class="restaurant-list row">
+                                <!-- Restaurant Filter Head Ends -->
+                            @forelse(@$Popularity as $Shop)
+                                <!-- Restaurant List Starts -->
 
-                                    {{--<!-- Restaurant List Box Starts -->--}}
-                                    {{--<a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"--}}
-                                       {{--class="food-item-box col-lg-4 col-md-6 col-sm-12 col-xs-12">--}}
-                                        {{--<div class="food-img bg-img"--}}
-                                             {{--style="background-image: url({{$Shop->avatar}});"></div>--}}
-                                        {{--<div class="food-details">--}}
-                                            {{--<h6 class="food-det-tit">{{$Shop->name}}</h6>--}}
-                                            {{--<p class="food-det-txt">{{$Shop->description}}</p>--}}
-                                            {{--<div class="food-other-details row">--}}
-                                                {{--<div class="col-xs-3 p-r-0">--}}
-                                                    {{--<span class="food-rating"><i--}}
-                                                                {{--class="ion-android-star"></i> {{$Shop->rating}}</span>--}}
-                                                {{--</div>--}}
-                                                {{--<div class="col-xs-3 text-center">--}}
-                                                    {{--<span class="food-deliver-time food-list-txt">{{$Shop->estimated_delivery_time}}--}}
-                                                        {{--Mins</span>--}}
-                                                {{--</div>--}}
-                                                {{--<!-- <div class="col-xs-6 text-right">--}}
-                                                    {{--<span class="food-quantity-price food-list-txt">$100 for two</span>--}}
-                                                {{--</div> -->--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                    {{--<!-- Restaurant List Box Starts -->--}}
-                                {{--@empty--}}
-                                    {{--<div>No Record Found!</div>--}}
-                                {{--@endforelse--}}
+                                    <!-- Restaurant List Box Starts -->
+                                    <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"
+                                       class="food-item-box col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="food-img bg-img"
+                                             style="background-image: url({{$Shop->avatar}});"></div>
+                                        <div class="food-details">
+                                            <h6 class="food-det-tit">{{$Shop->name}}</h6>
+                                            <p class="food-det-txt">{{$Shop->description}}</p>
+                                            <div class="food-other-details row">
+                                                <div class="col-xs-3 p-r-0">
+                                                    <span class="food-rating"><i
+                                                                class="ion-android-star"></i> {{$Shop->rating}}</span>
+                                                </div>
+                                                <div class="col-xs-3 text-center">
+                                                    <span class="food-deliver-time food-list-txt">{{$Shop->estimated_delivery_time}}
+                                                        Mins</span>
+                                                </div>
+                                                <!-- <div class="col-xs-6 text-right">
+                                                    <span class="food-quantity-price food-list-txt">$100 for two</span>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- Restaurant List Box Starts -->
+                                @empty
+                                    <div>No Record Found!</div>
+                                @endforelse
 
-                            {{--</div>--}}
-                            {{--<!-- Restaurant List Ends -->--}}
-                        {{--</div>--}}
-                        {{--<!-- Restaurant Filter List Ends -->--}}
-                        {{--<!-- Restaurant Filter List Starts -->--}}
-                        {{--<div class="res-filter-list-section" id="fast">--}}
-                            {{--<!-- Restaurant Filter Head Starts -->--}}
-                            {{--<div class="res-filter-list-head">--}}
-                                {{--<h5>Super Fast Delivery</h5>--}}
-                            {{--</div>--}}
-                            {{--<!-- Restaurant Filter Head Ends -->--}}
-                            {{--<!-- Restaurant List Starts -->--}}
-                            {{--<div class="restaurant-list row">--}}
-                            {{--@forelse(@$Fastdelivery as $Shop)--}}
-                                {{--<!-- Restaurant List Box Starts -->--}}
-                                    {{--<a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"--}}
-                                       {{--class="food-item-box col-lg-4 col-md-6 col-sm-12 col-xs-12">--}}
-                                        {{--<div class="food-img bg-img"--}}
-                                             {{--style="background-image: url({{$Shop->avatar}});"></div>--}}
-                                        {{--<div class="food-details">--}}
-                                            {{--<h6 class="food-det-tit">{{$Shop->name}}</h6>--}}
-                                            {{--<p class="food-det-txt">{{$Shop->description}}</p>--}}
-                                            {{--<div class="food-other-details row">--}}
-                                                {{--<div class="col-xs-3 p-r-0">--}}
-                                                    {{--<span class="food-rating"><i--}}
-                                                                {{--class="ion-android-star"></i> {{$Shop->rating}}</span>--}}
-                                                {{--</div>--}}
-                                                {{--<div class="col-xs-3 text-center">--}}
-                                                    {{--<span class="food-deliver-time food-list-txt">{{$Shop->estimated_delivery_time}}--}}
-                                                        {{--Mins</span>--}}
-                                                {{--</div>--}}
-                                                {{--<!-- <div class="col-xs-6 text-right">--}}
-                                                    {{--<span class="food-quantity-price food-list-txt">$100 for two</span>--}}
-                                                {{--</div> -->--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                    {{--<!-- Restaurant List Box Starts -->--}}
-                                {{--@empty--}}
-                                    {{--<div>No Record Found!</div>--}}
-                                {{--@endforelse--}}
+                            </div>
+                            <!-- Restaurant List Ends -->
+                        </div>
+                        <!-- Restaurant Filter List Ends -->
+                        <!-- Restaurant Filter List Starts -->
+                        <div class="res-filter-list-section" id="fast">
+                            <!-- Restaurant Filter Head Starts -->
+                            <div class="res-filter-list-head">
+                                <h5>Super Fast Delivery</h5>
+                            </div>
+                            <!-- Restaurant Filter Head Ends -->
+                            <!-- Restaurant List Starts -->
+                            <div class="restaurant-list row">
+                            @forelse(@$Fastdelivery as $Shop)
+                                <!-- Restaurant List Box Starts -->
+                                    <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"
+                                       class="food-item-box col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="food-img bg-img"
+                                             style="background-image: url({{$Shop->avatar}});"></div>
+                                        <div class="food-details">
+                                            <h6 class="food-det-tit">{{$Shop->name}}</h6>
+                                            <p class="food-det-txt">{{$Shop->description}}</p>
+                                            <div class="food-other-details row">
+                                                <div class="col-xs-3 p-r-0">
+                                                    <span class="food-rating"><i
+                                                                class="ion-android-star"></i> {{$Shop->rating}}</span>
+                                                </div>
+                                                <div class="col-xs-3 text-center">
+                                                    <span class="food-deliver-time food-list-txt">{{$Shop->estimated_delivery_time}}
+                                                        Mins</span>
+                                                </div>
+                                                <!-- <div class="col-xs-6 text-right">
+                                                    <span class="food-quantity-price food-list-txt">$100 for two</span>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- Restaurant List Box Starts -->
+                                @empty
+                                    <div>No Record Found!</div>
+                                @endforelse
 
-                            {{--</div>--}}
-                            {{--<!-- Restaurant List Ends -->--}}
-                        {{--</div>--}}
-                        {{--<!-- Restaurant Filter List Ends -->--}}
-                        {{--<!-- Restaurant Filter List Starts -->--}}
-                        {{--<div class="res-filter-list-section" id="offers">--}}
-                            {{--<!-- Restaurant Filter Head Starts -->--}}
-                            {{--<div class="res-filter-list-head">--}}
-                                {{--<h5>Offers Around You</h5>--}}
-                            {{--</div>--}}
-                            {{--<!-- Restaurant Filter Head Ends -->--}}
-                            {{--<!-- Restaurant List Starts -->--}}
-                            {{--<div class="restaurant-list row">--}}
-                            {{--@forelse(@$Offers as $Shop)--}}
-                                {{--<!-- Restaurant List Box Starts -->--}}
-                                    {{--<a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"--}}
-                                       {{--class="food-item-box col-lg-4 col-md-6 col-sm-12 col-xs-12">--}}
-                                        {{--<div class="food-img bg-img"--}}
-                                             {{--style="background-image: url({{$Shop->avatar}});"></div>--}}
-                                        {{--<div class="food-details">--}}
-                                            {{--<h6 class="food-det-tit">{{$Shop->name}}</h6>--}}
-                                            {{--<p class="food-det-txt">{{$Shop->description}}</p>--}}
-                                            {{--<div class="food-other-details row">--}}
-                                                {{--<div class="col-xs-3 p-r-0">--}}
-                                                    {{--<span class="food-rating"><i--}}
-                                                                {{--class="ion-android-star"></i> {{$Shop->rating}}</span>--}}
-                                                {{--</div>--}}
-                                                {{--<div class="col-xs-3 text-center">--}}
-                                                    {{--<span class="food-deliver-time food-list-txt">{{$Shop->estimated_delivery_time}}--}}
-                                                        {{--Mins</span>--}}
-                                                {{--</div>--}}
-                                                {{--<!--  <div class="col-xs-6 text-right">--}}
-                                                     {{--<span class="food-quantity-price food-list-txt">$100 for two</span>--}}
-                                                 {{--</div> -->--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                    {{--<!-- Restaurant List Box Starts -->--}}
-                                {{--@empty--}}
-                                    {{--<div>No Record Found!</div>--}}
+                            </div>
+                            <!-- Restaurant List Ends -->
+                        </div>
+                        <!-- Restaurant Filter List Ends -->
+                        <!-- Restaurant Filter List Starts -->
+                        <div class="res-filter-list-section" id="offers">
+                            <!-- Restaurant Filter Head Starts -->
+                            <div class="res-filter-list-head">
+                                <h5>Offers Around You</h5>
+                            </div>
+                            <!-- Restaurant Filter Head Ends -->
+                            <!-- Restaurant List Starts -->
+                            <div class="restaurant-list row">
+                            @forelse(@$Offers as $Shop)
+                                <!-- Restaurant List Box Starts -->
+                                    <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"
+                                       class="food-item-box col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="food-img bg-img"
+                                             style="background-image: url({{$Shop->avatar}});"></div>
+                                        <div class="food-details">
+                                            <h6 class="food-det-tit">{{$Shop->name}}</h6>
+                                            <p class="food-det-txt">{{$Shop->description}}</p>
+                                            <div class="food-other-details row">
+                                                <div class="col-xs-3 p-r-0">
+                                                    <span class="food-rating"><i
+                                                                class="ion-android-star"></i> {{$Shop->rating}}</span>
+                                                </div>
+                                                <div class="col-xs-3 text-center">
+                                                    <span class="food-deliver-time food-list-txt">{{$Shop->estimated_delivery_time}}
+                                                        Mins</span>
+                                                </div>
+                                                <!--  <div class="col-xs-6 text-right">
+                                                     <span class="food-quantity-price food-list-txt">$100 for two</span>
+                                                 </div> -->
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- Restaurant List Box Starts -->
+                                @empty
+                                    <div>No Record Found!</div>
 
-                                {{--@endforelse--}}
+                                @endforelse
 
-                            {{--</div>--}}
-                            {{--<!-- Restaurant List Ends -->--}}
-                        {{--</div>--}}
-                        {{--<!-- Restaurant Filter List Ends -->--}}
-                        {{--<!-- Restaurant Filter List Starts -->--}}
-                        {{--<div class="res-filter-list-section" id="vegetarian">--}}
-                            {{--<!-- Restaurant Filter Head Starts -->--}}
-                            {{--<div class="res-filter-list-head">--}}
-                                {{--<h5>Vegetarian Options</h5>--}}
-                            {{--</div>--}}
-                            {{--<!-- Restaurant Filter Head Ends -->--}}
-                            {{--<!-- Restaurant List Starts -->--}}
-                            {{--<div class="restaurant-list row">--}}
-                            {{--@forelse(@$vegiterian as $Shop)--}}
-                                {{--<!-- Restaurant List Box Starts -->--}}
-                                    {{--<a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"--}}
-                                       {{--class="food-item-box col-lg-4 col-md-6 col-sm-12 col-xs-12">--}}
-                                        {{--<div class="food-img bg-img"--}}
-                                             {{--style="background-image: url({{$Shop->avatar}});"></div>--}}
-                                        {{--<div class="food-details">--}}
-                                            {{--<h6 class="food-det-tit">{{$Shop->name}}</h6>--}}
-                                            {{--<p class="food-det-txt">{{$Shop->description}}</p>--}}
-                                            {{--<div class="food-other-details row">--}}
-                                                {{--<div class="col-xs-3 p-r-0">--}}
-                                                    {{--<span class="food-rating"><i--}}
-                                                                {{--class="ion-android-star"></i> {{$Shop->rating}}</span>--}}
-                                                {{--</div>--}}
-                                                {{--<div class="col-xs-3 text-center">--}}
-                                                    {{--<span class="food-deliver-time food-list-txt">{{$Shop->estimated_delivery_time}}--}}
-                                                        {{--Mins</span>--}}
-                                                {{--</div>--}}
-                                                {{--<!-- <div class="col-xs-6 text-right">--}}
-                                                    {{--<span class="food-quantity-price food-list-txt">$100 for two</span>--}}
-                                                {{--</div> -->--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                    {{--<!-- Restaurant List Box Starts -->--}}
-                                {{--@empty--}}
-                                    {{--<div>No Record Found!</div>--}}
-                                {{--@endforelse--}}
+                            </div>
+                            <!-- Restaurant List Ends -->
+                        </div>
+                        <!-- Restaurant Filter List Ends -->
+                        <!-- Restaurant Filter List Starts -->
+                        <div class="res-filter-list-section" id="vegetarian">
+                            <!-- Restaurant Filter Head Starts -->
+                            <div class="res-filter-list-head">
+                                <h5>Vegetarian Options</h5>
+                            </div>
+                            <!-- Restaurant Filter Head Ends -->
+                            <!-- Restaurant List Starts -->
+                            <div class="restaurant-list row">
+                            @forelse(@$vegiterian as $Shop)
+                                <!-- Restaurant List Box Starts -->
+                                    <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"
+                                       class="food-item-box col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="food-img bg-img"
+                                             style="background-image: url({{$Shop->avatar}});"></div>
+                                        <div class="food-details">
+                                            <h6 class="food-det-tit">{{$Shop->name}}</h6>
+                                            <p class="food-det-txt">{{$Shop->description}}</p>
+                                            <div class="food-other-details row">
+                                                <div class="col-xs-3 p-r-0">
+                                                    <span class="food-rating"><i
+                                                                class="ion-android-star"></i> {{$Shop->rating}}</span>
+                                                </div>
+                                                <div class="col-xs-3 text-center">
+                                                    <span class="food-deliver-time food-list-txt">{{$Shop->estimated_delivery_time}}
+                                                        Mins</span>
+                                                </div>
+                                                <!-- <div class="col-xs-6 text-right">
+                                                    <span class="food-quantity-price food-list-txt">$100 for two</span>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- Restaurant List Box Starts -->
+                                @empty
+                                    <div>No Record Found!</div>
+                                @endforelse
 
-                            {{--</div>--}}
-                            {{--<!-- Restaurant List Ends -->--}}
-                        {{--</div>--}}
-                        {{--<!-- Restaurant Filter List Ends -->--}}
-                        {{--<!-- Restaurant Filter List Starts -->--}}
-                        {{--<div class="res-filter-list-section" id="whats-new">--}}
-                            {{--<!-- Restaurant Filter Head Starts -->--}}
-                            {{--<div class="res-filter-list-head">--}}
-                                {{--<h5>What's New</h5>--}}
-                            {{--</div>--}}
-                            {{--<!-- Restaurant Filter Head Ends -->--}}
-                            {{--<!-- Restaurant List Starts -->--}}
-                            {{--<div class="restaurant-list row">--}}
-                            {{--@forelse(@$whats_new as $Shop)--}}
-                                {{--<!-- Restaurant List Box Starts -->--}}
-                                    {{--<a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"--}}
-                                       {{--class="food-item-box col-lg-4 col-md-6 col-sm-12 col-xs-12">--}}
-                                        {{--<div class="food-img bg-img"--}}
-                                             {{--style="background-image: url({{$Shop->avatar}});"></div>--}}
-                                        {{--<div class="food-details">--}}
-                                            {{--<h6 class="food-det-tit">{{$Shop->name}}</h6>--}}
-                                            {{--<p class="food-det-txt">{{$Shop->description}}</p>--}}
-                                            {{--<div class="food-other-details row">--}}
-                                                {{--<div class="col-xs-3 p-r-0">--}}
-                                                    {{--<span class="food-rating"><i--}}
-                                                                {{--class="ion-android-star"></i> {{$Shop->rating}}</span>--}}
-                                                {{--</div>--}}
-                                                {{--<div class="col-xs-3 text-center">--}}
-                                                    {{--<span class="food-deliver-time food-list-txt">{{$Shop->estimated_delivery_time}}--}}
-                                                        {{--Mins</span>--}}
-                                                {{--</div>--}}
-                                                {{--<!-- <div class="col-xs-6 text-right">--}}
-                                                    {{--<span class="food-quantity-price food-list-txt">$100 for two</span>--}}
-                                                {{--</div> -->--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</a>--}}
-                                    {{--<!-- Restaurant List Box Starts -->--}}
-                                {{--@empty--}}
-                                    {{--<div>No Record Found!</div>--}}
-                                {{--@endforelse--}}
+                            </div>
+                            <!-- Restaurant List Ends -->
+                        </div>
+                        <!-- Restaurant Filter List Ends -->
+                        <!-- Restaurant Filter List Starts -->
+                        <div class="res-filter-list-section" id="whats-new">
+                            <!-- Restaurant Filter Head Starts -->
+                            <div class="res-filter-list-head">
+                                <h5>What's New</h5>
+                            </div>
+                            <!-- Restaurant Filter Head Ends -->
+                            <!-- Restaurant List Starts -->
+                            <div class="restaurant-list row">
+                            @forelse(@$whats_new as $Shop)
+                                <!-- Restaurant List Box Starts -->
+                                    <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"
+                                       class="food-item-box col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="food-img bg-img"
+                                             style="background-image: url({{$Shop->avatar}});"></div>
+                                        <div class="food-details">
+                                            <h6 class="food-det-tit">{{$Shop->name}}</h6>
+                                            <p class="food-det-txt">{{$Shop->description}}</p>
+                                            <div class="food-other-details row">
+                                                <div class="col-xs-3 p-r-0">
+                                                    <span class="food-rating"><i
+                                                                class="ion-android-star"></i> {{$Shop->rating}}</span>
+                                                </div>
+                                                <div class="col-xs-3 text-center">
+                                                    <span class="food-deliver-time food-list-txt">{{$Shop->estimated_delivery_time}}
+                                                        Mins</span>
+                                                </div>
+                                                <!-- <div class="col-xs-6 text-right">
+                                                    <span class="food-quantity-price food-list-txt">$100 for two</span>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- Restaurant List Box Starts -->
+                                @empty
+                                    <div>No Record Found!</div>
+                                @endforelse
 
-                            {{--</div>--}}
-                            {{--<!-- Restaurant List Ends -->--}}
-                        {{--</div>--}}
-                        {{--<!-- Restaurant Filter List Ends -->--}}
-                    {{--</div>--}}
-                    {{--<!-- Food Section Right Ends -->--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
+                            </div>
+                            <!-- Restaurant List Ends -->
+                        </div>
+                        <!-- Restaurant Filter List Ends -->
+                    </div>
+                    <!-- Food Section Right Ends -->
+                </div>
+            </div>
+        </div>
         <!-- Food Section Ends -->
         <!-- All Restaurant List Starts -->
         <div class="all-restaurant-list col-md-12 col-sm-12 col-xs-12" id="see-all">
