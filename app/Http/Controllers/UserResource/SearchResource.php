@@ -49,9 +49,10 @@ class SearchResource extends Controller
             }
             $Products = Product::listsearch($user_id, $request->name);
 
-            dd($Products);
-
             $Shops = (new ShopResource)->filter($request);
+
+            dd($Shops);
+
             if ($request->has('latitude') && $request->has('longitude')) {
                 $longitude = $request->longitude;
                 $latitude = $request->latitude;
@@ -70,6 +71,7 @@ class SearchResource extends Controller
             } else {
                 $BannerImage = ShopBanner::with('shop', 'product')->get();
             }
+
             $Cuisines = Cuisine::all();
             //$shop = $Shops;
             $Shops_new = clone $Shops;
