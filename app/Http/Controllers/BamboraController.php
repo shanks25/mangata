@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Card;
-use App\Http\Requests\MakePaymentRequest;
-use App\Http\Requests\StoreCardRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +10,8 @@ class BamboraController extends Controller
 {
     //
     private $merchant_id = '117686094';
-    private $api_key = 'Passcode MTE3Njg2MDk0OkcpelZhO0M1bUQhfiFie2o=';
+//    private $api_key = 'Passcode MTE3Njg2MDk0OkcpelZhO0M1bUQhfiFie2o=';
+    private $api_key = 'ACc498AF0A16448F9958CDFb67889b55';
     private $api_version = 'v1';
     private $platform = 'api';
 
@@ -192,7 +191,7 @@ class BamboraController extends Controller
                         'cvd' => $card->cvc
                     )
                 );
-                
+
                 //Try to submit a Card Payment
                 return $beanstream->payments()->makeCardPayment($payment_data, $this->complete);
 
