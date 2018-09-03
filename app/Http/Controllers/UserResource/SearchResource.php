@@ -33,8 +33,6 @@ class SearchResource extends Controller
     public function index(Request $request)
     {
 
-        return $request;
-
         try {
             $user_id = NULL;
             if ($request->has('user_id')) {
@@ -50,6 +48,9 @@ class SearchResource extends Controller
                 Session::put('longitude', $request->longitude);
             }
             $Products = Product::listsearch($user_id, $request->name);
+
+            dd($Products);
+
             $Shops = (new ShopResource)->filter($request);
             if ($request->has('latitude') && $request->has('longitude')) {
                 $longitude = $request->longitude;
