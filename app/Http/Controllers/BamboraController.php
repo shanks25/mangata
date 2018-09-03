@@ -193,6 +193,8 @@ class BamboraController extends Controller
                     )
                 );
 
+                return $card;
+
                 return $payment_data;
 
                 //Try to submit a Card Payment
