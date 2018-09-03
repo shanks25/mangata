@@ -70,35 +70,35 @@
                             </a>
                             <!-- Restaurant Filter Box Ends -->
                             <!-- Restaurant Filter Box Starts -->
-                            <a href="#vegetarian" class="res-filter-box filter-scroll-menu">
-                                <span class="res-filter-icon"><i class="fa fa-envira"></i></span>
+                            {{--<a href="#vegetarian" class="res-filter-box filter-scroll-menu">--}}
+                                {{--<span class="res-filter-icon"><i class="fa fa-envira"></i></span>--}}
+                                {{--<span class="res-filter-txt">--}}
+                                        {{--<h6 class="res-filter-name">Vegetarian Options</h6>--}}
+                                        {{--<p class="res-filter-option">--}}
+                                        {{--<?php @$vegiterian = @$Shops_vegiterian->Veg(); ?>--}}
+                                            {{--{{count(@$$vegiterian)}} Options</p>--}}
+                                    {{--</span>--}}
+                            {{--</a>--}}
+                            <!-- Restaurant Filter Box Ends -->
+                            <!-- Restaurant Filter Box Starts -->
+                            <a href="#whats-new" class="res-filter-box filter-scroll-menu">
+                                <span class="res-filter-icon"><i class="ion-android-restaurant"></i></span>
                                 <span class="res-filter-txt">
-                                        <h6 class="res-filter-name">Vegetarian Options</h6>
+                                        <h6 class="res-filter-name">What's New</h6>
                                         <p class="res-filter-option">
-                                        <?php @$vegiterian = @$Shops_vegiterian->Veg(); ?>
-                                            {{count(@$$vegiterian)}} Options</p>
+                                        <?php @$whats_new = @$Shops_new->Newshop(); ?>
+                                            {{count($whats_new)}} Options</p>
                                     </span>
                             </a>
                             <!-- Restaurant Filter Box Ends -->
                             <!-- Restaurant Filter Box Starts -->
-                            {{--<a href="#whats-new" class="res-filter-box filter-scroll-menu">--}}
-                                {{--<span class="res-filter-icon"><i class="ion-android-restaurant"></i></span>--}}
-                                {{--<span class="res-filter-txt">--}}
-                                        {{--<h6 class="res-filter-name">What's New</h6>--}}
-                                        {{--<p class="res-filter-option">--}}
-                                        {{--<?php @$whats_new = @$Shops_new->Newshop(); ?>--}}
-                                            {{--{{count($whats_new)}} Options</p>--}}
-                                    {{--</span>--}}
-                            {{--</a>--}}
-                            {{--<!-- Restaurant Filter Box Ends -->--}}
-                            {{--<!-- Restaurant Filter Box Starts -->--}}
-                            {{--<a href="#see-all" class="res-filter-box filter-scroll-menu">--}}
-                                {{--<span class="res-filter-icon"><i class="ion-arrow-down-c"></i></span>--}}
-                                {{--<span class="res-filter-txt">--}}
-                                        {{--<h6 class="res-filter-name">See All</h6>--}}
-                                        {{--<p class="res-filter-option">{{count($Shops)}} Restaurants</p>--}}
-                                    {{--</span>--}}
-                            {{--</a>--}}
+                            <a href="#see-all" class="res-filter-box filter-scroll-menu">
+                                <span class="res-filter-icon"><i class="ion-arrow-down-c"></i></span>
+                                <span class="res-filter-txt">
+                                        <h6 class="res-filter-name">See All</h6>
+                                        <p class="res-filter-option">{{count($Shops)}} Restaurants</p>
+                                    </span>
+                            </a>
                             <!-- Restaurant Filter Box Ends -->
                         </div>
                         <!-- Restaurant Filters Ends -->
