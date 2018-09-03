@@ -199,6 +199,6 @@ class Shop extends Authenticatable
 
     public function scopeVeg($query3)
     {
-        return $query3->where('pure_veg', '=', 1)->orderBy('rating', 'DESC')->get();
+        return $query3->where('pure_veg', 1)->orderBy('rating', 'DESC')->get();
     }
 }
