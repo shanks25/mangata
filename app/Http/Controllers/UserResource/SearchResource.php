@@ -87,13 +87,15 @@ class SearchResource extends Controller
             if ($request->ajax()) {
                 return $data;
             }
+
+
             if ($request->get('v') == 'grid') {
-
-                dd($data);
-
                 return view('user.shop.index-grid', compact('Shops', 'Cuisines'));
             } else
                 if ($request->get('v') == 'map') {
+
+                    dd($data);
+
                     return view('user.shop.index-map', compact('Shops', 'Cuisines'));
                 } else {
                     return view('user.shop.index', compact('Shops', 'Cuisines', 'BannerImage', 'Shops_popular', 'Shops_superfast', 'Shops_offers', 'Shops_vegiterian', 'Shops_new'));
