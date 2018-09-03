@@ -185,15 +185,13 @@ class BamboraController extends Controller
                     'amount' => $request->payable,
                     'payment_method' => 'card',
                     'card' => array(
-                        'name' => $card->name,
+                        'name' => $user->name,
                         'number' => $card->last_four,
                         'expiry_month' => $card->exp_month,
                         'expiry_year' => $card->exp_year,
                         'cvd' => $card->cvc
                     )
                 );
-
-                return $card;
 
                 return $payment_data;
 
