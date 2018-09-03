@@ -49,7 +49,7 @@ class Shop extends Authenticatable
     /**
      * Send the password reset notification.
      *
-     * @param  string  $token
+     * @param  string $token
      * @return void
      */
     public function sendPasswordResetNotification($token)
@@ -71,38 +71,38 @@ class Shop extends Authenticatable
     /**
      * Get the list of all categories along with subcategories and images.
      */
-    public function scopeList($query, $user_id = NULL,$cat = NULL,$prodname = NULL, $prodtype = NULL)
+    public function scopeList($query, $user_id = NULL, $cat = NULL, $prodname = NULL, $prodtype = NULL)
     {
-        return $query->with(['cuisines','timings','ratings',
-            'categories'=> function($q) use ($cat){
-                if($cat != NULL){
-                    $q->where('name','LIKE', '%' . $cat . '%');
+        return $query->with(['cuisines', 'timings', 'ratings',
+            'categories' => function ($q) use ($cat) {
+                if ($cat != NULL) {
+                    $q->where('name', 'LIKE', '%' . $cat . '%');
                 }
             }
-            ,'categories.products'=> function($q) use ($prodname,$prodtype){
-                if($prodname!=NULL){
-                    $q->where('products.name','LIKE', '%' . $prodname . '%');
+            , 'categories.products' => function ($q) use ($prodname, $prodtype) {
+                if ($prodname != NULL) {
+                    $q->where('products.name', 'LIKE', '%' . $prodname . '%');
                 }
-                if($prodtype!=NULL){
-                    $q->where('products.food_type','=',$prodtype );
+                if ($prodtype != NULL) {
+                    $q->where('products.food_type', '=', $prodtype);
                 }
 
-            },'categories.products.prices','categories.products.images','categories.products.addons','favorite']);
+            }, 'categories.products.prices', 'categories.products.images', 'categories.products.addons', 'favorite']);
     }
 
 
-    public function scopeListsubcategory($query, $user_id = NULL,$cat = NULL,$subcat = NULL)
+    public function scopeListsubcategory($query, $user_id = NULL, $cat = NULL, $subcat = NULL)
     {
-        return $query->with(['cuisines','timings','ratings',
-            'categories'=> function($q) use ($cat){
-                $q->where('name','LIKE', '%' . $cat . '%');
+        return $query->with(['cuisines', 'timings', 'ratings',
+            'categories' => function ($q) use ($cat) {
+                $q->where('name', 'LIKE', '%' . $cat . '%');
             }
-            ,'categories.subcategories'=> function($q) use ($subcat){
-                $q->where('name','LIKE', '%' . $subcat . '%');
+            , 'categories.subcategories' => function ($q) use ($subcat) {
+                $q->where('name', 'LIKE', '%' . $subcat . '%');
             },
-            'categories.subcategories.products','categories.subcategories.products.prices','categories.subcategories.products.images','categories.subcategories.products.addons','favorite'=> function($q) use ($user_id){
-                    $q->where('user_id',$user_id);
-        }]);
+            'categories.subcategories.products', 'categories.subcategories.products.prices', 'categories.subcategories.products.images', 'categories.subcategories.products.addons', 'favorite' => function ($q) use ($user_id) {
+                $q->where('user_id', $user_id);
+            }]);
     }
 
     /**
@@ -121,12 +121,12 @@ class Shop extends Authenticatable
         return $this->hasMany('App\ShopTiming');
     }
 
-     /**
+    /**
      * products  that the shop belongs to.
      */
     public function categories()
     {
-        return $this->hasMany('App\Category')->orderBy(\DB::raw('ISNULL(position), position'),'ASC');;
+        return $this->hasMany('App\Category')->orderBy(\DB::raw('ISNULL(position), position'), 'ASC');;
     }
 
     /**
@@ -134,16 +134,17 @@ class Shop extends Authenticatable
      */
     public function products()
     {
-        return $this->hasMany('App\Product')->orderBy(\DB::raw('ISNULL(position), position'),'ASC');
+        return $this->hasMany('App\Product')->orderBy(\DB::raw('ISNULL(position), position'), 'ASC');
     }
+
     /**
      * products  that the shop belongs to.
      */
     public function ratings()
     {
-        return $this->hasOne('App\OrderRating','shop_id','id')
-                    ->selectRaw('avg(shop_rating) as rating, shop_id')
-                    ->groupBy('shop_id');
+        return $this->hasOne('App\OrderRating', 'shop_id', 'id')
+            ->selectRaw('avg(shop_rating) as rating, shop_id')
+            ->groupBy('shop_id');
     }
 
     /**
@@ -151,7 +152,7 @@ class Shop extends Authenticatable
      */
     public function scopeProductList($query)
     {
-        return $query->with('products', 'timings','ratings','favorite');
+        return $query->with('products', 'timings', 'ratings', 'favorite');
     }
 
     /**
@@ -162,7 +163,7 @@ class Shop extends Authenticatable
         return $this->hasMany('App\Order');
     }
 
-     /**
+    /**
      * Shop
      */
     public function favorite()
@@ -170,30 +171,37 @@ class Shop extends Authenticatable
         return $this->hasMany('App\Favorite');
     }
 
-     /**
+    /**
      * Get the list of all shops that belong to the cuisine .
      */
     public function scopePopularity($query)
     {
-        return $query->where('rating','>=',4)->orderBy('rating', 'DESC')->get();
+        return $query->where('rating', '>=', 4)->orderBy('rating', 'DESC')->get();
     }
-     /**
+
+    /**
      * Get the list of all shops that belong to the cuisine .
      */
     public function scopeFastdelivery($query5)
     {
-        return $query5->where('estimated_delivery_time','<=',30)->orderBy('rating', 'DESC')->get();
+        return $query5->where('estimated_delivery_time', '<=', 30)->orderBy('rating', 'DESC')->get();
     }
+
     public function scopeOffers($query1)
     {
-        return $query1->where('offer_percent','!=',0)->orderBy('rating', 'DESC')->get();
+        return $query1->where('offer_percent', '!=', 0)->orderBy('rating', 'DESC')->get();
     }
+
     public function scopeNewshop($query2)
     {
-        return $query2->where('created_at','>=',\Carbon\Carbon::now()->month)->orderBy('created_at', 'DESC')->get();
+        return $query2->where('created_at', '>=', \Carbon\Carbon::now()->month)->orderBy('created_at', 'DESC')->get();
     }
+
     public function scopeVeg($query3)
     {
-        return $query3->where('pure_veg','=',1)->orderBy('rating', 'DESC')->get();
+
+        dd($query3);
+
+        return $query3->where('pure_veg', '=', 1)->orderBy('rating', 'DESC')->get();
     }
 }
