@@ -81,6 +81,7 @@ class CardResource extends Controller
                     $card->last_four = $request->number;
                     $card->exp_year = $request->exp_year;
                     $card->exp_month = $request->exp_month;
+                    $card->cvc = $request->cvc;
                     $card->card_id = Auth::user()->id;
                     $card->is_default = true;
                     $card->save();

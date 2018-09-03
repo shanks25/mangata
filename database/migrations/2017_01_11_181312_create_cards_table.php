@@ -22,6 +22,7 @@ class CreateCardsTable extends Migration
             $table->string('exp_year')->nullable();
             $table->string('exp_month')->nullable();
             $table->string('brand')->nullable();
+            $table->string('cvc')->nullable();
             $table->integer('is_default')->default(0);
             $table->timestamps();
         });
