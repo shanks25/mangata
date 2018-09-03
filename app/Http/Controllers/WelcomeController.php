@@ -30,10 +30,7 @@ class WelcomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function home()
-    {   
-
-        
-        
+    {
         $Shop = Shop::take(4)->get();
         $shop_total = Shop::count();
         $user_total = User::count();
