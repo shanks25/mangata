@@ -96,7 +96,7 @@
                                                 <label for="name">@lang('setting.'.$key)</label>
                                                 <select name="currency" id="currency" value="" required class="form-control">
                                                       <option @if(Setting::get('currency') == "$") selected @endif data-id="USD" value="$">US Dollar (USD)</option>
-                                                      <option @if(Setting::get('currency') == "CAD") selected @endif data-id="CAD" value="CAD">Canedian Dollar (CAD)</option>
+                                                      <option @if(Setting::get('currency') == "CAD ") selected @endif data-id="CAD" value="CAD ">Canedian Dollar (CAD)</option>
                                                       <option @if(Setting::get('currency') == "₹") selected @endif data-id="INR" value="₹"> Indian Rupee (INR)</option>
                                                       <option @if(Setting::get('currency') == "د.ك") selected @endif data-id="KWD" value="د.ك">Kuwaiti Dinar (KWD)</option>
                                                       <option @if(Setting::get('currency') == "د.ب") selected @endif data-id="BHD" value="د.ب">Bahraini Dinar (BHD)</option>
