@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "593efd4460a90d97662a230eccc05686",
+    "content-hash": "eb94936084a54976e7aa31c23787ae46",
     "packages": [
         {
             "name": "aloha/twilio",
@@ -116,6 +116,46 @@
             ],
             "description": "Persistent settings in Laravel.",
             "time": "2017-11-08T18:14:47+00:00"
+        },
+        {
+            "name": "bambora/payform",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bambora/payform-php-lib.git",
+                "reference": "cb5271a6a9a66d139519db3884c3657ef5a79c2d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bambora/payform-php-lib/zipball/cb5271a6a9a66d139519db3884c3657ef5a79c2d",
+                "reference": "cb5271a6a9a66d139519db3884c3657ef5a79c2d",
+                "shasum": ""
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "4.8.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Bambora": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Bambora PayForm",
+                    "homepage": "https://payform.bambora.com"
+                }
+            ],
+            "description": "Bambora PayForm PHP Library",
+            "homepage": "https://payform.bambora.com",
+            "keywords": [
+                "bambora",
+                "payform",
+                "payment"
+            ],
+            "time": "2018-03-05T07:55:34+00:00"
         },
         {
             "name": "beanstream/beanstream",
@@ -3648,34 +3688,35 @@
         },
         {
             "name": "symfony/psr-http-message-bridge",
-            "version": "v1.0.2",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/psr-http-message-bridge.git",
-                "reference": "c2b757934f2d9681a287e662efbc27c41fe8ef86"
+                "reference": "53c15a6a7918e6c2ab16ae370ea607fb40cab196"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/psr-http-message-bridge/zipball/c2b757934f2d9681a287e662efbc27c41fe8ef86",
-                "reference": "c2b757934f2d9681a287e662efbc27c41fe8ef86",
+                "url": "https://api.github.com/repos/symfony/psr-http-message-bridge/zipball/53c15a6a7918e6c2ab16ae370ea607fb40cab196",
+                "reference": "53c15a6a7918e6c2ab16ae370ea607fb40cab196",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3",
-                "psr/http-message": "~1.0",
-                "symfony/http-foundation": "~2.3|~3.0|~4.0"
+                "php": "^5.3.3 || ^7.0",
+                "psr/http-message": "^1.0",
+                "symfony/http-foundation": "^2.3.42 || ^3.4 || ^4.0"
             },
             "require-dev": {
-                "symfony/phpunit-bridge": "~3.2|4.0"
+                "symfony/phpunit-bridge": "^3.4 || 4.0"
             },
             "suggest": {
+                "psr/http-factory-implementation": "To use the PSR-17 factory",
                 "psr/http-message-implementation": "To use the HttpFoundation factory",
                 "zendframework/zend-diactoros": "To use the Zend Diactoros factory"
             },
             "type": "symfony-bridge",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "1.1-dev"
                 }
             },
             "autoload": {
@@ -3704,7 +3745,7 @@
                 "http-message",
                 "psr-7"
             ],
-            "time": "2017-12-19T00:31:44+00:00"
+            "time": "2018-08-30T16:28:28+00:00"
         },
         {
             "name": "symfony/routing",

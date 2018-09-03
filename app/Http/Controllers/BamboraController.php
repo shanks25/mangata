@@ -21,18 +21,145 @@ class BamboraController extends Controller
 
     public $complete = TRUE; //set to FALSE for PA
 
-
-    public function __construct()
+    public function makePayment(Request $request)
     {
-        $this->beanstream = new \Beanstream\Gateway($this->merchant_id, $this->api_key, $this->platform, $this->api_version);
+
+        $user = Auth::user();
+
+        if ($request->card_id) {
+            $card = Card::where('user_id', $user->id)->where('id', $request->card_id)->first();
+        } else {
+            $card = Card::where('user_id', $user->id)->where('is_default', 1)->first();
+        }
+
+        // check card
+        if ($card) {
+
+            $tokenUrl = "https://api.v1.checkout.bambora.com/sessions";
+
+            $headers = array(
+                'Content-Type: application/json',
+                'Accept: application/json',
+            );
+
+            $request = array();
+            $request["number"] = $card->number;
+            $request["expiry_month"] = $card->exp_month;
+            $request["expiry_year"] = $card->exp_year;
+            $request["cvd"] = $card->cvc;
+
+            $requestJson = json_encode($request);
+
+            $curl = curl_init();
+
+            curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $requestJson);
+            curl_setopt($curl, CURLOPT_URL, $tokenUrl);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($curl, CURLOPT_FAILONERROR, false);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+            $rawResponse = curl_exec($curl);
+            $response = json_decode($rawResponse);
+
+            if ($response[message] = 'approved') {
+                
+            }
+
+        }
+
+
     }
 
 
-    public function makePayment(MakePaymentRequest $request)
+    public function makePaymentOriginal()
     {
 
+        $accessToken = "<<YOUR-ACCESS-TOKEN>>";
+        $merchantNumber = "<<YOUR-MERCHANT-NUMBER>>";
+        $secretToken = "<<YOUR-SECRET-TOKEN>>";
 
-        return $request;
+        $apiKey = base64_encode(
+            $accessToken . "@" . $merchantNumber . ":" . $secretToken
+        );
+
+        $checkoutUrl = "https://api.v1.checkout.bambora.com/sessions";
+
+        $request = array();
+        $request["order"] = array();
+        $request["order"]["id"] = 'ORD' . rand();
+        $request["order"]["amount"] = $request->payable;
+        $request["order"]["currency"] = "USD";
+
+        $request["url"] = array();
+        $request["url"]["accept"] = "https://ditchthekitch.ca/accept";
+        $request["url"]["cancel"] = "https://ditchthekitch.ca/accept";
+        $request["url"]["callbacks"] = array();
+        $request["url"]["callbacks"][] = array("url" => "https://ditchthekitch.ca/callback");
+
+        $requestJson = json_encode($request);
+
+        $contentLength = isset($requestJson) ? strlen($requestJson) : 0;
+
+        $headers = array(
+            'Content-Type: application/json',
+            'Content-Length: ' . $contentLength,
+            'Accept: application/json',
+            'Authorization: Basic ' . $apiKey
+        );
+
+        $curl = curl_init();
+
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $requestJson);
+        curl_setopt($curl, CURLOPT_URL, $checkoutUrl);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_FAILONERROR, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+        $rawResponse = curl_exec($curl);
+
+
+        $response = json_decode($rawResponse);
+
+    }
+
+
+    function handleCallback()
+    {
+        $getParameters = $_GET;
+        // Check exists txnid!
+        if (empty($getParameters["txnid"])) {
+            die("No GET(txnid) was supplied to the system!");
+        }
+        // Check exists orderid!
+        if (empty($getParameters["orderid"])) {
+            die("No GET(orderid) was supplied to the system!");
+        }
+        // Check exists hash!
+        if (empty($getParameters["hash"])) {
+            die("No GET(hash) was supplied to the system!");
+        }
+        // Validate MD5!
+        $merchantMd5Key = "MD5_KEY";
+        $concatenatedValues = '';
+        foreach ($getParameters as $key => $value) {
+            if ('hash' !== $key) {
+                $concatenatedValues .= $value;
+            }
+        }
+        $genstamp = md5($concatenatedValues . $merchantMd5Key);
+        if (!hash_equals($genstamp, $getParameters["hash"])) {
+            die("Hash validation failed - Please check your MD5 key");
+        }
+
+        //$getParameters contains all the callback parameteres
+    }
+
+    public function payment(MakePaymentRequest $request)
+    {
 
         try {
 

@@ -212,3 +212,7 @@ Route::post('/reorder', 'UserResource\OrderResource@reorder');
 /*  Route::get('faq','WelcomeController@faq');
   Route::get('aboutus','WelcomeController@aboutus');
   Route::get('termcondition','WelcomeController@termcondition');*/
+
+
+Route::get('bambora/accept', 'BamboraController@accept');
+Route::get('bambora/callback', 'BamboraController@handleCallback');
