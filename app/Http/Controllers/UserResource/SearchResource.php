@@ -51,8 +51,6 @@ class SearchResource extends Controller
 
             $Shops = (new ShopResource)->filter($request);
 
-            dd($Shops);
-
             if ($request->has('latitude') && $request->has('longitude')) {
                 $longitude = $request->longitude;
                 $latitude = $request->latitude;
@@ -85,6 +83,9 @@ class SearchResource extends Controller
                 'products' => $Products,
                 'shops' => $Shops
             ];
+
+            dd($data);
+
             if ($request->ajax()) {
                 return $data;
             }
