@@ -32,6 +32,7 @@ class CreateOrderInvoicesTable extends Migration
             $table->enum('payment_mode', [
                     'cash',
                     'stripe',
+                    'bambora',
                     'paypal',
                     'braintree',
                     'wallet',

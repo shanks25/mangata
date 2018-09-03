@@ -32,6 +32,9 @@ class SearchResource extends Controller
      */
     public function index(Request $request)
     {
+
+        return $request;
+
         try {
             $user_id = NULL;
             if ($request->has('user_id')) {

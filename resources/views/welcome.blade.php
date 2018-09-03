@@ -210,7 +210,7 @@
 <!-- Sidebar JS -->
 <script src="{{ asset('assets/user/js/asidebar.jquery.js')}}"></script>
 <!-- Map JS -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDkKetQwosod2SZ7ZGCpxuJdxY3kxo5Po"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSenCCnCxpurJr-0HtpCGPmhC0b1WgncY"></script>
 <script src="{{ asset('assets/user/js/jquery.googlemap.js')}}"></script>
 <!-- Incrementing JS -->
 <script src="{{ asset('assets/user/js/incrementing.js')}}"></script>

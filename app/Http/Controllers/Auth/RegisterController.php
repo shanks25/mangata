@@ -155,6 +155,7 @@ class RegisterController extends Controller
             ]);
 
         }
+
         try {
             $data = $request->all();
             if ($request->has('login_by')) {
