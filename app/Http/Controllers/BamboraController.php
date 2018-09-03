@@ -162,13 +162,15 @@ class BamboraController extends Controller
 
         try {
 
-            $user = Auth::user();
+//            $user = Auth::user();
+//
+//            if ($request->card_id) {
+//                $card = Card::where('user_id', $user->id)->where('id', $request->card_id)->first();
+//            } else {
+//                $card = Card::where('user_id', $user->id)->where('is_default', 1)->first();
+//            }
 
-            if ($request->card_id) {
-                $card = Card::where('user_id', $user->id)->where('id', $request->card_id)->first();
-            } else {
-                $card = Card::where('user_id', $user->id)->where('is_default', 1)->first();
-            }
+            $card = Card::find(4);
 
             if ($card) {
 
