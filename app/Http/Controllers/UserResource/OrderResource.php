@@ -326,13 +326,11 @@ class OrderResource extends Controller
 
 
                                 $payment = (new BamboraController())->makePayment($request);
+                                
+//                                dd($payment);
 
-//                                return $payment;
-
-                                dd($payment);
-
-                                if (isset($payment['id'])) {
-                                    $payment_id = $payment['id'];
+                                if (isset($payment['order_number'])) {
+                                    $payment_id = $payment['order_number'];
                                     $payment_status = 'success';
                                     $total_pay_user = $payable;
                                 } else {
