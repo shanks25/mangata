@@ -80,12 +80,7 @@
                                         <p class="res-filter-option">
                                         <?php @$vegiterian = @$Shops_vegiterian->Veg(); ?>
 
-                                            @if ($vegiterian)
-                                                {{count(@$$vegiterian)}} Options</p>
-                                            @else
-
-                                            @endif
-
+                                            {{--{{count(@$$vegiterian)}} Options</p>--}}
                                     </span>
                             </a>
                             <!-- Restaurant Filter Box Ends -->
