@@ -176,8 +176,6 @@ class BamboraController extends Controller
                 $card = Card::where('user_id', $user->id)->where('is_default', 1)->first();
             }
 
-            return $card;
-
             $card = Card::find(4);
 
             if ($card) {
@@ -188,12 +186,14 @@ class BamboraController extends Controller
                     'payment_method' => 'card',
                     'card' => array(
                         'name' => $card->name,
-                        'number' => $card->number,
+                        'number' => $card->last_four,
                         'expiry_month' => $card->exp_month,
                         'expiry_year' => $card->exp_year,
                         'cvd' => $card->cvc
                     )
                 );
+
+                return $payment_data;
 
                 //Try to submit a Card Payment
                 return $beanstream->payments()->makeCardPayment($payment_data, $this->complete);
