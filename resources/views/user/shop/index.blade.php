@@ -81,12 +81,6 @@
                                         <?php @$vegiterian = @$Shops_vegiterian->Veg(); ?>
 
                                             {{count(@$vegiterian)}} Options</p>
-
-                                            {{--@if($vegiterian->count() > 0)--}}
-                                                {{--{{count(@$$vegiterian)}} Options--}}
-                                            {{--@else--}}
-                                                {{--0 Options--}}
-                                            {{--@endif--}}
                                     {{--</p>--}}
                                     </span>
                             </a>
