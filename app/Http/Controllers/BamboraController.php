@@ -166,17 +166,17 @@ class BamboraController extends Controller
         //Create Beanstream Gateway
         $beanstream = new \Beanstream\Gateway($this->merchant_id, $this->api_key, $this->platform, $this->api_version);
 
-        return $beanstream;
-
         try {
 
-//            $user = Auth::user();
-//
-//            if ($request->card_id) {
-//                $card = Card::where('user_id', $user->id)->where('id', $request->card_id)->first();
-//            } else {
-//                $card = Card::where('user_id', $user->id)->where('is_default', 1)->first();
-//            }
+            $user = Auth::user();
+
+            if ($request->card_id) {
+                $card = Card::where('user_id', $user->id)->where('id', $request->card_id)->first();
+            } else {
+                $card = Card::where('user_id', $user->id)->where('is_default', 1)->first();
+            }
+
+            return $card;
 
             $card = Card::find(4);
 
