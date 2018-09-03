@@ -431,7 +431,7 @@
                                         $net = $net + $tax + Setting::get('delivery_charge');
                                         ?>
                                         <tr>
-                                            <td>Tax({{Setting::get('tax')}}%)</td>
+                                            <td>GST({{Setting::get('tax')}}%)</td>
                                             <td></td>
                                             <td class="text-right to_tax">{{currencydecimal($tax)}}</td>
                                         </tr>
