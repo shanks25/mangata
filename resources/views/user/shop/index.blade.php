@@ -59,17 +59,17 @@
                             </a>
                             <!-- Restaurant Filter Box Ends -->
                             <!-- Restaurant Filter Box Starts -->
-                            {{--<a href="#offers" class="res-filter-box filter-scroll-menu">--}}
-                                {{--<span class="res-filter-icon"><i class="fa fa-gift"></i></span>--}}
-                                {{--<span class="res-filter-txt">--}}
-                                        {{--<h6 class="res-filter-name">Offers Around You</h6>--}}
-                                        {{--<p class="res-filter-option">--}}
-                                        {{--<?php @$Offers = @$Shops_offers->Offers(); ?>--}}
-                                            {{--{{count(@$Offers)}} Options</p>--}}
-                                    {{--</span>--}}
-                            {{--</a>--}}
-                            {{--<!-- Restaurant Filter Box Ends -->--}}
-                            {{--<!-- Restaurant Filter Box Starts -->--}}
+                            <a href="#offers" class="res-filter-box filter-scroll-menu">
+                                <span class="res-filter-icon"><i class="fa fa-gift"></i></span>
+                                <span class="res-filter-txt">
+                                        <h6 class="res-filter-name">Offers Around You</h6>
+                                        <p class="res-filter-option">
+                                        <?php @$Offers = @$Shops_offers->Offers(); ?>
+                                            {{count(@$Offers)}} Options</p>
+                                    </span>
+                            </a>
+                            <!-- Restaurant Filter Box Ends -->
+                            <!-- Restaurant Filter Box Starts -->
                             {{--<a href="#vegetarian" class="res-filter-box filter-scroll-menu">--}}
                                 {{--<span class="res-filter-icon"><i class="fa fa-envira"></i></span>--}}
                                 {{--<span class="res-filter-txt">--}}
