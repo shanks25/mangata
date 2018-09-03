@@ -285,6 +285,13 @@ class OrderResource extends Controller
                                 $Card = Card::where('user_id', Auth::user()->id)->where('is_default', 1)->firstorFail();
                             }
                         }
+                        if ($request->payment_mode == 'bambora') {
+                            if ($request->card_id) {
+                                $Card = Card::where('user_id', Auth::user()->id)->where('id', $request->card_id)->firstorFail();
+                            } else {
+                                $Card = Card::where('user_id', Auth::user()->id)->where('is_default', 1)->firstorFail();
+                            }
+                        }
                         if ($request->payment_mode == 'braintree') {
                             //if($request->payment_card!='PayPalAccount' || $request->payment_card!='CreditCard'){
                             if (!$request->has('payment_card')) {
@@ -313,13 +320,14 @@ class OrderResource extends Controller
 
                         if ($request->payment_mode == 'bambora') {
 
-                            return $request;
-
                             $request->payable = $payable;
 
                             if ($payable != 0) {
 
+
                                 $payment = (new BamboraController())->makePayment($request);
+
+                                return $request;
 
                                 dd($payment);
 
