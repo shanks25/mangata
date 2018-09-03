@@ -95,8 +95,11 @@ class SearchResource extends Controller
                 if ($request->get('v') == 'map') {
                     return view('user.shop.index-map', compact('Shops', 'Cuisines'));
                 } else {
-                    dd($data);
-                    return view('user.shop.index', compact('Shops', 'Cuisines', 'BannerImage', 'Shops_popular', 'Shops_superfast', 'Shops_offers', 'Shops_vegiterian', 'Shops_new'));
+                    try {
+                        return view('user.shop.index', compact('Shops', 'Cuisines', 'BannerImage', 'Shops_popular', 'Shops_superfast', 'Shops_offers', 'Shops_vegiterian', 'Shops_new'));
+                    } catch (Exception $exception) {
+                        dd($exception);
+                    }
                 }
 
         } catch (Exception $e) {
