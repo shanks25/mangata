@@ -111,18 +111,18 @@
                                                         Debit Cards</a>
                                                 </li>
 
-                                                <li>
-                                                    <a href="#ripple" aria-controls="ripple" role="tab"
-                                                       data-toggle="tab"><span class="pay-icon"><img
-                                                                    src="{{asset('assets/user/img/ripple.png')}}"></span>
-                                                        Ripple</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#ethereum" aria-controls="ethereum" role="tab"
-                                                       data-toggle="tab"><span class="pay-icon"><img
-                                                                    src="{{asset('assets/user/img/eth.png')}}"></span>
-                                                        Ethereum</a>
-                                                </li>
+                                                {{--<li>--}}
+                                                    {{--<a href="#ripple" aria-controls="ripple" role="tab"--}}
+                                                       {{--data-toggle="tab"><span class="pay-icon"><img--}}
+                                                                    {{--src="{{asset('assets/user/img/ripple.png')}}"></span>--}}
+                                                        {{--Ripple</a>--}}
+                                                {{--</li>--}}
+                                                {{--<li>--}}
+                                                    {{--<a href="#ethereum" aria-controls="ethereum" role="tab"--}}
+                                                       {{--data-toggle="tab"><span class="pay-icon"><img--}}
+                                                                    {{--src="{{asset('assets/user/img/eth.png')}}"></span>--}}
+                                                        {{--Ethereum</a>--}}
+                                                {{--</li>--}}
                                                 <!--  <li>
                                                      <a href="#bitcoin" aria-controls="bitcoin" role="tab" data-toggle="tab"><span class="pay-icon"><img src="img/bitcoin.png"></span> Bitcoin</a>
                                                  </li> -->
