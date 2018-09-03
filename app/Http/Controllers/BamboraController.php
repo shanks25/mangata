@@ -157,6 +157,8 @@ class BamboraController extends Controller
     public function makePayment(MakePaymentRequest $request)
     {
 
+        return $request;
+
         //Create Beanstream Gateway
         $beanstream = new \Beanstream\Gateway($this->merchant_id, $this->api_key, $this->platform, $this->api_version);
 
