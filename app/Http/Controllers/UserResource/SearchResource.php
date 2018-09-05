@@ -101,7 +101,8 @@ class SearchResource extends Controller
         } catch (Exception $e) {
             if ($request->ajax()) {
 
-                return response()->json($e);
+                dd($e);
+
                 return response()->json(['error' => trans('form.whoops')], 500);
             }
             return back()->with('flash_error', trans('form.whoops'));
