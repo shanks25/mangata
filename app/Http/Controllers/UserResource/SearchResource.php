@@ -78,7 +78,7 @@ class SearchResource extends Controller
             $Shops_offers = clone $Shops;
             $Shops_vegiterian = clone $Shops;
             //print_r(DB::getQueryLog()); exit;
-            $Shops = $Shops->get();
+//            $Shops = $Shops->get();
             $data = [
                 'products' => $Products,
                 'shops' => $Shops
