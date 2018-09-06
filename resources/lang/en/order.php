@@ -69,6 +69,7 @@ return [
 
             'added_to_your_wallet' => 'Added To Your Wallet',
             'failed' => 'Payment Failed',
+            'success' => 'Payment Successful',
 
         ]
 

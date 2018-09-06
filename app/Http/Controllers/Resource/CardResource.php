@@ -82,12 +82,12 @@ class CardResource extends Controller
                     $card->exp_year = $request->exp_year;
                     $card->exp_month = $request->exp_month;
                     $card->cvc = $request->cvc;
-                    $card->card_id = Auth::user()->id;
+                    $card->card_id = mt_rand(100000, 999999);
                     $card->is_default = true;
                     $card->save();
 
                 } catch (Exception $e) {
-                    dd($e);
+                    return response()->json(['message' => 'Error saving card']);
                 }
 
 
