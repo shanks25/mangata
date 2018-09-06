@@ -280,12 +280,21 @@ class CardResource extends Controller
         try {
 
 
-            $this->set_stripe();
-            $card = Card::where('id', $id)->firstOrFail();
-            $customer = \Stripe\Customer::retrieve(Auth::user()->stripe_cust_id);
-            $customer->sources->retrieve($card->card_id)->delete();
+            if ($request->has('bambora')) {
 
-            Card::where('card_id', $card->card_id)->delete();
+                $card = Card::where('id', $id)->firstOrFail();
+                Card::where('card_id', $card->card_id)->delete();
+
+            } else {
+
+                $this->set_stripe();
+                $card = Card::where('id', $id)->firstOrFail();
+                $customer = \Stripe\Customer::retrieve(Auth::user()->stripe_cust_id);
+                $customer->sources->retrieve($card->card_id)->delete();
+
+                Card::where('card_id', $card->card_id)->delete();
+
+            }
 
             if ($request->ajax()) {
                 return response()->json(['message' => 'Card Deleted']);
