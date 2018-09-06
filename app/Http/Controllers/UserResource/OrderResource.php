@@ -21,11 +21,11 @@ use App\UserCart;
 use App\WalletPassbook;
 use Auth;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
 use Setting;
-use Exception;
 
 class OrderResource extends Controller
 {
@@ -324,10 +324,7 @@ class OrderResource extends Controller
 
                             if ($payable != 0) {
 
-
                                 $payment = (new BamboraController())->makePayment($request);
-
-//                                dd($payment);
 
                                 if (isset($payment['order_number'])) {
                                     $payment_id = $payment['order_number'];

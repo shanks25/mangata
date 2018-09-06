@@ -283,7 +283,12 @@ class CardResource extends Controller
             if ($request->has('bambora')) {
 
                 $card = Card::where('id', $id)->firstOrFail();
-                Card::where('card_id', $card->card_id)->delete();
+
+                if ($card) {
+                    $card->delete();
+                } else {
+                    return response()->json(['message' => 'Card not found.']);
+                }
 
             } else {
 

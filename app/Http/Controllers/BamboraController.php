@@ -34,7 +34,7 @@ class BamboraController extends Controller
             } else {
                 $card = Card::where('user_id', $user->id)->where('is_default', 1)->first();
             }
-            
+
             if ($card) {
 
                 $payment_data = array(
