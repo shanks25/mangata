@@ -280,7 +280,7 @@ class CardResource extends Controller
         try {
 
 
-            if ($request->has('bambora')) {
+//            if ($request->has('bambora')) {
 
                 $card = Card::where('id', $id)->firstOrFail();
 
@@ -289,17 +289,17 @@ class CardResource extends Controller
                 } else {
                     return response()->json(['message' => 'Card not found.']);
                 }
-
-            } else {
-
-                $this->set_stripe();
-                $card = Card::where('id', $id)->firstOrFail();
-                $customer = \Stripe\Customer::retrieve(Auth::user()->stripe_cust_id);
-                $customer->sources->retrieve($card->card_id)->delete();
-
-                Card::where('card_id', $card->card_id)->delete();
-
-            }
+//
+//            } else {
+//
+//                $this->set_stripe();
+//                $card = Card::where('id', $id)->firstOrFail();
+//                $customer = \Stripe\Customer::retrieve(Auth::user()->stripe_cust_id);
+//                $customer->sources->retrieve($card->card_id)->delete();
+//
+//                Card::where('card_id', $card->card_id)->delete();
+//
+//            }
 
             if ($request->ajax()) {
                 return response()->json(['message' => 'Card Deleted']);
