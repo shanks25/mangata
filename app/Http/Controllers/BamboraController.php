@@ -39,7 +39,7 @@ class BamboraController extends Controller
 
                 $payment_data = array(
                     'order_number' => 'ORD' . rand(),
-                    'amount' => $request->payable - 100,
+                    'amount' => $request->payable,
                     'payment_method' => 'card',
                     'card' => array(
                         'name' => $user->name,
