@@ -306,7 +306,7 @@ class OrderResource extends Controller
                     }
                 } catch (ModelNotFoundException $e) {
 
-                    dd($e);
+//                    dd($e);
 
                     if ($request->ajax()) {
                         return response()->json(['error' => trans('order.card.no_card_exist')], 422);
@@ -470,7 +470,7 @@ class OrderResource extends Controller
                     return back()->with('flash_failure', trans('order.card.no_card_exist'));
                 } catch (Exception $e) {
 
-                    dd($e);
+//                    dd($e);
 
                     if ($request->ajax()) {
                         return response()->json(['error' => trans('order.not_created')], 422);
@@ -513,7 +513,7 @@ class OrderResource extends Controller
                     return back()->with('flash_failure', trans('order.invoice_not_created'));
                 } catch (Exception $e) {
 
-                    dd($e);
+//                    dd($e);
 
                     if ($request->ajax()) {
                         return response()->json(['error' => trans('order.not_created')], 422);
