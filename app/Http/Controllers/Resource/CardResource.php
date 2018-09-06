@@ -72,6 +72,8 @@ class CardResource extends Controller
                 ->where('last_four', $request->cvc)
                 ->count();
 
+            $cardYear = $newstring = substr($request->exp_year, -2);
+
             if ($exist == 0) {
 
                 try {
@@ -79,7 +81,7 @@ class CardResource extends Controller
                     $card->user_id = Auth::user()->id;
                     $card->card_type = 'bambora';
                     $card->last_four = $request->number;
-                    $card->exp_year = $request->exp_year;
+                    $card->exp_year = $cardYear;
                     $card->exp_month = $request->exp_month;
                     $card->cvc = $request->cvc;
                     $card->card_id = mt_rand(100000, 999999);
