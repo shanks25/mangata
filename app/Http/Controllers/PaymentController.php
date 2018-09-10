@@ -173,6 +173,33 @@ class PaymentController extends Controller
         ]);
 
         try {
+
+            if ($request->payment_mode == 'bombora') {
+
+                if ($request->has('card_id')) {
+
+                    $request->payable = $request->amount;
+
+                    $payment = (new BamboraController())->makePayment($request);
+
+                    if (isset($payment['order_number'])) {
+
+                        $payment_id = $payment['order_number'];
+                        $payment_status = 'success';
+                        $total_pay_user = $request->payable;
+
+                        return response()->json([
+                            'message' => trans('order.payment.success')
+                        ], 200);
+
+                    } else {
+                        return response()->json(['error' => trans('order.payment.failed')], 422);
+
+                    }
+                }
+
+            }
+
             if (Setting::get('payment_mode') == 'braintree') {
 
             } else {

@@ -9,6 +9,7 @@
 
 //Login
 Route::post('/login', 'TransporterAuth\LoginController@login');
+Route::post('/register', 'TransporterAuth\RegisterController@apiRegister');
 Route::post('/verify/otp', 'TransporterAuth\LoginController@UserLogin');
 
 Route::group(['middleware' => ['auth:transporterapi']], function() {

@@ -96,6 +96,17 @@ class RegisterController extends Controller
         return Auth::guard('transporter');
     }
 
+    public function apiRegister(Request $request) {
+
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        return $user;
+    }
+
     /**
      * Handle registration send otp  request for the application.
      *
