@@ -25,7 +25,7 @@
                         <label for="name" class="col-xs-12 col-form-label">Document Type</label>
                         <div class="col-xs-10">
                             <select name="type">
-                                <option value="DRIVER">River Review</option>
+                                <option value="DRIVER">Driver Review</option>
                                 <option value="VEHICLE">Vehicle Review</option>
                             </select>
                         </div>

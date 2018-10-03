@@ -8,24 +8,8 @@ class Document extends Model
 {
     //
     protected $fillable = [
-        'provider_id',
-        'document_id',
-        'url',
-        'unique_id',
-        'status',
+        'name',
+        'type',
     ];
-
-    public function provider()
-    {
-        return $this->belongsTo('App\Transporter');
-    }
-
-    /**
-     * The services that belong to the user.
-     */
-    public function document()
-    {
-        return $this->belongsTo('App\Document');
-    }
 
 }

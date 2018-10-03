@@ -50,17 +50,13 @@ class DocumentController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'shop_id' => 'required',
-            'product_id' => 'required',
-            'image' => 'image|max:5120',
+            'name' => 'required',
+            'type' => 'required',
         ]);
         try {
-            $Banner = ShopBanner::create([
-                'shop_id' => $request->shop_id,
-                'product_id' => $request->product_id,
-                'url' => asset('storage/' . $request->image->store('shops/banner')),
-                'status' => $request->status,
-                'position' => $request->position
+            Document::create([
+                'name' => $request->name,
+                'type' => $request->type
             ]);
             return back()->with('flash_success', trans('form.resource.created'));
         } catch (ModelNotFoundException $e) {
