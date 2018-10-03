@@ -18,7 +18,7 @@ class Transporter extends Authenticatable
      * @var array
      */
     protected $fillable = [
-         'name', 'email', 'phone', 'password', 'avatar', 'latitude', 'longitude','device_id','device_type','device_token','status','address','rating'
+        'name', 'email', 'phone', 'password', 'avatar', 'latitude', 'longitude', 'device_id', 'device_type', 'device_token', 'status', 'address', 'rating'
     ];
 
     /**
@@ -30,14 +30,15 @@ class Transporter extends Authenticatable
         'password', 'remember_token', 'created_at', 'updated_at', 'deleted_at'
     ];
 
-    public function findForPassport($username) {
+    public function findForPassport($username)
+    {
         return $this->where('phone', $username)->first();
     }
 
     /**
      * Send the password reset notification.
      *
-     * @param  string  $token
+     * @param  string $token
      * @return void
      */
     public function sendPasswordResetNotification($token)
@@ -51,7 +52,7 @@ class Transporter extends Authenticatable
     public function orders()
     {
         $instance = $this->hasMany('App\Order');
-        $instance->getQuery()->whereNotIn('status', ['CANCELLED','COMPLETED']);
+        $instance->getQuery()->whereNotIn('status', ['CANCELLED', 'COMPLETED']);
         return $instance;
     }
 
@@ -63,20 +64,25 @@ class Transporter extends Authenticatable
         return $this->hasMany('App\TransporterVehicle');
     }
 
-     /**
+    /**
      * Orders
      */
     public function disputes()
     {
-        return $this->hasMany('App\OrderDispute','transporter_id','id')->withTrashed();
+        return $this->hasMany('App\OrderDispute', 'transporter_id', 'id')->withTrashed();
     }
 
-     /**
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
+
+    /**
      * shift
      */
     public function shift()
     {
-        return  $this->hasOne('App\TransporterShift')->get();
-      
+        return $this->hasOne('App\TransporterShift')->get();
+
     }
 }
