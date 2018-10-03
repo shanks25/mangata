@@ -43,6 +43,10 @@
                                       action="{{ route('admin.documents.destroy',$document->id)}}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
+                                    <button class="table-btn btn  btn-danger"
+                                            onclick="return confirm('Do You want To Remove This Document?');"
+                                            form="resource-delete-{{ $document->id }}">Remove
+                                    </button>
                                 </form>
                             </td>
                         </tr>
