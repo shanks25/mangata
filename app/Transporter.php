@@ -74,7 +74,7 @@ class Transporter extends Authenticatable
 
     public function documents()
     {
-        return $this->hasMany(Document::class);
+        return $this->hasMany(TransporterDocument::class);
     }
 
     /**

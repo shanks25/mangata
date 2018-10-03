@@ -178,8 +178,10 @@
                                     class="fa fa-cog"></i><span data-i18n=""
                                                                 class="menu-title">@lang('menu.admin.setting')</span></a>
                         <ul class="menu-content">
-                            <li><a href="{{ route('admin.settings') }}"><i class="fa fa-cog"></i><span data-i18n=""
-                                                                                                       class="menu-title">@lang('menu.admin.site_setting')
+                            <li><a href="{{ route('admin.settings') }}">
+                                    <i class="fa fa-cog"></i>
+                                    <span data-i18n=""
+                                          class="menu-title">@lang('menu.admin.site_setting')
                                 </a></li>
 
                         </ul>

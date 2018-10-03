@@ -47,7 +47,7 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -63,7 +63,7 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return Transporter
      */
     protected function create(array $data)
@@ -96,7 +96,8 @@ class RegisterController extends Controller
         return Auth::guard('transporter');
     }
 
-    public function apiRegister(Request $request) {
+    public function apiRegister(Request $request)
+    {
 
         $this->validator($request->all())->validate();
 
@@ -110,36 +111,37 @@ class RegisterController extends Controller
     /**
      * Handle registration send otp  request for the application.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
 
-    public function OTP(Request $request){
+    public function OTP(Request $request)
+    {
 
         $this->validator($request->all(), [
             'phone' => 'required|unique:transporters'
         ]);
         try {
-            $data=$request->all();
-            if(Transporter::where('phone',$data['phone'])->first()){
+            $data = $request->all();
+            if (Transporter::where('phone', $data['phone'])->first()) {
                 return response()->json([
                     'phone' => 'this mobile is already exist!',
-                    ]);
-             }
+                ]);
+            }
 
-            $newotp=rand(100000,999999);
+            $newotp = rand(100000, 999999);
             $data['otp'] = $newotp;
-            $msg_data=send_sms($data);
+            $msg_data = send_sms($data);
 
-            if($msg_data == null)
+            if ($msg_data == null)
                 return response()->json([
                     'message' => 'Otp sent to your mobile successfully ',
                     'otp' => $newotp
-                    ]); 
+                ]);
 
-                return response()->json(['error' => $msg_data], 422);
-        } catch (Exception $e){
-                return $e->getMessage();
+            return response()->json(['error' => $msg_data], 422);
+        } catch (Exception $e) {
+            return $e->getMessage();
         }
     }
 }
