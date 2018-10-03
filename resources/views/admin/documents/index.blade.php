@@ -40,7 +40,7 @@
                                    class="table-btn btn btn-icon btn-success"><i class="fa fa-pencil-square-o"></i></a>
 
                                 <form id="resource-delete-{{ $document->id }}"
-                                      action="{{ route('admin.documents.destroy',$document->id)}}" method="POST">
+                                      action="{{ route('admin.documents.destroy', $document->id)}}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                     <button class="table-btn btn  btn-danger"

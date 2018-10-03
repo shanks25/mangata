@@ -100,31 +100,21 @@ class DocumentController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'status' => 'required',
-            'shop_id' => 'required',
-            'product_id' => 'required',
+            'name' => 'required',
+            'type' => 'required',
         ]);
 
         try {
-            $BannerImage = ShopBanner::findOrFail($id);
+            $document = Document::findOrFail($id);
 
-            if ($request->hasFile('image')) {
-                $Update['url'] = asset('storage/' . $request->image->store('shops/banner'));
+            if ($request->has('name')) {
+                $document['name'] = $request->name;
             }
-            if ($request->has('status')) {
-                $Update['status'] = $request->status;
-            }
-            if ($request->has('shop_id')) {
-                $Update['shop_id'] = $request->shop_id;
-            }
-            if ($request->has('product_id')) {
-                $Update['product_id'] = $request->product_id;
-            }
-            if ($request->has('position')) {
-                $Update['position'] = $request->position;
+            if ($request->has('type')) {
+                $document['type'] = $request->type;
             }
 
-            $BannerImage->update($Update);
+            $document->update($document);
 
             // return redirect()->route('admin.products.index')->with('flash_success', 'Product updated!');
             return back()->with('flash_success', trans('form.resource.updated'));
