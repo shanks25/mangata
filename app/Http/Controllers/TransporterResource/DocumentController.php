@@ -5,7 +5,7 @@ namespace App\Http\Controllers\TransporterResource;
 use App\Document;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DocumentUploadRequest;
-use Illuminate\Support\Facades\Log;
+use App\TransporterDocument;
 use Illuminate\Support\Facades\Storage;
 
 class DocumentController extends Controller
@@ -38,12 +38,12 @@ class DocumentController extends Controller
 
         $provider = auth()->user();
 
-        $providerDocument = Document::where('transporter_id', $provider->id)
+        $providerDocument = TransporterDocument::where('transporter_id', $provider->id)
             ->where('document_id', $id)
             ->first();
 
         if (!$providerDocument) {
-            $providerDocument = new Document();
+            $providerDocument = new TransporterDocument();
             $providerDocument->transporter_id = $provider->id;
             $providerDocument->document_id = $id;
             $providerDocument->unique_id = rand(100000, 999999);
