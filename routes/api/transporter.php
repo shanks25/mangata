@@ -33,10 +33,10 @@ Route::group(['middleware' => ['auth:transporterapi']], function () {
     Route::get('/notice', 'Resource\NoticeBoardResource@TransporterNotice');
     Route::get('/disputehelp', 'Resource\DisputeHelpResource@index');
     Route::post('/request/order', 'TransporterResource\OrderResource@providerRequest');
-//
-//
-//    Route::get('documents', 'TransporterResource\DocumentController@index');
-//    Route::post('documents/{id}', 'TransporterResource\DocumentController@uploadDocument');
-//    Route::get('documents/status', 'TransporterResource\DocumentController@checkSubmittedDocuments');
+
+
+    Route::get('documents', 'TransporterResource\DocumentController@index');
+    Route::post('documents/{id}', 'TransporterResource\DocumentController@uploadDocument');
+    Route::get('documents/status', 'TransporterResource\DocumentController@checkSubmittedDocuments');
 
 });
