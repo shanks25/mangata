@@ -25,7 +25,7 @@ Route::resource('zones', 'Resource\ZoneResource');
 Route::resource('cuisines', 'Resource\CuisineResource');
 Route::resource('demoapp', 'ManageappController');
 Route::resource('promocodes', 'Resource\PromocodeResource');
-Route::resource('documents', 'Resource\DocumentResource');
+Route::resource('documents', 'Resource\DocumentController');
 Route::resource('translation', 'Resource\TranslationResource');
 Route::get('disputes/{name}', 'Resource\DisputeResource@index');
 Route::resource('dispute', 'Resource\DisputeResource');

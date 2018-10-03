@@ -38,8 +38,6 @@ class DocumentController extends Controller
     public function create()
     {
 
-        return ['ok'];
-
         return view('admin.documents.create');
     }
 
