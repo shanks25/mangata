@@ -85,7 +85,7 @@
                 </li>
                 <li class="@if(Request::segment(2)=='documents') active  @endif nav-item"><a href="#"><i
                                 class="fa fa-shopping-bag"></i>
-                        <span data-i18n="" class="menu-title">Documents</span></a>
+                        <span data-i18n="" class="menu-title">Transporter Documents</span></a>
                     <ul class="menu-content">
                         <li><a href="{{ route('admin.documents.index') }}"
                                class="menu-item">List Documents</a></li>
