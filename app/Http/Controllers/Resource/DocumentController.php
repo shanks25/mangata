@@ -85,10 +85,9 @@ class DocumentController extends Controller
      */
     public function edit($id)
     {
-        $Banner = ShopBanner::findOrFail($id);
-        $Resturants = Shop::all();
-        $Products = Product::where('shop_id', $Banner->shop_id)->get();
-        return view('admin.banner.edit', compact('Banner', 'Resturants', 'Products'));
+        $document = Document::find($id);
+
+        return view('admin.documents.edit', compact('document'));
     }
 
     /**
