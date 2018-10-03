@@ -136,9 +136,9 @@ class DocumentController extends Controller
     public function destroy($id)
     {
         try {
-            $Banner = ShopBanner::findOrFail($id);
+            $document = Document::findOrFail($id);
             // Need to delete variants or have them re-assigned
-            $Banner->delete();
+            $document->delete();
             return back()->with('flash_success', trans('form.resource.deleted'));
         } catch (ModelNotFoundException $e) {
             return back()->with('flash_error', 'data not found!');
