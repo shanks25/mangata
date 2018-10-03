@@ -83,6 +83,12 @@
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+
+                        <li>
+                            <a href="mailto: info@ditchthekitch.ca"><i class="ion-android-search"></i> Enquiry For Catering</a>
+                        </li>
+
+
                         <li>
                             <a href="{{url('search')}}"><i class="ion-android-search"></i> Search</a>
                         </li>
