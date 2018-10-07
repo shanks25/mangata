@@ -1,5 +1,28 @@
 @extends('user.layouts.app')
 
+@section('styles')
+    <style>
+        .pac-container {
+            z-index: 9999999999999999999 !important;
+        }
+
+
+        /* 4 IMAGES CSS */
+        .column {
+            float: left;
+            width: 25%;
+            padding: 5px;
+        }
+
+        /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+@stop
+
 @section('content')
     <!-- Content ================================================== -->
     <div class="container">
