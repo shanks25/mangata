@@ -209,9 +209,9 @@ Route::post('/reorder', 'UserResource\OrderResource@reorder');
 //Route::get('/token','BraintreeTokenController@token');
 //Route::get('/payment','BraintreeTokenController@payment');
 // Route::post('/payment','BraintreeTokenController@do_payment');
-/*  Route::get('faq','WelcomeController@faq');
-  Route::get('aboutus','WelcomeController@aboutus');
-  Route::get('termcondition','WelcomeController@termcondition');*/
+// Route::get('faq','WelcomeController@faq');
+Route::get('aboutus', 'WelcomeController@aboutus');
+//  Route::get('termcondition','WelcomeController@termcondition');
 
 
 Route::get('bambora/accept', 'BamboraController@accept');
