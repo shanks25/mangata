@@ -211,6 +211,7 @@ Route::post('/reorder', 'UserResource\OrderResource@reorder');
 // Route::post('/payment','BraintreeTokenController@do_payment');
 // Route::get('faq','WelcomeController@faq');
 Route::get('aboutus', 'WelcomeController@aboutus');
+Route::get('contact', 'WelcomeController@contact');
 //  Route::get('termcondition','WelcomeController@termcondition');
 
 

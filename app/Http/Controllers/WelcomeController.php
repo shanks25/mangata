@@ -62,6 +62,12 @@ class WelcomeController extends Controller
         return view('aboutus');
     }
 
+    public function contact()
+    {
+        return view('contact');
+    }
+
+
     /**
      * Show the application dashboard.
      *
