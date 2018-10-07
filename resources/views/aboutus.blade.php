@@ -15,7 +15,7 @@
                     from our top restaurants partner and take your pick from the most popular cuisines.</h6>
 
                 <video width="500" height="340" controls>
-                    <source src="uploads/ditchkitch.mp4" type="video/mp4">
+                    <source src="{{ asset('uploads/ditchkitch.mp4') }}" type="video/mp4">
                 </video>
 
                 <h1></h1>
@@ -34,19 +34,23 @@
 
                     <div class="row">
                         <div class="column">
-                            <img src="uploads/location.png" alt="Location" style="width:50%; position: center;">
+                            <img src="{{ asset('uploads/location.png') }}" alt="Location"
+                                 style="width:50%; position: center;">
                             <h6>Set Your Location</h6>
                         </div>
                         <div class="column">
-                            <img src="uploads/store.png" alt="Restaurant" style="width:50%; position: center;">
+                            <img src="{{ asset('uploads/store.png') }}" alt="Restaurant"
+                                 style="width:50%; position: center;">
                             <h6>Pick Restaurant</h6>
                         </div>
                         <div class="column">
-                            <img src="uploads/card.png" alt="Payment" style="width:50%; position: center;">
+                            <img src="{{ asset('uploads/card.png') }}" alt="Payment"
+                                 style="width:50%; position: center;">
                             <h6>Securely Pay</h6>
                         </div>
                         <div class="column">
-                            <img src="uploads/car.png" alt="Deliver" style="width:50%; position: center;">
+                            <img src="{{ asset('uploads/car.png') }}" alt="Deliver"
+                                 style="width:50%; position: center;">
                             <h6>DitchtheKitch Deliver</h6>
                         </div>
                     </div>
