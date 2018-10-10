@@ -25,7 +25,7 @@ class TransporterResource extends Controller
      */
     public function index()
     {
-        $Users = Transporter::with('orders')->all();
+        $Users = Transporter::with('orders')->get();
         return view(Route::currentRouteName(), compact('Users'));
     }
 
