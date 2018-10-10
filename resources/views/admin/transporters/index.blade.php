@@ -31,6 +31,8 @@
                                 <th>@lang('transporter.index.contact_details')</th>
                                 <th>@lang('transporter.index.image')</th>
                                 <th>@lang('transporter.index.rating')</th>
+                                <th>@lang('transporter.index.tips')</th>
+                                <th>@lang('transporter.index.earning')</th>
                                 <th>@lang('transporter.index.status')</th>
                                 <th>@lang('transporter.index.action')</th>
                             </tr>
@@ -57,6 +59,8 @@
                                             No Image
                                         @endif
                                     </td>
+                                    <td> 10</td>
+                                    <td> 10</td>
                                     <td class="star">
                                         <?php for ($i = 1; $i <= $User->rating; $i++) {
                                             echo '<i class="fa fa-star" aria-hidden="true"></i>';
@@ -112,7 +116,8 @@
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                         </form>
-                                    </td>cls
+                                    </td>
+                                    cls
 
                                 </tr>
                             @empty

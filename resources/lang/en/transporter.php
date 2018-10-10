@@ -7,7 +7,7 @@ return [
     | Shop Language Lines
     |--------------------------------------------------------------------------
     */
-    
+
     'index' => [
         'title' => 'Delivery People List',
         'add_transporter' => 'Add Delivery People',
@@ -18,6 +18,8 @@ return [
         'address' => 'Address',
         'contact_details' => 'Contact Details',
         'rating' => 'Rating',
+        'tips' => 'Tips',
+        'earning' => 'Earning',
         'status' => 'Status',
         'action' => 'Action',
         'no_record_found' => 'No Delivery People Available Now'
@@ -62,7 +64,5 @@ return [
 
     ]
 
-    
-      
 
 ];
