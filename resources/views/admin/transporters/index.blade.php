@@ -83,7 +83,6 @@
                                                 <i class="fa fa-check-circle"></i>
                                             </a>
                                         @endif
-
                                     </td>
 
                                     <td>
