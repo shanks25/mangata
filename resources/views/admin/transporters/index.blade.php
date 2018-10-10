@@ -6,11 +6,6 @@
         <div class="col-xs-12">
             <div class="card">
                 <div class="card-header">
-                    @if(Setting::get('DEMO_MODE')==1)
-                        <div class="col-md-12" style="height:50px;color:red;">
-                            ** Demo Mode : No Permission to Edit and Delete.
-                        </div>
-                    @endif
                     <h4 class="card-title">@lang('transporter.index.title')</h4>
                     <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
@@ -103,23 +98,22 @@
                                             </form>
                                         @endif
 
-                                        @if(Setting::get('DEMO_MODE')==1)
-                                            <a href="{{ route('admin.transporters.edit', $User->id) }}"
-                                               class="table-btn btn btn-icon btn-success"><i
-                                                        class="fa fa-pencil-square-o"></i></a>
+                                        <a href="{{ route('admin.transporters.edit', $User->id) }}"
+                                           class="table-btn btn btn-icon btn-success"><i
+                                                    class="fa fa-pencil-square-o"></i></a>
 
-                                            <button class="table-btn btn btn-icon btn-danger"
-                                                    form="resource-delete-{{ $User->id }}"><i class="fa fa-trash-o"></i>
-                                            </button>
+                                        <button class="table-btn btn btn-icon btn-danger"
+                                                form="resource-delete-{{ $User->id }}"><i class="fa fa-trash-o"></i>
+                                        </button>
 
-                                            <form id="resource-delete-{{ $User->id }}"
-                                                  action="{{ route('admin.transporters.destroy', $User->id)}}"
-                                                  method="POST">
-                                                {{ csrf_field() }}
-                                                {{ method_field('DELETE') }}
-                                            </form>
-                                        @endif
-                                    </td>
+                                        <form id="resource-delete-{{ $User->id }}"
+                                              action="{{ route('admin.transporters.destroy', $User->id)}}"
+                                              method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                        </form>
+                                    </td>cls
+
                                 </tr>
                             @empty
                                 <tr>
