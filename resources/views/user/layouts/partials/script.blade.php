@@ -44,8 +44,6 @@
                         <div class="print-error-msg alert-danger error_password"></div>
                         <a href="javascript:void(0);" class="theme-link forgot-link">Forgot Password</a>
 
-                        <input type="checkbox" name="terms" id="terms" required>
-                        I Agree <a href="{{ route('terms') }}">Terms & Conditions</a>
                         <button type="button" class="login-btn login_btn">Login</button>
                     </form>
                 </div>
