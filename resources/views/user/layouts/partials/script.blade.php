@@ -44,6 +44,9 @@
                         <div class="print-error-msg alert-danger error_password"></div>
                         <a href="javascript:void(0);" class="theme-link forgot-link">Forgot Password</a>
 
+                        <input type="checkbox" name="terms" id="terms" onclick="activateButton(this)" required>
+                        I Agree <a href="#">Terms & Conditions</a>
+
                         <button type="button" class="login-btn login_btn">Login</button>
                     </form>
                 </div>
@@ -256,6 +259,26 @@
         </div>
     </div>
     <!-- Signup Sidebar Ends -->
+
+    <script>
+
+        disableSubmit();
+
+        function disableSubmit() {
+            document.getElementById("submit").disabled = true;
+        }
+
+        function activateButton(element) {
+
+            if (element.checked) {
+                document.getElementById("submit").disabled = false;
+            }
+            else {
+                document.getElementById("submit").disabled = true;
+            }
+
+        }
+    </script>
 
     <script src="{{ asset('assets/user/js/jquery.easy-autocomplete.min.js') }}" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/user/css/easy-autocomplete.min.css')}}">
