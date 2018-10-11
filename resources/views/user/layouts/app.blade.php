@@ -85,7 +85,7 @@
                 <ul class="nav navbar-nav navbar-right">
 
                     <li>
-                        <a href="mailto: info@ditchthekitch.ca?subject=Enquiry For Catering" class="signup-item white">
+                        <a href="mailto: info@ditchthekitch.ca?subject=Enquiry For Catering" class="signup-item" style="color: white">
                             Enquiry For Catering</a>
                     </li>
 
