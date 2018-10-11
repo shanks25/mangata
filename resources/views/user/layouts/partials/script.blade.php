@@ -43,6 +43,9 @@
                         </div>
                         <div class="print-error-msg alert-danger error_password"></div>
                         <a href="javascript:void(0);" class="theme-link forgot-link">Forgot Password</a>
+
+                        <input type="checkbox" name="terms" id="terms" onchange="activateButton(this)">
+                        I Agree <a href="{{ route('terms') }}">Terms & Conditions</a>
                         <button type="button" class="login-btn login_btn">Login</button>
                     </form>
                 </div>
@@ -168,84 +171,84 @@
 
 
                     {{--<div id="first_step">--}}
-                        {{--<div class="print-error-msg common">--}}
-                            {{--<ul class="alert-success list-unstyled">--}}
-                                {{--<li class="error_error"></li>--}}
-                            {{--</ul>--}}
-                        {{--</div>--}}
+                    {{--<div class="print-error-msg common">--}}
+                    {{--<ul class="alert-success list-unstyled">--}}
+                    {{--<li class="error_error"></li>--}}
+                    {{--</ul>--}}
+                    {{--</div>--}}
 
-                        {{--<input type="text" class="form-control form-white dm" placeholder="Name" id="dname" name="name"--}}
-                               {{--value="{{ old('name') }}">--}}
+                    {{--<input type="text" class="form-control form-white dm" placeholder="Name" id="dname" name="name"--}}
+                    {{--value="{{ old('name') }}">--}}
 
-                        {{--<input type="email" class="form-control form-white dm" id="demail" name="email"--}}
-                               {{--value="{{ old('email') }}" placeholder="Email">--}}
+                    {{--<input type="email" class="form-control form-white dm" id="demail" name="email"--}}
+                    {{--value="{{ old('email') }}" placeholder="Email">--}}
 
-                        {{--<div class="form-group row">--}}
-                            {{--<div class="col-xs-12">--}}
-                                {{--<label>Phone Number</label>--}}
-                            {{--</div>--}}
+                    {{--<div class="form-group row">--}}
+                    {{--<div class="col-xs-12">--}}
+                    {{--<label>Phone Number</label>--}}
+                    {{--</div>--}}
 
-                            {{--<div class="col-xs-3">--}}
-                                {{--<input type="text" id="country_code" name="country_code" class="form-control"--}}
-                                       {{--placeholder="+56">--}}
-                            {{--</div>--}}
-                            {{--<div class="col-xs-9 p-l-0">--}}
-                                {{--<input type="number" min="0" class="form-control phone-number" id="phone_number"--}}
-                                       {{--name="phone_number" value="{{ old('phone_number') }}"--}}
-                                       {{--placeholder="Enter Phone Number" required>--}}
-                            {{--</div>--}}
+                    {{--<div class="col-xs-3">--}}
+                    {{--<input type="text" id="country_code" name="country_code" class="form-control"--}}
+                    {{--placeholder="+56">--}}
+                    {{--</div>--}}
+                    {{--<div class="col-xs-9 p-l-0">--}}
+                    {{--<input type="number" min="0" class="form-control phone-number" id="phone_number"--}}
+                    {{--name="phone_number" value="{{ old('phone_number') }}"--}}
+                    {{--placeholder="Enter Phone Number" required>--}}
+                    {{--</div>--}}
 
-                        {{--</div>--}}
+                    {{--</div>--}}
 
-                        {{--<div class="print-error-msg alert-danger error_phone"></div>--}}
+                    {{--<div class="print-error-msg alert-danger error_phone"></div>--}}
 
-                        {{--<input type="hidden" id="login_by" value="manual" name="login_by"/>--}}
-                        {{--<input type="hidden" name="accessToken" value="" id="accessToken"/>--}}
+                    {{--<input type="hidden" id="login_by" value="manual" name="login_by"/>--}}
+                    {{--<input type="hidden" name="accessToken" value="" id="accessToken"/>--}}
 
-                        {{--<div class="form-group mobile_otp_verfication" style="display: none;">--}}
-                            {{--<label>OTP</label>--}}
-                            {{--<input type="text" class="form-control " placeholder="Otp" name="otp" id="otp" value="">--}}
-                        {{--</div>--}}
+                    {{--<div class="form-group mobile_otp_verfication" style="display: none;">--}}
+                    {{--<label>OTP</label>--}}
+                    {{--<input type="text" class="form-control " placeholder="Otp" name="otp" id="otp" value="">--}}
+                    {{--</div>--}}
 
-                        {{--<div class="print-error-msg alert-danger error_otp"></div>--}}
+                    {{--<div class="print-error-msg alert-danger error_otp"></div>--}}
 
-                        {{--<button type="button" onclick="smsLogin();" class="login-btn mobile_verfication">Verify Phone--}}
-                            {{--Number--}}
-                        {{--</button>--}}
-                        {{--<button type="button" class="login-btn mobile_otp_verfication" onclick="checkotp();"--}}
-                                {{--value="Verify Otp" style="display: none;">Verify OTP--}}
-                        {{--</button>--}}
+                    {{--<button type="button" onclick="smsLogin();" class="login-btn mobile_verfication">Verify Phone--}}
+                    {{--Number--}}
+                    {{--</button>--}}
+                    {{--<button type="button" class="login-btn mobile_otp_verfication" onclick="checkotp();"--}}
+                    {{--value="Verify Otp" style="display: none;">Verify OTP--}}
+                    {{--</button>--}}
                     {{--</div>--}}
                     {{--<div id="second_step" style="display: none;">--}}
-                        {{--<input type="hidden" id="otp_ref" name="otp_ref" value=""/>--}}
-                        {{--<input type="hidden" id="otp_phone" name="phone" value=""/>--}}
-                        {{--<div class="form-group">--}}
-                            {{--<label>Name</label>--}}
-                            {{--<input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">--}}
-                            {{--<div class="print-error-msg alert-danger error_name"></div>--}}
-                        {{--</div>--}}
-                        {{--<div class="form-group">--}}
-                            {{--<label>Email</label>--}}
-                            {{--<input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}"--}}
-                                   {{--placeholder="">--}}
-                            {{--<div class="print-error-msg alert-danger error_email"></div>--}}
-                        {{--</div>--}}
-                        {{--<div class="form-group" id="password1">--}}
-                            {{--<label>Password</label>--}}
-                            {{--<input type="password" class="form-control" id="password" name="password">--}}
-                            {{--<div class="print-error-msg alert-danger error_password"></div>--}}
-                        {{--</div>--}}
-                        {{--<div class="form-group" id="password2">--}}
-                            {{--<label>Confirm Password</label>--}}
-                            {{--<input type="password" class="form-control" id="password_confirmation"--}}
-                                   {{--name="password_confirmation">--}}
-                        {{--</div>--}}
-                        {{--<p class="signup-txt"><input type="checkbox" checked value="accept_2" id="check_2"--}}
-                                                     {{--name="check_2"/>--}}
-                            {{--By creating an account, I accept the Terms & Conditions</p>--}}
-                        {{--<div class="print-error-msg alert-danger error_terms"></div>--}}
-                        {{--<button type="button" class="login-btn register_btn">Signup</button>--}}
-                        {{--<br/><br/><br/>--}}
+                    {{--<input type="hidden" id="otp_ref" name="otp_ref" value=""/>--}}
+                    {{--<input type="hidden" id="otp_phone" name="phone" value=""/>--}}
+                    {{--<div class="form-group">--}}
+                    {{--<label>Name</label>--}}
+                    {{--<input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">--}}
+                    {{--<div class="print-error-msg alert-danger error_name"></div>--}}
+                    {{--</div>--}}
+                    {{--<div class="form-group">--}}
+                    {{--<label>Email</label>--}}
+                    {{--<input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}"--}}
+                    {{--placeholder="">--}}
+                    {{--<div class="print-error-msg alert-danger error_email"></div>--}}
+                    {{--</div>--}}
+                    {{--<div class="form-group" id="password1">--}}
+                    {{--<label>Password</label>--}}
+                    {{--<input type="password" class="form-control" id="password" name="password">--}}
+                    {{--<div class="print-error-msg alert-danger error_password"></div>--}}
+                    {{--</div>--}}
+                    {{--<div class="form-group" id="password2">--}}
+                    {{--<label>Confirm Password</label>--}}
+                    {{--<input type="password" class="form-control" id="password_confirmation"--}}
+                    {{--name="password_confirmation">--}}
+                    {{--</div>--}}
+                    {{--<p class="signup-txt"><input type="checkbox" checked value="accept_2" id="check_2"--}}
+                    {{--name="check_2"/>--}}
+                    {{--By creating an account, I accept the Terms & Conditions</p>--}}
+                    {{--<div class="print-error-msg alert-danger error_terms"></div>--}}
+                    {{--<button type="button" class="login-btn register_btn">Signup</button>--}}
+                    {{--<br/><br/><br/>--}}
                     {{--</div>--}}
 
 
@@ -255,6 +258,27 @@
         </div>
     </div>
     <!-- Signup Sidebar Ends -->
+
+    <script>
+
+        disableSubmit()
+
+        function disableSubmit() {
+            document.getElementById("submit").disabled = true;
+        }
+
+        function activateButton(element) {
+
+            if (element.checked) {
+                document.getElementById("submit").disabled = false;
+            }
+            else {
+                document.getElementById("submit").disabled = true;
+            }
+
+        }
+    </script>
+
     <script src="{{ asset('assets/user/js/jquery.easy-autocomplete.min.js') }}" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/user/css/easy-autocomplete.min.css')}}">
     <style type="text/css">
