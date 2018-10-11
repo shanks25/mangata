@@ -7,10 +7,7 @@
                 <h5 class="foot-tit">Company</h5>
                 <div>
                     <a href="{{url('/aboutus')}}" class="foot-item">About</a>
-                    <a href="{{url('/contact')}}" class="foot-item">Contact</a>
-                    <a href="{{url('/')}}" class="foot-item">Team</a>
-                    <a href="{{url('/')}}" class="foot-item">Carriers</a>
-                    <a href="{{url('/')}}" class="foot-item">DitchTheKitch Blog</a>
+                    <a href="{{url('/contact')}}" class="foot-item">Contact US</a>
                 </div>
             </div>
             <!-- Foot Block Ends -->
@@ -18,8 +15,8 @@
             <div class="foot-block col-md-3 col-sm-12 col-xs-12">
                 <h5 class="foot-tit">Contact</h5>
                 <div>
-                    <a href="{{url('/')}}" class="foot-item">Help &amp; Support</a>
                     <a href="{{url('enquiry-delivery')}}" class="foot-item">Partner with us</a>
+                    <a class="foot-item">Become a Courier</a>
                 </div>
             </div>
             <!-- Foot Block Ends -->
@@ -28,9 +25,7 @@
                 <h5 class="foot-tit">LEGAL</h5>
                 <div>
                     <a href="{{url('terms')}}" class="foot-item">Terms &amp; Conditions</a>
-                    <a href="{{url('/')}}" class="foot-item">Refund &amp; Cancellation</a>
                     <a href="{{url('/privacy')}}" class="foot-item">Privacy Policy</a>
-                    <a href="{{url('/')}}" class="foot-item">Offer Terms</a>
                 </div>
             </div>
             <!-- Foot Block Ends -->
