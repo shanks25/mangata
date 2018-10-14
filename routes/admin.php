@@ -1,10 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Admin Routes
-|--------------------------------------------------------------------------
-*/
 
 Route::get('/home', 'AdminController@index')->name('home');
 Route::get('{id}/profile', 'Resource\DisputeUserResource@edit')->name('dispute-user.edit');
