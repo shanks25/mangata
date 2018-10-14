@@ -75,6 +75,7 @@
                                     <div class="tracking-sec-box-left icon-left pull-left">
                                         <i class="ion-ios-location-outline"></i>
                                     </div>
+
                                     <div class="tracking-sec-box-right icon-right">
                                         <span>Delivered To</span>
                                         <h6 class="icon-tit">{{$Order->address->type}}</h6>
