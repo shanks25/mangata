@@ -53,6 +53,8 @@ class OrderResource extends Controller
             }
             $Orders = $Order->get();
 
+            dd($Orders);
+
             if ($request->ajax()) {
                 return $Orders;
             }
