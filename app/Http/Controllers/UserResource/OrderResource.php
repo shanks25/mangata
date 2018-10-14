@@ -211,12 +211,10 @@ class OrderResource extends Controller
                             $discount += $find_promo->discount;
                         }
 
-
                         //$Product->order_id = $Order->id;
                         /*$Product->save();
                         $Product->delete();*/
                     }
-
 
                     $net = $tot_price;
                     if ($Shop->offer_percent) {
@@ -521,11 +519,18 @@ class OrderResource extends Controller
                     return back()->with('flash_failure', trans('order.not_created'));
                 }
 
+                // todo add tip
+                // check for pickup
+                if ($request->has('tip')) {
+                    $Order->tip = $request->tip;
+                    $Order->save();
+                }
 
                 OrderTiming::create([
                     'order_id' => $Order->id,
                     'status' => 'ORDERED'
                 ]);
+
                 $push_message = trans('order.order_created', ['id' => $Order->id]);
                 (new SendPushNotification)->sendPushToUser($User, $push_message);
 
