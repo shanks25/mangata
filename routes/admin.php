@@ -13,6 +13,7 @@ Route::resource('users', 'Resource\UserResource');
 Route::get('transporter/enable/{id}', 'AdminController@enableTransporter')->name('transporter.enable');
 Route::get('transporter/disable/{id}', 'AdminController@disableTransporter')->name('transporter.disable');
 Route::resource('transporters', 'Resource\TransporterResource');
+Route::resource('transporters/{id}', 'Resource\DocumentResourceController')->name('transporters.docs.index');
 Route::resource('dispute-user', 'Resource\DisputeUserResource');
 Route::resource('categories', 'Resource\CategoryResource');
 Route::get('subcategory', 'Resource\CategoryResource@subcategory');
@@ -45,7 +46,6 @@ Route::get('/chat', 'Resource\DisputeResource@chatWithUser');
 Route::post('/pages', 'AdminController@pages')->name('pages.update');
 
 //pages
-
 Route::get('/privacy', 'AdminController@privacy')->name('privacy');
 Route::get('/terms', 'AdminController@terms')->name('terms');
 Route::get('/faq', 'AdminController@faq')->name('faq');

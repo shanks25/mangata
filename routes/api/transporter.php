@@ -39,6 +39,5 @@ Route::group(['middleware' => ['auth:transporterapi']], function () {
     Route::post('documents/{id}', 'TransporterResource\DocumentController@uploadDocument');
     Route::get('documents/status', 'TransporterResource\DocumentController@checkSubmittedDocuments');
 
-
-
+    
 });
