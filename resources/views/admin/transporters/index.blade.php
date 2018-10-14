@@ -87,7 +87,7 @@
 
                                     <td>
                                         <a class="table-btn btn btn-icon btn-danger"
-                                           href="{{ route('transporters.docs.index', $User->id) }}">Documents
+                                           href="{{ route('admin.transporters.docs.index', $User->id) }}">Documents
                                         </a>
 
                                         @if($User->status =='unsettled')
