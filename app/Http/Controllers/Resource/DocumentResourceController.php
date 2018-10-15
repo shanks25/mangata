@@ -72,10 +72,8 @@ class DocumentResourceController extends Controller
      */
     public function edit($id)
     {
-
-
         //
-        $transporterDoc = TransporterDocument::where('transporter_id', $transporter_id)
+        $transporterDoc = TransporterDocument::where('transporter_id', $id)
             ->where('document_id', $id)
             ->get();
 
