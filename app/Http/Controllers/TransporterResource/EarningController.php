@@ -42,6 +42,7 @@ class EarningController extends Controller
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => trans('form.whoops')], 500);
         } catch (Exception $e) {
+            dd($e);
             return response()->json(['error' => trans('form.whoops')], 500);
         }
     }
