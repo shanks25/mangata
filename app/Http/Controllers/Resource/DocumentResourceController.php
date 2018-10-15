@@ -22,7 +22,7 @@ class DocumentResourceController extends Controller
 
         //
         $transporterDocs = TransporterDocument::where('transporter_id', $id)->get();
-        
+
         if ($transporterDocs) {
             return view('admin.transporters.documents.index', compact('transporterDocs', 'transporter'));
         } else {
@@ -71,12 +71,16 @@ class DocumentResourceController extends Controller
      */
     public function edit($transporter_id, $id)
     {
+
+        dd($transporter_id);
+
         $transporter = Transporter::find($transporter_id);
 
         //
         $transporterDoc = TransporterDocument::where('transporter_id', $transporter_id)
             ->where('document_id', $id)
             ->get();
+
 
         //
         return view('admin.transporters.documents.edit', compact('transporterDoc', 'transporter'));
