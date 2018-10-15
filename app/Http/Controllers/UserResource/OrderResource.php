@@ -53,14 +53,16 @@ class OrderResource extends Controller
             }
             $Orders = $Order->get();
 
-            dd($Orders);
-
             if ($request->ajax()) {
                 return $Orders;
             }
+
             if ($request->segment(1) == 'payments') {
                 return view('user.orders.payments', compact('Orders'));
             } else {
+
+                dd($Orders);
+
                 return view('user.orders.index', compact('Orders'));
             }
         } catch (Exception $e) {
