@@ -77,33 +77,33 @@
                                             <!-- Order Box Bottom Left Ends -->
                                             <!-- Order Box Bottom Right Starts -->
                                             <div class="order-box-btm-left col-md-3 col-sm-3 col-xs-12 text-right">
-                                                <p class="total-txt">Total {{currencydecimal($Order->invoice->net)}}</p>
-                                                {{--@if($Order->status=='COMPLETED')--}}
-                                                    {{----}}
-                                                    {{--@if(!$Order->has('reviewrating'))--}}
+{{--                                                <p class="total-txt">Total {{currencydecimal($Order->invoice->net)}}</p>--}}
+                                                @if($Order->status=='COMPLETED')
 
-                                                        {{--<a href="javascript:void(0)" data-id="{{$Order->id}}"--}}
-                                                           {{--data-imgshop="{{@$Order->shop->avatar}}"--}}
-                                                           {{--data-imgboy="{{@$Order->transporter->avatar}}"--}}
-                                                           {{--data-shopname="{{@$Order->shop->name}}"--}}
-                                                           {{--data-boyname="{{@$Order->transporter->name}}"--}}
-                                                           {{--data-rateshop="0" data-rateboy="0"--}}
-                                                           {{--class="rate-btn  ratingreview">Ratings</a>--}}
-                                                    {{--@else--}}
-                                                        {{--@if(@$Order->reviewrating->shop_id == 0 || @$Order->reviewrating->transporter_id == 0)--}}
-                                                            {{--<a href="javascript:void(0)" data-id="{{$Order->id}}"--}}
-                                                               {{--data-imgshop="{{@$Order->shop->avatar}}"--}}
-                                                               {{--data-imgboy="{{@$Order->transporter->avatar}}"--}}
-                                                               {{--data-shopname="{{@$Order->shop->name}}"--}}
-                                                               {{--data-boyname="{{@$Order->transporter->name}}"--}}
-                                                               {{--data-rateshop="{{@$Order->reviewrating->shop_id?:0}}"--}}
-                                                               {{--data-rateboy="{{@$Order->reviewrating->transporter_id?:0}}"--}}
-                                                               {{--class="rate-btn  ratingreview">Ratings</a>--}}
+                                                    @if(!$Order->has('reviewrating'))
 
-                                                        {{--@endif--}}
+                                                        <a href="javascript:void(0)" data-id="{{$Order->id}}"
+                                                           data-imgshop="{{@$Order->shop->avatar}}"
+                                                           data-imgboy="{{@$Order->transporter->avatar}}"
+                                                           data-shopname="{{@$Order->shop->name}}"
+                                                           data-boyname="{{@$Order->transporter->name}}"
+                                                           data-rateshop="0" data-rateboy="0"
+                                                           class="rate-btn  ratingreview">Ratings</a>
+                                                    @else
+                                                        @if(@$Order->reviewrating->shop_id == 0 || @$Order->reviewrating->transporter_id == 0)
+                                                            <a href="javascript:void(0)" data-id="{{$Order->id}}"
+                                                               data-imgshop="{{@$Order->shop->avatar}}"
+                                                               data-imgboy="{{@$Order->transporter->avatar}}"
+                                                               data-shopname="{{@$Order->shop->name}}"
+                                                               data-boyname="{{@$Order->transporter->name}}"
+                                                               data-rateshop="{{@$Order->reviewrating->shop_id?:0}}"
+                                                               data-rateboy="{{@$Order->reviewrating->transporter_id?:0}}"
+                                                               class="rate-btn  ratingreview">Ratings</a>
 
-                                                    {{--@endif--}}
-                                                {{--@endif--}}
+                                                        @endif
+
+                                                    @endif
+                                                @endif
                                             </div>
                                             <!-- Order Box Bottom Right Ends -->
                                         </div>
