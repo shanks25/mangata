@@ -45,22 +45,22 @@
                                 @endif
                             </div>
 
-                            <div class="form-group{{ $errors->has('cuisine_id') ? ' has-error' : '' }}">
-                                <label for="parent_id">@lang('shop.create.cuisine')</label>
+                            {{--<div class="form-group{{ $errors->has('cuisine_id') ? ' has-error' : '' }}">--}}
+                                {{--<label for="parent_id">@lang('shop.create.cuisine')</label>--}}
 
-                                <select class="form-control" multiple id="cuisine_id" name="cuisine_id[]">
-                                    @foreach(\App\Cuisine::list() as $Indx => $Cuisine)
-                                        <option value="{{ $Cuisine->id }}"
-                                                @if($Indx==0) selected="selected" @endif >{{ $Cuisine->name }}</option>
-                                    @endforeach
-                                </select>
+                                {{--<select class="form-control" multiple id="cuisine_id" name="cuisine_id[]">--}}
+                                    {{--@foreach(\App\Cuisine::list() as $Indx => $Cuisine)--}}
+                                        {{--<option value="{{ $Cuisine->id }}"--}}
+                                                {{--@if($Indx==0) selected="selected" @endif >{{ $Cuisine->name }}</option>--}}
+                                    {{--@endforeach--}}
+                                {{--</select>--}}
 
-                                @if ($errors->has('cuisine_id'))
-                                    <span class="help-block">
-                                    <strong>{{ $errors->first('cuisine_id') }}</strong>
-                                </span>
-                                @endif
-                            </div>
+                                {{--@if ($errors->has('cuisine_id'))--}}
+                                    {{--<span class="help-block">--}}
+                                    {{--<strong>{{ $errors->first('cuisine_id') }}</strong>--}}
+                                {{--</span>--}}
+                                {{--@endif--}}
+                            {{--</div>--}}
 
                             <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                                 <label for="phone">@lang('shop.create.phone')</label>
