@@ -63,10 +63,8 @@
 
                             <div class="form-group col-xs-12 mb-2">
                                 <div class="form-group row">
-                                    <label class="col-sm-2">@lang('home.delivery_boy.address')</label>
+                                    <label class="col-sm-2">Profile Image:</label>
                                     <div class="col-sm-5">
-                                        <label>Profile Image:</label>
-
                                         <input type="file" accept="image/*" name="avatar" class="dropify form-control"
                                                id="avatar" aria-describedby="fileHelp">
 
