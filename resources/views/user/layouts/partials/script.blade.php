@@ -1107,7 +1107,7 @@
                 80.274816
             );
 
-            var orders = {!! json_encode($Order->toArray()) !!};
+            var orders = {!! !empty($Order) ? json_encode($Order->toArray()) : null !!}
 
             if (orders != null) {
                 userLocation = new google.maps.LatLng(
