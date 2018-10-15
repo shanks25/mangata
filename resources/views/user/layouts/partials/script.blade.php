@@ -47,7 +47,7 @@
                         <br> <input type="checkbox" name="terms" id="terms" required>
                         I Agree <a href="{{ route('terms') }}">Terms & Conditions</a>
 
-                        <button type="button" class="login-btn login_btn">Login</button>
+                        <button type="submit" class="login-btn login_btn">Login</button>
                     </form>
                 </div>
                 <!-- Login Form Section Ends -->
