@@ -109,68 +109,6 @@ class UserController extends Controller
         return view('user.payment.payment', compact('cards', 'token'));
     }
 
-    public function delivery()
-    {  // dd('jjjj');
-        //$Shop = Shop::take(4)->get();
-        //dd($Shop);
-        return view('delivery_enquiry');
-    }
-
-    public function partner()
-    {
-
-        $Days = [
-            'ALL' => 'Everyday',
-            'SUN' => 'Sunday',
-            'MON' => 'Monday',
-            'TUE' => 'Tuesday',
-            'WED' => 'Wednesday',
-            'THU' => 'Thursday',
-            'FRI' => 'Friday',
-            'SAT' => 'Saturday'
-        ];
-
-        return view('partner', compact('Days'));
-    }
-
-    public function partnerStore()
-    {
-
-    }
-
-    public function delivery_store(Request $request)
-    {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'address' => 'required',
-        ]);
-        try {
-
-            $transporter = Transporter::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'phone' => $request->phone,
-                'address' => $request->address,
-                'password' => '12345678'
-            ]);
-
-            if ($request->hasFile('avatar')) {
-                $transporter['avatar'] = asset('storage/' . $request->avatar->store('transporter/profile'));
-            }
-
-            return back()->with('flash_success', trans('home.delivery_boy.created'));
-
-        } catch (Exception $e) {
-
-            dd($e);
-
-            return back()->with('flash_error', trans('form.whoops'));
-        }
-
-    }
-
     public function set_Braintree()
     {
 

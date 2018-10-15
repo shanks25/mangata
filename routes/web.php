@@ -47,11 +47,11 @@ Route::get('contact', function () {
 });*/
 Route::get('/search', 'WelcomeController@search');
 
-Route::get('/enquiry-delivery', 'UserController@delivery');
-Route::post('/enquiry-delivery', 'UserController@delivery_store');
+Route::get('/enquiry-delivery', 'WelcomeController@delivery');
+Route::post('/enquiry-delivery', 'WelcomeController@delivery_store');
 
-Route::get('/partner', 'UserController@partner')->name('partner.index');
-Route::post('/partner', 'UserController@partnerStore')->name('partner.store');
+Route::get('/partner', 'WelcomeController@partner')->name('partner.index');
+Route::post('/partner', 'WelcomeController@partnerStore')->name('partner.store');
 
 Route::get('auth/facebook', 'SocialLoginController@redirectToFaceBook');
 Route::get('auth/facebook/callback', 'SocialLoginController@handleFacebookCallback');
