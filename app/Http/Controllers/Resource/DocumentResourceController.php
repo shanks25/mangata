@@ -75,10 +75,8 @@ class DocumentResourceController extends Controller
         //
         $transporterDoc = TransporterDocument::find($id);
 
-        dd($transporterDoc);
-
         //
-        return view('admin.transporters.documents.edit', compact('transporterDoc', 'transporter'));
+        return view('admin.transporters.documents.edit', compact('transporterDoc'));
 
     }
 
