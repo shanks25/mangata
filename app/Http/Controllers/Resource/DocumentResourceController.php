@@ -70,11 +70,9 @@ class DocumentResourceController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($transporter_id, $id)
+    public function edit($id)
     {
 
-
-        $transporter = Transporter::find($transporter_id);
 
         //
         $transporterDoc = TransporterDocument::where('transporter_id', $transporter_id)
