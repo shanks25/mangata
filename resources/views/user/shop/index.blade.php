@@ -406,7 +406,7 @@
                         <!-- Cost for Two Tab Contetnt Starts -->
                         <div role="tabpanel" class="tab-pane fade" id="cost-for-two">
                             <div class="row">
-                            @foreach($Shops as $Shop)
+                            @forelse($Shops as $Shop)
                                 <!-- Restaurant List Box Starts -->
                                     <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"
                                        class="food-item-box col-lg-4 col-md-6 col-sm-6 col-xs-12">
@@ -431,9 +431,9 @@
                                         </div>
                                     </a>
                                     <!-- Restaurant List Box Starts -->
-                                    @empty
-                                        <div>No Record Found!</div>
-                                        @endforeach
+                                @empty
+                                    <div>No Record Found!</div>
+                                @endforelse
 
                             </div>
                         </div>
