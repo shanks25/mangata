@@ -583,6 +583,9 @@ class OrderResource extends Controller
             if ($request->ajax()) {
                 return $Order;
             }
+
+            dd($Order->shop->latitude);
+
             return view('user.orders.confirm', compact('Order'));
         } catch (ModelNotFoundException $e) {
             if ($request->ajax()) {
