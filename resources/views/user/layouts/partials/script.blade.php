@@ -1102,11 +1102,6 @@
 
         function initMap() {
 
-            map = new google.maps.Map(document.getElementById('my_map'), {
-                center: userLocation,
-                zoom: 15
-            });
-
             var userLocation = new google.maps.LatLng(
                 13.066239,
                 80.274816
@@ -1116,13 +1111,18 @@
 
                 var lat = {!! $Order->shop->latitude !!};
 
-                var lng =
-                        {!! $Order->shop->longitude !!}
+                var lng = {!! $Order->shop->longitude !!};
 
                 var userLocation = new google.maps.LatLng(
                     lat, lng
-                    );
+                );
             }
+
+
+            map = new google.maps.Map(document.getElementById('my_map'), {
+                center: userLocation,
+                zoom: 15
+            });
 
             var service = new google.maps.places.PlacesService(map);
             var autocomplete = new google.maps.places.Autocomplete(input);
