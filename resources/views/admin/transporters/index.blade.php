@@ -59,8 +59,7 @@
                                             No Image
                                         @endif
                                     </td>
-                                    <td> 10</td>
-                                    <td> 10</td>
+
                                     <td class="star">
                                         <?php for ($i = 1; $i <= $User->rating; $i++) {
                                             echo '<i class="fa fa-star" aria-hidden="true"></i>';
@@ -70,6 +69,9 @@
                                         }
                                         ?>
                                     </td>
+
+                                    <td> 10</td>
+                                    <td> 10</td>
 
                                     <td>
                                         @if ($User->is_active)
