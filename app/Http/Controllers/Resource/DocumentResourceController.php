@@ -19,7 +19,7 @@ class DocumentResourceController extends Controller
         //
         $transporterDocs = TransporterDocument::where('transporter_id', $id)->first();
 
-//        dd($transporterDocs);
+        dd($transporterDocs);
 
         if ($transporterDocs) {
             return view('admin.transporters.documents.index', compact('transporterDocs'));
