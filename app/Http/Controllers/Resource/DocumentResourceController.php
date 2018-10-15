@@ -94,17 +94,16 @@ class DocumentResourceController extends Controller
             ->find($id);
 
         if ($document) {
+
             $document->status = 'ACTIVE';
             $document->save();
+
         } else {
-            return redirect()
-                ->route('admin.provider.document.index', $provider)
-                ->with('flash_error', 'Provider not found!');
+            return redirect()->back()->withErrors('Provider not found!');
         }
 
         return redirect()
-            ->route('admin.provider.document.index', $provider)
-            ->with('flash_success', 'Provider document has been approved.');
+            ->back()->with('flash_success', 'Provider document has been approved.');
 
     }
 
