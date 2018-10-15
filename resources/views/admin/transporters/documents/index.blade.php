@@ -25,7 +25,7 @@
                             <thead>
                             <tr>
                                 <th>@lang('transporter.index.sl_no')</th>
-                                <th>Document Type </th>
+                                <th>Document Type</th>
                                 <th>Status</th>
                                 <th>@lang('transporter.index.action')</th>
                             </tr>
@@ -33,7 +33,7 @@
                             <tbody>
                             @forelse($transporterDocs as $key => $transporterDoc)
                                 <tr>
-                                    <td>{{$key + 1}}</td>
+                                    <td>{{  $transporterDoc->id }}</td>
                                     <td>{{$transporterDoc->document->name}}</td>
                                     <td>{{$transporterDoc['status']}}</td>
                                     <td>
