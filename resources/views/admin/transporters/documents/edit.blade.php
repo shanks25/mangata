@@ -8,7 +8,8 @@
         <div class="card-body collapse in">
             <div class="card-block">
                 <form class="form-horizontal" role="form" method="POST"
-                      action="{{ route('admin.transporters.update', $User->id) }}" enctype="multipart/form-data">
+                      action="{{ route('admin.transporters.document.update', $transporter->id , $transporterDoc->id) }}"
+                      enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
 
