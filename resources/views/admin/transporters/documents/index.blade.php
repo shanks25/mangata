@@ -33,9 +33,9 @@
                             <tbody>
                             @forelse($transporterDocs as $key => $transporterDoc)
                                 <tr>
-                                    <td>{{$key+1}}</td>
-                                    <td>{{$transporterDoc->name}}</td>
-                                    <td>{{$transporterDoc->status}}</td>
+                                    <td>{{$key + 1}}</td>
+                                    <td>{{$transporterDoc['name']}}</td>
+                                    <td>{{$transporterDoc->['status']}}</td>
                                     <td>
 
                                         <a href="{{ route('admin.transporters.edit', $transporterDoc->id) }}"
