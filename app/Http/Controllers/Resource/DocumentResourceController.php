@@ -72,7 +72,6 @@ class DocumentResourceController extends Controller
     public function edit($transporter_id, $id)
     {
 
-        dd($transporter_id);
 
         $transporter = Transporter::find($transporter_id);
 
@@ -81,6 +80,7 @@ class DocumentResourceController extends Controller
             ->where('document_id', $id)
             ->get();
 
+        dd($transporterDoc);
 
         //
         return view('admin.transporters.documents.edit', compact('transporterDoc', 'transporter'));
