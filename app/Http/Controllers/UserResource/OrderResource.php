@@ -60,9 +60,6 @@ class OrderResource extends Controller
             if ($request->segment(1) == 'payments') {
                 return view('user.orders.payments', compact('Orders'));
             } else {
-
-                dd($Orders);
-
                 return view('user.orders.index', compact('Orders'));
             }
         } catch (Exception $e) {
