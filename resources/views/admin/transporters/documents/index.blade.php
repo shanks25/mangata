@@ -38,21 +38,21 @@
                                     <td>{{$transporterDoc['status']}}</td>
                                     <td>
 
-                                        <a href="{{ route('admin.transporters.edit', $transporterDoc['id']) }}"
+                                        <a href="{{ route('admin.transporters.docs.edit', $transporterDoc['id']) }}"
                                            class="table-btn btn btn-icon btn-success"><i
                                                     class="fa fa-pencil-square-o"></i></a>
 
-                                        <button class="table-btn btn btn-icon btn-danger"
-                                                form="resource-delete-{{ $transporterDoc['id'] }}"><i
-                                                    class="fa fa-trash-o"></i>
-                                        </button>
+                                        {{--<button class="table-btn btn btn-icon btn-danger"--}}
+                                        {{--form="resource-delete-{{ $transporterDoc['id'] }}"><i--}}
+                                        {{--class="fa fa-trash-o"></i>--}}
+                                        {{--</button>--}}
 
-                                        <form id="resource-delete-{{ $transporterDoc['id'] }}"
-                                              action="{{ route('admin.transporters.destroy', $transporterDoc['id'])}}"
-                                              method="POST">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                        </form>
+                                        {{--<form id="resource-delete-{{ $transporterDoc['id'] }}"--}}
+                                        {{--action="{{ route('admin.transporters.destroy', $transporterDoc['id'])}}"--}}
+                                        {{--method="POST">--}}
+                                        {{--{{ csrf_field() }}--}}
+                                        {{--{{ method_field('DELETE') }}--}}
+                                        {{--</form>--}}
                                     </td>
                                 </tr>
                             @empty
