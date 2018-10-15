@@ -375,7 +375,7 @@
 
                                 @foreach($Shops as $Shop)
 
-                                    <p> {{ $Shops->count() }} </p>
+                                    <p> {{ $Shops->toArray() }} </p>
 
                                     <!-- Restaurant List Box Starts -->
                                     <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"
