@@ -46,7 +46,7 @@
         <!-- Foot Bottom Starts -->
         <div class="foot-btm row">
             <div class="col-md-4">
-                <div class="foot-logo"><img src="{{ Setting::get('site_logo',asset('assets/user/img/logo.png'))}}">
+                <div class="foot-logo"><img src="{{ asset('images/footer-image.png') }}">
                 </div>
             </div>
             <div class="col-md-4 text-center">
