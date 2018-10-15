@@ -14,8 +14,19 @@
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
 
+
                     <div class="form-group col-xs-12 mb-2 contact-repeater">
-                        <label>@lang('transporter.create.status')</label>
+                        <label>Status</label>
+                        <div data-repeater-list="repeater-group">
+                            <div class="input-group mb-1" data-repeater-item>
+                                {{ $transporterDoc->status }}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-xs-12 mb-2 contact-repeater">
+                        <label>Document</label>
                         <div data-repeater-list="repeater-group">
                             <div class="input-group mb-1" data-repeater-item>
                                 <img src="{{ url('storage/' . $transporterDoc->url) }}">
