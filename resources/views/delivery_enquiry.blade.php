@@ -61,20 +61,18 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-xs-12 mb-2">
-                                <div class="form-group row">
-                                    <label class="col-sm-2">Profile Image:</label>
-                                    <div class="col-sm-5">
-                                        <input type="file" accept="image/*" name="avatar" class="dropify form-control"
-                                               id="avatar" aria-describedby="fileHelp">
+                            <div class="form-group row">
+                                <label class="col-sm-2">Profile Image:</label>
+                                <div class="col-sm-5">
+                                    <input type="file" accept="image/*" name="avatar" class="dropify form-control"
+                                           id="avatar" aria-describedby="fileHelp">
 
-                                        @if ($errors->has('address'))
-                                            <span class="help-block">
-                                            <strong>{{ $errors->first('address') }}</strong>
+                                    @if ($errors->has('avatar'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('avatar') }}</strong>
                                              </span>
-                                        @endif
+                                    @endif
 
-                                    </div>
                                 </div>
                             </div>
 

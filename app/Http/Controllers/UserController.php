@@ -123,16 +123,22 @@ class UserController extends Controller
             'email' => 'required|email',
             'phone' => 'required',
             'address' => 'required'
+
         ]);
         try {
 
-            Transporter::create([
+            $transporter = Transporter::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'address' => $request->address,
                 'password' => '12345678'
             ]);
+
+            if ($request->hasFile('avatar')) {
+                $transporter['avatar'] = asset('storage/' . $request->avatar->store('transporter/profile'));
+            }
+
             return back()->with('flash_success', trans('home.delivery_boy.created'));
 
         } catch (Exception $e) {
