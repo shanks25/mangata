@@ -15,7 +15,7 @@
                         <a href="javascript:void(0);" onclick="FBLogin(2);" class="social-login-item"><i
                                     class="ion-social-facebook"></i></a>
                         {{--<a id="sign-in-or-out-button" data-id="login" href="javascript:void(0);"--}}
-                           {{--class="social-reg sign-in-or-out-button social-login-item"><i class="ion-social-google"></i></a>--}}
+                        {{--class="social-reg sign-in-or-out-button social-login-item"><i class="ion-social-google"></i></a>--}}
                         <form id="login_form" action="{{url('social/login')}}" method="post">
                             {{ csrf_field() }}
                             <input type="hidden" id="login_by" value="" name="login_by"/>
@@ -1102,15 +1102,27 @@
 
         function initMap() {
 
+            map = new google.maps.Map(document.getElementById('my_map'), {
+                center: userLocation,
+                zoom: 15
+            });
+
             var userLocation = new google.maps.LatLng(
                 13.066239,
                 80.274816
             );
 
-            map = new google.maps.Map(document.getElementById('my_map'), {
-                center: userLocation,
-                zoom: 15
-            });
+                @if($Order != null) {
+
+                var lat = {!! $Order->shop->latitude !!};
+
+                var lng =
+                        {!! $Order->shop->longitude !!}
+
+                var userLocation = new google.maps.LatLng(
+                    lat, lng
+                    );
+            }
 
             var service = new google.maps.places.PlacesService(map);
             var autocomplete = new google.maps.places.Autocomplete(input);
