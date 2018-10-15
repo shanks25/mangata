@@ -9,7 +9,7 @@ Route::get('transporter/enable/{id}', 'AdminController@enableTransporter')->name
 Route::get('transporter/disable/{id}', 'AdminController@disableTransporter')->name('transporter.disable');
 Route::resource('transporters', 'Resource\TransporterResource');
 Route::get('transporters/{id}/document', 'Resource\DocumentResourceController@index')->name('transporters.docs.index');
-Route::post('transporters/{id}/document/{id}', 'Resource\DocumentResourceController@edit')->name('transporters.docs.edit');
+Route::get('transporters/{id}/document/{id}', 'Resource\DocumentResourceController@edit')->name('transporters.docs.edit');
 Route::post('transporters/{id}/document/{id}', 'Resource\DocumentResourceController@update')->name('transporters.docs.update');
 Route::resource('dispute-user', 'Resource\DisputeUserResource');
 Route::resource('categories', 'Resource\CategoryResource');
