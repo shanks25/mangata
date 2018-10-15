@@ -1102,13 +1102,21 @@
 
         function initMap() {
 
-            // var userLocation = new google.maps.LatLng(
-            //     13.066239,
-            //     80.274816
-            // );
+            var userLocation = new google.maps.LatLng(
+                13.066239,
+                80.274816
+            );
 
+            var sites = {!! json_encode($Order->toArray()) !!};
 
-            {!! @yield('order_map_script') !!}
+            {{--var lat = {!! $Order->shop->latitude !!};--}}
+
+            {{--var lng = {!! $Order->shop->longitude !!};--}}
+
+            {{--userLocation = new google.maps.LatLng(--}}
+                {{--lat, lng--}}
+            {{--);--}}
+
 
             map = new google.maps.Map(document.getElementById('my_map'), {
                 center: userLocation,

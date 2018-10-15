@@ -273,13 +273,3 @@
 
 
 @endsection
-
-@section('order_map_script')
-    var lat = {!! $Order->shop->latitude !!};
-
-    var lng = {!! $Order->shop->longitude !!};
-
-    var userLocation = new google.maps.LatLng(
-    lat, lng
-    );
-@stop
