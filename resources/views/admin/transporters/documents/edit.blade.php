@@ -24,7 +24,8 @@
                     </div>
 
                     <div class="col-xs-12 mb-2">
-                        <a href="{{ route('admin.transporters.docs.index') }}" class="btn btn-warning mr-1">
+                        <a href="{{ route('admin.transporters.docs.index', $transporterDoc->transporter_id) }}"
+                           class="btn btn-warning mr-1">
                             <i class="ft-x"></i> Cancel
                         </a>
                         <button type="submit" class="btn btn-primary">
