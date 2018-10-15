@@ -119,9 +119,9 @@
                     <!-- Feature Block Starts -->
                     <div class="feature-block col-md-4 col-sm-4 col-xs-12">
                         <img src="{{ asset('assets/user/img/feature-1.png')}}" class="feature-img">
-                        <h4 class="feature-tit">No Minimum Order</h4>
-                        <p class="feature-txt">Order in for yourself or for the group, with no restrictions on order
-                            value</p>
+                        <h4 class="feature-tit">Choose Your Restaurant</h4>
+                        <p class="feature-txt">Order in for yourself or for the group, with different cuisine to choose
+                            from.</p>
                     </div>
                     <!-- Feature Block Ends -->
                     <!-- Feature Block Starts -->
