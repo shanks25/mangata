@@ -412,7 +412,7 @@
                         <div role="tabpanel" class="tab-pane fade" id="cost-for-two">
                             <div class="row">
 
-                            @forelse($Shops as $Shop)
+                            @foreach($Shops as $Shop)
 
                                 <!-- Restaurant List Box Starts -->
                                     <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"
@@ -424,78 +424,10 @@
                                             <p class="food-det-txt">{{$Shop->description}}</p>
                                             <div class="food-other-details row">
                                                 <div class="col-xs-3 p-r-0">
-                                                    <span class="food-rating"><i
-                                                                class="ion-android-star"></i> {{$Shop->rating}}</span>
-                                                </div>
-                                                <div class="col-xs-3 text-center">
-                                                    <span class="food-deliver-time food-list-txt">{{$Shop->estimated_delivery_time}}
-                                                        Mins</span>
-                                                </div>
-                                                <!-- <div class="col-xs-6 text-right">
-                                                    <span class="food-quantity-price food-list-txt">$100 for two</span>
-                                                </div> -->
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <!-- Restaurant List Box Starts -->
-                                @empty
-                                    <div>No Record Found!</div>
-                                @endforelse
-
-                            </div>
-                        </div>
-                        <!-- Cost for Two Tab Content Ends -->
-                        <!-- Delivery Time Tab Contetnt Starts -->
-                        <div role="tabpanel" class="tab-pane fade" id="delivery-time">
-                            <div class="row">
-                            @forelse($Shops as $Shop)
-                                <!-- Restaurant List Box Starts -->
-                                    <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"
-                                       class="food-item-box col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="food-img bg-img"
-                                             style="background-image: url({{$Shop->avatar}});"></div>
-                                        <div class="food-details">
-                                            <h6 class="food-det-tit">{{$Shop->name}}</h6>
-                                            <p class="food-det-txt">{{$Shop->description}}</p>
-                                            <div class="food-other-details row">
-                                                <div class="col-xs-3 p-r-0">
-                                                    <span class="food-rating"><i
-                                                                class="ion-android-star"></i> {{$Shop->rating}}</span>
-                                                </div>
-                                                <div class="col-xs-3 text-center">
-                                                    <span class="food-deliver-time food-list-txt">{{$Shop->estimated_delivery_time}}
-                                                        Mins</span>
-                                                </div>
-                                                <!-- <div class="col-xs-6 text-right">
-                                                    <span class="food-quantity-price food-list-txt">$100 for two</span>
-                                                </div> -->
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <!-- Restaurant List Box Starts -->
-                                @empty
-                                    <div>No Record Found!</div>
-                                @endforelse
-
-                            </div>
-                        </div>
-                        <!-- Delivery Time Tab Content Ends -->
-                        <!-- Rating Tab Contetnt Starts -->
-                        <div role="tabpanel" class="tab-pane fade" id="rating">
-                            <div class="row">
-                            @forelse($Shops as $Shop)
-                                <!-- Restaurant List Box Starts -->
-                                    <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"
-                                       class="food-item-box col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="food-img bg-img"
-                                             style="background-image: url({{$Shop->avatar}});"></div>
-                                        <div class="food-details">
-                                            <h6 class="food-det-tit">{{$Shop->name}}</h6>
-                                            <p class="food-det-txt">{{$Shop->description}}</p>
-                                            <div class="food-other-details row">
-                                                <div class="col-xs-3 p-r-0">
-                                                    <span class="food-rating"><i
-                                                                class="ion-android-star"></i>{{$Shop->rating}}</span>
+                                                    <span class="food-rating">
+                                                        <i class="ion-android-star"></i>
+                                                        {{$Shop->rating}}
+                                                    </span>
                                                 </div>
                                                 <div class="col-xs-3 text-center">
                                                     <span class="food-deliver-time food-list-txt">{{$Shop->estimated_delivery_time}}
@@ -508,9 +440,175 @@
                                         </div>
                                     </a>
                                     <!-- Restaurant List Box Starts -->
-                                @empty
                                     <div>No Record Found!</div>
-                                @endforelse
+                                @endforeach
+
+
+                                {{--@forelse($Shops as $Shop)--}}
+
+                                {{--<!-- Restaurant List Box Starts -->--}}
+                                    {{--<a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"--}}
+                                       {{--class="food-item-box col-lg-4 col-md-6 col-sm-6 col-xs-12">--}}
+                                        {{--<div class="food-img bg-img"--}}
+                                             {{--style="background-image: url({{$Shop->avatar}});"></div>--}}
+                                        {{--<div class="food-details">--}}
+                                            {{--<h6 class="food-det-tit">{{$Shop->name}}</h6>--}}
+                                            {{--<p class="food-det-txt">{{$Shop->description}}</p>--}}
+                                            {{--<div class="food-other-details row">--}}
+                                                {{--<div class="col-xs-3 p-r-0">--}}
+                                                    {{--<span class="food-rating"><i--}}
+                                                                {{--class="ion-android-star"></i> {{$Shop->rating}}</span>--}}
+                                                {{--</div>--}}
+                                                {{--<div class="col-xs-3 text-center">--}}
+                                                    {{--<span class="food-deliver-time food-list-txt">{{$Shop->estimated_delivery_time}}--}}
+                                                        {{--Mins</span>--}}
+                                                {{--</div>--}}
+                                                {{--<!-- <div class="col-xs-6 text-right">--}}
+                                                    {{--<span class="food-quantity-price food-list-txt">$100 for two</span>--}}
+                                                {{--</div> -->--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</a>--}}
+                                    {{--<!-- Restaurant List Box Starts -->--}}
+                                {{--@empty--}}
+                                    {{--<div>No Record Found!</div>--}}
+                                {{--@endforelse--}}
+
+                            </div>
+                        </div>
+                        <!-- Cost for Two Tab Content Ends -->
+                        <!-- Delivery Time Tab Contetnt Starts -->
+                        <div role="tabpanel" class="tab-pane fade" id="delivery-time">
+                            <div class="row">
+
+                            @foreach($Shops as $Shop)
+
+                                <!-- Restaurant List Box Starts -->
+                                    <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"
+                                       class="food-item-box col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="food-img bg-img"
+                                             style="background-image: url({{$Shop->avatar}});"></div>
+                                        <div class="food-details">
+                                            <h6 class="food-det-tit">{{$Shop->name}}</h6>
+                                            <p class="food-det-txt">{{$Shop->description}}</p>
+                                            <div class="food-other-details row">
+                                                <div class="col-xs-3 p-r-0">
+                                                    <span class="food-rating">
+                                                        <i class="ion-android-star"></i>
+                                                        {{$Shop->rating}}
+                                                    </span>
+                                                </div>
+                                                <div class="col-xs-3 text-center">
+                                                    <span class="food-deliver-time food-list-txt">{{$Shop->estimated_delivery_time}}
+                                                        Mins</span>
+                                                </div>
+                                                <!--  <div class="col-xs-6 text-right">
+                                                     <span class="food-quantity-price food-list-txt">$100 for two</span>
+                                                 </div> -->
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- Restaurant List Box Starts -->
+                                    <div>No Record Found!</div>
+                                @endforeach
+
+
+                                {{--@forelse($Shops as $Shop)--}}
+                                {{--<!-- Restaurant List Box Starts -->--}}
+                                    {{--<a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"--}}
+                                       {{--class="food-item-box col-lg-4 col-md-6 col-sm-6 col-xs-12">--}}
+                                        {{--<div class="food-img bg-img"--}}
+                                             {{--style="background-image: url({{$Shop->avatar}});"></div>--}}
+                                        {{--<div class="food-details">--}}
+                                            {{--<h6 class="food-det-tit">{{$Shop->name}}</h6>--}}
+                                            {{--<p class="food-det-txt">{{$Shop->description}}</p>--}}
+                                            {{--<div class="food-other-details row">--}}
+                                                {{--<div class="col-xs-3 p-r-0">--}}
+                                                    {{--<span class="food-rating"><i--}}
+                                                                {{--class="ion-android-star"></i> {{$Shop->rating}}</span>--}}
+                                                {{--</div>--}}
+                                                {{--<div class="col-xs-3 text-center">--}}
+                                                    {{--<span class="food-deliver-time food-list-txt">{{$Shop->estimated_delivery_time}}--}}
+                                                        {{--Mins</span>--}}
+                                                {{--</div>--}}
+                                                {{--<!-- <div class="col-xs-6 text-right">--}}
+                                                    {{--<span class="food-quantity-price food-list-txt">$100 for two</span>--}}
+                                                {{--</div> -->--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</a>--}}
+                                    {{--<!-- Restaurant List Box Starts -->--}}
+                                {{--@empty--}}
+                                    {{--<div>No Record Found!</div>--}}
+                                {{--@endforelse--}}
+
+                            </div>
+                        </div>
+                        <!-- Delivery Time Tab Content Ends -->
+                        <!-- Rating Tab Contetnt Starts -->
+                        <div role="tabpanel" class="tab-pane fade" id="rating">
+                            <div class="row">
+
+                            @foreach($Shops as $Shop)
+
+                                <!-- Restaurant List Box Starts -->
+                                    <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"
+                                       class="food-item-box col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="food-img bg-img"
+                                             style="background-image: url({{$Shop->avatar}});"></div>
+                                        <div class="food-details">
+                                            <h6 class="food-det-tit">{{$Shop->name}}</h6>
+                                            <p class="food-det-txt">{{$Shop->description}}</p>
+                                            <div class="food-other-details row">
+                                                <div class="col-xs-3 p-r-0">
+                                                    <span class="food-rating">
+                                                        <i class="ion-android-star"></i>
+                                                        {{$Shop->rating}}
+                                                    </span>
+                                                </div>
+                                                <div class="col-xs-3 text-center">
+                                                    <span class="food-deliver-time food-list-txt">{{$Shop->estimated_delivery_time}}
+                                                        Mins</span>
+                                                </div>
+                                                <!--  <div class="col-xs-6 text-right">
+                                                     <span class="food-quantity-price food-list-txt">$100 for two</span>
+                                                 </div> -->
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- Restaurant List Box Starts -->
+                                    <div>No Record Found!</div>
+                                @endforeach
+
+
+                                {{--@forelse($Shops as $Shop)--}}
+                                {{--<!-- Restaurant List Box Starts -->--}}
+                                    {{--<a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"--}}
+                                       {{--class="food-item-box col-lg-4 col-md-6 col-sm-6 col-xs-12">--}}
+                                        {{--<div class="food-img bg-img"--}}
+                                             {{--style="background-image: url({{$Shop->avatar}});"></div>--}}
+                                        {{--<div class="food-details">--}}
+                                            {{--<h6 class="food-det-tit">{{$Shop->name}}</h6>--}}
+                                            {{--<p class="food-det-txt">{{$Shop->description}}</p>--}}
+                                            {{--<div class="food-other-details row">--}}
+                                                {{--<div class="col-xs-3 p-r-0">--}}
+                                                    {{--<span class="food-rating"><i--}}
+                                                                {{--class="ion-android-star"></i>{{$Shop->rating}}</span>--}}
+                                                {{--</div>--}}
+                                                {{--<div class="col-xs-3 text-center">--}}
+                                                    {{--<span class="food-deliver-time food-list-txt">{{$Shop->estimated_delivery_time}}--}}
+                                                        {{--Mins</span>--}}
+                                                {{--</div>--}}
+                                                {{--<!--  <div class="col-xs-6 text-right">--}}
+                                                     {{--<span class="food-quantity-price food-list-txt">$100 for two</span>--}}
+                                                 {{--</div> -->--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</a>--}}
+                                    {{--<!-- Restaurant List Box Starts -->--}}
+                                {{--@empty--}}
+                                    {{--<div>No Record Found!</div>--}}
+                                {{--@endforelse--}}
 
                             </div>
                         </div>
