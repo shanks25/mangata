@@ -371,6 +371,9 @@
                         <!-- Relevance Tab Contetnt Starts -->
                         <div role="tabpanel" class="tab-pane fade in active" id="relevance">
                             <div class="row">
+
+                                <p> {{ $Shops->count() }} </p>
+
                             @foreach($Shops as $Shop)
 
                                 <!-- Restaurant List Box Starts -->
@@ -406,10 +409,9 @@
                         <!-- Cost for Two Tab Contetnt Starts -->
                         <div role="tabpanel" class="tab-pane fade" id="cost-for-two">
                             <div class="row">
+
                             @forelse($Shops as $Shop)
 
-                                <?php dd($Shop) ?>
-                                
                                 <!-- Restaurant List Box Starts -->
                                     <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"
                                        class="food-item-box col-lg-4 col-md-6 col-sm-6 col-xs-12">
