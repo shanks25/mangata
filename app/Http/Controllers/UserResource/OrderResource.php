@@ -61,7 +61,7 @@ class OrderResource extends Controller
                 return view('user.orders.payments', compact('Orders'));
             } else {
 
-                dd($Orders);
+//                dd($Orders);
 
                 return view('user.orders.index', compact('Orders'));
             }
