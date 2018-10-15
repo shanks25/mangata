@@ -1107,7 +1107,8 @@
             //     80.274816
             // );
 
-            @if ($Order != null)
+            {!! @if ($Order != null)  !!}
+
                 var lat = {!! $Order->shop->latitude !!};
 
                 var lng = {!! $Order->shop->longitude !!};
@@ -1116,7 +1117,7 @@
                     lat, lng
                 );
 
-            @endif
+            {!! @endif  !!}
 
             map = new google.maps.Map(document.getElementById('my_map'), {
                 center: userLocation,
