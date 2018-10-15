@@ -116,14 +116,23 @@ class UserController extends Controller
         return view('delivery_enquiry');
     }
 
+    public function partner()
+    {
+        return view('delivery_enquiry');
+    }
+
+    public function partnerStore()
+    {
+
+    }
+
     public function delivery_store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
-            'address' => 'required'
-
+            'address' => 'required',
         ]);
         try {
 
@@ -147,7 +156,6 @@ class UserController extends Controller
 
             return back()->with('flash_error', trans('form.whoops'));
         }
-
 
     }
 

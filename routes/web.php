@@ -50,6 +50,9 @@ Route::get('/search', 'WelcomeController@search');
 Route::get('/enquiry-delivery', 'UserController@delivery');
 Route::post('/enquiry-delivery', 'UserController@delivery_store');
 
+Route::get('/partner', 'UserController@partner');
+Route::post('partner', 'UserController@partnerStore');
+
 Route::get('auth/facebook', 'SocialLoginController@redirectToFaceBook');
 Route::get('auth/facebook/callback', 'SocialLoginController@handleFacebookCallback');
 Route::get('auth/google', 'SocialLoginController@redirectToGoogle');
