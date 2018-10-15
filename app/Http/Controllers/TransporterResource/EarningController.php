@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\TransporterResource;
 
+use App\Order;
 use App\OrderInvoice;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -27,11 +28,10 @@ class EarningController extends Controller
                         $q->where('orders.status', 'COMPLETED');
                     })->sum('net');
 
-                $Order_total_tip = OrderInvoice::withTrashed()->with('orders')
-                    ->whereHas('orders', function ($q) use ($id) {
-                        $q->where('orders.shift_id', $id);
-                        $q->where('orders.status', 'COMPLETED');
-                    })->get();
+                $Order_total_tip = Order::withTrashed()
+                    ->where('orders.shift_id', $id)
+                    ->where('orders.status', 'COMPLETED')
+                    ->sum('tip');
 
                 dd($Order_total_tip);
 
