@@ -62,36 +62,21 @@
                             </div>
 
                             <div class="form-group col-xs-12 mb-2">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Address:</label>
-                                        <input id="pac-input" type="text" class="form-control" name="address" required
-                                               placeholder="Address" value="{{old('address')}}"/>
-                                        <input type="hidden" id="latitude" name="latitude" value="{{ old('latitude') }}"
-                                               readonly required>
-                                        <input type="hidden" id="longitude" name="longitude"
-                                               value="{{ old('longitude') }}" readonly required>
-                                        @if ($errors->has('home_address'))
-                                            <span class="help-block">
-                                <strong>{{ $errors->first('home_address') }}</strong>
-                            </span>
-                                        @endif
-                                    </div>
-                                    <div class="form-group">
+                                <div class="form-group row">
+                                    <label class="col-sm-2">@lang('home.delivery_boy.address')</label>
+                                    <div class="col-sm-5">
                                         <label>Profile Image:</label>
 
                                         <input type="file" accept="image/*" name="avatar" class="dropify form-control"
                                                id="avatar" aria-describedby="fileHelp">
 
-                                        @if ($errors->has('document'))
+                                        @if ($errors->has('address'))
                                             <span class="help-block">
-                                    <strong>{{ $errors->first('document') }}</strong>
-                                </span>
+                                            <strong>{{ $errors->first('address') }}</strong>
+                                             </span>
                                         @endif
+
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div id="map" style="height:400px;"></div>
                                 </div>
                             </div>
 
