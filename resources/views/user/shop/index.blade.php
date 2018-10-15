@@ -372,11 +372,12 @@
                         <div role="tabpanel" class="tab-pane fade in active" id="relevance">
                             <div class="row">
 
-                                <p> {{ $Shops->count() }} </p>
 
-                            @foreach($Shops as $Shop)
+                                @foreach($Shops as $Shop)
 
-                                <!-- Restaurant List Box Starts -->
+                                    <p> {{ $Shops->count() }} </p>
+
+                                    <!-- Restaurant List Box Starts -->
                                     <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"
                                        class="food-item-box col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                         <div class="food-img bg-img"
@@ -386,8 +387,10 @@
                                             <p class="food-det-txt">{{$Shop->description}}</p>
                                             <div class="food-other-details row">
                                                 <div class="col-xs-3 p-r-0">
-                                                    <span class="food-rating"><i
-                                                                class="ion-android-star"></i> {{$Shop->rating}}</span>
+                                                    <span class="food-rating">
+                                                        <i class="ion-android-star"></i>
+                                                        {{$Shop->rating}}
+                                                    </span>
                                                 </div>
                                                 <div class="col-xs-3 text-center">
                                                     <span class="food-deliver-time food-list-txt">{{$Shop->estimated_delivery_time}}
