@@ -22,9 +22,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="form-group col-xs-12 mb-2">
-                        <textarea rows="5" class="form-control" name="Address" placeholder="Address"></textarea>
-                    </div> -->
+
                     <div class="col-xs-12 mb-2">
                         <a href="{{ route('admin.transporters.docs.index') }}" class="btn btn-warning mr-1">
                             <i class="ft-x"></i> Cancel
