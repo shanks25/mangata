@@ -1107,16 +1107,13 @@
                 80.274816
             );
 
-            var sites = {!! json_encode($Order->toArray()) !!};
+            var orders = {!! json_encode($Order->toArray()) !!};
 
-            {{--var lat = {!! $Order->shop->latitude !!};--}}
-
-            {{--var lng = {!! $Order->shop->longitude !!};--}}
-
-            {{--userLocation = new google.maps.LatLng(--}}
-                {{--lat, lng--}}
-            {{--);--}}
-
+            if (orders != null) {
+                userLocation = new google.maps.LatLng(
+                    orders['shop']['latitude'], orders['shop']['longitude']
+                );
+            }
 
             map = new google.maps.Map(document.getElementById('my_map'), {
                 center: userLocation,
