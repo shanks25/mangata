@@ -118,7 +118,19 @@ class UserController extends Controller
 
     public function partner()
     {
-        return view('partner');
+
+        $Days = [
+            'ALL' => 'Everyday',
+            'SUN' => 'Sunday',
+            'MON' => 'Monday',
+            'TUE' => 'Tuesday',
+            'WED' => 'Wednesday',
+            'THU' => 'Thursday',
+            'FRI' => 'Friday',
+            'SAT' => 'Saturday'
+        ];
+
+        return view('partner', compact('Days'));
     }
 
     public function partnerStore()
