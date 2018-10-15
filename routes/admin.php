@@ -10,7 +10,7 @@ Route::get('transporter/disable/{id}', 'AdminController@disableTransporter')->na
 Route::resource('transporters', 'Resource\TransporterResource');
 Route::get('transporters/{id}/document', 'Resource\DocumentResourceController@index')->name('transporters.docs.index');
 Route::get('transporters/document/{document_id}', 'Resource\DocumentResourceController@edit')->name('transporters.docs.edit');
-Route::post('transporters/{id}/document/{document_id}', 'Resource\DocumentResourceController@update')->name('transporters.docs.update');
+Route::patch('transporters/{id}/document/{document_id}', 'Resource\DocumentResourceController@update')->name('transporters.docs.update');
 Route::resource('dispute-user', 'Resource\DisputeUserResource');
 Route::resource('categories', 'Resource\CategoryResource');
 Route::get('subcategory', 'Resource\CategoryResource@subcategory');
