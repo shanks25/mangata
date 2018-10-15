@@ -86,9 +86,9 @@
                                     </td>
 
                                     <td>
-                                        {{--<a class="table-btn btn btn-icon btn-danger"--}}
-                                           {{--href="{{ route('admin.transporters.docs.index', $User->id) }}">Documents--}}
-                                        {{--</a>--}}
+                                        <a class="table-btn btn btn-icon btn-danger"
+                                           href="{{ route('admin.transporters.docs.index', $User->id) }}">Documents
+                                        </a>
 
                                         @if($User->status =='unsettled')
                                             <button class="table-btn btn btn-icon btn-danger"
