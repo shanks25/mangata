@@ -38,7 +38,7 @@
                                     <td>{{$transporterDoc['status']}}</td>
                                     <td>
 
-                                        <a href="{{ route('admin.transporters.docs.edit', $transporterDoc['id']) }}"
+                                        <a href="{{ route('admin.transporters.docs.edit', $id, $transporterDoc['id']) }}"
                                            class="table-btn btn btn-icon btn-success"><i
                                                     class="fa fa-pencil-square-o"></i></a>
 

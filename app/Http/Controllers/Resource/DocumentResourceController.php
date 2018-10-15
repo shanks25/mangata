@@ -22,7 +22,7 @@ class DocumentResourceController extends Controller
 //        dd($transporterDocs);
 
         if ($transporterDocs) {
-            return view('admin.transporters.documents.index', compact('transporterDocs'));
+            return view('admin.transporters.documents.index', compact('transporterDocs', 'id'));
         } else {
             return redirect()->back()->withErrors('Transporter does not have any documents');
         }
@@ -67,9 +67,16 @@ class DocumentResourceController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($transporter_id, $id)
     {
         //
+        $transporterDoc = TransporterDocument::where('transporter_id', $transporter_id)
+            ->where('document_id')
+            ->get();
+
+        //
+        return view('edi');
+
     }
 
     /**
