@@ -372,6 +372,7 @@
                         <div role="tabpanel" class="tab-pane fade in active" id="relevance">
                             <div class="row">
                             @foreach($Shops as $Shop)
+
                                 <!-- Restaurant List Box Starts -->
                                     <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"
                                        class="food-item-box col-lg-4 col-md-6 col-sm-6 col-xs-12">
@@ -397,7 +398,7 @@
                                     </a>
                                     <!-- Restaurant List Box Starts -->
                                     <div>No Record Found!</div>
-                            @endforelse
+                            @endforeach
 
                             </div>
                         </div>
