@@ -372,10 +372,9 @@
                         <div role="tabpanel" class="tab-pane fade in active" id="relevance">
                             <div class="row">
 
+                                <p> {{ $Shops->toArray() }} </p>
 
                                 @foreach($Shops as $Shop)
-
-                                    <p> {{ $Shops->toArray() }} </p>
 
                                     <!-- Restaurant List Box Starts -->
                                     <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"
