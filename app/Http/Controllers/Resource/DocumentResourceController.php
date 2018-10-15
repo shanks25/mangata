@@ -87,9 +87,25 @@ class DocumentResourceController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $provider, $id)
     {
         //
+        $document = TransporterDocument::where('provider_id', $provider)
+            ->find($id);
+
+        if ($document) {
+            $document->status = 'ACTIVE';
+            $document->save();
+        } else {
+            return redirect()
+                ->route('admin.provider.document.index', $provider)
+                ->with('flash_error', 'Provider not found!');
+        }
+
+        return redirect()
+            ->route('admin.provider.document.index', $provider)
+            ->with('flash_success', 'Provider document has been approved.');
+
     }
 
     /**
