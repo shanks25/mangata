@@ -35,20 +35,20 @@
                                 <tr>
                                     <td>{{$key + 1}}</td>
                                     <td>{{$transporterDoc['name']}}</td>
-                                    <td>{{$transporterDoc->['status']}}</td>
+                                    <td>{{$transporterDoc['status']}}</td>
                                     <td>
 
-                                        <a href="{{ route('admin.transporters.edit', $transporterDoc->id) }}"
+                                        <a href="{{ route('admin.transporters.edit', $transporterDoc['id']) }}"
                                            class="table-btn btn btn-icon btn-success"><i
                                                     class="fa fa-pencil-square-o"></i></a>
 
                                         <button class="table-btn btn btn-icon btn-danger"
-                                                form="resource-delete-{{ $transporterDoc->id }}"><i
+                                                form="resource-delete-{{ $transporterDoc['id'] }}"><i
                                                     class="fa fa-trash-o"></i>
                                         </button>
 
-                                        <form id="resource-delete-{{ $transporterDoc->id }}"
-                                              action="{{ route('admin.transporters.destroy', $transporterDoc->id)}}"
+                                        <form id="resource-delete-{{ $transporterDoc['id'] }}"
+                                              action="{{ route('admin.transporters.destroy', $transporterDoc['id'])}}"
                                               method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
