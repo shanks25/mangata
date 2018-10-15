@@ -46,20 +46,20 @@
                             </div>
 
                             {{--<div class="form-group{{ $errors->has('cuisine_id') ? ' has-error' : '' }}">--}}
-                                {{--<label for="parent_id">@lang('shop.create.cuisine')</label>--}}
+                            {{--<label for="parent_id">@lang('shop.create.cuisine')</label>--}}
 
-                                {{--<select class="form-control" multiple id="cuisine_id" name="cuisine_id[]">--}}
-                                    {{--@foreach(\App\Cuisine::list() as $Indx => $Cuisine)--}}
-                                        {{--<option value="{{ $Cuisine->id }}"--}}
-                                                {{--@if($Indx==0) selected="selected" @endif >{{ $Cuisine->name }}</option>--}}
-                                    {{--@endforeach--}}
-                                {{--</select>--}}
+                            {{--<select class="form-control" multiple id="cuisine_id" name="cuisine_id[]">--}}
+                            {{--@foreach(\App\Cuisine::list() as $Indx => $Cuisine)--}}
+                            {{--<option value="{{ $Cuisine->id }}"--}}
+                            {{--@if($Indx==0) selected="selected" @endif >{{ $Cuisine->name }}</option>--}}
+                            {{--@endforeach--}}
+                            {{--</select>--}}
 
-                                {{--@if ($errors->has('cuisine_id'))--}}
-                                    {{--<span class="help-block">--}}
-                                    {{--<strong>{{ $errors->first('cuisine_id') }}</strong>--}}
-                                {{--</span>--}}
-                                {{--@endif--}}
+                            {{--@if ($errors->has('cuisine_id'))--}}
+                            {{--<span class="help-block">--}}
+                            {{--<strong>{{ $errors->first('cuisine_id') }}</strong>--}}
+                            {{--</span>--}}
+                            {{--@endif--}}
                             {{--</div>--}}
 
                             <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
@@ -259,156 +259,156 @@
     </div>
 @endsection
 
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('assets/admin/plugins/clockpicker/dist/bootstrap-clockpicker.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/admin/plugins/dropify/dist/css/dropify.min.css') }}">
-@endsection
+{{--@section('styles')--}}
+    {{--<link rel="stylesheet" href="{{ asset('assets/admin/plugins/clockpicker/dist/bootstrap-clockpicker.min.css') }}">--}}
+    {{--<link rel="stylesheet" href="{{ asset('assets/admin/plugins/dropify/dist/css/dropify.min.css') }}">--}}
+{{--@endsection--}}
 
-@section('scripts')
-    <script type="text/javascript"
-            src="{{ asset('assets/admin/plugins/clockpicker/dist/bootstrap-clockpicker.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/admin/plugins/dropify/dist/js/dropify.min.js') }}"></script>
-    <script type="text/javascript">
-        function disableEnterKey(e) {
-            var key;
-            if (window.e)
-                key = window.e.keyCode; // IE
-            else
-                key = e.which; // Firefox
+{{--@section('scripts')--}}
+    {{--<script type="text/javascript"--}}
+            {{--src="{{ asset('assets/admin/plugins/clockpicker/dist/bootstrap-clockpicker.min.js') }}"></script>--}}
+    {{--<script type="text/javascript" src="{{ asset('assets/admin/plugins/dropify/dist/js/dropify.min.js') }}"></script>--}}
+    {{--<script type="text/javascript">--}}
+        {{--function disableEnterKey(e) {--}}
+            {{--var key;--}}
+            {{--if (window.e)--}}
+                {{--key = window.e.keyCode; // IE--}}
+            {{--else--}}
+                {{--key = e.which; // Firefox--}}
 
-            if (key == 13)
-                return e.preventDefault();
-        }
+            {{--if (key == 13)--}}
+                {{--return e.preventDefault();--}}
+        {{--}--}}
 
-        $('.clockpicker').clockpicker({
-            donetext: "Done"
-        });
-        $('.dropify').dropify();
-        $('#everyday').change(function () {
-            if ($(this).is(":checked")) {
-                $('.everyday').show();
-                $('.singleday').hide();
-                $('.singleday .chk').prop('checked', false);
-                $('.everyday .chk').prop('checked', true);
-            } else {
-                $('.everyday').hide();
-                $('.singleday').show();
-                $('.everyday .chk').prop('checked', false);
-                $('.singleday .chk').prop('checked', true);
-            }
-        });
-    </script>
-    <script>
-        var map;
-        var input = document.getElementById('pac-input');
-        var latitude = document.getElementById('latitude');
-        var longitude = document.getElementById('longitude');
-        var address = document.getElementById('address');
+        {{--$('.clockpicker').clockpicker({--}}
+            {{--donetext: "Done"--}}
+        {{--});--}}
+        {{--$('.dropify').dropify();--}}
+        {{--$('#everyday').change(function () {--}}
+            {{--if ($(this).is(":checked")) {--}}
+                {{--$('.everyday').show();--}}
+                {{--$('.singleday').hide();--}}
+                {{--$('.singleday .chk').prop('checked', false);--}}
+                {{--$('.everyday .chk').prop('checked', true);--}}
+            {{--} else {--}}
+                {{--$('.everyday').hide();--}}
+                {{--$('.singleday').show();--}}
+                {{--$('.everyday .chk').prop('checked', false);--}}
+                {{--$('.singleday .chk').prop('checked', true);--}}
+            {{--}--}}
+        {{--});--}}
+    {{--</script>--}}
+    {{--<script>--}}
+        {{--var map;--}}
+        {{--var input = document.getElementById('pac-input');--}}
+        {{--var latitude = document.getElementById('latitude');--}}
+        {{--var longitude = document.getElementById('longitude');--}}
+        {{--var address = document.getElementById('address');--}}
 
-        function initMap() {
+        {{--function initMap() {--}}
 
-            var userLocation = new google.maps.LatLng(
-                13.0796758,
-                80.2696968
-            );
+            {{--var userLocation = new google.maps.LatLng(--}}
+                {{--13.0796758,--}}
+                {{--80.2696968--}}
+            {{--);--}}
 
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: userLocation,
-                zoom: 15
-            });
+            {{--map = new google.maps.Map(document.getElementById('map'), {--}}
+                {{--center: userLocation,--}}
+                {{--zoom: 15--}}
+            {{--});--}}
 
-            var service = new google.maps.places.PlacesService(map);
-            var autocomplete = new google.maps.places.Autocomplete(input);
-            var infowindow = new google.maps.InfoWindow();
+            {{--var service = new google.maps.places.PlacesService(map);--}}
+            {{--var autocomplete = new google.maps.places.Autocomplete(input);--}}
+            {{--var infowindow = new google.maps.InfoWindow();--}}
 
-            autocomplete.bindTo('bounds', map);
+            {{--autocomplete.bindTo('bounds', map);--}}
 
-            var infowindow = new google.maps.InfoWindow({
-                content: "Shop Location",
-            });
+            {{--var infowindow = new google.maps.InfoWindow({--}}
+                {{--content: "Shop Location",--}}
+            {{--});--}}
 
-            var marker = new google.maps.Marker({
-                map: map,
-                draggable: true,
-                anchorPoint: new google.maps.Point(0, -29)
-            });
+            {{--var marker = new google.maps.Marker({--}}
+                {{--map: map,--}}
+                {{--draggable: true,--}}
+                {{--anchorPoint: new google.maps.Point(0, -29)--}}
+            {{--});--}}
 
-            marker.setVisible(true);
-            marker.setPosition(userLocation);
-            infowindow.open(map, marker);
+            {{--marker.setVisible(true);--}}
+            {{--marker.setPosition(userLocation);--}}
+            {{--infowindow.open(map, marker);--}}
 
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (location) {
-                    var userLocation = new google.maps.LatLng(
-                        location.coords.latitude,
-                        location.coords.longitude
-                    );
-                    marker.setPosition(userLocation);
-                    map.setCenter(userLocation);
-                    map.setZoom(13);
-                });
-            }
+            {{--if (navigator.geolocation) {--}}
+                {{--navigator.geolocation.getCurrentPosition(function (location) {--}}
+                    {{--var userLocation = new google.maps.LatLng(--}}
+                        {{--location.coords.latitude,--}}
+                        {{--location.coords.longitude--}}
+                    {{--);--}}
+                    {{--marker.setPosition(userLocation);--}}
+                    {{--map.setCenter(userLocation);--}}
+                    {{--map.setZoom(13);--}}
+                {{--});--}}
+            {{--}--}}
 
-            google.maps.event.addListener(map, 'click', updateMarker);
-            google.maps.event.addListener(marker, 'dragend', updateMarker);
+            {{--google.maps.event.addListener(map, 'click', updateMarker);--}}
+            {{--google.maps.event.addListener(marker, 'dragend', updateMarker);--}}
 
-            function updateMarker(event) {
-                var geocoder = new google.maps.Geocoder();
-                geocoder.geocode({'latLng': event.latLng}, function (results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        if (results[0]) {
-                            input.value = results[0].formatted_address;
-                            updateForm(event.latLng.lat(), event.latLng.lng(), results[0].formatted_address);
-                        } else {
-                            alert('No Address Found');
-                        }
-                    } else {
-                        alert('Geocoder failed due to: ' + status);
-                    }
-                });
+            {{--function updateMarker(event) {--}}
+                {{--var geocoder = new google.maps.Geocoder();--}}
+                {{--geocoder.geocode({'latLng': event.latLng}, function (results, status) {--}}
+                    {{--if (status == google.maps.GeocoderStatus.OK) {--}}
+                        {{--if (results[0]) {--}}
+                            {{--input.value = results[0].formatted_address;--}}
+                            {{--updateForm(event.latLng.lat(), event.latLng.lng(), results[0].formatted_address);--}}
+                        {{--} else {--}}
+                            {{--alert('No Address Found');--}}
+                        {{--}--}}
+                    {{--} else {--}}
+                        {{--alert('Geocoder failed due to: ' + status);--}}
+                    {{--}--}}
+                {{--});--}}
 
-                marker.setPosition(event.latLng);
-                map.setCenter(event.latLng);
-            }
+                {{--marker.setPosition(event.latLng);--}}
+                {{--map.setCenter(event.latLng);--}}
+            {{--}--}}
 
-            autocomplete.addListener('place_changed', function (event) {
-                marker.setVisible(false);
-                var place = autocomplete.getPlace();
+            {{--autocomplete.addListener('place_changed', function (event) {--}}
+                {{--marker.setVisible(false);--}}
+                {{--var place = autocomplete.getPlace();--}}
 
-                if (place.hasOwnProperty('place_id')) {
-                    if (!place.geometry) {
-                        window.alert("Autocomplete's returned place contains no geometry");
-                        return;
-                    }
-                    updateLocation(place.geometry.location);
-                } else {
-                    service.textSearch({
-                        query: place.name
-                    }, function (results, status) {
-                        if (status == google.maps.places.PlacesServiceStatus.OK) {
-                            updateLocation(results[0].geometry.location, results[0].formatted_address);
-                            input.value = results[0].formatted_address;
-                        }
-                    });
-                }
-            });
+                {{--if (place.hasOwnProperty('place_id')) {--}}
+                    {{--if (!place.geometry) {--}}
+                        {{--window.alert("Autocomplete's returned place contains no geometry");--}}
+                        {{--return;--}}
+                    {{--}--}}
+                    {{--updateLocation(place.geometry.location);--}}
+                {{--} else {--}}
+                    {{--service.textSearch({--}}
+                        {{--query: place.name--}}
+                    {{--}, function (results, status) {--}}
+                        {{--if (status == google.maps.places.PlacesServiceStatus.OK) {--}}
+                            {{--updateLocation(results[0].geometry.location, results[0].formatted_address);--}}
+                            {{--input.value = results[0].formatted_address;--}}
+                        {{--}--}}
+                    {{--});--}}
+                {{--}--}}
+            {{--});--}}
 
-            function updateLocation(location) {
-                map.setCenter(location);
-                marker.setPosition(location);
-                marker.setVisible(true);
-                infowindow.open(map, marker);
-                updateForm(location.lat(), location.lng(), input.value);
-            }
+            {{--function updateLocation(location) {--}}
+                {{--map.setCenter(location);--}}
+                {{--marker.setPosition(location);--}}
+                {{--marker.setVisible(true);--}}
+                {{--infowindow.open(map, marker);--}}
+                {{--updateForm(location.lat(), location.lng(), input.value);--}}
+            {{--}--}}
 
-            function updateForm(lat, lng, addr) {
-                console.log(lat, lng, addr);
-                latitude.value = lat;
-                longitude.value = lng;
-                address.value = addr;
-            }
-        }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{Setting::get('GOOGLE_MAP_KEY')}}&libraries=places&callback=initMap"
-            async defer></script>
-@endsection
+            {{--function updateForm(lat, lng, addr) {--}}
+                {{--console.log(lat, lng, addr);--}}
+                {{--latitude.value = lat;--}}
+                {{--longitude.value = lng;--}}
+                {{--address.value = addr;--}}
+            {{--}--}}
+        {{--}--}}
+    {{--</script>--}}
+    {{--<script src="https://maps.googleapis.com/maps/api/js?key={{Setting::get('GOOGLE_MAP_KEY')}}&libraries=places&callback=initMap"--}}
+            {{--async defer></script>--}}
+{{--@endsection--}}
