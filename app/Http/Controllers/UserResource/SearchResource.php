@@ -79,6 +79,9 @@ class SearchResource extends Controller
             $Shops_vegiterian = clone $Shops;
             //print_r(DB::getQueryLog()); exit;
 //            $Shops = $Shops->get();
+
+            dd($Shops);
+
             $data = [
                 'products' => $Products,
                 'shops' => $Shops
@@ -87,7 +90,6 @@ class SearchResource extends Controller
             if ($request->ajax()) {
                 return $data;
             }
-
 
             if ($request->get('v') == 'grid') {
                 return view('user.shop.index-grid', compact('Shops', 'Cuisines'));
