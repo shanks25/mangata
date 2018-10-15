@@ -8,7 +8,7 @@ Route::resource('users', 'Resource\UserResource');
 Route::get('transporter/enable/{id}', 'AdminController@enableTransporter')->name('transporter.enable');
 Route::get('transporter/disable/{id}', 'AdminController@disableTransporter')->name('transporter.disable');
 Route::resource('transporters', 'Resource\TransporterResource');
-Route::get('transporters/{id}', 'Resource\DocumentResourceController@index')->name('transporters.docs.index');
+Route::get('transporters/{id}/document', 'Resource\DocumentResourceController@index')->name('transporters.docs.index');
 Route::resource('dispute-user', 'Resource\DisputeUserResource');
 Route::resource('categories', 'Resource\CategoryResource');
 Route::get('subcategory', 'Resource\CategoryResource@subcategory');
