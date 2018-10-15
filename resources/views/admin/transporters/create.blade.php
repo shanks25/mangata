@@ -68,7 +68,6 @@
                     <div class="col-md-6">
                         <div id="map" style="height:400px;"></div>
                     </div>
-                    
                 </div>
                 <div class="form-group col-xs-12 mb-2 contact-repeater">
                     <div data-repeater-list="repeater-group">
