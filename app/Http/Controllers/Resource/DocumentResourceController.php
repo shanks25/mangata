@@ -66,6 +66,7 @@ class DocumentResourceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+     * @param $transporter_id
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
