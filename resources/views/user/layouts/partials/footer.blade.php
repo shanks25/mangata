@@ -15,7 +15,7 @@
             <div class="foot-block col-md-3 col-sm-12 col-xs-12">
                 <h5 class="foot-tit">Contact</h5>
                 <div>
-                    <a href="" class="foot-item">Partner with us</a>
+                    <a href="{{ route('partner.index') }}" class="foot-item">Partner with us</a>
                     <a href="{{url('enquiry-delivery')}}" class="foot-item">Become a Courier</a>
                 </div>
             </div>

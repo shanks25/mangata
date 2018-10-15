@@ -118,7 +118,7 @@ class UserController extends Controller
 
     public function partner()
     {
-        return view('delivery_enquiry');
+        return view('partner');
     }
 
     public function partnerStore()
