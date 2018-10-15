@@ -18,7 +18,7 @@
                         <label>@lang('transporter.create.status')</label>
                         <div data-repeater-list="repeater-group">
                             <div class="input-group mb-1" data-repeater-item>
-                                <img src="{{ url('storage' . $transporterDoc->url) }}">
+                                <img src="{{ url('storage/' . $transporterDoc->url) }}">
                             </div>
                         </div>
                     </div>
