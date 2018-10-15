@@ -372,11 +372,11 @@
                         <div role="tabpanel" class="tab-pane fade in active" id="relevance">
                             <div class="row">
 
-                                <p> {{ $Shops->toArray() }} </p>
+                                <p> {{ $Shops->count() }} </p>
 
-                                @foreach($Shops as $Shop)
+                            @foreach($Shops as $Shop)
 
-                                    <!-- Restaurant List Box Starts -->
+                                <!-- Restaurant List Box Starts -->
                                     <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}"
                                        class="food-item-box col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                         <div class="food-img bg-img"
