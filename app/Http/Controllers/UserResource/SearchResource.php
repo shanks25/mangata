@@ -79,9 +79,7 @@ class SearchResource extends Controller
             $Shops_vegiterian = clone $Shops;
             //print_r(DB::getQueryLog()); exit;
 //            $Shops = $Shops->get();
-
-            dd($Shops->count());
-
+            
             $data = [
                 'products' => $Products,
                 'shops' => $Shops
