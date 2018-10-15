@@ -17,6 +17,7 @@
                 <div>
                     <a href="{{ route('partner.index') }}" class="foot-item">Partner with us</a>
                     <a href="{{url('enquiry-delivery')}}" class="foot-item">Become a Courier</a>
+
                 </div>
             </div>
             <!-- Foot Block Ends -->
