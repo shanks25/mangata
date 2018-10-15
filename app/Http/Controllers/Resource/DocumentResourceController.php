@@ -17,7 +17,7 @@ class DocumentResourceController extends Controller
     {
 
         //
-        $transporterDocs = TransporterDocument::where('transporter_id', $id)->first();
+        $transporterDocs = TransporterDocument::where('transporter_id', $id)->get();
 
 //        dd($transporterDocs);
 
