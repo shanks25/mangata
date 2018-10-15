@@ -45,7 +45,7 @@
                         <a href="javascript:void(0);" class="theme-link forgot-link">Forgot Password</a>
 
                         <br> <input type="checkbox" name="terms" id="terms" required>
-                        I Agree <a href="{{ route('terms') }}">Terms & Conditions</a>
+                        I Agree <a href="terms">Terms & Conditions</a>
 
                         <button type="submit" class="login-btn login_btn">Login</button>
                     </form>
