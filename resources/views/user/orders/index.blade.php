@@ -77,7 +77,8 @@
                                             <!-- Order Box Bottom Left Ends -->
                                             <!-- Order Box Bottom Right Starts -->
                                             <div class="order-box-btm-left col-md-3 col-sm-3 col-xs-12 text-right">
-{{--                                                <p class="total-txt">Total {{currencydecimal($Order->invoice->net)}}</p>--}}
+                                                <p class="total-txt">
+                                                    Total {{currencydecimal($Order['invoice']['net'])}}</p>
                                                 @if($Order->status=='COMPLETED')
 
                                                     @if(!$Order->has('reviewrating'))
