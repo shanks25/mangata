@@ -90,7 +90,7 @@ class DocumentResourceController extends Controller
     public function update(Request $request, $provider, $id)
     {
         //
-        $document = TransporterDocument::where('provider_id', $provider)
+        $document = TransporterDocument::where('transporter_id', $provider)
             ->find($id);
 
         if ($document) {
