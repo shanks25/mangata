@@ -80,7 +80,7 @@ class SearchResource extends Controller
             //print_r(DB::getQueryLog()); exit;
 //            $Shops = $Shops->get();
 
-            dd($Shops);
+            dd($Shops->count());
 
             $data = [
                 'products' => $Products,
