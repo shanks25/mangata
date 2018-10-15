@@ -34,7 +34,7 @@
                             @forelse($transporterDocs as $key => $transporterDoc)
                                 <tr>
                                     <td>{{$key + 1}}</td>
-                                    <td>{{$transporterDoc['name']}}</td>
+                                    <td>{{$transporterDoc->document->name}}</td>
                                     <td>{{$transporterDoc['status']}}</td>
                                     <td>
 
