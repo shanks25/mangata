@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Resource;
 
+use App\Transporter;
 use App\TransporterDocument;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,13 +17,15 @@ class DocumentResourceController extends Controller
     public function index($id)
     {
 
+        $transporter = Transporter::find($id);
+
         //
         $transporterDocs = TransporterDocument::where('transporter_id', $id)->get();
 
 //        dd($transporterDocs);
 
         if ($transporterDocs) {
-            return view('admin.transporters.documents.index', compact('transporterDocs', 'id'));
+            return view('admin.transporters.documents.index', compact('transporterDocs', 'transporter'));
         } else {
             return redirect()->back()->withErrors('Transporter does not have any documents');
         }
