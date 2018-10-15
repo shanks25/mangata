@@ -256,7 +256,6 @@
             </form>
         </div>
     </div>
-    </div>
 @endsection
 
 @section('styles')
