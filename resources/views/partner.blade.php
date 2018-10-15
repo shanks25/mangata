@@ -40,7 +40,7 @@
                                    required>
 
                             <h4 class="m-t-0 header-title">
-                                <b>@lang('shop.create.title')</b>
+                                <b>Partner with us</b>
                             </h4>
                             <hr>
 

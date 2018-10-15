@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ShopTiming;
 use App\Transporter;
 use Illuminate\Http\Request;
 use App\Shop;
@@ -162,8 +163,58 @@ class WelcomeController extends Controller
         return view('partner', compact('Days'));
     }
 
-    public function partnerStore()
+    public function partnerStore(Request $request)
     {
+
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:shops',
+            'latitude' => 'required|string|max:255',
+            'longitude' => 'required|string|max:255',
+            'cuisine_id' => 'required|array',
+            'day' => 'required|array',
+            'phone' => 'required|numeric',
+            'password' => 'required|string|min:6|confirmed',
+            'maps_address' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'avatar' => 'required|image|max:2120',
+        ]);
+
+        try {
+            $Shop = $request->all();
+            if ($request->hasFile('avatar')) {
+                $Shop['avatar'] = asset('storage/' . $request->avatar->store('shops'));
+            }
+
+
+            $Shop['password'] = bcrypt($Shop['password']);
+            $Shop = Shop::create($Shop);
+
+            //Cuisine
+            if ($request->has('cuisine_id')) {
+                foreach ($request->cuisine_id as $cuisine) {
+                    $Shop->cuisines()->attach($cuisine);
+                }
+            }
+
+            //ShopTimings
+            if ($request->has('day')) {
+                $start_time = $request->hours_opening;
+                $end_time = $request->hours_closing;
+                foreach ($request->day as $key => $day) {
+                    $timing[] = [
+                        'start_time' => $start_time[$day],
+                        'end_time' => $end_time[$day],
+                        'shop_id' => $Shop->id,
+                        'day' => $day
+                    ];
+                }
+                ShopTiming::insert($timing);
+            }
+            return back()->with('flash_success', trans('Your request submitted successfully.', ['name' => $Shop->name]));
+        } catch (Exception $e) {
+            return back()->with('flash_error', trans('form.whoops'));
+        }
 
     }
 

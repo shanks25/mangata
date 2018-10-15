@@ -1,12 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-*/
-
-
 //Login
 Route::post('/login', 'TransporterAuth\LoginController@login');
 Route::post('/register', 'TransporterAuth\RegisterController@apiRegister');
@@ -27,6 +20,7 @@ Route::group(['middleware' => ['auth:transporterapi']], function () {
     Route::resource('order', 'TransporterResource\OrderResource');
     Route::get('history', 'TransporterResource\OrderResource@history');
     Route::resource('shift', 'TransporterResource\ShiftResource');
+    Route::get('earning', 'TransporterResource\EarningController@index');
     Route::resource('shift/timing', 'TransporterResource\ShifttimingResource');
     Route::resource('dispute', 'Resource\DisputeResource');
     Route::post('/rating', 'TransporterResource\OrderResource@rate_review');
@@ -39,5 +33,5 @@ Route::group(['middleware' => ['auth:transporterapi']], function () {
     Route::post('documents/{id}', 'TransporterResource\DocumentController@uploadDocument');
     Route::get('documents/status', 'TransporterResource\DocumentController@checkSubmittedDocuments');
 
-    
+
 });
