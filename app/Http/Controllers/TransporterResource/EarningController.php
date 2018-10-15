@@ -33,8 +33,6 @@ class EarningController extends Controller
                     ->where('orders.status', 'COMPLETED')
                     ->sum('tip');
 
-                dd($Order_total_tip);
-
                 $TransporterShift[0]->total_amount = (int)$Order_total_amount;
                 $TransporterShift[0]->total_tip = (int)$Order_total_tip;
             }
