@@ -31,7 +31,8 @@ class EarningController extends Controller
                     ->whereHas('orders', function ($q) use ($id) {
                         $q->where('orders.shift_id', $id);
                         $q->where('orders.status', 'COMPLETED');
-                    })->orders()->sum('tip');
+                        $q->sum('tip');
+                    })->get();
 
                 $TransporterShift[0]->total_amount = (int)$Order_total_amount;
                 $TransporterShift[0]->total_tip = (int)$Order_total_tip;
