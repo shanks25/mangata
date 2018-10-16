@@ -30,7 +30,9 @@
                         <div id="login_form_error" class="print-error-msg">
                             <ul class="alert-danger list-unstyled"></ul>
                         </div>
+
                         {{ csrf_field() }}
+
                         <div class="form-group">
                             <label>Phone</label>
                             <input type="text" id="phone" name="phone" class="form-control">
@@ -543,17 +545,17 @@
             $('#signup-sidebar').asidebar('open');
         });
 
-        function termsClicked() {
-            // Get the checkbox
-            var checkBox = document.getElementById("terms");
-
-            // If the checkbox is checked, display the output text
-            if (checkBox.checked === true) {
-                $('.login_btn').disable(false)
-            } else {
-                $('.login_btn').disable(true)
-            }
-        }
+        // function termsClicked() {
+        //     // Get the checkbox
+        //     var checkBox = document.getElementById("terms");
+        //
+        //     // If the checkbox is checked, display the output text
+        //     if (checkBox.checked === true) {
+        //         $('.login_btn').disable(false)
+        //     } else {
+        //         $('.login_btn').disable(true)
+        //     }
+        // }
 
         $('.login_btn').on('click', function () {
 
@@ -565,6 +567,8 @@
                 var password = document.getElementById("password").value;
                 var phoneNumber = document.getElementById("phone").value;
                 var csrf = $("input[name='_token']").val();
+
+                alert(csrf);
 
                 $.ajax({
                     url: "{{url('/login')}}",
