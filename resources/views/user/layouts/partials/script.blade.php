@@ -568,7 +568,6 @@
                 var phoneNumber = document.getElementById("phone").value;
                 var csrf = $("input[name='_token']").val();
 
-                alert(csrf);
 
                 $.ajax({
                     url: "{{url('/login')}}",
