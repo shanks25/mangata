@@ -125,7 +125,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td cols="50">@lang('shop.index.no_record_found')</td>
+                                    <td cols="50">No delivery people available now.</td>
                                 </tr>
                             @endforelse
                             </tbody>

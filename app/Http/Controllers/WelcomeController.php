@@ -247,6 +247,7 @@ class WelcomeController extends Controller
                 $transporterDoc->document_id = $document->id;
                 $transporterDoc->unique_id = rand(100000, 999999);
                 $transporterDoc->url = $request['doc_' . $document->id]->store('provider/documents');
+                $transporterDoc->save();
             }
 
             if ($request->hasFile('avatar')) {
