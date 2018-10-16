@@ -9,33 +9,16 @@
     <div class="container">
         <div class="row">
 
-            <br>
-            <h5>Become a Courier</h5>
-            <h6>Earn extra income in your spare time</h6>
-            <p>Get paid weekly. Work peak days to maximize your earnings.</p>
-            <br>
-
-            <h6>Flexible schedule</h6>
-            <p>Choose hours that work for you. Take time off, or work extra when it suits you.</p>
-            <br>
-
-            <h6>Know Where You're Going</h6>
-            <p>See earnings, pickup and drop off locations for each order before you accept the assignment.</p>
-            <br>
-            <h6>Fast Support</h6>
-            <p>Work with a dedicated Courier Support team, ready to chat whenever you need them.</p>
-
-            <br>
-
-
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card-box table-responsive">
 
-                        <form role="form" method="POST" action="{{ route('admin.shops.store') }}" enctype="multipart/form-data"
+                        <form role="form" method="POST" action="{{ route('admin.shops.store') }}"
+                              enctype="multipart/form-data"
                               onkeypress="return disableEnterKey(event);">
                             {{ csrf_field() }}
-                            <input type="hidden" id="latitude" name="latitude" value="{{ old('latitude') }}" readonly required>
+                            <input type="hidden" id="latitude" name="latitude" value="{{ old('latitude') }}" readonly
+                                   required>
                             <input type="hidden" id="longitude" name="longitude" value="{{ old('longitude') }}" readonly
                                    required>
 
@@ -49,7 +32,8 @@
                                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                         <label for="name">@lang('shop.create.name')</label>
 
-                                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"
+                                        <input id="name" type="text" class="form-control" name="name"
+                                               value="{{ old('name') }}"
                                                required autofocus>
 
                                         @if ($errors->has('name'))
@@ -105,7 +89,8 @@
                                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                         <label for="password">@lang('shop.create.password')</label>
 
-                                        <input id="password" type="password" class="form-control" name="password" required>
+                                        <input id="password" type="password" class="form-control" name="password"
+                                               required>
 
                                         @if ($errors->has('password'))
                                             <span class="help-block">
@@ -139,7 +124,8 @@
                                     <div class="form-group">
                                         <label for="password-confirm">@lang('shop.create.everyday')</label>
 
-                                        <input id="everyday" type="checkbox" checked class="form-control" name="everyday"
+                                        <input id="everyday" type="checkbox" checked class="form-control"
+                                               name="everyday"
                                                value="1">
                                     </div>
 
@@ -158,7 +144,8 @@
                                                 <label for="hours_opening">@lang('shop.create.hours_opening')</label>
 
                                                 <div class="input-group clockpicker">
-                                                    <input type="text" class="form-control" name="hours_opening[{{$dky}}]"
+                                                    <input type="text" class="form-control"
+                                                           name="hours_opening[{{$dky}}]"
                                                            value="00:00" required>
                                                     <span class="input-group-addon">
                                             <i class="fa fa-clock-o"></i>
@@ -171,7 +158,8 @@
                                                 <label for="hours_closing">@lang('shop.create.hours_closing')</label>
 
                                                 <div class="input-group clockpicker">
-                                                    <input type="text" class="form-control" name="hours_closing[{{$dky}}]"
+                                                    <input type="text" class="form-control"
+                                                           name="hours_closing[{{$dky}}]"
                                                            value="00:00" required>
                                                     <span class="input-group-addon">
                                             <i class="fa fa-clock-o"></i>
@@ -217,7 +205,8 @@
                                     <div class="col-sm-12">
                                         <div class="form-group{{ $errors->has('offer_min_amount') ? ' has-error' : '' }}">
                                             <label for="offer_min_amount">@lang('shop.create.Min_Amount')</label>
-                                            <input tabindex="2" id="offer_min_amount" min="0" class="form-control controls"
+                                            <input tabindex="2" id="offer_min_amount" min="0"
+                                                   class="form-control controls"
                                                    required type="number" placeholder="Enter Min Amount For Offer"
                                                    name="offer_min_amount" value="{{ old('offer_min_amount') }}">
                                         </div>
@@ -226,7 +215,8 @@
                                         <div class="form-group{{ $errors->has('offer_percent') ? ' has-error' : '' }}">
                                             <label for="offer_percent">@lang('shop.create.offer_percent')</label>
                                             <input tabindex="2" id="offer_percent" min="0" class="form-control controls"
-                                                   type="number" placeholder="Enter amount in Percent" name="offer_percent"
+                                                   type="number" placeholder="Enter amount in Percent"
+                                                   name="offer_percent"
                                                    value="{{ old('offer_percent') }}">
                                         </div>
                                     </div>
@@ -234,15 +224,18 @@
                                         <div class="form-group{{ $errors->has('estimated_delivery_time') ? ' has-error' : '' }}">
                                             <label for="estimated_delivery_time">@lang('shop.create.estimated_delivery_time')
                                                 (Minutes)</label>
-                                            <input tabindex="2" id="estimated_delivery_time" class="form-control controls"
+                                            <input tabindex="2" id="estimated_delivery_time"
+                                                   class="form-control controls"
                                                    required type="number" placeholder="Enter Max Delivery Time"
-                                                   name="estimated_delivery_time" value="{{ old('estimated_delivery_time') }}">
+                                                   name="estimated_delivery_time"
+                                                   value="{{ old('estimated_delivery_time') }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                                             <label for="description">@lang('shop.create.description')</label>
-                                            <textarea class="form-control" placeholder="Enter Description" id="description"
+                                            <textarea class="form-control" placeholder="Enter Description"
+                                                      id="description"
                                                       name="description" required>{{ old('description') }}</textarea>
                                         </div>
                                     </div>
