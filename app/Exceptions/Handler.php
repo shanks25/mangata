@@ -47,7 +47,7 @@ class Handler extends ExceptionHandler
         if($request->ajax()){
             return parent::render($request, $exception);
         }
-        if($exception->getStatusCode())
+        if($exception->getCode())
         {
                 return response()->view('errors.404', [], $exception->getStatusCode());
             
