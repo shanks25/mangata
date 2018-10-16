@@ -84,6 +84,9 @@ class ShopResource extends Controller
             }
             return view(Route::currentRouteName(), compact('Shops'));
         } catch (Exception $e) {
+
+            dd($e);
+
             if ($request->ajax()) {
                 return response()->json(['error' => trans('form.whoops')], 500);
             }
