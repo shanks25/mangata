@@ -31,8 +31,8 @@ class TransporterResource extends Controller
 
     public function enquiry()
     {
-        $Users = Transporter::with('orders')->where('is_active', 1)->get();
-        return view(Route::currentRouteName(), compact('Users'));
+        $Users = Transporter::with('orders')->where('is_active', 0)->get();
+        return view('shop.transporters.index', compact('Users'));
     }
 
     /**
