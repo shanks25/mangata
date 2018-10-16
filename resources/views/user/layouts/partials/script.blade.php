@@ -44,7 +44,7 @@
                         <div class="print-error-msg alert-danger error_password"></div>
                         <a href="javascript:void(0);" class="theme-link forgot-link">Forgot Password</a>
 
-                        <br> <input type="checkbox" name="terms" id="terms" required>
+                        <br> <input type="checkbox" name="terms" id="terms" onclick="termsClicked()" required>
                         I Agree <a href="terms">Terms & Conditions</a>
 
                         <button type="submit" class="login-btn login_btn">Login</button>
@@ -539,11 +539,26 @@
             $("#register_form #login_by").val('');
             $('#signup-sidebar').asidebar('open');
         });
+
+        function termsClicked() {
+            // Get the checkbox
+            var checkBox = document.getElementById("terms");
+
+            // If the checkbox is checked, display the output text
+            if (checkBox.checked === true) {
+                $('.login_btn').disable(false)
+            } else {
+                $('.login_btn').disable(true)
+            }
+        }
+
         $('.login_btn').on('click', function () {
+
+
             var password = document.getElementById("password").value;
             var phoneNumber = document.getElementById("phone").value;
             var csrf = $("input[name='_token']").val();
-            ;
+
             $.ajax({
                 url: "{{url('/login')}}",
                 type: 'POST',
