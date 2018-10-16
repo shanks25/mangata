@@ -554,34 +554,41 @@
 
         $('.login_btn').on('click', function () {
 
+            // Get the checkbox
+            var checkBox = document.getElementById("terms");
 
-            var password = document.getElementById("password").value;
-            var phoneNumber = document.getElementById("phone").value;
-            var csrf = $("input[name='_token']").val();
+            if (checkBox.checked === true) {
 
-            $.ajax({
-                url: "{{url('/login')}}",
-                type: 'POST',
-                data: {phone: phoneNumber, password: password, '_token': csrf},
-                success: function (data) {
-                    if ($('#latitude_cur').val()) {
-                        $('#my_map_form_current').submit();
-                    } else {
-                        location.reload();
+                var password = document.getElementById("password").value;
+                var phoneNumber = document.getElementById("phone").value;
+                var csrf = $("input[name='_token']").val();
+
+                $.ajax({
+                    url: "{{url('/login')}}",
+                    type: 'POST',
+                    data: {phone: phoneNumber, password: password, '_token': csrf},
+                    success: function (data) {
+                        if ($('#latitude_cur').val()) {
+                            $('#my_map_form_current').submit();
+                        } else {
+                            location.reload();
+                        }
+                    },
+                    error: function (jqXhr, status) {
+                        if (jqXhr.status === 422) {
+                            $("#myLogin .print-error-msg").html('');
+                            $("#myLogin .print-error-msg").show();
+                            var errors = jqXhr.responseJSON;
+                            console.log(errors);
+                            $.each(errors, function (key, value) {
+                                $("#myLogin").find(".error_" + key).html(value);
+                            });
+                        }
                     }
-                },
-                error: function (jqXhr, status) {
-                    if (jqXhr.status === 422) {
-                        $("#myLogin .print-error-msg").html('');
-                        $("#myLogin .print-error-msg").show();
-                        var errors = jqXhr.responseJSON;
-                        console.log(errors);
-                        $.each(errors, function (key, value) {
-                            $("#myLogin").find(".error_" + key).html(value);
-                        });
-                    }
-                }
-            });
+                });
+
+            }
+
         });
         $('.register_btn').on('click', function () {
             var csrf = $("input[name='_token']").val();
