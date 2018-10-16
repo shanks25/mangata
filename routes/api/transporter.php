@@ -21,7 +21,7 @@ Route::group(['middleware' => ['auth:transporterapi']], function () {
     Route::get('history', 'TransporterResource\OrderResource@history');
     Route::resource('shift', 'TransporterResource\ShiftResource');
     Route::get('earning', 'TransporterResource\EarningController@index');
-    Route::get('status', 'TransporterResource\EarningController@status');
+    Route::get('status', 'TransporterResource\EarningController@checkStatus');
     Route::resource('shift/timing', 'TransporterResource\ShifttimingResource');
     Route::resource('dispute', 'Resource\DisputeResource');
     Route::post('/rating', 'TransporterResource\OrderResource@rate_review');

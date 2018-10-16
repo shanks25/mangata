@@ -42,6 +42,25 @@ class EarningController extends Controller
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => trans('form.whoops')], 500);
         } catch (Exception $e) {
+            return response()->json(['error' => trans('form.whoops')], 500);
+        }
+    }
+
+    //
+    public function checkStatus(Request $request)
+    {
+        try {
+            $transporter = $request->user();
+
+            if ($transporter->is_active) {
+                return response()->json(['success' => 'Transporter is activated.']);
+            } else {
+                return response()->json(['error' => 'Transporter is not activated.']);
+            }
+
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => trans('form.whoops')], 500);
+        } catch (Exception $e) {
             dd($e);
             return response()->json(['error' => trans('form.whoops')], 500);
         }
