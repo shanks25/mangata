@@ -58,7 +58,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td cols="50">@lang('shop.index.no_record_found')</td>
+                                    <td cols="50">No document uploaded.</td>
                                 </tr>
                             @endforelse
                             </tbody>
