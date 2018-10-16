@@ -332,7 +332,6 @@
                 type: 'POST',
                 headers: {
                     "X-Requested-With": "XMLHttpRequest",
-                    'X-XSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data: {
                     phone: phoneNumber,
@@ -367,6 +366,9 @@
                                 $("#register_form .common").find('ul').removeClass('alert-success').addClass('alert-danger');
                             }
                             $("#register_form").find(".error_" + key).html(value);
+
+                            alert(value);
+
                         });
                     }
                 }
