@@ -12,8 +12,8 @@
                 <div class="login-form-sec">
                     <h5 class="login-tit">Login</h5>
                     <div class="social-login">
-                        <a href="javascript:void(0);" onclick="FBLogin(2);" class="social-login-item"><i
-                                    class="ion-social-facebook"></i></a>
+                        {{--<a href="javascript:void(0);" onclick="FBLogin(2);" class="social-login-item"><i--}}
+                                    {{--class="ion-social-facebook"></i></a>--}}
                         {{--<a id="sign-in-or-out-button" data-id="login" href="javascript:void(0);"--}}
                         {{--class="social-reg sign-in-or-out-button social-login-item"><i class="ion-social-google"></i></a>--}}
                         <form id="login_form" action="{{url('social/login')}}" method="post">
@@ -98,8 +98,8 @@
                     {{ csrf_field() }}
 
                     <div class="social-login">
-                        <a href="javascript:void(0);" onclick="FBLogin(1);" class="social-login-item"><i
-                                    class="ion-social-facebook"></i></a>
+                        {{--<a href="javascript:void(0);" onclick="FBLogin(1);" class="social-login-item"><i--}}
+                                    {{--class="ion-social-facebook"></i></a>--}}
                         {{--<a id="sign-in-or-out-button" data-id="register" href="javascript:void(0);"--}}
                         {{--class="social-reg sign-in-or-out-button social-login-item"><i class="ion-social-google"></i></a>--}}
                     </div>
