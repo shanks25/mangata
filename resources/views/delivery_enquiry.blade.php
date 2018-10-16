@@ -96,7 +96,7 @@
                                 </div>
                             </div>
 
-                            <h3>Upload Document to Verify:</h3>
+                            <h4>Upload Document to Verify:</h4>
 
                             @foreach (\App\Document::all() as $document)
                                 <div class="form-group row">
