@@ -37,6 +37,8 @@
                     <ul class="menu-content">
                         <li><a href="{{ route('admin.shops.index') }}"
                                class="menu-item">@lang('menu.admin.list_restaurant')</a></li>
+                        <li><a href="{{ route('admin.shope.enquiry') }}"
+                               class="menu-item">Shop Enquiry Request</a></li>
                         <li><a href="{{ route('admin.shops.create') }}"
                                class="menu-item">@lang('menu.admin.add_restaurant')</a></li>
                     </ul>

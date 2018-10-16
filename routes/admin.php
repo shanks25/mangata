@@ -22,7 +22,7 @@ Route::resource('products', 'Resource\ProductResource');
 Route::delete('productimage/{id}', 'Resource\ProductResource@imagedestroy')->name('productimage.destroy');
 Route::resource('orders', 'Resource\OrderResource');
 Route::resource('shops', 'Resource\ShopResource');
-Route::get('shope/enquiry', 'Resource\ShopResource@enquiry');
+Route::get('shope/enquiry', 'Resource\ShopResource@enquiry')->name('shope.enquiry');
 Route::resource('zones', 'Resource\ZoneResource');
 Route::resource('cuisines', 'Resource\CuisineResource');
 Route::resource('demoapp', 'ManageappController');
