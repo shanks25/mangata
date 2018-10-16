@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Resource;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -34,6 +35,9 @@ class TransporterResource extends Controller
         $Users = Transporter::with('orders')
             ->where('is_active', 0)
             ->get();
+
+        dd($Users);
+
         return view(Route::currentRouteName(), compact('Users'));
     }
 
