@@ -76,6 +76,23 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                @foreach (\App\Document::all() as $document)
+                                    <label class="col-sm-2">Upload Documents:</label>
+                                    <div class="col-sm-5">
+                                        <input type="file" accept="image/*" name="{{ 'doc_' . $document->id }}"
+                                               class="dropify form-control"
+                                               id="{{ 'doc_' . $document->id }}" aria-describedby="fileHelp">
+
+                                        @if ($errors->has('doc_' . $document->id))
+                                            <span class="help-block">
+                                            <strong>{{ $errors->first('doc_' . $document->id) }}</strong>
+                                             </span>
+                                        @endif
+
+                                    </div>
+                                @endforeach
+                            </div>
 
                             <button class="submit">Submit</button>
                         </form>

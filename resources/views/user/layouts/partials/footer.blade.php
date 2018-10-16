@@ -16,7 +16,7 @@
                 <h5 class="foot-tit">Contact</h5>
                 <div>
                     <a href="{{ route('partner.index') }}" class="foot-item">Partner with us</a>
-                    <a href="{{url('enquiry-delivery')}}" class="foot-item">Become a Courier</a>
+                    <a href="{{ url('enquiry-delivery') }}" class="foot-item">Become a Courier</a>
 
                 </div>
             </div>

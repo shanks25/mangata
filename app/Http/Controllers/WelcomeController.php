@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Document;
 use App\ShopTiming;
 use App\Transporter;
+use App\TransporterDocument;
 use Illuminate\Http\Request;
 use App\Shop;
 use App\EnquiryTransporter;
 use App\User;
 use App\Order;
 use App\newsletter;
+use Illuminate\Support\Facades\Storage;
 use Session;
 use App\Http\Controllers\Resource\ShopResource;
 
@@ -235,6 +238,16 @@ class WelcomeController extends Controller
                 'address' => $request->address,
                 'password' => '12345678'
             ]);
+
+            $documents = Document::all();
+
+            foreach ($documents as $document) {
+                $transporterDoc = new TransporterDocument();
+                $transporterDoc->transporter_id = $transporter->id;
+                $transporterDoc->document_id = $document->id;
+                $transporterDoc->unique_id = rand(100000, 999999);
+                $transporterDoc->url = $request['doc_' . $document->id]->store('provider/documents');
+            }
 
             if ($request->hasFile('avatar')) {
                 $transporter['avatar'] = asset('storage/' . $request->avatar->store('transporter/profile'));
