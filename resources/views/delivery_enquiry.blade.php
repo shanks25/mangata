@@ -96,6 +96,8 @@
                                 </div>
                             </div>
 
+                            <h3>Upload Document to Verify:</h3>
+
                             @foreach (\App\Document::all() as $document)
                                 <div class="form-group row">
                                     <label class="col-sm-2">Upload Documents {{ $document->name }}:</label>
