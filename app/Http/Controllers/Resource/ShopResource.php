@@ -82,10 +82,8 @@ class ShopResource extends Controller
             if ($request->ajax()) {
                 return ['shops' => $Shops, 'banners' => $BannerImage, 'currency' => Setting::get('currency')];
             }
-            return view('admin.transporters.enquiry', compact('Shops'));
+            return view('admin.shops.enquiry', compact('Shops'));
         } catch (Exception $e) {
-
-            dd($e);
 
             if ($request->ajax()) {
                 return response()->json(['error' => trans('form.whoops')], 500);
