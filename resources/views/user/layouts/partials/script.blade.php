@@ -25,7 +25,7 @@
 
                         </form>
                     </div>
-                    <div class="or">OR</div>
+                    {{--<div class="or">OR</div>--}}
                     <form role="form" method="POST" action="{{ route('login') }}" class="popup-form" id="myLogin">
                         <div id="login_form_error" class="print-error-msg">
                             <ul class="alert-danger list-unstyled"></ul>
@@ -104,7 +104,7 @@
                         {{--class="social-reg sign-in-or-out-button social-login-item"><i class="ion-social-google"></i></a>--}}
                     </div>
 
-                    <div class="or">OR</div>
+                    {{--<div class="or">OR</div>--}}
 
                     <div class="print-error-msg common">
                         <ul class="alert-success list-unstyled">
