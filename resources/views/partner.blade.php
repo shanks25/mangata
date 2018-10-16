@@ -1,9 +1,5 @@
 @extends('user.layouts.app')
 
-@section('styles')
-
-@stop
-
 @section('content')
     <!-- Content ================================================== -->
     <div class="container">
@@ -154,7 +150,6 @@
                                         </div>
                                 </div>
                                 @endforeach
-
                                 <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
                                     <label for="avatar">@lang('shop.create.image')</label>
 
@@ -277,6 +272,9 @@
     <script type="text/javascript"
             src="{{ asset('assets/admin/plugins/clockpicker/dist/bootstrap-clockpicker.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/admin/plugins/dropify/dist/js/dropify.min.js') }}"></script>
+
+    <script src="{{ asset('assets/js/scripts.js') }}" type="text/javascript"></script>
+
     <script type="text/javascript">
         function disableEnterKey(e) {
             var key;
