@@ -32,7 +32,7 @@
                                         <div class="col-md-6">
                                             <div class="wallet-money-inner row m-0">
                                                 <div class="foodie-money pull-left">
-                                                    <span>Foodie Money : {{currencydecimal(Auth::user()->wallet_balance)}}</span>
+                                                    <span>DTK Money : {{currencydecimal(Auth::user()->wallet_balance)}}</span>
                                                 </div>
                                                 <div class="statement pull-right">
                                                     <!--  <a href="#statement-modal" class="theme-link state-link" data-toggle="modal" data-target="#statement-modal">View Statement</a> -->

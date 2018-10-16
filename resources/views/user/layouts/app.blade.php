@@ -87,7 +87,7 @@
                     <li>
                         <a href="mailto: info@ditchthekitch.ca?subject=Enquiry For Catering" class="btn btn-danger"
                            style="background: #ec6f5b; color: white">
-                            Enquiry For Catering</a>
+                            Catering Inquiry</a>
                     </li>
 
 
