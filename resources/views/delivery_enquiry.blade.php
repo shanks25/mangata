@@ -98,7 +98,7 @@
 
                             <div class="form-group row">
                                 @foreach (\App\Document::all() as $document)
-                                    <label class="col-sm-2">Upload Documents:</label>
+                                    <label class="col-sm-2">Upload Documents {{ $document->name }}:</label>
                                     <div class="col-sm-5">
                                         <input type="file" accept="image/*" name="{{ 'doc_' . $document->id }}"
                                                class="dropify form-control"
