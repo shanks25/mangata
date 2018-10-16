@@ -6,7 +6,7 @@
         <div class="col-xs-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">@lang('transporter.index.title')</h4>
+                    <h4 class="card-title">@lang('transporter.index.enquiry')</h4>
                     <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
                         <ul class="list-inline mb-0">
@@ -125,7 +125,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td cols="50">@lang('shop.index.no_record_found')</td>
+                                    <td cols="50">No enquiry today</td>
                                 </tr>
                             @endforelse
                             </tbody>

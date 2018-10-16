@@ -10,6 +10,7 @@ return [
 
     'index' => [
         'title' => 'Delivery People List',
+        'enquiry' => 'Delivery Enquiry List',
         'add_transporter' => 'Add Delivery People',
         'sl_no' => 'Sl.No',
         'name' => 'Name',

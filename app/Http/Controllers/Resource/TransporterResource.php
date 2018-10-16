@@ -26,7 +26,10 @@ class TransporterResource extends Controller
      */
     public function index()
     {
-        $Users = Transporter::with('orders')->get();
+        $Users = Transporter::with('orders')
+            ->where('is_active', 0)
+            ->get();
+        
         return view(Route::currentRouteName(), compact('Users'));
     }
 
@@ -36,7 +39,7 @@ class TransporterResource extends Controller
             ->where('is_active', 0)
             ->get();
 
-        return view('admin.transporters.index', compact('Users'));
+        return view('admin.transporters.enquiry', compact('Users'));
     }
 
     /**
