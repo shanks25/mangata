@@ -59,10 +59,7 @@ class ShopResource extends Controller
     public function enquiry(Request $request)
     {
         try {
-            $Shops = $this->filter($request);
-            $Shops = $Shops->where('status', 'onboarding')
-                ->get();
-
+            $Shops = $this->filterEnquiry($request);
             dd($Shops);
 
             if ($request->has('latitude') && $request->has('longitude')) {
@@ -399,6 +396,66 @@ class ShopResource extends Controller
         if ($request->segment(1) == 'restaurants') {
             return $Shops;
         }
+        return $Shops->get();
+    }
+
+    public function filterEnquiry(Request $request)
+    {
+
+        \Log::info($request);
+        $distance = Setting::get('search_distance');
+        $user_id = $request->get('user_id') ?: null;
+        $cat = $request->get('cat') ?: null;
+        $subcat = $request->get('subcat') ?: null;
+        $prodname = $request->get('prodname') ?: null;
+        if ($request->has('q')) {
+            $prodname = $request->q;
+        }
+
+        $prodtype = $request->get('prodtype') ?: null;
+        if (Setting::get('SUB_CATEGORY') == 1) {
+            $Shops = Shop::listsubcategory($user_id, $cat, $subcat);
+        } else {
+            //\DB::enableQueryLog();
+            $Shops = Shop::list($user_id, $cat, $prodname, $prodtype);
+        }
+        /*dd(\DB::getQueryLog());exit;
+        return $Shops;*/
+        // near by location
+        if ($request->has('latitude') && $request->has('longitude')) {
+            $longitude = $request->longitude;
+            $latitude = $request->latitude;
+            if (Setting::get('search_distance') > 0) {
+                $Shops->select('shops.*')
+                    ->selectRaw("(6371 * acos( cos( radians('$latitude') ) * cos( radians(latitude) ) * cos( radians(longitude) - radians('$longitude') ) + sin( radians('$latitude') ) * sin( radians(latitude) ) ) ) AS distance")
+                    ->whereRaw("(6371 * acos( cos( radians('$latitude') ) * cos( radians(latitude) ) * cos( radians(longitude) - radians('$longitude') ) + sin( radians('$latitude') ) * sin( radians(latitude) ) ) ) <= $distance");
+                $Shops->where('status', 'active');
+                $Shops->orderBy('distance', 'asc');
+            }
+        }
+        // pureveg wise search
+        if ($request->has('pure_veg')) {
+            $Shops->where('pure_veg', $request->pure_veg);
+        }
+        // offers wise search
+        if ($request->has('offer')) {
+            $Shops->WhereNotNull('offer_percent');
+        }
+        // cuisine miltiple wise search
+        if ($request->has('cuisine')) {
+            $Shops->whereHas('cuisines', function ($query) use ($request) {
+                $query->whereIn('cuisines.id', $request->cuisine);
+            });
+        }
+        if ($request->has('name')) {
+            $Shops->where('name', 'LIKE', '%' . $request->name . '%');
+        }
+        if ($request->segment(1) == 'restaurants') {
+            return $Shops;
+        }
+
+        $Shops->where('status', 'onboarding');
+
         return $Shops->get();
     }
 }
