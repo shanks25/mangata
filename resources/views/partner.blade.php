@@ -106,21 +106,6 @@
                                                name="password_confirmation" required>
                                     </div>
 
-                                    <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
-                                        <label for="parent_id">@lang('shop.create.status')</label>
-                                        <select class="form-control" id="status" name="status">
-                                            <option value="onboarding">Onboarding</option>
-                                            <option value="banned">Banned</option>
-                                            <option value="active">Active</option>
-                                        </select>
-
-                                        @if ($errors->has('status'))
-                                            <span class="help-block">
-                                    <strong>{{ $errors->first('status') }}</strong>
-                                </span>
-                                        @endif
-                                    </div>
-
                                     <div class="form-group">
                                         <label for="password-confirm">@lang('shop.create.everyday')</label>
 

@@ -36,6 +36,8 @@ class TransporterResource extends Controller
             ->where('is_active', 0)
             ->get();
 
+        dd($Users);
+
         return view(Route::currentRouteName(), compact('Users'));
     }
 
