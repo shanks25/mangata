@@ -60,7 +60,6 @@ class ShopResource extends Controller
     {
         try {
             $Shops = $this->filterEnquiry($request);
-            dd($Shops);
 
             if ($request->has('latitude') && $request->has('longitude')) {
                 $longitude = $request->longitude;
