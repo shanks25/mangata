@@ -552,7 +552,7 @@ class AdminController extends Controller
             $user->is_active = true;
             $user->save();
 
-            return back()->with('flash_success', trans('form.resource.updated'));
+            return back()->with('flash_success', 'Activated successfully.');
 
         } else {
 
@@ -571,7 +571,7 @@ class AdminController extends Controller
             $user->is_active = false;
             $user->save();
 
-            return back()->with('flash_success', trans('form.resource.updated'));
+            return back()->with('flash_success', 'Deactivated successfully.');
 
         } else {
 
