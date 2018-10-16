@@ -34,7 +34,7 @@ class TransporterResource extends Controller
         $Users = Transporter::with('orders')
             ->where('is_active', 0)
             ->get();
-        return view('admin.transporters.index', compact('Users'));
+        return view(Route::currentRouteName(), compact('Users'));
     }
 
     /**
