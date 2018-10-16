@@ -100,8 +100,8 @@
                     <div class="social-login">
                         <a href="javascript:void(0);" onclick="FBLogin(1);" class="social-login-item"><i
                                     class="ion-social-facebook"></i></a>
-                        <a id="sign-in-or-out-button" data-id="register" href="javascript:void(0);"
-                           class="social-reg sign-in-or-out-button social-login-item"><i class="ion-social-google"></i></a>
+                        {{--<a id="sign-in-or-out-button" data-id="register" href="javascript:void(0);"--}}
+                        {{--class="social-reg sign-in-or-out-button social-login-item"><i class="ion-social-google"></i></a>--}}
                     </div>
 
                     <div class="or">OR</div>
@@ -330,6 +330,9 @@
             $.ajax({
                 url: "{{url('/new/register')}}",
                 type: 'POST',
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest",
+                },
                 data: {
                     phone: phoneNumber,
                     name: name,
@@ -1107,7 +1110,8 @@
                 80.274816
             );
 
-            var orders = {!! !empty($Order) ? json_encode($Order->toArray()) : null !!}
+            var orders =
+            {!! !empty($Order) ? json_encode($Order->toArray()) : null !!}
 
             if (orders != null) {
                 userLocation = new google.maps.LatLng(
