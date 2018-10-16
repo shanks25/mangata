@@ -51,6 +51,7 @@
                                class="menu-item">@lang('menu.admin.list_delivery_boy')</a></li>
                         <li><a href="{{ route('admin.transporters.enquiry') }}"
                                class="menu-item">Delivery People Enquiry</a></li>
+
                         <li><a href="{{ route('admin.transporters.create') }}"
                                class="menu-item">@lang('menu.admin.add_delivery_boy')</a></li>
                         <li><a href="{{ url('admin/transporters-shift') }}"
