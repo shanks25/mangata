@@ -96,8 +96,8 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                @foreach (\App\Document::all() as $document)
+                            @foreach (\App\Document::all() as $document)
+                                <div class="form-group row">
                                     <label class="col-sm-2">Upload Documents {{ $document->name }}:</label>
                                     <div class="col-sm-5">
                                         <input type="file" accept="image/*" name="{{ 'doc_' . $document->id }}"
@@ -109,10 +109,9 @@
                                             <strong>{{ $errors->first('doc_' . $document->id) }}</strong>
                                              </span>
                                         @endif
-
                                     </div>
-                                @endforeach
-                            </div>
+                                </div>
+                            @endforeach
 
                             <button class="submit">Submit</button>
                         </form>
