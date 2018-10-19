@@ -192,7 +192,13 @@ class OrderResource extends Controller
             if ($request->status == 'RECEIVED') {
                 $Order->order_ready_time = $request->order_ready_time;
             }
-            $Order->status = $request->status;
+
+            if ($Order->has('pickup')) {
+                $Order->status = "PROCESSING";
+            } else {
+                $Order->status = $request->status;
+            }
+
 
             $Order->save();
             OrderTiming::create([
