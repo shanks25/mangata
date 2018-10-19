@@ -648,7 +648,7 @@
                                             </div>
                                         @elseif($key=='after_base_charges')
                                             <div class="form-group col-xs-12 mb-2">
-                                                <label for="name">Base Delivery Kilometer</label>
+                                                <label for="name">Charges After Base Delivery Kilometer</label>
                                                 <input id="{{$key}}" type="text" class="form-control" name="{{$key}}"
                                                        value="{{ $item }}" required autofocus
                                                        @if($key=='currency_code') readonly @endif >
