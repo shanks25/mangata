@@ -233,13 +233,13 @@ class OrderResource extends Controller
                     $tax = ($net * Setting::get('tax') / 100);
 
                     if ($request->has('pickup')) {
-                        $total_net = roundPrice($net + $tax);
+                        $total_net = $net + $tax;
                     } else {
-                        $total_net = roundPrice($net + $tax + Setting::get('delivery_charge'));
+                        $total_net = $net + $tax + Setting::get('delivery_charge');
                     }
 
                     if ($request->has('tip')) {
-                        $total_net = roundPrice($net + $tax + $request->tip);
+                        $total_net = $net + $tax + $request->tip;
                     }
 
 
