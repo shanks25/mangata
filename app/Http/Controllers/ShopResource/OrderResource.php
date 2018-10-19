@@ -199,7 +199,6 @@ class OrderResource extends Controller
                 $Order->status = $request->status;
             }
 
-
             $Order->save();
             OrderTiming::create([
                 'order_id' => $Order->id,
