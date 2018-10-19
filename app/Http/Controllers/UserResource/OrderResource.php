@@ -503,7 +503,6 @@ class OrderResource extends Controller
                             'gross' => $tot_price,
                             'discount' => $discount,
                             'wallet_amount' => $total_wallet_balance,
-                            'delivery_charge' => Setting::get('delivery_charge'),
                             'tax' => $tax,
                             'net' => $total_net,
                             'payable' => $payable,
@@ -514,6 +513,13 @@ class OrderResource extends Controller
                             'ripple_price' => $ripple_price,
                             'payment_mode' => $request->payment_mode ? $request->payment_mode : 'cash'
                         ]);
+
+                        if ($request->has('pickup')) {
+                            $Order_invoice->delivery_charge = 0;
+                        } else {
+                            $Order_invoice->delivery_charge = Setting::get('delivery_charge');
+                        }
+
                         //site_sendmail($Order);
                     } else {
                         $Order->delete();
