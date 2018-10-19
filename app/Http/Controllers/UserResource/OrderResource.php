@@ -541,6 +541,11 @@ class OrderResource extends Controller
                     $Order->save();
                 }
 
+                if ($request->has('pickup')) {
+                    $Order->pickup = 1;
+                    $Order->save();
+                }
+
                 OrderTiming::create([
                     'order_id' => $Order->id,
                     'status' => 'ORDERED'
