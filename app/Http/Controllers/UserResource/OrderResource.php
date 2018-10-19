@@ -15,6 +15,7 @@ use App\OrderTiming;
 use App\Product;
 use App\ProductPrice;
 use App\Promocode;
+use App\Settings;
 use App\Shop;
 use App\UserAddress;
 use App\UserCart;
@@ -220,6 +221,25 @@ class OrderResource extends Controller
                         $Product->delete();*/
                     }
 
+                    if (!$request->has('pickup')) {
+
+                        $totalDistance = $this->calculate_distance($latitude, $longitude, $Shop->latitude, $Shop->longitude);
+
+                        $deliveryCharge = Setting::get('delivery_charge');
+
+                        if ($totalDistance != 'error') {
+
+                            $baseDistance = Settings::get('base_delivery_km', '');
+
+                            if ($totalDistance > $baseDistance) {
+                                $deliveryCharge = (($totalDistance - $baseDistance) * Setting::get('after_base_charges')) * Setting::get('delivery_charge');
+                            } else {
+                                $deliveryCharge = Setting::get('delivery_charge');
+                            }
+                        }
+                        
+                    }
+
                     $net = $tot_price;
                     if ($Shop->offer_percent) {
                         if ($tot_price > $Shop->offer_min_amount) {
@@ -235,7 +255,7 @@ class OrderResource extends Controller
                     if ($request->has('pickup')) {
                         $total_net = $net + $tax;
                     } else {
-                        $total_net = $net + $tax + Setting::get('delivery_charge');
+                        $total_net = $net + $tax + $deliveryCharge;
                     }
 
                     if ($request->has('tip')) {
@@ -491,9 +511,7 @@ class OrderResource extends Controller
                     return back()->with('flash_failure', trans('order.not_created'));
                 }
 
-
                 try {
-
 
                     if ($Order->id && $tot_qty) {
 
@@ -517,8 +535,10 @@ class OrderResource extends Controller
                         if ($request->has('pickup')) {
                             $Order_invoice->delivery_charge = 0;
                         } else {
-                            $Order_invoice->delivery_charge = Setting::get('delivery_charge');
+                            $Order_invoice->delivery_charge = $deliveryCharge;
                         }
+
+                        $Order_invoice->save();
 
                         //site_sendmail($Order);
                     } else {
@@ -589,6 +609,28 @@ class OrderResource extends Controller
 
         } catch (Exception $e) {
             dd($e);
+        }
+    }
+
+    public function calculate_distance($s_latitude, $s_longitude, $d_latitude, $d_longitude)
+    {
+
+        try {
+
+            $details = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" . $s_latitude . "," . $s_longitude . "&destinations=" . $d_latitude . "," . $d_longitude . "&mode=driving&sensor=false&key=AIzaSyAuxmmUPDIXgiw84E9AX7bbbdFzkd0xd50";
+
+            $json = curl($details);
+
+            $details = json_decode($json, TRUE);
+
+            $meter = $details['rows'][0]['elements'][0]['distance']['value'];
+
+            $kilometer = round($meter / 1000);
+
+            return $kilometer;
+
+        } catch (Exception $exception) {
+            return "error";
         }
     }
 
