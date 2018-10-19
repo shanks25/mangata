@@ -231,7 +231,18 @@ class OrderResource extends Controller
                     }
                     $total_wallet_balance = 0;
                     $tax = ($net * Setting::get('tax') / 100);
-                    $total_net = roundPrice($net + $tax + Setting::get('delivery_charge'));
+
+                    if ($request->has('pickup')) {
+                        $total_net = roundPrice($net + $tax);
+                    } else {
+                        $total_net = roundPrice($net + $tax + Setting::get('delivery_charge'));
+                    }
+
+                    if ($request->has('tip')) {
+                        $total_net = roundPrice($net + $tax + $request->tip);
+                    }
+
+
                     $payable = $total_net;
 
                     if ($request->wallet) {
