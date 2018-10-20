@@ -160,8 +160,6 @@ class OrderResource extends Controller
 
 //        $request->pickup = 1;
 
-        dd($request->all());
-
         try {
 
             $this->validate($request, [
