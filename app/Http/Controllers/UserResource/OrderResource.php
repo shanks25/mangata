@@ -160,14 +160,14 @@ class OrderResource extends Controller
 
 //        $request->pickup = 1;
 
+        dd($request->all());
+
         try {
 
             $this->validate($request, [
                 'user_address_id' => 'required|exists:user_addresses,id,deleted_at,NULL',
                 //'payment_mode' => 'required'
             ]);
-
-            dd($request->all());
 
             $User = $request->user()->id;
             $CartItems = UserCart::with('cart_addons')->where('user_id', $User)->get();
