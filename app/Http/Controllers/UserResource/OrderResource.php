@@ -182,6 +182,8 @@ class OrderResource extends Controller
                     // Shop finding logic goes here.
                     $Shop_id = Product::findOrFail($CartItems[0]->product_id)->shop_id;
 
+                    dd($Shop_id);
+
                     $Useraddress = UserAddress::findOrFail($request->user_address_id);
                     $longitude = $Useraddress->longitude;
                     $latitude = $Useraddress->latitude;
