@@ -1141,10 +1141,6 @@
             var orders = {!! !empty($Order) ? json_encode($Order->toArray()) : null !!}
 
             if (orders != null) {
-
-                alert(orders['shop']['latitude']);
-                
-
                 userLocation = new google.maps.LatLng(
                     orders['shop']['latitude'], orders['shop']['longitude']
                 );
