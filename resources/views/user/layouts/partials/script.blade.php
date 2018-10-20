@@ -1142,7 +1142,7 @@
 
             if (orders != null) {
 
-                alert(orders);
+                alert(orders['shop']['latitude']);
 
                 userLocation = new google.maps.LatLng(
                     orders['shop']['latitude'], orders['shop']['longitude']
