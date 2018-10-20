@@ -577,7 +577,7 @@ class OrderResource extends Controller
                     'status' => 'ORDERED'
                 ]);
 
-                dd($deliveryCharge);
+//                dd($deliveryCharge);
 
                 $push_message = trans('order.order_created', ['id' => $Order->id]);
                 (new SendPushNotification)->sendPushToUser($User, $push_message);
