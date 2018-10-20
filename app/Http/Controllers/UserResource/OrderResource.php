@@ -222,7 +222,7 @@ class OrderResource extends Controller
 
                     $deliveryCharge = Setting::get('delivery_charge', 3);
 
-                    if (!$request->has('pickup')) {
+                    if ($request->pickup) {
 
                         $totalDistance = $this->calculate_distance($latitude, $longitude, $Shop->latitude, $Shop->longitude);
 
@@ -252,7 +252,7 @@ class OrderResource extends Controller
                     $total_wallet_balance = 0;
                     $tax = ($net * Setting::get('tax') / 100);
 
-                    if ($request->has('pickup')) {
+                    if ($request->pickup) {
                         $total_net = $net + $tax;
                     } else {
                         $total_net = $net + $tax + $deliveryCharge;
@@ -532,7 +532,7 @@ class OrderResource extends Controller
                             'payment_mode' => $request->payment_mode ? $request->payment_mode : 'cash'
                         ]);
 
-                        if ($request->has('pickup')) {
+                        if ($request->pickup) {
                             $Order_invoice->delivery_charge = 0;
                         } else {
                             $Order_invoice->delivery_charge = $deliveryCharge;
@@ -567,7 +567,7 @@ class OrderResource extends Controller
                     $Order->save();
                 }
 
-                if ($request->has('pickup')) {
+                if ($request->pickup) {
                     $Order->pickup = 1;
                     $Order->save();
                 }
