@@ -163,7 +163,7 @@ class OrderResource extends Controller
         try {
 
             $this->validate($request, [
-//                'user_address_id' => 'required|exists:user_addresses,id,deleted_at,NULL',
+                'user_address_id' => 'required|exists:user_addresses,id,deleted_at,NULL',
                 //'payment_mode' => 'required'
             ]);
 
