@@ -180,7 +180,6 @@ class OrderResource extends Controller
             $total_pay_user = 0;
             $ripple_price = 0;
 
-
             if (!$CartItems->isEmpty()) {
                 try {
 
