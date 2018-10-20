@@ -216,7 +216,7 @@
                                                    value="{{$cart_total_price}}"/>
                                             <input type="hidden" name="cart_id" id="cart_id" value="{{$cart_id}}"/>
                                             <h3 class="Total_price">Total :<span id="tot_pr">
-                                       {{ ($prod_qty*$total_addon_price+$prod_qty * $Product->prices->price) }}</span>
+                                       {{ currencydecimal($prod_qty*$total_addon_price+$prod_qty * $Product->prices->price) }}</span>
                                             </h3>
                                         </div>
                                     </div>

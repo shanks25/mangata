@@ -27,7 +27,7 @@ if (!function_exists('currencydecimal')) {
     function currencydecimal($amount)
     {
         $symbol = Setting::get('currency', '₹');
-        $amount = number_format($amount, 2, '.', '');
+//        $amount = number_format($amount, 2, '.', '');
         return $symbol . $amount;
     }
 }
