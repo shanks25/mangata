@@ -230,8 +230,6 @@ class OrderResource extends Controller
 
                             $baseDistance = Setting::get('base_delivery_km', 3);
 
-                            dd($totalDistance);
-
                             if ($totalDistance > $baseDistance) {
                                 $deliveryCharge = (($totalDistance - $baseDistance) * Setting::get('after_base_charges', 1)) * Setting::get('delivery_charge', 3);
                             } else {
@@ -239,6 +237,8 @@ class OrderResource extends Controller
                             }
                         }
                     }
+
+                    dd($totalDistance);
 
                     $net = $tot_price;
                     if ($Shop->offer_percent) {
