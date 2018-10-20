@@ -240,8 +240,6 @@ class OrderResource extends Controller
                         }
                     }
 
-                    dd($deliveryCharge);
-
                     $net = $tot_price;
                     if ($Shop->offer_percent) {
                         if ($tot_price > $Shop->offer_min_amount) {
@@ -578,6 +576,8 @@ class OrderResource extends Controller
                     'order_id' => $Order->id,
                     'status' => 'ORDERED'
                 ]);
+
+                dd($deliveryCharge);
 
                 $push_message = trans('order.order_created', ['id' => $Order->id]);
                 (new SendPushNotification)->sendPushToUser($User, $push_message);
