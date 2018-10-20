@@ -179,10 +179,11 @@ class OrderResource extends Controller
             $ripple_price = 0;
             if (!$CartItems->isEmpty()) {
                 try {
+
+                    dd($CartItems);
+
                     // Shop finding logic goes here.
                     $Shop_id = Product::findOrFail($CartItems[0]->product_id)->shop_id;
-
-                    dd($Shop_id);
 
                     $Useraddress = UserAddress::findOrFail($request->user_address_id);
                     $longitude = $Useraddress->longitude;
