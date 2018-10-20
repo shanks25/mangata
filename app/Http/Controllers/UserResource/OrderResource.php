@@ -300,6 +300,8 @@ class OrderResource extends Controller
 
                 } catch (ModelNotFoundException $e) {
 
+                    dd($e);
+
                     if ($request->ajax()) {
                         return response()->json(['message' => trans('order.address_out_of_range')], 422);
                     }
