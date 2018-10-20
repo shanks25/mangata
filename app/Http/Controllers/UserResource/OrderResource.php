@@ -167,6 +167,8 @@ class OrderResource extends Controller
                 //'payment_mode' => 'required'
             ]);
 
+            dd($request->all());
+
             $User = $request->user()->id;
             $CartItems = UserCart::with('cart_addons')->where('user_id', $User)->get();
             $payment_status = 'pending';
@@ -178,7 +180,6 @@ class OrderResource extends Controller
             $total_pay_user = 0;
             $ripple_price = 0;
 
-            dd($CartItems);
 
             if (!$CartItems->isEmpty()) {
                 try {
