@@ -238,7 +238,7 @@ class OrderResource extends Controller
                         }
                     }
 
-                    dd($totalDistance);
+                    dd($deliveryCharge);
 
                     $net = $tot_price;
                     if ($Shop->offer_percent) {
