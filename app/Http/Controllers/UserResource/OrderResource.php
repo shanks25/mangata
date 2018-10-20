@@ -158,6 +158,8 @@ class OrderResource extends Controller
     public function store(Request $request)
     {
 
+        $request->pickup = 1;
+
         try {
 
             $this->validate($request, [
