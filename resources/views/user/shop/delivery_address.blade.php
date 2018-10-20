@@ -100,9 +100,9 @@
                                             <ul class="nav nav-tabs payment-tabs" role="tablist">
 
                                                 {{--<li class="active">--}}
-                                                    {{--<a href="#cash" aria-controls="card" role="tab" data-toggle="tab"--}}
-                                                       {{--class="payment_mode_type cassh" data-id="cash"><span><i--}}
-                                                                    {{--class="mdi mdi-credit-card"></i></span> Cash</a>--}}
+                                                {{--<a href="#cash" aria-controls="card" role="tab" data-toggle="tab"--}}
+                                                {{--class="payment_mode_type cassh" data-id="cash"><span><i--}}
+                                                {{--class="mdi mdi-credit-card"></i></span> Cash</a>--}}
                                                 {{--</li>--}}
                                                 <li>
                                                     <a href="#card" aria-controls="card" role="tab" data-toggle="tab"
@@ -111,19 +111,19 @@
                                                         Debit Cards</a>
                                                 </li>
 
-                                                {{--<li>--}}
-                                                    {{--<a href="#ripple" aria-controls="ripple" role="tab"--}}
-                                                       {{--data-toggle="tab"><span class="pay-icon"><img--}}
-                                                                    {{--src="{{asset('assets/user/img/ripple.png')}}"></span>--}}
-                                                        {{--Ripple</a>--}}
-                                                {{--</li>--}}
-                                                {{--<li>--}}
-                                                    {{--<a href="#ethereum" aria-controls="ethereum" role="tab"--}}
-                                                       {{--data-toggle="tab"><span class="pay-icon"><img--}}
-                                                                    {{--src="{{asset('assets/user/img/eth.png')}}"></span>--}}
-                                                        {{--Ethereum</a>--}}
-                                                {{--</li>--}}
-                                                <!--  <li>
+                                            {{--<li>--}}
+                                            {{--<a href="#ripple" aria-controls="ripple" role="tab"--}}
+                                            {{--data-toggle="tab"><span class="pay-icon"><img--}}
+                                            {{--src="{{asset('assets/user/img/ripple.png')}}"></span>--}}
+                                            {{--Ripple</a>--}}
+                                            {{--</li>--}}
+                                            {{--<li>--}}
+                                            {{--<a href="#ethereum" aria-controls="ethereum" role="tab"--}}
+                                            {{--data-toggle="tab"><span class="pay-icon"><img--}}
+                                            {{--src="{{asset('assets/user/img/eth.png')}}"></span>--}}
+                                            {{--Ethereum</a>--}}
+                                            {{--</li>--}}
+                                            <!--  <li>
                                                      <a href="#bitcoin" aria-controls="bitcoin" role="tab" data-toggle="tab"><span class="pay-icon"><img src="img/bitcoin.png"></span> Bitcoin</a>
                                                  </li> -->
                                             </ul>
@@ -221,90 +221,90 @@
                                             <!-- Netbanking Tab Starts -->
 
                                             <!-- Ripple Tab Starts -->
-                                            {{--<div role="tabpanel" class="tab-pane fade" id="ripple">--}}
-                                                {{--<div class="crypto">--}}
-                                                    {{--<div class="crypto-head">--}}
-                                                        {{--<h5 class="bit-coin-tit">1 Ripple = {{$ripple_response->last}}--}}
-                                                            {{--USD</h5>--}}
-                                                        {{--<h6 class="bit-coin-txt">You want pay 20Ripple</h6>--}}
-                                                    {{--</div>--}}
-                                                    {{--<div class="form-group">--}}
-                                                        {{--<label>Address</label>--}}
-                                                        {{--<input type="text" class="form-control"--}}
-                                                               {{--value="{{setting::get('RIPPLE_KEY')}}" name="" required>--}}
-                                                    {{--</div>--}}
-                                                    {{--<div class="crypto-img">--}}
-                                                        {{--<h6>Scan QR Code</h6>--}}
-                                                        {{--<img src="{{Setting::get('RIPPLE_BARCODE')}}">--}}
-                                                    {{--</div>--}}
-                                                    {{--<div class="form-group">--}}
-                                                        {{--<label>Transaction ID</label>--}}
-                                                        {{--<input type="text" class="form-control"--}}
-                                                               {{--placeholder="Transaction ID" name="payment_id"--}}
-                                                               {{--id="transaction_id_ripple" required>--}}
-                                                        {{--<div id="ripple_form_error" class="ripple_error"></div>--}}
-                                                    {{--</div>--}}
-                                                    {{--<button type="button" onclick="checkpayment('ripple');"--}}
-                                                            {{--class="confirm-btn">Confirm--}}
-                                                    {{--</button>--}}
-                                                {{--</div>--}}
-                                            {{--</div>--}}
-                                            <!-- Ripple Tab Ends -->
+                                        {{--<div role="tabpanel" class="tab-pane fade" id="ripple">--}}
+                                        {{--<div class="crypto">--}}
+                                        {{--<div class="crypto-head">--}}
+                                        {{--<h5 class="bit-coin-tit">1 Ripple = {{$ripple_response->last}}--}}
+                                        {{--USD</h5>--}}
+                                        {{--<h6 class="bit-coin-txt">You want pay 20Ripple</h6>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="form-group">--}}
+                                        {{--<label>Address</label>--}}
+                                        {{--<input type="text" class="form-control"--}}
+                                        {{--value="{{setting::get('RIPPLE_KEY')}}" name="" required>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="crypto-img">--}}
+                                        {{--<h6>Scan QR Code</h6>--}}
+                                        {{--<img src="{{Setting::get('RIPPLE_BARCODE')}}">--}}
+                                        {{--</div>--}}
+                                        {{--<div class="form-group">--}}
+                                        {{--<label>Transaction ID</label>--}}
+                                        {{--<input type="text" class="form-control"--}}
+                                        {{--placeholder="Transaction ID" name="payment_id"--}}
+                                        {{--id="transaction_id_ripple" required>--}}
+                                        {{--<div id="ripple_form_error" class="ripple_error"></div>--}}
+                                        {{--</div>--}}
+                                        {{--<button type="button" onclick="checkpayment('ripple');"--}}
+                                        {{--class="confirm-btn">Confirm--}}
+                                        {{--</button>--}}
+                                        {{--</div>--}}
+                                        {{--</div>--}}
+                                        <!-- Ripple Tab Ends -->
                                             <!-- Ethereum Tab Starts -->
-                                            {{--<div role="tabpanel" class="tab-pane fade" id="ethereum">--}}
-                                                {{--<div class="crypto">--}}
-                                                    {{--<div class="crypto-head">--}}
-                                                        {{--<h5 class="bit-coin-tit">1 Ethereum--}}
-                                                            {{--= {{$ether_response->result->ethusd}} USD</h5>--}}
-                                                        {{--<h6 class="bit-coin-txt">You want pay 20 Ethereum</h6>--}}
-                                                    {{--</div>--}}
-                                                    {{--<div class="form-group">--}}
-                                                        {{--<label>Address</label>--}}
-                                                        {{--<input type="text" class="form-control"--}}
-                                                               {{--placeholder="{{Setting::get('ETHER_KEY')}}" name="">--}}
-                                                    {{--</div>--}}
-                                                    {{--<div class="crypto-img">--}}
-                                                        {{--<h6>Scan QR Code</h6>--}}
-                                                        {{--<img src="{{Setting::get('ETHER_BARCODE')}}">--}}
-                                                    {{--</div>--}}
-                                                    {{--<div class="form-group">--}}
-                                                        {{--<label>Transaction ID</label>--}}
-                                                        {{--<input type="text" name="payment_id" id="transaction_id_eather"--}}
-                                                               {{--class="form-control" placeholder="Transaction ID"--}}
-                                                               {{--name="">--}}
-                                                        {{--<div id="eather_form_error" class="ripple_error"></div>--}}
-                                                    {{--</div>--}}
-                                                    {{--<button type="button" onclick="checkpayment('eather');"--}}
-                                                            {{--class="confirm-btn">Confirm--}}
-                                                    {{--</button>--}}
-                                                {{--</div>--}}
-                                            {{--</div>--}}
-                                            <!-- Ethereum Tab Ends -->
+                                        {{--<div role="tabpanel" class="tab-pane fade" id="ethereum">--}}
+                                        {{--<div class="crypto">--}}
+                                        {{--<div class="crypto-head">--}}
+                                        {{--<h5 class="bit-coin-tit">1 Ethereum--}}
+                                        {{--= {{$ether_response->result->ethusd}} USD</h5>--}}
+                                        {{--<h6 class="bit-coin-txt">You want pay 20 Ethereum</h6>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="form-group">--}}
+                                        {{--<label>Address</label>--}}
+                                        {{--<input type="text" class="form-control"--}}
+                                        {{--placeholder="{{Setting::get('ETHER_KEY')}}" name="">--}}
+                                        {{--</div>--}}
+                                        {{--<div class="crypto-img">--}}
+                                        {{--<h6>Scan QR Code</h6>--}}
+                                        {{--<img src="{{Setting::get('ETHER_BARCODE')}}">--}}
+                                        {{--</div>--}}
+                                        {{--<div class="form-group">--}}
+                                        {{--<label>Transaction ID</label>--}}
+                                        {{--<input type="text" name="payment_id" id="transaction_id_eather"--}}
+                                        {{--class="form-control" placeholder="Transaction ID"--}}
+                                        {{--name="">--}}
+                                        {{--<div id="eather_form_error" class="ripple_error"></div>--}}
+                                        {{--</div>--}}
+                                        {{--<button type="button" onclick="checkpayment('eather');"--}}
+                                        {{--class="confirm-btn">Confirm--}}
+                                        {{--</button>--}}
+                                        {{--</div>--}}
+                                        {{--</div>--}}
+                                        <!-- Ethereum Tab Ends -->
                                             <!-- Bitcoin Tab Starts -->
-                                            {{--<div role="tabpanel" class="tab-pane fade" id="bitcoin">--}}
-                                                {{--<div class="crypto">--}}
-                                                    {{--<div class="crypto-head">--}}
-                                                        {{--<h5 class="bit-coin-tit">1 Bitcoin = $40.00</h5>--}}
-                                                        {{--<h6 class="bit-coin-txt">You want pay 20 Bitcoin</h6>--}}
-                                                    {{--</div>--}}
-                                                    {{--<div class="form-group">--}}
-                                                        {{--<label>Address</label>--}}
-                                                        {{--<input type="text" class="form-control"--}}
-                                                               {{--placeholder="1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX" name="">--}}
-                                                    {{--</div>--}}
-                                                    {{--<div class="crypto-img">--}}
-                                                        {{--<h6>Scan QR Code</h6>--}}
-                                                        {{--<!-- <img src="img/barcode.png"> -->--}}
-                                                    {{--</div>--}}
-                                                    {{--<div class="form-group">--}}
-                                                        {{--<label>Transaction ID</label>--}}
-                                                        {{--<input type="text" class="form-control"--}}
-                                                               {{--placeholder="Transaction ID" name="">--}}
-                                                    {{--</div>--}}
-                                                    {{--<button class="confirm-btn">Confirm</button>--}}
-                                                {{--</div>--}}
-                                            {{--</div>--}}
-                                            <!-- Bitcoin Tab Ends -->
+                                        {{--<div role="tabpanel" class="tab-pane fade" id="bitcoin">--}}
+                                        {{--<div class="crypto">--}}
+                                        {{--<div class="crypto-head">--}}
+                                        {{--<h5 class="bit-coin-tit">1 Bitcoin = $40.00</h5>--}}
+                                        {{--<h6 class="bit-coin-txt">You want pay 20 Bitcoin</h6>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="form-group">--}}
+                                        {{--<label>Address</label>--}}
+                                        {{--<input type="text" class="form-control"--}}
+                                        {{--placeholder="1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX" name="">--}}
+                                        {{--</div>--}}
+                                        {{--<div class="crypto-img">--}}
+                                        {{--<h6>Scan QR Code</h6>--}}
+                                        {{--<!-- <img src="img/barcode.png"> -->--}}
+                                        {{--</div>--}}
+                                        {{--<div class="form-group">--}}
+                                        {{--<label>Transaction ID</label>--}}
+                                        {{--<input type="text" class="form-control"--}}
+                                        {{--placeholder="Transaction ID" name="">--}}
+                                        {{--</div>--}}
+                                        {{--<button class="confirm-btn">Confirm</button>--}}
+                                        {{--</div>--}}
+                                        {{--</div>--}}
+                                        <!-- Bitcoin Tab Ends -->
                                         </div>
                                     </div>
                                     <!-- Payment Right Ends -->
@@ -443,9 +443,9 @@
                                         <tr>
                                             <th>To Pay</th>
                                             <th></th>
-                                            <th class="text-right to_pay">{{currencydecimal(roundPrice($net))}}</th>
+                                            <th class="text-right to_pay">{{currencydecimal($net)}}</th>
                                             <input type="hidden" name="amount" id="total_amount_pay"
-                                                   value="{{roundPrice($net)}}"/>
+                                                   value="{{$net}}"/>
                                             <input type="hidden" id="user_address_id" name="user_address_id" value=""/>
                                             <input type="hidden" id="total_payment_mode"
                                                    value="{{Setting::get('payment_mode')}}" name="payment_mode"/>
