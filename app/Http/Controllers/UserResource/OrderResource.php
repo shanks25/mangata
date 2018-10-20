@@ -228,7 +228,7 @@ class OrderResource extends Controller
 
                         if ($totalDistance != 'error') {
 
-                            $baseDistance = Settings::get('base_delivery_km', 3);
+                            $baseDistance = Setting::get('base_delivery_km', 3);
 
                             if ($totalDistance > $baseDistance) {
                                 $deliveryCharge = (($totalDistance - $baseDistance) * Setting::get('after_base_charges', 1)) * Setting::get('delivery_charge', 3);
