@@ -222,6 +222,7 @@ class OrderResource extends Controller
                         //$Product->order_id = $Order->id;
                         /*$Product->save();
                         $Product->delete();*/
+
                     }
 
                     $deliveryCharge = Setting::get('delivery_charge', 3);
