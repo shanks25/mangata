@@ -227,21 +227,20 @@ class OrderResource extends Controller
 
                     $deliveryCharge = Setting::get('delivery_charge', 3);
 
-                    if ($request->pickup == 0) {
 
-                        $totalDistance = $this->calculate_distance($latitude, $longitude, $Shop->latitude, $Shop->longitude);
+                    $totalDistance = $this->calculate_distance($latitude, $longitude, $Shop->latitude, $Shop->longitude);
 
-                        if ($totalDistance != 'error') {
+                    if ($totalDistance != 'error') {
 
-                            $baseDistance = Setting::get('base_delivery_km', 3);
+                        $baseDistance = Setting::get('base_delivery_km', 3);
 
-                            if ($totalDistance > $baseDistance) {
-                                $deliveryCharge = (($totalDistance - $baseDistance) * Setting::get('after_base_charges', 1)) * Setting::get('delivery_charge', 3);
-                            } else {
-                                $deliveryCharge = Setting::get('delivery_charge', 3);
-                            }
+                        if ($totalDistance > $baseDistance) {
+                            $deliveryCharge = (($totalDistance - $baseDistance) * Setting::get('after_base_charges', 1)) * Setting::get('delivery_charge', 3);
+                        } else {
+                            $deliveryCharge = Setting::get('delivery_charge', 3);
                         }
                     }
+
 
                     dd($deliveryCharge);
 
@@ -304,7 +303,7 @@ class OrderResource extends Controller
                     }
 
                 } catch (ModelNotFoundException $e) {
-                    
+
                     if ($request->ajax()) {
                         return response()->json(['message' => trans('order.address_out_of_range')], 422);
                     }
