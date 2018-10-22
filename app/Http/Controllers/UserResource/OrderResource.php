@@ -227,20 +227,22 @@ class OrderResource extends Controller
 
                     $deliveryCharge = Setting::get('delivery_charge', 3);
 
-                    $totalDistance = $this->calculate_distance($latitude, $longitude, $Shop->latitude, $Shop->longitude);
+                    if ($request->pickup == 0) {
 
-                    if ($totalDistance != 'error') {
+                        $totalDistance = $this->calculate_distance($latitude, $longitude, $Shop->latitude, $Shop->longitude);
 
-                        $baseDistance = Setting::get('base_delivery_km', 3);
+                        if ($totalDistance != 'error') {
 
-                        if ($totalDistance > $baseDistance) {
-                            $deliveryCharge = (($totalDistance - $baseDistance) * Setting::get('after_base_charges', 1)) + Setting::get('delivery_charge', 3);
-                        } else {
-                            $deliveryCharge = Setting::get('delivery_charge', 3);
+                            $baseDistance = Setting::get('base_delivery_km', 3);
+
+                            if ($totalDistance > $baseDistance) {
+                                $deliveryCharge = (($totalDistance - $baseDistance) * Setting::get('after_base_charges', 1)) + Setting::get('delivery_charge', 3);
+                            } else {
+                                $deliveryCharge = Setting::get('delivery_charge', 3);
+                            }
                         }
-                    }
 
-                    if ($request->pickup == 1) {
+                    } else {
                         $deliveryCharge = 0;
                     }
 
