@@ -240,7 +240,7 @@ class OrderResource extends Controller
                         }
                     }
 
-                    if ($request->pickup == 0) {
+                    if ($request->pickup == 1) {
                         $deliveryCharge = 0;
                     }
 
