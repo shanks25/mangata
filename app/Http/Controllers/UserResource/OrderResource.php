@@ -320,6 +320,9 @@ class OrderResource extends Controller
                     return back()->with('flash_failure', trans('order.address_out_of_range'));
 
                 } catch (Exception $e) {
+
+                    dd($e);
+
                     return response()->json(['message' => trans('order.order_shop_not_found')], 404);
                 }
 
