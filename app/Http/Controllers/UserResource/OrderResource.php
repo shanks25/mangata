@@ -227,7 +227,6 @@ class OrderResource extends Controller
 
                     $deliveryCharge = Setting::get('delivery_charge', 3);
 
-
                     $totalDistance = $this->calculate_distance($latitude, $longitude, $Shop->latitude, $Shop->longitude);
 
                     if ($totalDistance != 'error') {
@@ -241,8 +240,11 @@ class OrderResource extends Controller
                         }
                     }
 
-
-                    dd($deliveryCharge);
+                    return response()->json([
+                        'base_distance' => $baseDistance,
+                        'total_distance' => $totalDistance,
+                        'delivery_charge' => $deliveryCharge,
+                    ]);
 
                     $net = $tot_price;
                     if ($Shop->offer_percent) {
