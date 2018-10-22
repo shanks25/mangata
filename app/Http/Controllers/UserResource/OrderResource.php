@@ -243,7 +243,9 @@ class OrderResource extends Controller
                     return response()->json([
                         'base_distance' => $baseDistance,
                         'total_distance' => $totalDistance,
-                        'delivery_charge' => $deliveryCharge,
+                        'after_delivery_charge' => Setting::get('after_base_charges', 1),
+                        'delivery_charge' => Setting::get('delivery_charge', 3),
+                        'total_charge' => $deliveryCharge
                     ]);
 
                     $net = $tot_price;
