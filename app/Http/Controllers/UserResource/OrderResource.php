@@ -250,7 +250,7 @@ class OrderResource extends Controller
                         'base_delivery_charge' => Setting::get('delivery_charge', 3),
                         'total_distance' => $totalDistance,
                         'after_delivery_charge' => Setting::get('after_base_charges', 1),
-                        'delivery_charge' => Setting::get('delivery_charge', 3),
+                        'delivery_charge' => $deliveryCharge,
                     ]);
 
                     $net = $tot_price;
