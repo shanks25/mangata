@@ -245,13 +245,13 @@ class OrderResource extends Controller
                         $deliveryCharge = 0;
                     }
 
-                    return response()->json([
-                        'base_distance' => $baseDistance,
-                        'base_delivery_charge' => Setting::get('delivery_charge', 3),
-                        'total_distance' => $totalDistance,
-                        'after_delivery_charge' => Setting::get('after_base_charges', 1),
-                        'delivery_charge' => $deliveryCharge,
-                    ]);
+//                    return response()->json([
+//                        'base_distance' => $baseDistance,
+//                        'base_delivery_charge' => Setting::get('delivery_charge', 3),
+//                        'total_distance' => $totalDistance,
+//                        'after_delivery_charge' => Setting::get('after_base_charges', 1),
+//                        'delivery_charge' => $deliveryCharge,
+//                    ]);
 
                     $net = $tot_price;
                     if ($Shop->offer_percent) {
