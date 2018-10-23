@@ -95,8 +95,8 @@
                                     <div class="col-sm-9">
                                         <div class="card-btm pending-btm">
                                             <p class="card-txt"><b>#{{ $Order->id }}</b></p>
-                                            <p class="card-txt">{{ $Order->user->name }}</p>
-                                            <p class="card-txt">{{ $Order->user->phone }}</p>
+                                            <p class="card-txt">{{ $Order['user']['name'] }}</p>
+                                            <p class="card-txt">{{ $Order['user']['phone'] }}</p>
                                         </div>
                                         <div class="card-btm row m-0">
                                             <button class="btn @if($order_now == 1)  btn-primary @elseif($Order->status == 'RECEIVED') btn-danger   @else btn-success @endif btn-darken-3 orderlist"
@@ -158,7 +158,7 @@
                                 <div class="card-block">
                                     <div class="col-sm-3 card-top text-xs-center">
                                         <div class="pending-dp-img bg-img"
-                                             style="background-image: url({{ asset($Order->user->avatar ? : 'avatar.png') }});"></div>
+                                             style="background-image: url({{ asset($Order['user']['avatar'] ? : 'avatar.png') }});"></div>
                                     </div>
                                     <div class="col-sm-9">
                                         <div class="card-btm pending-btm">
@@ -211,7 +211,7 @@
                                 <div class="card-block">
                                     <div class="col-sm-3 card-top text-xs-center">
                                         <div class="pending-dp-img bg-img"
-                                             style="background-image: url({{ asset($Order->user->avatar ? : 'avatar.png') }});"></div>
+                                             style="background-image: url({{ asset($Order['user']['avatar'] ? : 'avatar.png') }});"></div>
                                     </div>
                                     <div class="col-sm-9">
                                         <div class="card-btm pending-btm">
@@ -304,13 +304,13 @@
                                 <div class="card-block">
                                     <div class="col-sm-3 card-top text-xs-center">
                                         <div class="pending-dp-img bg-img"
-                                             style="background-image: url({{ asset($Order->user->avatar ? : 'avatar.png') }});"></div>
+                                             style="background-image: url({{ asset($Order['user']['avatar'] ? : 'avatar.png') }});"></div>
                                     </div>
                                     <div class="col-sm-9">
                                         <div class="card-btm pending-btm">
                                             <p class="card-txt"><b>#{{ $Order->id }}</b></p>
-                                            <p class="card-txt">{{ $Order->user->name }}</p>
-                                            <p class="card-txt">{{ $Order->user->phone }}</p>
+                                            <p class="card-txt">{{ $Order['user']['name'] }}</p>
+                                            <p class="card-txt">{{ $Order['user']['phone'] }}</p>
 
                                         </div>
                                         <div class="card-btm row m-0">
