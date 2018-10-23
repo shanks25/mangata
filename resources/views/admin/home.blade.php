@@ -107,7 +107,7 @@
                                         </div>
                                         <div class="media-body">
                                             {{--<h6 class="list-group-item-heading">{{$Order->user->name}} <span class="font-medium-4 float-xs-right pt-1">${{$Order->invoice->net}}</span></h6>--}}
-                                            <h6 class="list-group-item-heading">{{$Order->user->name}} <span class="font-medium-4 float-xs-right pt-1"></span></h6>
+                                            <h6 class="list-group-item-heading"><span class="font-medium-4 float-xs-right pt-1">${{$Order->invoice->net}}</span></h6>
                                             <p class="list-group-item-text">
                                                 <span class="tag tag-primary">Delivered</span>
                                             </p>
