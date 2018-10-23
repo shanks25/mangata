@@ -99,22 +99,22 @@
                             </div>
                             <div class="card-body px-1">
                                 <div id="recent-buyers" class="list-group height-300 position-relative">
-                                    @forelse($DeliveryOrders as $Order)
-                                    <a href="#" class="list-group-item list-group-item-action media no-border">
-                                        <div class="media-left">
-                                            <span class="avatar avatar-md avatar-online"><img class="media-object rounded-circle" src="{{asset('assets/admin/images/portrait/small/avatar-s-7.png')}}" alt="Generic placeholder image"><i></i>
-                                            </span>
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="list-group-item-heading">{{$Order->user->name}} <span class="font-medium-4 float-xs-right pt-1">${{$Order->invoice->net}}</span></h6>
-                                            <p class="list-group-item-text">
-                                                <span class="tag tag-primary">Delivered</span>
-                                            </p>
-                                        </div>
-                                    </a>
-                                    @empty
-                                    <a href="#">No Order Found!</a>
-                                    @endforelse
+                                    {{--@forelse($DeliveryOrders as $Order)--}}
+                                    {{--<a href="#" class="list-group-item list-group-item-action media no-border">--}}
+                                        {{--<div class="media-left">--}}
+                                            {{--<span class="avatar avatar-md avatar-online"><img class="media-object rounded-circle" src="{{asset('assets/admin/images/portrait/small/avatar-s-7.png')}}" alt="Generic placeholder image"><i></i>--}}
+                                            {{--</span>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="media-body">--}}
+                                            {{--<h6 class="list-group-item-heading">{{$Order->user->name}} <span class="font-medium-4 float-xs-right pt-1">${{$Order->invoice->net}}</span></h6>--}}
+                                            {{--<p class="list-group-item-text">--}}
+                                                {{--<span class="tag tag-primary">Delivered</span>--}}
+                                            {{--</p>--}}
+                                        {{--</div>--}}
+                                    {{--</a>--}}
+                                    {{--@empty--}}
+                                    {{--<a href="#">No Order Found!</a>--}}
+                                    {{--@endforelse--}}
                                 </div>
                             </div>
                         </div>
