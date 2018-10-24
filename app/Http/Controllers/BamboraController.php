@@ -56,7 +56,7 @@ class BamboraController extends Controller
                 return $beanstream->payments()->makeCardPayment($payment_data, $this->complete);
             }
         } catch (\Exception $e) {
-            return "";
+            return $e;
         }
 
     }
