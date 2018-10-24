@@ -137,6 +137,7 @@ if (!function_exists('send_sms')) {
         $newotp = isset($data['otp']) ? $data['otp'] : rand(100000, 999999);
         $message = 'Your OTP is : ' . $newotp;
         try {
+
             $msg = Twilio::message($phone, $message);
             \Log::info($msg);
             return $msg->error_message;

@@ -28,7 +28,8 @@ class Order extends Model
         'delivery_date',
         'order_otp',
         'order_ready_time',
-        'order_ready_status'
+        'order_ready_status',
+        'total_distance'
     ];
 
     /**

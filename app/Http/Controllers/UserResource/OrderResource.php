@@ -588,6 +588,9 @@ class OrderResource extends Controller
                     $Order->save();
                 }
 
+                $Order->total_distance = $totalDistance;
+                $Order->save();
+
                 OrderTiming::create([
                     'order_id' => $Order->id,
                     'status' => 'ORDERED'
