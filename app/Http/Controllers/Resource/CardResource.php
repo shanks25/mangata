@@ -229,7 +229,6 @@ class CardResource extends Controller
             }
         }
 
-
     }
 
     /**

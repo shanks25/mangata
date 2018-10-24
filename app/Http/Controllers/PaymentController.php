@@ -168,6 +168,7 @@ class PaymentController extends Controller
     {
 
         $this->validate($request, [
+            'payment_mode' => 'required',
             'amount' => 'required|integer',
             'card_id' => 'required|exists:cards,id,user_id,' . Auth::user()->id
         ]);
