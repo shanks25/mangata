@@ -183,7 +183,7 @@ class PaymentController extends Controller
 
                     $payment = (new BamboraController())->makePayment($request);
 
-                    dd($payment);
+//                    dd($payment);
 
                     if (isset($payment['order_number'])) {
 
