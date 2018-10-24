@@ -134,6 +134,10 @@
                                         <td class="text-right">{{currencydecimal($Order->invoice->discount)}}</td>
                                     </tr>
                                     <tr>
+                                        <td>Total Distance</td>
+                                        <td class="text-right">{{currencydecimal($Order->total_distance)}}</td>
+                                    </tr>
+                                    <tr>
                                         <td>Delivery Charges</td>
                                         <td class="text-right">{{currencydecimal(Setting::get('delivery_charge'))}}</td>
                                     </tr>
