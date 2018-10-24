@@ -183,11 +183,31 @@ class PaymentController extends Controller
 
                     $payment = (new BamboraController())->makePayment($request);
 
+                    dd($payment);
+
                     if (isset($payment['order_number'])) {
 
                         $payment_id = $payment['order_number'];
                         $payment_status = 'success';
                         $total_pay_user = $request->payable;
+
+                        $update_user = User::find(Auth::user()->id);
+                        $update_user->wallet_balance += $total_pay_user;
+                        $update_user->save();
+                        $update_user->currency = Setting::get('currency');
+                        $update_user->payment_mode = Setting::get('payment_mode');
+
+                        WalletPassbook::create([
+                            'user_id' => Auth::user()->id,
+                            'amount' => $total_pay_user,
+                            'message' => 'Adding Money form card ' . $request->card_id,
+                            'status' => 'CREDITED',
+                            'via' => 'CARD',
+                        ]);
+
+                        Card::where('user_id', Auth::user()->id)->update(['is_default' => 0]);
+                        Card::where('id', $request->card_id)->update(['is_default' => 1]);
+
 
                         return response()->json([
                             'message' => trans('order.payment.success')
