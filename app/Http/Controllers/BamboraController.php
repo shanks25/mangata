@@ -58,7 +58,7 @@ class BamboraController extends Controller
             }
         } catch (\Exception $e) {
 
-            Log::error('message => ' . $e);
+            Log::info('message => ' . $e);
 
             return "";
         }
