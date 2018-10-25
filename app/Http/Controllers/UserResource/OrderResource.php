@@ -383,7 +383,7 @@ class OrderResource extends Controller
                                     if ($request->ajax()) {
                                         return response()->json(['error' => trans('order.payment.failed')], 422);
                                     } else {
-                                        return back()->with('flash_error', trans('order.payment.failed'));
+                                        return back()->with('flash_error', $payment);
                                     }
                                 }
                             }
