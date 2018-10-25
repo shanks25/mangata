@@ -22,7 +22,7 @@ class BamboraController extends Controller
 
     public function makePayment(Request $request)
     {
-        
+
         //Create Beanstream Gateway
         $beanstream = new \Beanstream\Gateway($this->merchant_id, $this->api_key, $this->platform, $this->api_version);
 
@@ -58,7 +58,7 @@ class BamboraController extends Controller
             }
         } catch (\Exception $e) {
 
-            Log::debug('message => ' . $e);
+            Log::error('message => ' . $e);
 
             return "";
         }
