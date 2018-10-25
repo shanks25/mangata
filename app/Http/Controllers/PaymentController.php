@@ -214,7 +214,7 @@ class PaymentController extends Controller
                         ], 200);
 
                     } else {
-                        return response()->json(['error' => trans('order.payment.failed')], 422);
+                        return response()->json(['error' => $payment], 422);
 
                     }
                 }
