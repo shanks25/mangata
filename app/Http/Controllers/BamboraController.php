@@ -6,6 +6,7 @@ use App\Card;
 use App\Http\Requests\MakePaymentRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class BamboraController extends Controller
 {
@@ -56,7 +57,10 @@ class BamboraController extends Controller
                 return $beanstream->payments()->makeCardPayment($payment_data, $this->complete);
             }
         } catch (\Exception $e) {
-            return $e;
+
+            Log::debug('message => ' . $e);
+
+            return "";
         }
 
     }
