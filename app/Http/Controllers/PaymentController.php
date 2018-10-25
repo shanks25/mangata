@@ -215,7 +215,6 @@ class PaymentController extends Controller
 
                     } else {
                         return response()->json(['error' => $payment], 422);
-
                     }
                 }
 
