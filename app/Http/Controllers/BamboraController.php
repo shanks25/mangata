@@ -6,7 +6,7 @@ use App\Card;
 use App\Http\Requests\MakePaymentRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
+use Log;
 
 class BamboraController extends Controller
 {
