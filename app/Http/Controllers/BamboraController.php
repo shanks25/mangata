@@ -13,7 +13,8 @@ class BamboraController extends Controller
     //
     private $merchant_id = '117686094';
 //    private $api_key = 'Passcode MTE3Njg2MDk0OkcpelZhO0M1bUQhfiFie2o=';
-    private $api_key = 'ACc498AF0A16448F9958CDFb67889b55';
+    private $api_key = 'MTE3Njg2MDk0OkFDYzQ5OEFGMEExNjQ0OEY5OTU4Q0RGYjY3ODg5YjU1';
+//    private $api_key = 'ACc498AF0A16448F9958CDFb67889b55';
     private $api_version = 'v1';
     private $platform = 'api';
 
@@ -21,8 +22,7 @@ class BamboraController extends Controller
 
     public function makePayment(Request $request)
     {
-
-
+        
         //Create Beanstream Gateway
         $beanstream = new \Beanstream\Gateway($this->merchant_id, $this->api_key, $this->platform, $this->api_version);
 
