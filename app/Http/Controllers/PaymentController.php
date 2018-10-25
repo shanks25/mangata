@@ -207,8 +207,6 @@ class PaymentController extends Controller
 
                         Card::where('user_id', Auth::user()->id)->update(['is_default' => 0]);
                         Card::where('id', $request->card_id)->update(['is_default' => 1]);
-
-
                         return response()->json([
                             'message' => trans('order.payment.success')
                         ], 200);
