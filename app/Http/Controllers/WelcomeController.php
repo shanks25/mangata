@@ -6,6 +6,7 @@ use App\Document;
 use App\ShopTiming;
 use App\Transporter;
 use App\TransporterDocument;
+use Exception;
 use Illuminate\Http\Request;
 use App\Shop;
 use App\EnquiryTransporter;
