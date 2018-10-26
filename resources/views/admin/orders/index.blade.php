@@ -76,14 +76,14 @@
                     <!-- Pending Order Block Starts -->
                         @forelse($dataorder as $Order)
                             <?php
-                            $shop[$Order->shop->id] = $Order->shop;
-                            $myorder[$Order->shop->id][] = $Order->id;
-                            $today = \Carbon\Carbon::tomorrow();
-                            if ($Order->delivery_date >= $today) {
-                                $order_now = 1;
-                            } else {
-                                $order_now = 0;
-                            }
+//                            $shop[$Order->shop->id] = $Order->shop;
+//                            $myorder[$Order->shop->id][] = $Order->id;
+//                            $today = \Carbon\Carbon::tomorrow();
+//                            if ($Order->delivery_date >= $today) {
+//                                $order_now = 1;
+//                            } else {
+//                                $order_now = 0;
+//                            }
                             //dd($Orders);?>
 
                             <div class="card card-inverse pending-block row m-0 @if($order_now == 1)  bg-primary @elseif($Order->status == 'RECEIVED') bg-danger  @else bg-success @endif">
