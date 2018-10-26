@@ -216,8 +216,8 @@
                                     <div class="col-sm-9">
                                         <div class="card-btm pending-btm">
                                             <p class="card-txt"><b>#{{ $Order->id }}</b></p>
-                                            <p class="card-txt">{{ $Order->transporter->name }}</p>
-                                            <p class="card-txt">{{ $Order->transporter->phone }}</p>
+                                            <p class="card-txt">{{ $Order['transporter']['name'] }}</p>
+                                            <p class="card-txt">{{ $Order['transporter']['phone'] }}</p>
 
                                         </div>
                                         <div class="card-btm row m-0">
@@ -268,8 +268,8 @@
                                                     </button>
                                                 </form>
                                             @endif
-                                            {{--<a href="{{ url('admin/chat?order_id='.$Order->id) }}"--}}
-                                               {{--class="btn btn-danger btn-darken-3" target="_blank">Chat</a>--}}
+                                            <a href="{{ url('admin/chat?order_id='.$Order->id) }}"
+                                               class="btn btn-danger btn-darken-3" target="_blank">Chat</a>
                                         </div>
                                     </div>
                                 </div>
