@@ -76,14 +76,14 @@
                     <!-- Pending Order Block Starts -->
                         @forelse($dataorder as $Order)
                             <?php
-//                            $shop[$Order->shop->id] = $Order->shop;
-//                            $myorder[$Order->shop->id][] = $Order->id;
-//                            $today = \Carbon\Carbon::tomorrow();
-//                            if ($Order->delivery_date >= $today) {
-//                                $order_now = 1;
-//                            } else {
-//                                $order_now = 0;
-//                            }
+                            $shop[$Order->shop->id] = $Order->shop;
+                            $myorder[$Order->shop->id][] = $Order->id;
+                            $today = \Carbon\Carbon::tomorrow();
+                            if ($Order->delivery_date >= $today) {
+                                $order_now = 1;
+                            } else {
+                                $order_now = 0;
+                            }
                             //dd($Orders);?>
 
                             <div class="card card-inverse pending-block row m-0 @if($order_now == 1)  bg-primary @elseif($Order->status == 'RECEIVED') bg-danger  @else bg-success @endif">
@@ -268,8 +268,8 @@
                                                     </button>
                                                 </form>
                                             @endif
-                                            <a href="{{ url('admin/chat?order_id='.$Order->id) }}"
-                                               class="btn btn-danger btn-darken-3" target="_blank">Chat</a>
+                                            {{--<a href="{{ url('admin/chat?order_id='.$Order->id) }}"--}}
+                                               {{--class="btn btn-danger btn-darken-3" target="_blank">Chat</a>--}}
                                         </div>
                                     </div>
                                 </div>
