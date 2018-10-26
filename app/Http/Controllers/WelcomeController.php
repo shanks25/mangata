@@ -226,7 +226,7 @@ class WelcomeController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|max:255|unique:transporters',
             'phone' => 'required',
             'address' => 'required',
         ]);
