@@ -33,11 +33,26 @@
 
                         {{ csrf_field() }}
 
-                        <div class="form-group">
-                            <label>Phone</label>
-                            <input type="text" id="phone" name="phone" class="form-control">
+
+                        <div class="form-group row">
+                            <div class="col-xs-12">
+                                <label>Phone Number</label>
+                            </div>
+
+                            <div class="col-xs-3">
+                                <input type="text" id="c_code" name="c_code" class="form-control"
+                                       placeholder="+1">
+                            </div>
+                            <div class="col-xs-9 p-l-0">
+                                <input type="number" min="0" class="form-control phone-number" id="phone"
+                                       name="phone" value="{{ old('phone') }}"
+                                       placeholder="Enter Phone Number" required>
+                            </div>
+
+                            <div class="print-error-msg alert-danger error_phone"></div>
 
                         </div>
+
                         <div class="print-error-msg alert-danger error_phone"></div>
                         <div class="form-group">
                             <label>Password</label>
@@ -142,13 +157,20 @@
                             <label>Phone Number</label>
                         </div>
 
-                        <div class="col-xs-12 p-l-0">
+                        <div class="col-xs-3">
+                            <input type="text" id="country_code" name="country_code" class="form-control"
+                                   placeholder="+1">
+                        </div>
+                        <div class="col-xs-9 p-l-0">
                             <input type="number" min="0" class="form-control phone-number" id="phone_number"
                                    name="phone_number" value="{{ old('phone_number') }}"
                                    placeholder="Enter Phone Number" required>
                         </div>
 
+                        <div class="print-error-msg alert-danger error_phone"></div>
+
                     </div>
+
 
                     <div class="form-group row">
                         <div class="col-xs-12">
@@ -324,6 +346,7 @@
             var name = document.getElementById("name").value;
             var email = document.getElementById("email").value;
             var password = document.getElementById("password").value;
+            var countryCode = document.getElementById("country_code").value;
             var phoneNumber = document.getElementById("phone_number").value;
             var accessToken = $("#register_form #accessToken").val();
             var login_by = $("#register_form #login_by").val();
@@ -336,7 +359,7 @@
                     "X-Requested-With": "XMLHttpRequest",
                 },
                 data: {
-                    phone: phoneNumber,
+                    phone: countryCode + '' + phoneNumber,
                     name: name,
                     email: email,
                     password: password,
@@ -564,6 +587,7 @@
 
             if (checkBox.checked === true) {
 
+                var country = document.getElementById("c_code").value;
                 var password = document.getElementById("password").value;
                 var phoneNumber = document.getElementById("phone").value;
                 var csrf = $("input[name='_token']").val();
@@ -572,7 +596,7 @@
                 $.ajax({
                     url: "{{url('/login')}}",
                     type: 'POST',
-                    data: {phone: phoneNumber, password: password, '_token': csrf},
+                    data: {phone: country + "" + phoneNumber, password: password, '_token': csrf},
                     success: function (data) {
                         if ($('#latitude_cur').val()) {
                             $('#my_map_form_current').submit();
@@ -1138,7 +1162,8 @@
                 80.274816
             );
 
-            var orders = {!! !empty($Order) ? json_encode($Order->toArray()) : null !!}
+            var orders =
+            {!! !empty($Order) ? json_encode($Order->toArray()) : null !!}
 
             if (orders != null) {
                 userLocation = new google.maps.LatLng(
