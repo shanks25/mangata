@@ -336,6 +336,37 @@
             theme: "round"
         };
         $("#country_code").easyAutocomplete(options);
+
+
+        var options2 = {
+
+            url: "{{asset('assets/user/js/countryCodes.json')}}",
+
+            getValue: "name",
+
+            list: {
+                match: {
+                    enabled: true
+                },
+                onClickEvent: function () {
+                    var value = $("#c_code").getSelectedItemData().dial_code;
+
+                    $("#c_code").val(value).trigger("change");
+                },
+                maxNumberOfElements: 1000
+            },
+
+            template: {
+                type: "custom",
+                method: function (value, item) {
+                    return "<span class='flag flag-" + (item.dial_code).toLowerCase() + "' ></span>" + value + "(" + item.dial_code + ")";
+                }
+            },
+
+            theme: "round"
+        };
+        $("#c_code").easyAutocomplete(options2);
+
         var my_otp = '';
 
         function login() {
