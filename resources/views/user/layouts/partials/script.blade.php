@@ -156,6 +156,22 @@
                         <div class="col-xs-12">
                             <label>Phone Number</label>
                         </div>
+                        <div class="col-xs-3">
+                            <input type="text" id="country_code" name="country_code" class="form-control"
+                                   placeholder="+56">
+                        </div>
+                        <div class="col-xs-9 p-l-0">
+                            <input type="number" min="0" class="form-control phone-number" id="phone_number"
+                                   name="phone_number" value="{{ old('phone_number') }}"
+                                   placeholder="Enter Phone Number" required>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-xs-12">
+                            <label>Phone Number</label>
+                        </div>
 
                         <div class="col-xs-3">
                             <input type="text" id="country_code" name="country_code" class="form-control"
