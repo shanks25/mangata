@@ -20,9 +20,11 @@
 
                         <h3 class="prof-tit">Contact Us</h3>
 
-                        <form action="https://ditchthekitch.ca/enquiry-delivery" method="POST"
+                        <form action="{{ route('contact.post') }}" method="POST"
                               enctype="multipart/form-data">
-                            <input type="hidden" name="_token" value="3TuAva2RG0ecAVMxqqk5t6QUsI1ZW1FUrmf2cIqV">
+
+                            @csrf
+
                             <div class="form-group row">
                                 <label class="col-sm-2">Name</label>
                                 <div class="col-sm-5">

@@ -50,6 +50,8 @@ Route::get('/search', 'WelcomeController@search');
 Route::get('/enquiry-delivery', 'WelcomeController@delivery');
 Route::post('/enquiry-delivery', 'WelcomeController@delivery_store');
 
+Route::post('contact', 'WelcomeController@contactPost')->name('contact.post');
+
 Route::get('/partner', 'WelcomeController@partner')->name('partner.index');
 Route::post('/partner', 'WelcomeController@partnerStore')->name('partner.store');
 
