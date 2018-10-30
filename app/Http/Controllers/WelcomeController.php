@@ -269,8 +269,10 @@ class WelcomeController extends Controller
     //
     public function contactPost(Request $request)
     {
-        dd($request->all());
 
+        // send main to admin
+
+        return back()->with('flash_success', 'Thank you for reaching out. We will contact you soon.');
     }
 
 
