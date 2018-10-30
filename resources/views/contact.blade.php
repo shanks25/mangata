@@ -50,6 +50,13 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <label class="col-sm-2">Comment</label>
+                                <div class="col-sm-5">
+                                    <textarea name="comment" class="form-control"></textarea>
+                                </div>
+                            </div>
+
 
                             <button class="submit">Submit</button>
                         </form>
