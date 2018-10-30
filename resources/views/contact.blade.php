@@ -23,7 +23,7 @@
                         <form action="{{ route('contact.post') }}" method="POST"
                               enctype="multipart/form-data">
 
-                            @csrf
+                            {{ csrf_field() }}
 
                             <div class="form-group row">
                                 <label class="col-sm-2">Name</label>
