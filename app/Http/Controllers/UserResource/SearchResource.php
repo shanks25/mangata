@@ -245,7 +245,7 @@ class SearchResource extends Controller
                             $deliveryCharge = Setting::get('delivery_charge', 3);
                         }
                     }
-                        
+
                     return view('user.shop.delivery_address', compact('Shop', 'Cart', 'cards', 'Promocodes', 'ripple_response', 'ether_response', 'deliveryCharge'));
                 }
             }
