@@ -427,8 +427,9 @@
                                         </tr>
                                         <?php
                                         $discount = 0;
-                                        $tax = number_format($net * (Setting::get('tax') / 100), 2, '.', '');
-                                        $net = $net + $tax + Setting::get('delivery_charge');
+                                        $tax = number_format(($net * $deliveryCharge) * (Setting::get('tax') / 100), 2, '.', '');
+                                        $net = ($net + $tax + $deliveryCharge);
+                                        //                                        $net = $net + $tax + Setting::get('delivery_charge');
                                         ?>
                                         <tr>
                                             <td>GST({{Setting::get('tax')}}%)</td>

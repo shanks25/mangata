@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\UserResource;
 
+use App\UserAddress;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -79,7 +80,7 @@ class SearchResource extends Controller
             $Shops_vegiterian = clone $Shops;
             //print_r(DB::getQueryLog()); exit;
 //            $Shops = $Shops->get();
-            
+
             $data = [
                 'products' => $Products,
                 'shops' => $Shops
@@ -224,7 +225,34 @@ class SearchResource extends Controller
                     $Promocode = Promocode::with('pusage');
                     $Promocodes = $Promocode->where('status', 'ADDED')->where('expiration', '>', date("Y-m-d"))->get();
                     //dd($Promocodes);
-                    return view('user.shop.delivery_address', compact('Shop', 'Cart', 'cards', 'Promocodes', 'ripple_response', 'ether_response'));
+
+
+                    //-----------------
+                    $Useraddress = UserAddress::findOrFail($request->myaddress);
+                    $longitude = $Useraddress->longitude;
+                    $latitude = $Useraddress->latitude;
+
+                    $deliveryCharge = Setting::get('delivery_charge', 3);
+                    $baseDistance = Setting::get('base_delivery_km', 3);
+
+                    if ($request->pickup == 0) {
+
+                        $totalDistance = $this->calculate_distance($latitude, $longitude, $Shop->latitude, $Shop->longitude);
+
+                        if ($totalDistance != 'error') {
+                            if ($totalDistance > $baseDistance) {
+                                $deliveryCharge = (($totalDistance - $baseDistance) * Setting::get('after_base_charges', 1)) + Setting::get('delivery_charge', 3);
+                            } else {
+                                $deliveryCharge = Setting::get('delivery_charge', 3);
+                            }
+                        }
+
+                    } else {
+                        $totalDistance = 0;
+                        $deliveryCharge = 0;
+                    }
+
+                    return view('user.shop.delivery_address', compact('Shop', 'Cart', 'cards', 'Promocodes', 'ripple_response', 'ether_response', 'deliveryCharge'));
                 }
             }
             //dd($Shop);
