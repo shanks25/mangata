@@ -245,7 +245,8 @@ class SearchResource extends Controller
                         }
                     }
 
-                    return view('user.shop.delivery_address', compact('Shop', 'Cart', 'cards', 'Promocodes', 'ripple_response', 'ether_response', 'deliveryCharge'));
+                    return view('user.shop.delivery_address', compact('Shop', 'Cart', 'cards', 'Promocodes',
+                        'ripple_response', 'ether_response', 'deliveryCharge', 'totalDistance'));
                 }
             }
             //dd($Shop);

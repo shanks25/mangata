@@ -442,6 +442,11 @@
                                             <td class="text-right">{{currencydecimal($deliveryCharge)}}</td>
                                         </tr>
                                         <tr>
+                                            <td>Total Distance</td>
+                                            <td></td>
+                                            <td class="text-right">{{ $totalDistance . ' km'}}</td>
+                                        </tr>
+                                        <tr>
                                             <th>To Pay</th>
                                             <th></th>
                                             <th class="text-right to_pay">{{currencydecimal($net)}}</th>
