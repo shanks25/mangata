@@ -93,7 +93,7 @@
                                 </div>
                             @endif
 
-                            <div class="checkout-left-content delivery-address row">
+                            <div class="checkout-left-content delivery-address row" style="display: none">
 
                                 <!-- Address Box Ends -->
                             <?php $add_type = ['home' => 'home', 'work' => 'work', 'other' => 'other'];
@@ -155,7 +155,7 @@
                                 <!-- Address Box Ends -->
                             </div>
 
-                            <div class="selected-address">
+                            <div class="selected-address" style="display: none">
                                 <h6 class="address-tit addr_type">{{$address->type}}</h6>
                                 <p class="address-txt addr_map">{{$address->map_address}}</p>
                                 <!-- <input type="hidden" id="user_address_id" name="user_address_id" /> -->
