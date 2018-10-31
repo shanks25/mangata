@@ -33,7 +33,11 @@ class CartResource extends Controller
 
 
         if ($request->has('address_id')) {
-            $Useraddress = UserAddress::find($request->address_id);
+            if ($request->address_id != 0) {
+                $Useraddress = UserAddress::find($request->address_id);
+            } else {
+                $Useraddress = UserAddress::where('user_id', Auth::user()->id)->first();
+            }
         } else {
             $Useraddress = UserAddress::where('user_id', Auth::user()->id)->first();
         }
