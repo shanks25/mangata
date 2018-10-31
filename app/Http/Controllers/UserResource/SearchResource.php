@@ -268,6 +268,28 @@ class SearchResource extends Controller
         }
     }
 
+    public function calculate_distance($s_latitude, $s_longitude, $d_latitude, $d_longitude)
+    {
+
+        try {
+
+            $details = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" . $s_latitude . "," . $s_longitude . "&destinations=" . $d_latitude . "," . $d_longitude . "&mode=driving&sensor=false&key=AIzaSyAuxmmUPDIXgiw84E9AX7bbbdFzkd0xd50";
+
+            $json = curl($details);
+
+            $details = json_decode($json, TRUE);
+
+            $meter = $details['rows'][0]['elements'][0]['distance']['value'];
+
+            $kilometer = round($meter / 1000);
+
+            return $kilometer;
+
+        } catch (Exception $exception) {
+            return "error";
+        }
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
