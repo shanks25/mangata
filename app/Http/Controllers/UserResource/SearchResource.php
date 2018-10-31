@@ -229,6 +229,7 @@ class SearchResource extends Controller
 
                     //-----------------
                     if ($request->has('address_id')) {
+                        $address_id = $request->address_id;
                         $Useraddress = UserAddress::find($request->address_id);
                     } else {
                         $Useraddress = UserAddress::where('user_id', Auth::user()->id)->where('type', $request->myaddress)->first();
@@ -250,7 +251,7 @@ class SearchResource extends Controller
                     }
 
                     return view('user.shop.delivery_address', compact('Shop', 'Cart', 'cards', 'Promocodes',
-                        'ripple_response', 'ether_response', 'deliveryCharge', 'totalDistance'));
+                        'ripple_response', 'ether_response', 'deliveryCharge', 'totalDistance', 'address_id', 'Useraddress'));
                 }
             }
             //dd($Shop);
