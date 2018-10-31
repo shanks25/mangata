@@ -223,10 +223,10 @@ $(function () {
 });
 
 // Delivery Address JS
-$(document).ready(function () {
-    $('.selected-address').show();
-    $('.check').show();
-    $('.change-link').show();
+// $(document).ready(function () {
+//     $('.selected-address').show();
+//     $('.check').show();
+//     $('.change-link').show();
 //     $(".address-box").click(function() {
 //         console.log();
 //         $('.delivery-address').fadeOut();
@@ -236,7 +236,20 @@ $(document).ready(function () {
 //         $('.payment-block').addClass('active');
 //         $('#user_address_id').val($(this).data('id'));
 //         $('.payment_mode_type.cassh').trigger('click');
+// });
+$(document).ready(function () {
+    console.log();
+    $('.delivery-address').fadeIn();
+    $('.selected-address').fadeOut();
+    $('.check').fadeOut();
+    $('.change-link').fadeOut();
+    $('.payment-block').removeClass('active');
+    $('#user_address_id').val('');
+    $('.cardpay').prop('checked', false);
+    $('.payment_mode_type').prop('checked', false);
+    $('.btn_checkout').prop('disabled', true);
 });
+
 //
 // });
 //
