@@ -38,8 +38,7 @@
                                 ?>
                                 <!-- Address Box Starts -->
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}&myaddress={{ $address->type }}&address_id={{$address->id}}"
-                                           data-id="{{$address->id}}"
+                                        <a href="javascript:void(0);" data-id="{{$address->id}}"
                                            class="address-box address-cmn-box row m-0 update_addr">
                                             <div class="address-box-left pull-left">
                                                 @if($address->type=='work')
