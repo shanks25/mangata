@@ -33,7 +33,6 @@ class CartResource extends Controller
 
         // user
         $Useraddress = UserAddress::where('user_id', Auth::user()->id)->first();
-        dd($Useraddress);
         $longitude = $Useraddress->longitude;
         $latitude = $Useraddress->latitude;
 
