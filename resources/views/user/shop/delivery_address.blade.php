@@ -95,72 +95,72 @@
 
                             {{--<div class="checkout-left-content delivery-address row">--}}
 
-                            {{--<!-- Address Box Ends -->--}}
+                                {{--<!-- Address Box Ends -->--}}
                             {{--<?php $add_type = ['home' => 'home', 'work' => 'work', 'other' => 'other'];--}}
                             {{--$delivery_id = 0; ?>--}}
                             {{--@forelse(Auth::user()->addresses  as $k=>$address)--}}
-                            {{--<?php--}}
-                            {{--$delivery_addr_id = $address->id;--}}
-                            {{--if (in_array($address->type, $add_type)) {--}}
-                            {{--if ($address->type == 'other') {--}}
-                            {{--} else {--}}
-                            {{--unset($add_type[$address->type]);--}}
-                            {{--}--}}
-                            {{--}--}}
-                            {{--?>--}}
-                            {{--<!-- Address Box Starts -->--}}
-                            {{--<div class="col-md-6 col-sm-6 col-xs-12">--}}
-                            {{--<a href="{{url('/restaurant/details')}}?name={{$Shop->name}}&myaddress={{ $address->type }}&address_id={{$address->id}}"--}}
-                            {{--data-id="{{$address->id}}"--}}
-                            {{--class="address-box address-cmn-box row m-0 update_addr">--}}
-                            {{--<div class="address-box-left pull-left">--}}
-                            {{--@if($address->type=='work')--}}
-                            {{--<i class="ion-ios-briefcase-outline address-icon"></i>--}}
-                            {{--@else--}}
-                            {{--<i class="ion-ios-location-outline address-icon"></i>--}}
-                            {{--@endif--}}
-                            {{--</div>--}}
-                            {{--<div class="address-box-right">--}}
-                            {{--<input type="hidden" class="address_id" value="{{$address->id}}"/>--}}
-                            {{--<h6 class="address-tit addr-type">{{$address->type}}</h6>--}}
-                            {{--<p class="address-txt addr-map">{{$address->map_address}}</p>--}}
-                            {{--<h6 class="address-delivery-time">{{$Shop->estimated_delivery_time}}--}}
-                            {{--Mins</h6>--}}
-                            {{--<button class="address-btn">Delivery--}}
-                            {{--Here--}}
-                            {{--</button>--}}
-                            {{--</div>--}}
-                            {{--</a>--}}
-                            {{--</div>--}}
-                            {{--<!-- Address Box Ends -->--}}
+                                {{--<?php--}}
+                                {{--$delivery_addr_id = $address->id;--}}
+                                {{--if (in_array($address->type, $add_type)) {--}}
+                                    {{--if ($address->type == 'other') {--}}
+                                    {{--} else {--}}
+                                        {{--unset($add_type[$address->type]);--}}
+                                    {{--}--}}
+                                {{--}--}}
+                                {{--?>--}}
+                                {{--<!-- Address Box Starts -->--}}
+                                    {{--<div class="col-md-6 col-sm-6 col-xs-12">--}}
+                                        {{--<a href="{{url('/restaurant/details')}}?name={{$Shop->name}}&myaddress={{ $address->type }}&address_id={{$address->id}}"--}}
+                                           {{--data-id="{{$address->id}}"--}}
+                                           {{--class="address-box address-cmn-box row m-0 update_addr">--}}
+                                            {{--<div class="address-box-left pull-left">--}}
+                                                {{--@if($address->type=='work')--}}
+                                                    {{--<i class="ion-ios-briefcase-outline address-icon"></i>--}}
+                                                {{--@else--}}
+                                                    {{--<i class="ion-ios-location-outline address-icon"></i>--}}
+                                                {{--@endif--}}
+                                            {{--</div>--}}
+                                            {{--<div class="address-box-right">--}}
+                                                {{--<input type="hidden" class="address_id" value="{{$address->id}}"/>--}}
+                                                {{--<h6 class="address-tit addr-type">{{$address->type}}</h6>--}}
+                                                {{--<p class="address-txt addr-map">{{$address->map_address}}</p>--}}
+                                                {{--<h6 class="address-delivery-time">{{$Shop->estimated_delivery_time}}--}}
+                                                    {{--Mins</h6>--}}
+                                                {{--<button class="address-btn">Delivery--}}
+                                                    {{--Here--}}
+                                                {{--</button>--}}
+                                            {{--</div>--}}
+                                        {{--</a>--}}
+                                    {{--</div>--}}
+                                    {{--<!-- Address Box Ends -->--}}
                             {{--@empty--}}
 
                             {{--@endforelse--}}
                             {{--<?php //print_r($add_type); ?>--}}
                             {{--<!-- Address Box Ends -->--}}
-                            {{--<!-- Address Box Starts -->--}}
-                            {{--<div class="col-md-6 col-sm-6 col-xs-12">--}}
-                            {{--<a href="#" class="address-cmn-box add-new-address row m-0"--}}
-                            {{--onclick="$('#location-sidebar').asidebar('open')">--}}
-                            {{--<div class="address-box-left pull-left">--}}
-                            {{--<i class="ion-ios-location-outline address-icon"></i>--}}
+                                {{--<!-- Address Box Starts -->--}}
+                                {{--<div class="col-md-6 col-sm-6 col-xs-12">--}}
+                                    {{--<a href="#" class="address-cmn-box add-new-address row m-0"--}}
+                                       {{--onclick="$('#location-sidebar').asidebar('open')">--}}
+                                        {{--<div class="address-box-left pull-left">--}}
+                                            {{--<i class="ion-ios-location-outline address-icon"></i>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="address-box-right">--}}
+                                            {{--<h6 class="address-tit">Add New Address</h6>--}}
+                                            {{--<!-- <p class="address-txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->--}}
+                                            {{--<button class="address-btn">Add New</button>--}}
+                                        {{--</div>--}}
+                                    {{--</a>--}}
+                                {{--</div>--}}
+                                {{--<!-- Address Box Ends -->--}}
                             {{--</div>--}}
-                            {{--<div class="address-box-right">--}}
-                            {{--<h6 class="address-tit">Add New Address</h6>--}}
-                            {{--<!-- <p class="address-txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->--}}
-                            {{--<button class="address-btn">Add New</button>--}}
-                            {{--</div>--}}
-                            {{--</a>--}}
-                            {{--</div>--}}
-                            {{--<!-- Address Box Ends -->--}}
+                            {{--<div class="selected-address">--}}
+                                {{--<h6 class="address-tit addr_type">{{$address->type}}</h6>--}}
+                                {{--<p class="address-txt addr_map">{{$address->map_address}}</p>--}}
+                                {{--<!-- <input type="hidden" id="user_address_id" name="user_address_id" /> -->--}}
+                                {{--<h6 class="address-delivery-time">{{$Shop->estimated_delivery_time}} mins</h6>--}}
                             {{--</div>--}}
 
-                            {{--<div class="selected-address">--}}
-                            {{--<h6 class="address-tit addr_type">{{$address->type}}</h6>--}}
-                            {{--<p class="address-txt addr_map">{{$address->map_address}}</p>--}}
-                            {{--<!-- <input type="hidden" id="user_address_id" name="user_address_id" /> -->--}}
-                            {{--<h6 class="address-delivery-time">{{$Shop->estimated_delivery_time}} mins</h6>--}}
-                            {{--</div>--}}
                         </div>
                         <!-- Delivery Block Ends -->
                         <!-- Payment Block Starts -->
