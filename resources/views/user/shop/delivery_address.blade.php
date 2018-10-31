@@ -18,7 +18,7 @@
                                     <p>Multiple addresses in this location</p>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="javascript:void(0);" class="change-link">Change</a>
+                                    <a href="javascript:void(0);" class="change-linka">Change</a>
                                 </div>
                             </div>
 
