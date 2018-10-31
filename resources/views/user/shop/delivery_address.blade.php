@@ -439,7 +439,7 @@
                                         <tr>
                                             <td>Delivery Charges</td>
                                             <td></td>
-                                            <td class="text-right">{{ $deliveryCharge }}</td>
+                                            <td class="text-right">{{currencydecimal($deliveryCharge)}}</td>
                                         </tr>
                                         <tr>
                                             <th>To Pay</th>
