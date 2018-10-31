@@ -221,37 +221,37 @@ $(function() {
 });
 
 // Delivery Address JS
-$(document).ready(function() {
-    $('.selected-address').hide();
-    $('.check').hide();
-    $('.change-link').hide();
-    $(".address-box").click(function() {
-        console.log();
-        $('.delivery-address').fadeOut();
-        $('.selected-address').fadeIn();
-        $('.check').fadeIn();
-        $('.change-link').fadeIn();
-        $('.payment-block').addClass('active');
-        $('#user_address_id').val($(this).data('id'));
-        $('.payment_mode_type.cassh').trigger('click');
-    });
-
-});
-
-$(document).ready(function() {
-    $(".change-link").click(function() {
-        console.log();
-        $('.delivery-address').fadeIn();
-        $('.selected-address').fadeOut();
-        $('.check').fadeOut();
-        $('.change-link').fadeOut();
-        $('.payment-block').removeClass('active');
-        $('#user_address_id').val('');
-        $('.cardpay').prop('checked',false);
-        $('.payment_mode_type').prop('checked',false);
-        $('.btn_checkout').prop('disabled',true);
-    });
-});
+// $(document).ready(function() {
+//     $('.selected-address').hide();
+//     $('.check').hide();
+//     $('.change-link').hide();
+//     $(".address-box").click(function() {
+//         console.log();
+//         $('.delivery-address').fadeOut();
+//         $('.selected-address').fadeIn();
+//         $('.check').fadeIn();
+//         $('.change-link').fadeIn();
+//         $('.payment-block').addClass('active');
+//         $('#user_address_id').val($(this).data('id'));
+//         $('.payment_mode_type.cassh').trigger('click');
+//     });
+//
+// });
+//
+// $(document).ready(function() {
+//     $(".change-link").click(function() {
+//         console.log();
+//         $('.delivery-address').fadeIn();
+//         $('.selected-address').fadeOut();
+//         $('.check').fadeOut();
+//         $('.change-link').fadeOut();
+//         $('.payment-block').removeClass('active');
+//         $('#user_address_id').val('');
+//         $('.cardpay').prop('checked',false);
+//         $('.payment_mode_type').prop('checked',false);
+//         $('.btn_checkout').prop('disabled',true);
+//     });
+// });
 
 // Edit Profile JS
 $(document).ready(function() {
