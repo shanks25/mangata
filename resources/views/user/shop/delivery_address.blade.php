@@ -56,10 +56,6 @@
                                                 <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}&myaddress={{ $address->type }}&address_id={{$address->id}}"
                                                    class="address-btn">Delivery
                                                     Here</a>
-
-                                                <button  href="{{url('/restaurant/details')}}?name={{$Shop->name}}&myaddress={{ $address->type }}&address_id={{$address->id}}"
-                                                   class="address-btn">Delivery
-                                                    Here</button>
                                             </div>
                                         </a>
                                     </div>
