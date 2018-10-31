@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Auth;
-use Illuminate\Support\Facades\Auth;
 use Setting;
 use Exception;
 use App\Http\Controllers\Resource\ShopResource;
