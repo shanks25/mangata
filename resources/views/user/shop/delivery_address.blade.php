@@ -18,7 +18,8 @@
                                     <p>Multiple addresses in this location</p>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="javascript:void(0);" class="change-linka">Change</a>
+                                    <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}&myaddress={{ $address->type }}"
+                                       class="change-linka">Change</a>
                                 </div>
                             </div>
 
