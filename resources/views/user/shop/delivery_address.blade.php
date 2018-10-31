@@ -164,7 +164,7 @@
                         </div>
                         <!-- Delivery Block Ends -->
                         <!-- Payment Block Starts -->
-                        <div class="checkout-left-block payment-block">
+                        <div class="checkout-left-block payment-block active">
                             <div class="payment-block-inner">
                                 <div class="checkout-left-head">
                                     <h4 class="m-0">Payment</h4>
