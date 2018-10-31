@@ -33,6 +33,7 @@ class CartResource extends Controller
 
         // user
         $Useraddress = UserAddress::where('user_id', Auth::user()->id)->first();
+        dd($Useraddress);
         $longitude = $Useraddress->longitude;
         $latitude = $Useraddress->latitude;
 
@@ -55,9 +56,8 @@ class CartResource extends Controller
         }
 
         $Cart = [
-            'delivery_charges' => Setting::get('delivery_charge', 3),
-//            'delivery_charges' => $deliveryCharge,
-//            'total_distance' => $totalDistance,
+            'delivery_charges' => $deliveryCharge,
+            'total_distance' => $totalDistance,
             'delivery_free_minimum' => Setting::get('delivery_free_minimum', 0),
             'tax_percentage' => Setting::get('tax', 0),
             'carts' => $Products,
