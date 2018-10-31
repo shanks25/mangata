@@ -55,6 +55,7 @@ class CartResource extends Controller
 //        }
 
         $Cart = [
+            'delivery_charges' => Setting::get('delivery_charge', 3),
 //            'delivery_charges' => $deliveryCharge,
 //            'total_distance' => $totalDistance,
             'delivery_free_minimum' => Setting::get('delivery_free_minimum', 0),
