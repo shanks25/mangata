@@ -228,7 +228,7 @@ class SearchResource extends Controller
 
 
                     //-----------------
-                    $Useraddress = UserAddress::findOrFail($request->myaddress);
+                    $Useraddress = UserAddress::where('user_id', Auth::user()->id)->where('type', $request->myaddress)->first();
                     $longitude = $Useraddress->longitude;
                     $latitude = $Useraddress->latitude;
 
