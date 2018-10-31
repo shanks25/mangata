@@ -53,7 +53,8 @@
                                                 <p class="address-txt addr-map">{{$address->map_address}}</p>
                                                 <h6 class="address-delivery-time">{{$Shop->estimated_delivery_time}}
                                                     Mins</h6>
-                                                <button class="address-btn">Delivery
+                                                <button href="{{url('/restaurant/details')}}?name={{$Shop->name}}&myaddress={{ $address->type }}&address_id={{$address->id}}"
+                                                        class="address-btn">Delivery
                                                     Here
                                                 </button>
                                             </div>
