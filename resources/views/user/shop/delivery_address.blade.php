@@ -23,7 +23,7 @@
                             </div>
 
                             @if (isset($address_id))
-                                <div class="selected-address">
+                                <div class="selected-address" style="display: block">
                                     <h6 class="address-tit addr_type">{{ $Useraddress->type }}</h6>
                                     <p class="address-txt addr_map">{{ $Useraddress->map_address}}</p>
                                     <!-- <input type="hidden" id="user_address_id" name="user_address_id" /> -->
