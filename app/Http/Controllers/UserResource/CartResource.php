@@ -31,8 +31,12 @@ class CartResource extends Controller
 
         $Products = UserCart::list($request->user()->id);
 
-        // user
-        $Useraddress = UserAddress::where('user_id', Auth::user()->id)->first();
+
+        if ($request->has('address_id')) {
+            $Useraddress = UserAddress::find($request->address_id);
+        } else {
+            $Useraddress = UserAddress::where('user_id', Auth::user()->id)->first();
+        }
 
         $deliveryCharge = Setting::get('delivery_charge', 3);
         $baseDistance = Setting::get('base_delivery_km', 3);
