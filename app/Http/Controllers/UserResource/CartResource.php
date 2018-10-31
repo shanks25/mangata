@@ -31,32 +31,32 @@ class CartResource extends Controller
 
         $Products = UserCart::list($request->user()->id);
 
-        // user
-        $Useraddress = UserAddress::where('user_id', Auth::user()->id)->first();
-        $longitude = $Useraddress->longitude;
-        $latitude = $Useraddress->latitude;
-
-
-        // Shop finding logic goes here.
-        $Shop_id = Product::findOrFail($Products[0]->product_id)->shop_id;
-        $Shop = Shop::findOrFail($Shop_id);
-
-        $deliveryCharge = Setting::get('delivery_charge', 3);
-        $baseDistance = Setting::get('base_delivery_km', 3);
-
-        $totalDistance = $this->calculate_distance($latitude, $longitude, $Shop->latitude, $Shop->longitude);
-
-        if ($totalDistance != 'error') {
-            if ($totalDistance > $baseDistance) {
-                $deliveryCharge = (($totalDistance - $baseDistance) * Setting::get('after_base_charges', 1)) + Setting::get('delivery_charge', 3);
-            } else {
-                $deliveryCharge = Setting::get('delivery_charge', 3);
-            }
-        }
+//        // user
+//        $Useraddress = UserAddress::where('user_id', Auth::user()->id)->first();
+//        $longitude = $Useraddress->longitude;
+//        $latitude = $Useraddress->latitude;
+//
+//
+//        // Shop finding logic goes here.
+//        $Shop_id = Product::findOrFail($Products[0]->product_id)->shop_id;
+//        $Shop = Shop::findOrFail($Shop_id);
+//
+//        $deliveryCharge = Setting::get('delivery_charge', 3);
+//        $baseDistance = Setting::get('base_delivery_km', 3);
+//
+//        $totalDistance = $this->calculate_distance($latitude, $longitude, $Shop->latitude, $Shop->longitude);
+//
+//        if ($totalDistance != 'error') {
+//            if ($totalDistance > $baseDistance) {
+//                $deliveryCharge = (($totalDistance - $baseDistance) * Setting::get('after_base_charges', 1)) + Setting::get('delivery_charge', 3);
+//            } else {
+//                $deliveryCharge = Setting::get('delivery_charge', 3);
+//            }
+//        }
 
         $Cart = [
-            'delivery_charges' => $deliveryCharge,
-            'total_distance' => $totalDistance,
+//            'delivery_charges' => $deliveryCharge,
+//            'total_distance' => $totalDistance,
             'delivery_free_minimum' => Setting::get('delivery_free_minimum', 0),
             'tax_percentage' => Setting::get('tax', 0),
             'carts' => $Products,
