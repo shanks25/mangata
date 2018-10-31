@@ -7,7 +7,6 @@ use App\UserAddress;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Facades\Auth;
 use Log;
 use Setting;
 use Exception;
