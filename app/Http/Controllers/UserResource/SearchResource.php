@@ -228,7 +228,11 @@ class SearchResource extends Controller
 
 
                     //-----------------
-                    $Useraddress = UserAddress::where('user_id', Auth::user()->id)->where('type', $request->myaddress)->first();
+                    if ($request->has('address_id')) {
+                        $Useraddress = UserAddress::find($request->address_id);
+                    } else {
+                        $Useraddress = UserAddress::where('user_id', Auth::user()->id)->where('type', $request->myaddress)->first();
+                    }
                     $longitude = $Useraddress->longitude;
                     $latitude = $Useraddress->latitude;
 
