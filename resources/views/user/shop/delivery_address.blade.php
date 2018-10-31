@@ -427,7 +427,7 @@
                                         </tr>
                                         <?php
                                         $discount = 0;
-                                        $tax = number_format(($net * $deliveryCharge) * (Setting::get('tax') / 100), 2, '.', '');
+                                        $tax = number_format(($net + $deliveryCharge) * (Setting::get('tax') / 100), 2, '.', '');
                                         $net = ($net + $tax + $deliveryCharge);
                                         //                                        $net = $net + $tax + Setting::get('delivery_charge');
                                         ?>
