@@ -38,7 +38,8 @@
                                 ?>
                                 <!-- Address Box Starts -->
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <a href="javascript:void(0);" data-id="{{$address->id}}"
+                                        <a href="{{url('/restaurant/details')}}?name={{$Shop->name}}&myaddress={{ $address->type }}&address_id={{$address->id}}"
+                                           data-id="{{$address->id}}"
                                            class="address-box address-cmn-box row m-0 update_addr">
                                             <div class="address-box-left pull-left">
                                                 @if($address->type=='work')
@@ -53,8 +54,7 @@
                                                 <p class="address-txt addr-map">{{$address->map_address}}</p>
                                                 <h6 class="address-delivery-time">{{$Shop->estimated_delivery_time}}
                                                     Mins</h6>
-                                                <button href="{{url('/restaurant/details')}}?name={{$Shop->name}}&myaddress={{ $address->type }}&address_id={{$address->id}}"
-                                                        class="address-btn">Delivery
+                                                <button class="address-btn">Delivery
                                                     Here
                                                 </button>
                                             </div>
