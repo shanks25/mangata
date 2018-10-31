@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     var $window = $(window);
 
@@ -21,7 +21,7 @@ $(document).ready(function() {
     };
 
     setCSS();
-    $(window).on('load resize shown.bs.modal', function() {
+    $(window).on('load resize shown.bs.modal', function () {
         setCSS();
     });
 });
@@ -43,14 +43,14 @@ $('.intro-slide').slick({
     slidesToShow: 3,
     slidesToScroll: 3,
     responsive: [{
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                infinite: true,
-                dots: true
-            }
-        },
+        breakpoint: 1024,
+        settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+        }
+    },
         {
             breakpoint: 768,
             settings: {
@@ -78,7 +78,7 @@ $('.log-loc-txt-slide').slick({
     fade: true
 });
 
-$(window).scroll(function() {
+$(window).scroll(function () {
     var scroll = $(window).scrollTop();
 
     if (scroll >= 500) {
@@ -106,15 +106,15 @@ $(window).scroll(function() {
     }
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
     $(document).on("scroll", onScroll);
 
     //smoothscroll
-    $('a[href^="#"]').on('click', function(e) {
+    $('a[href^="#"]').on('click', function (e) {
         e.preventDefault();
         $(document).off("scroll");
 
-        $('a').each(function() {
+        $('a').each(function () {
             $(this).removeClass('active');
         })
         $(this).addClass('active');
@@ -124,7 +124,7 @@ $(document).ready(function() {
         $target = $(target);
         $('html, body, #custom-modal').stop().animate({
             'scrollTop': $target.offset().top + 2
-        }, 500, 'swing', function() {
+        }, 500, 'swing', function () {
             window.location.hash = target;
             $(document).on("scroll", onScroll);
         });
@@ -133,7 +133,7 @@ $(document).ready(function() {
 
 function onScroll(event) {
     var scrollPos = $(document).scrollTop();
-    $('.filter-scroll-menu').each(function() {
+    $('.filter-scroll-menu').each(function () {
         var currLink = $(this);
         var refElement = $(currLink.attr("href"));
         if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
@@ -178,37 +178,39 @@ $('.subs').click(function subst() {
 // });
 
 $(".add-btn1").hide();
-$(document).ready(function() {
-    $(".add-btn").click(function() {
+$(document).ready(function () {
+    $(".add-btn").click(function () {
         console.log('hi')
         if ($(this).hasClass('active')) {
             $(this).removeClass('active')
             $(this).addClass('active')
-        };
+        }
+        ;
     });
 
 });
 
-$(document).ready(function() {
-    $(".report-block").click(function() {
+$(document).ready(function () {
+    $(".report-block").click(function () {
         if ($('.report-block').hasClass('active')) {
             $('.report-block').removeClass('active')
             $(this).addClass('active')
-        };
+        }
+        ;
     });
 
 });
 
 // Addon List JS
-$(document).ready(function() {
+$(document).ready(function () {
     $(".hide-items").hide();
-    $(".addons-hide").click(function() {
+    $(".addons-hide").click(function () {
         $(".hide-items").fadeToggle()
     });
 });
 
 // Map JS
-$(function() {
+$(function () {
     /*$("#map").googleMap({
         zoom: 16, // Initial zoom level (optional)
         coords: [48.895651, 2.290569], // Map center (optional)
@@ -221,10 +223,10 @@ $(function() {
 });
 
 // Delivery Address JS
-// $(document).ready(function() {
-//     $('.selected-address').hide();
-//     $('.check').hide();
-//     $('.change-link').hide();
+$(document).ready(function () {
+    $('.selected-address').show();
+    $('.check').show();
+    $('.change-link').show();
 //     $(".address-box").click(function() {
 //         console.log();
 //         $('.delivery-address').fadeOut();
@@ -234,7 +236,7 @@ $(function() {
 //         $('.payment-block').addClass('active');
 //         $('#user_address_id').val($(this).data('id'));
 //         $('.payment_mode_type.cassh').trigger('click');
-//     });
+});
 //
 // });
 //
@@ -254,20 +256,20 @@ $(function() {
 // });
 
 // Edit Profile JS
-$(document).ready(function() {
-    $(".edit-link").click(function() {
+$(document).ready(function () {
+    $(".edit-link").click(function () {
         $(this).parentsUntil(".edit-profile-box-outer").toggleClass('active');
     });
 });
 
 //Statement Datetabele JS
-$('#statement-modal').on('shown.bs.modal', function(e) {
-    $(document).ready(function() {
+$('#statement-modal').on('shown.bs.modal', function (e) {
+    $(document).ready(function () {
         $('#statement').DataTable({
             responsive: {
                 details: {
                     display: $.fn.dataTable.Responsive.display.modal({
-                        header: function(row) {
+                        header: function (row) {
                             var data = row.data();
                             return 'Details for ' + data[0] + ' ' + data[1];
                         }
@@ -282,17 +284,17 @@ $('#statement-modal').on('shown.bs.modal', function(e) {
 });
 
 // Forgot Jquery
-$(document).ready(function() {
+$(document).ready(function () {
     $(".forgot-form-sec").hide();
-    $(".forgot-link").click(function() {
+    $(".forgot-link").click(function () {
         $(".forgot-form-sec").fadeIn();
         $(".login-form-sec").fadeOut();
     });
-     $(".login-link").click(function() {
+    $(".login-link").click(function () {
         $(".forgot-form-sec").fadeOut();
         $(".login-form-sec").fadeIn();
     });
-    $('.logoback').on('click',function(){
+    $('.logoback').on('click', function () {
         $('#home_page_back').submit();
     });
 });
