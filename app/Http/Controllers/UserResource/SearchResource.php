@@ -235,23 +235,16 @@ class SearchResource extends Controller
                     $deliveryCharge = Setting::get('delivery_charge', 3);
                     $baseDistance = Setting::get('base_delivery_km', 3);
 
-                    if ($request->pickup == 0) {
+                    $totalDistance = $this->calculate_distance($latitude, $longitude, $Shop->latitude, $Shop->longitude);
 
-                        $totalDistance = $this->calculate_distance($latitude, $longitude, $Shop->latitude, $Shop->longitude);
-
-                        if ($totalDistance != 'error') {
-                            if ($totalDistance > $baseDistance) {
-                                $deliveryCharge = (($totalDistance - $baseDistance) * Setting::get('after_base_charges', 1)) + Setting::get('delivery_charge', 3);
-                            } else {
-                                $deliveryCharge = Setting::get('delivery_charge', 3);
-                            }
+                    if ($totalDistance != 'error') {
+                        if ($totalDistance > $baseDistance) {
+                            $deliveryCharge = (($totalDistance - $baseDistance) * Setting::get('after_base_charges', 1)) + Setting::get('delivery_charge', 3);
+                        } else {
+                            $deliveryCharge = Setting::get('delivery_charge', 3);
                         }
-
-                    } else {
-                        $totalDistance = 0;
-                        $deliveryCharge = 0;
                     }
-
+                        
                     return view('user.shop.delivery_address', compact('Shop', 'Cart', 'cards', 'Promocodes', 'ripple_response', 'ether_response', 'deliveryCharge'));
                 }
             }
