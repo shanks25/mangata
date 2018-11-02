@@ -41,7 +41,7 @@
 
                             <div class="col-xs-3">
                                 <input type="text" id="c_code" name="c_code" class="form-control"
-                                       placeholder="+1" autocomplete="false">
+                                       placeholder="+1" autocomplete="false" disabled="disabled">
                             </div>
                             <div class="col-xs-9 p-l-0">
                                 <input type="number" min="0" class="form-control phone-number" id="phone"
