@@ -106,12 +106,26 @@
                                             Clear photo/scan of valid Driver’s License (front and back).
                                         </label>
                                     @elseif($document->id == 5)
-                                        <label class="col-sm-2">Upload Documents {{ $document->name }}:</label>
+                                        <label class="col-sm-2">
+                                            VEHICLE REGISTRATION <br>
+                                            Clear photo/scan of valid Vehicle Registration.</label>
                                     @elseif($document->id == 6)
-                                        <label class="col-sm-2">Upload Documents {{ $document->name }}:</label>
+                                        <label class="col-sm-2">
+                                            PROOF OF VEHICLE INSURANCE <br>
+                                            Clear photo/scan of valid Vehicle Insurance.</label>
                                     @elseif($document->id == 7)
-                                        <label class="col-sm-2">Upload Documents {{ $document->name }}:</label>
+                                        <label class="col-sm-2">
+                                            ELIGIBILITY TO WORK IN CANADA <br>
+                                            Clear photo/scan of any of the following: Permanent
+                                            Residence Card, Canadian Birth Certificate, Canadian
+                                            Citizenship Card, Record of Landing, Valid Work Permit</label>
                                     @elseif($document->id == 9)
+                                        <label class="col-sm-2">
+                                            BANKING INFORMATION <br>
+                                            Clear photo/scan of void cheque or PAD form
+                                            showing your bank account number.
+                                        </label>
+                                    @else
                                         <label class="col-sm-2">Upload Documents {{ $document->name }}:</label>
                                     @endif
 
