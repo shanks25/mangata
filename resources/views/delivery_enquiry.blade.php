@@ -100,7 +100,21 @@
 
                             @foreach (\App\Document::all() as $document)
                                 <div class="form-group row">
-                                    <label class="col-sm-2">Upload Documents {{ $document->name }}:</label>
+                                    @if ($document->id == 4)
+                                        <label class="col-sm-2">
+                                            DRIVER’S LICENSE <br>
+                                            Clear photo/scan of valid Driver’s License (front and back).
+                                        </label>
+                                    @elseif($document->id == 5)
+                                        <label class="col-sm-2">Upload Documents {{ $document->name }}:</label>
+                                    @elseif($document->id == 6)
+                                        <label class="col-sm-2">Upload Documents {{ $document->name }}:</label>
+                                    @elseif($document->id == 7)
+                                        <label class="col-sm-2">Upload Documents {{ $document->name }}:</label>
+                                    @elseif($document->id == 9)
+                                        <label class="col-sm-2">Upload Documents {{ $document->name }}:</label>
+                                    @endif
+
                                     <div class="col-sm-5">
                                         <input type="file" accept="image/*" name="{{ 'doc_' . $document->id }}"
                                                class="dropify form-control"
