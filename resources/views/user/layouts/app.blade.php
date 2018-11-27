@@ -85,8 +85,8 @@
                 <ul class="nav navbar-nav navbar-right">
 
                     <li>
-                        <a href="mailto: info@ditchthekitch.ca?subject=Enquiry For Catering" class="btn btn-danger"
-                           style="background: #ec6f5b; color: white">
+                        <a href="{{route('contactform')}}" class="btn btn-danger"
+                           style="background: #dd1c1c; color: white">
                             Catering Inquiry</a>
                     </li>
 
@@ -204,7 +204,7 @@
       </script>
       <!-- End of LiveChat code -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113150309-2"></script>--}}
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>--}}
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -214,7 +214,7 @@
 
         gtag('js', new Date());
 
-        gtag('config', 'UA-113150309-2');
+        gtag('config', '');
     </script>
 </body>
 

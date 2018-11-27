@@ -48,8 +48,6 @@ class Handler extends ExceptionHandler
             return parent::render($request, $exception);
         }
 
-        dd($exception->getMessage());
-
         if($exception->getCode())
         {
                 return response()->view('errors.404', [], $exception->getCode());

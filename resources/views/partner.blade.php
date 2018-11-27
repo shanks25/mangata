@@ -82,6 +82,20 @@
                                         @endif
                                     </div>
 
+                                  <div class="form-group{{ $errors->has('contact_name') ? ' has-error' : '' }}">
+                                        <label for="contact_name">@lang('shop.create.contact_name')</label>
+
+                                        <input id="contact_name" type="text" class="form-control" name="contact_name"
+                                               value="{{ old('contact_name') }}"
+                                               required autofocus>
+
+                                        @if ($errors->has('contact_name'))
+                                            <span class="help-block">
+                                <strong>{{ $errors->first('contact_name') }}</strong>
+                            </span>
+                                        @endif
+                                    </div>
+
                                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                         <label for="password">@lang('shop.create.password')</label>
 
@@ -259,6 +273,7 @@
 
         </div>
     </div>
+</div>
     <!-- End Content =============================================== -->
 @endsection
 
@@ -417,5 +432,6 @@
         }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{Setting::get('GOOGLE_MAP_KEY')}}&libraries=places&callback=initMap"
-            async defer></script>
+            async defer></script> </p></p>
+@include('user.layouts.partials.footer')
 @endsection

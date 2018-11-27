@@ -98,32 +98,34 @@
 
                             <h4>Upload Document to Verify:</h4>
 
-                            @foreach (\App\Document::all() as $document)
+                           @foreach (\App\Document::all() as $document)
                                 <div class="form-group row">
                                     @if ($document->id == 4)
                                         <label class="col-sm-2">
                                             DRIVER’S LICENSE <br>
-                                            Clear photo/scan of valid Driver’s License (front and back).
+                                             <a href="#" data-toggle="tooltip" data-placement="right" title="  Clear photo/scan of valid Driver’s License (front and back)."><i style="font-size:18px" class="fa">&#xf059;</i></a> 
+                                          
                                         </label>
                                     @elseif($document->id == 5)
                                         <label class="col-sm-2">
-                                            VEHICLE REGISTRATION <br>
-                                            Clear photo/scan of valid Vehicle Registration.</label>
+                                            VEHICLE REGISTRATION 
+                                           <a href="#" data-toggle="tooltip" data-placement="right" title="Clear photo/scan of valid Vehicle Registration."><i style="font-size:18px" class="fa">&#xf059;</i></a>   </label>
                                     @elseif($document->id == 6)
                                         <label class="col-sm-2">
                                             PROOF OF VEHICLE INSURANCE <br>
-                                            Clear photo/scan of valid Vehicle Insurance.</label>
+                                             <a href="#" data-toggle="tooltip" data-placement="right" title="Clear photo/scan of valid Vehicle Insurance."><i style="font-size:18px" class="fa">&#xf059;</i></a>
+                                            </label>
                                     @elseif($document->id == 7)
                                         <label class="col-sm-2">
                                             ELIGIBILITY TO WORK IN CANADA <br>
-                                            Clear photo/scan of any of the following: Permanent
-                                            Residence Card, Canadian Birth Certificate, Canadian
-                                            Citizenship Card, Record of Landing, Valid Work Permit</label>
+                                             <a href="#" data-toggle="tooltip" data-placement="right" title=" Clear photo/scan of any of the following: Permanent Residence Card, Canadian Birth Certificate, Canadian
+                                            Citizenship Card, Record of Landing, Valid Work Permit"><i style="font-size:18px" class="fa">&#xf059;</i></a>
+                                           </label>
                                     @elseif($document->id == 9)
                                         <label class="col-sm-2">
                                             BANKING INFORMATION <br>
-                                            Clear photo/scan of void cheque or PAD form
-                                            showing your bank account number.
+                                             <a href="#" data-toggle="tooltip" data-placement="right" title="Clear photo/scan of void cheque or PAD form showing your bank account number."><i style="font-size:18px" class="fa">&#xf059;</i></a>
+                                            
                                         </label>
                                     @else
                                         <label class="col-sm-2">Upload Documents {{ $document->name }}:</label>
@@ -143,7 +145,7 @@
                                 </div>
                             @endforeach
 
-                            <button class="submit">Submit</button>
+                             <button type="submit" class="btn btn-lg" style="background-color:#dd1c1c;color:white">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -151,4 +153,5 @@
         </div>
         <!-- End row -->
     </div>
+@include('user.layouts.partials.footer')
 @endsection

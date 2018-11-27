@@ -5,6 +5,7 @@ namespace App\Http\Controllers\ShopResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Auth;
 
 use Route;
 
@@ -21,11 +22,11 @@ class CategoryResource extends Controller
      */
     public function index(Request $request)
     {
-        $Categories = $request->user()->categories->where('parent_id','=','');
+      $users = Auth::user();
         if($request->ajax()){
             return $Categories;
         }
-        return view(Route::currentRouteName(), compact('Categories'));
+        return view(Route::currentRouteName(), compact('users'));
     }
 
     /**

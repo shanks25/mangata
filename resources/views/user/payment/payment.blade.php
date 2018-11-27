@@ -46,6 +46,7 @@
                                         <h6>Saved Cards</h6>
                                         <div class="saved-cards-block row">
                                         @forelse($cards as $card)
+
                                             @if(@$card->is_default)
                                                 <?php $card_id = $card->id; ?>
                                                 <!-- Saved Cards Box Starts -->
@@ -125,13 +126,11 @@
                                         <!-- Saved Cards Box Starts -->
                                             <a href="#" class="add-card-box row m-0"
                                                onclick="$('#addcard-sidebar').asidebar('open')">
-                                                <div class="add-card-left pull-left">
-                                                    <i class="ion-plus-round address-icon"></i>
-                                                </div>
+
                                                 <div class="add-card-right">
-                                                    <h6 class="address-tit">Add New</h6>
+                                                  
                                                     <!-- <p class="address-txt1">20% cashback on 1st &amp; every 3rd txn with Mastercard CC/DC (max Rs.75/txn).TnC</p> -->
-                                                    <button class="address-btn add-new">Add Card</button>
+                                                    <button class="address-btn add-new">Add New Card</button>
                                                 </div>
                                             </a>
                                         </div>

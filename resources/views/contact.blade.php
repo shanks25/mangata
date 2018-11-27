@@ -4,7 +4,7 @@
     <!-- Content ================================================== -->
     <div class="container">
         <div class="row">
-            <img src="uploads/food2.png" alt="food">
+           <center> <img src="uploads/food2.png" alt="food"></center>
 
             <div class="profile-left-col col-md-3 ">
 
@@ -58,17 +58,16 @@
                                     <textarea name="comment" class="form-control"></textarea>
                                 </div>
                             </div>
-
-
-                            <button class="submit">Submit</button>
-                        </form>
+                            <div class="col-md-12 text-right">
+                               <center><button type="submit" class="btn btn-lg" style="background-color:#dd1c1c;color:white;">Submit</button></center>
+                            </div>
+                        </form> 
                     </div>
                 </div>
-
-
             </div>
             <!-- End row -->
         </div>
-    </div>
+    </div> </p>
     <!-- End Content =============================================== -->
+@include('user.layouts.partials.footer')
 @endsection

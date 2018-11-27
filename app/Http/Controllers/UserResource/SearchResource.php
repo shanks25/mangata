@@ -11,6 +11,7 @@ use Setting;
 use Exception;
 use App\Http\Controllers\Resource\ShopResource;
 use App\Http\Controllers\UserResource\CartResource;
+use App\Http\Controllers\UserResource\ProfileController;
 use App\Http\Controllers\Resource\CardResource;
 use App\Shop;
 use App\Product;
@@ -96,7 +97,13 @@ class SearchResource extends Controller
                 if ($request->get('v') == 'map') {
                     return view('user.shop.index-map', compact('Shops', 'Cuisines'));
                 } else {
-                    return view('user.shop.index', compact('Shops', 'Cuisines', 'BannerImage', 'Shops_popular', 'Shops_superfast', 'Shops_offers', 'Shops_vegiterian', 'Shops_new'));
+
+                     $restaurants= Shop::where('status','active')->get();
+                     $ratings=Shop::where('status','active')->orderBy('rating','DESC')->get();
+                     $deliverytimes=Shop::where('status','active')->orderBy('estimated_delivery_time','asc')->get();
+
+
+                    return view('user.shop.index', compact('Shops','restaurants','ratings','deliverytimes','Cuisines', 'BannerImage', 'Shops_popular', 'Shops_superfast', 'Shops_offers', 'Shops_vegiterian', 'Shops_new'));
                 }
 
         } catch (Exception $e) {
@@ -191,22 +198,10 @@ class SearchResource extends Controller
                 $Cart = (new CartResource)->index($request);
                 //dd($Cart);
                 if (isset($request->myaddress)) {
-                    if (Setting::get('payment_mode') == 'braintree') {
-                        $request->merge([
-                            'type' => "braintree"
-                        ]);
-
-                    }
-                    if (Setting::get('payment_mode') == 'stripe') {
-                        $request->merge([
-                            'type' => "stripe"
-                        ]);
-
-                    } else {
-                        $request->merge([
+                     $request->merge([
                             'type' => "bambora"
                         ]);
-                    }
+
 
                     $eather_response = '';
                     $ripple_response = '';
@@ -250,8 +245,11 @@ class SearchResource extends Controller
                         }
                     }
 
+                        $user_wallet_balance=Auth::user()->wallet_balance;
+
+
                     return view('user.shop.delivery_address', compact('Shop', 'Cart', 'cards', 'Promocodes',
-                        'ripple_response', 'ether_response', 'deliveryCharge', 'totalDistance', 'address_id', 'Useraddress'));
+                        'ripple_response', 'ether_response', 'deliveryCharge', 'totalDistance', 'address_id', 'Useraddress','user_wallet_balance'));
                 }
             }
             //dd($Shop);

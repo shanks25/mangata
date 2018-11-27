@@ -54,10 +54,10 @@
                 <p class="copy-txt">{{Setting::get('site_copyright')}}</p>
             </div>
             <div class="foot-social col-md-4 text-right">
-                <a href="#" class="foot-social-item"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.facebook.com/DitchTheKitch/" class="foot-social-item"><i class="fa fa-facebook"></i></a>
                 <a href="#" class="foot-social-item"><i class="fa fa-pinterest-p"></i></a>
-                <a href="#" class="foot-social-item"><i class="fa fa-instagram"></i></a>
-                <a href="#" class="foot-social-item"><i class="fa fa-twitter"></i></a>
+                <a href="https://instagram.com/ditchthekitch" class="foot-social-item"><i class="fa fa-instagram"></i></a>
+                <a href="https://twitter.com/ditchthekitch" class="foot-social-item"><i class="fa fa-twitter"></i></a>
             </div>
         </div>
         <!-- Foot Bottom Ends -->

@@ -12,7 +12,7 @@ Route::get('/', 'WelcomeController@home');
 Route::get('privacy', function () {
     $page = 'privacy';
     $title = 'Privacy Policy';
-    return view('static', compact('page', 'title'));
+    return view('privacy', compact('page', 'title'));
 });
 
 Route::get('aboutus', function () {
@@ -41,6 +41,9 @@ Route::get('contact', function () {
     return view('static', compact('page', 'title'));
 });
 
+
+Route::get('cateringinquiry','WelcomeController@contactform')->name('contactform');
+Route::post('send','WelcomeController@send')->name('send');
 
 /*Route::get('/', function () {
     return view('welcome');

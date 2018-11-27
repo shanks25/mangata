@@ -137,8 +137,8 @@
     function initMap() { 
 
         var userLocation = new google.maps.LatLng(
-                13.0796758,
-                80.2696968
+                51.0486,
+                114.0708
             );
 
         map = new google.maps.Map(document.getElementById('my_map'), {

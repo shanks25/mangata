@@ -37,8 +37,8 @@
                 <h6>DitchtheKitch brings you food delivery wherever you are Calgary. Order online or thru mobile app
                     from our top restaurants partner and take your pick from the most popular cuisines.</h6>
 
-                <video width="500" height="340" controls>
-                    <source src="{{ asset('uploads/ditchkitch.mp4') }}" type="video/mp4">
+                <center> <video width="500" height="340" controls>
+                     <source src="{{ asset('uploads/ditchkitch.mp4') }}" type="video/mp4"> </center>
                 </video>
 
                 <h1></h1>
@@ -86,4 +86,6 @@
         </div>
     </div>
     <!-- End Content =============================================== -->
+@include('user.layouts.partials.footer')
+
 @endsection

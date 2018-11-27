@@ -35,8 +35,9 @@ class OrderResource extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+ public function index(Request $request)
     {
+
         try {
             $Order = Order::orderBy('id', 'DESC');;
             $Order->where('orders.user_id', $request->user()->id);
@@ -79,7 +80,8 @@ class OrderResource extends Controller
      */
     public function orderprogress(Request $request)
     {
-        try {
+
+       try {
             $Orders = Order::where('user_id', $request->user()->id)->orderBy('updated_at', 'DESC')->progress();
             if ($request->ajax()) {
                 return $Orders;
@@ -108,7 +110,7 @@ class OrderResource extends Controller
             $usercart = UserCart::with('cart_addons')->withTrashed()->where('order_id', $request->order_id)->get();
             foreach ($usercart as $item) {
                 $request->request->add(['product_id' => $item->product_id]);
-                $request->request->add(['quantity' => $item->quantity]);
+               $request->request->add(['quantity' => $item->quantity]);
                 $CartProduct = UserCart::create([
                     'user_id' => $request->user()->id,
                     'product_id' => $item->product_id,
@@ -157,17 +159,19 @@ class OrderResource extends Controller
      */
     public function store(Request $request)
     {
-
 //        $request->pickup = 1;
+
 
         try {
 
-            $this->validate($request, [
-                'user_address_id' => 'required|exists:user_addresses,id,deleted_at,NULL',
-                //'payment_mode' => 'required'
-            ]);
+/*
+$this->validate($request, [
+                'user_address_id' => 'required|exists:user_addresses,id,deleted_at,NULL'
+               //'payment_mode' => 'required'
+]);
 
-            $User = $request->user()->id;
+*/   
+         $User = $request->user()->id;
             $CartItems = UserCart::with('cart_addons')->where('user_id', $User)->get();
             $payment_status = 'pending';
             $tot_qty = 0;
@@ -178,16 +182,20 @@ class OrderResource extends Controller
             $total_pay_user = 0;
             $ripple_price = 0;
 
+
             if (!$CartItems->isEmpty()) {
+
                 try {
 
                     // Shop finding logic goes here.
                     $Shop_id = Product::findOrFail($CartItems[0]->product_id)->shop_id;
 
                     $Useraddress = UserAddress::findOrFail($request->user_address_id);
+
                     $longitude = $Useraddress->longitude;
                     $latitude = $Useraddress->latitude;
                     $distance = Setting::get('search_distance');
+
                     if (Setting::get('search_distance') > 0) {
                         $Shop = Shop::select('shops.*')
                             ->selectRaw("(6371 * acos( cos( radians('$latitude') ) * cos( radians(latitude) ) * cos( radians(longitude) - radians('$longitude') ) + sin( radians('$latitude') ) * sin( radians(latitude) ) ) ) AS distance")
@@ -320,20 +328,19 @@ class OrderResource extends Controller
 
                 } catch (Exception $e) {
 
-                    dd($e);
+           //         dd($e);
 
                     return response()->json(['message' => trans('order.order_shop_not_found')], 404);
                 }
-
                 try {
                     if ($request->has('payment_mode')) {
-                        if ($request->payment_mode == 'stripe') {
+                        /*if ($request->payment_mode == 'stripe') {
                             if ($request->card_id) {
                                 $Card = Card::where('user_id', Auth::user()->id)->where('id', $request->card_id)->firstorFail();
                             } else {
                                 $Card = Card::where('user_id', Auth::user()->id)->where('is_default', 1)->firstorFail();
                             }
-                        }
+                        }*/
                         if ($request->payment_mode == 'bambora') {
                             if ($request->card_id) {
                                 $Card = Card::where('user_id', Auth::user()->id)->where('id', $request->card_id)->firstorFail();
@@ -632,6 +639,7 @@ class OrderResource extends Controller
 //            dd($e);
         }
     }
+    
 
     public function calculate_distance($s_latitude, $s_longitude, $d_latitude, $d_longitude)
     {

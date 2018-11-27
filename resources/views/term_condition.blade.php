@@ -126,8 +126,7 @@
             the<br/>
             release of funds back into your account.</p>
 
-        <p><br/>
-            3</p>
+       
 
         <p><br/>
             6. DELIVERY OF TAKE-OUT ORDERS<br/>
@@ -208,8 +207,7 @@
             (c) in the event social media features are provided with respect to certain content are on our Platform, you<br/>
             may take such actions as our Platform permits for such features.</p>
 
-        <p><br/>
-            4</p>
+      
 
         <p><br/>
             Users are not permitted to modify copies of any materials from the Platform nor delete or alter any
@@ -289,8 +287,7 @@
         <p><br/>
             (iv) infringes any patent, trademark, trade secret, copyright or other proprietary rights of any party</p>
 
-        <p><br/>
-            5</p>
+        
 
         <p><br/>
             (including privacy rights);<br/>
@@ -361,8 +358,7 @@
             including<br/>
             without limitation:</p>
 
-        <p><br/>
-            6</p>
+         
 
         <p><br/>
             (a) accessing content and data that is not intended for you;<br/>
@@ -417,8 +413,7 @@
             &bull; Terminate or suspend your access to all or part of the Platform for any or no reason, including<br/>
             without limitation, any violation of these Terms.</p>
 
-        <p><br/>
-            7</p>
+         
 
         <p><br/>
             YOU WAIVE AND HOLD HARMLESS COMPANY AND ITS AFFILIATES, LICENSEES AND SERVICE<br/>
@@ -503,8 +498,7 @@
             Platform for use only by persons located in Canada. The Platform is not intended for use in any jurisdiction
         </p>
 
-        <p><br/>
-            8</p>
+       
 
         <p>use is not permitted. If you access the Platform from outside Canada you do so at your own risk<br/>
             and you are responsible for compliance with local laws of your jurisdiction.</p>
@@ -571,9 +565,6 @@
         </p>
 
         <p><br/>
-            9</p>
-
-        <p><br/>
             you may incur as a result of any such dealings.</p>
 
         <p><br/>
@@ -636,8 +627,7 @@
             BANNER OR OTHER ADVERTISING ON THE PLATFORM, AND WE WILL NOT BE A PARTY TO ANY<br/>
             TRANSACTION THAT YOU MAY ENTER INTO WITH ANY SUCH THIRD PARTY. WE WILL NOT BE</p>
 
-        <p><br/>
-            10</p>
+       
 
         <p><br/>
             LIABLE FOR ANY TYPE OF CONTENT EXCHANGED BY MEANS OF THE SERVICE. WE WILL NOT<br/>
@@ -705,8 +695,6 @@
             other<br/>
             rights and remedies that we may have.</p>
 
-        <p><br/>
-            11</p>
 
         <p><br/>
             24. AVAILABILITY AND UPDATES</p>
@@ -782,9 +770,6 @@
             any part of these Terms is held to be unlawful, void, or unenforceable, that part will be deemed severed</p>
 
         <p><br/>
-            12</p>
-
-        <p><br/>
             and will not affect the validity and enforceability of the remaining provisions. The failure of Company
             to<br/>
             exercise or enforce any right or provision under these Terms will not constitute a waiver of such right
@@ -837,4 +822,7 @@
             Platform should be directed to: [EMAIL ADDRESS].<br/>
             Effective Date: ●, 2018</p></p>
     </div>
+<p><p>
+
+@include('user.layouts.partials.footer')
 @endsection

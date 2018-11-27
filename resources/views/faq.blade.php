@@ -308,4 +308,5 @@
         </div>
         <!-- End row -->
     </div>
+@include('user.layouts.partials.footer')
 @endsection

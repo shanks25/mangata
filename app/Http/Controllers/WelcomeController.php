@@ -3,19 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Document;
+use App\EnquiryTransporter;
+use App\Http\Controllers\Resource\ShopResource;
+use App\Mail\SendMail;
+use App\Order;
+use App\Shop;
 use App\ShopTiming;
 use App\Transporter;
 use App\TransporterDocument;
+use App\User;
+use App\newsletter;
 use Exception;
 use Illuminate\Http\Request;
-use App\Shop;
-use App\EnquiryTransporter;
-use App\User;
-use App\Order;
-use App\newsletter;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Session;
-use App\Http\Controllers\Resource\ShopResource;
 
 class WelcomeController extends Controller
 {
@@ -178,6 +180,7 @@ class WelcomeController extends Controller
             'cuisine_id' => 'required|array',
             'day' => 'required|array',
             'phone' => 'required|numeric',
+            'contact_name' => 'required|string|max:255',
             'password' => 'required|string|min:6|confirmed',
             'maps_address' => 'required|string|max:255',
             'address' => 'required|string|max:255',
@@ -190,9 +193,8 @@ class WelcomeController extends Controller
                 $Shop['avatar'] = asset('storage/' . $request->avatar->store('shops'));
             }
 
-
             $Shop['password'] = bcrypt($Shop['password']);
-            $Shop = Shop::create($Shop);
+            $Shop = Shops::create($Shop);
 
             //Cuisine
             if ($request->has('cuisine_id')) {
@@ -274,6 +276,27 @@ class WelcomeController extends Controller
 
         return back()->with('flash_success', 'Thank you for reaching out. We will contact you soon.');
     }
+
+
+public function contactform()
+
+{
+
+  return view ('contactform');
+
+}
+
+public function send()
+
+{
+
+ Mail::send(new SendMail());
+
+  return redirect(route('contactform'))->with('flash_success','Details Forwarded successfully');
+
+}
+
+
 
 
 }

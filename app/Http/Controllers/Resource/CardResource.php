@@ -12,11 +12,10 @@ use Auth;
 use Setting;
 use Braintree_Customer;
 use Braintree_ClientToken;
-use Braintree_Transaction;
+use Braintree_Transaction ;
 use Braintree_PaymentMethodNonce;
 use Braintree_Exception_NotFound;
 use Braintree_PaymentMethod;
-
 class CardResource extends Controller
 {
     /**
@@ -25,16 +24,16 @@ class CardResource extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-        try {
-            if ($request->has('type')) {
-                $cards = Card::where('user_id', Auth::user()->id)->where('card_type', $request->type)->orderBy('created_at', 'desc')->get();
-            } else {
-                $cards = Card::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+    {   
+        try{
+            if($request->has('type')){ 
+                $cards = Card::where('user_id',Auth::user()->id)->where('card_type',$request->type)->orderBy('created_at','desc')->get();
+            }else{
+               $cards = Card::where('user_id',Auth::user()->id)->orderBy('created_at','desc')->get(); 
             }
-            return $cards;
+            return $cards; 
 
-        } catch (Exception $e) {
+        } catch(Exception $e){
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
@@ -52,83 +51,37 @@ class CardResource extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-
-        if ($request->has('stripe_token')) {
-            $this->validate($request, [
+        if($request->has('stripe_token')){
+            $this->validate($request,[
                 'stripe_token' => 'required'
             ]);
         }
-
-        if ($request->has('bambora')) {
-
-//            return $request->all();
-
-            $exist = Card::where('user_id', Auth::user()->id)
-                ->where('last_four', $request->cvc)
-                ->count();
-
-            $cardYear = $newstring = substr($request->exp_year, -2);
-
-            if ($exist == 0) {
-
-                try {
-                    $card = new Card();
-                    $card->user_id = Auth::user()->id;
-                    $card->card_type = 'bambora';
-                    $card->last_four = $request->number;
-                    $card->exp_year = $cardYear;
-                    $card->exp_month = $request->exp_month;
-                    $card->cvc = $request->cvc;
-                    $card->card_id = mt_rand(100000, 999999);
-                    $card->is_default = true;
-                    $card->save();
-
-                } catch (Exception $e) {
-                    return response()->json(['message' => 'Error saving card']);
-                }
-
-
-            } else {
-                if ($request->ajax()) {
-                    return response()->json(['message' => 'Card Already Added']);
-                }
-                return back()->with('flash_error', 'Card Already Added');
-            }
-
-            if ($request->ajax()) {
-                return response()->json(['message' => 'Card Added']);
-            } else {
-                return back()->with('flash_success', 'Card Added');
-            }
-        }
-
-        if ($request->has('payment_method_nonce')) {
-            $this->validate($request, [
+        if($request->has('payment_method_nonce')){
+            $this->validate($request,[
                 'payment_method_nonce' => 'required'
             ]);
         }
-
-        if ($request->has('stripe_token')) {
-            try {
+        if($request->has('stripe_token')){
+            try{
 
                 $customer_id = $this->customer_id();
                 $this->set_stripe();
                 $customer = \Stripe\Customer::retrieve($customer_id);
                 $card = $customer->sources->create(["source" => $request->stripe_token]);
 
-                $exist = Card::where('user_id', Auth::user()->id)
-                    ->where('last_four', $card['last4'])
-                    ->where('brand', $card['brand'])
-                    ->count();
+                $exist = Card::where('user_id',Auth::user()->id)
+                                ->where('last_four',$card['last4'])
+                                ->where('brand',$card['brand'])
+                                ->count();
 
-                if ($exist == 0) {
+                if($exist == 0){
 
-                    $all_card = Card::where('user_id', Auth::user()->id)->update(['is_default' => '0']);
+                    $all_card = Card::where('user_id',Auth::user()->id)->update(['is_default'=>'0']);
 
 
                     $create_card = new Card;
@@ -140,101 +93,101 @@ class CardResource extends Controller
                     $create_card->is_default = 1;
                     $create_card->save();
 
-                } else {
-                    if ($request->ajax()) {
+                }else{
+                    if($request->ajax()){
                         return response()->json(['message' => 'Card Already Added']);
-                    }
-                    return back()->with('flash_error', 'Card Already Added');
+                    } 
+                    return back()->with('flash_error','Card Already Added');
                 }
 
-                if ($request->ajax()) {
-                    return response()->json(['message' => 'Card Added']);
-                } else {
-                    return back()->with('flash_success', 'Card Added');
+                if($request->ajax()){
+                    return response()->json(['message' => 'Card Added']); 
+                }else{
+                    return back()->with('flash_success','Card Added');
                 }
 
-            } catch (Exception $e) {
-                if ($request->ajax()) {
+            } catch(Exception $e){
+                if($request->ajax()){
                     return response()->json(['error' => $e->getMessage()], 500);
-                } else {
-                    return back()->with('flash_error', $e->getMessage());
+                }else{
+                    return back()->with('flash_error',$e->getMessage());
                 }
             }
         }
-        if ($request->has('payment_method_nonce')) {
-            try {
-                $this->set_Braintree();
-                $payment_method_nonce = $request->payment_method_nonce;
-                $customer_id = $this->braintree_customer_id(); //exit;
+        if($request->has('payment_method_nonce')){
+            try{    
+                    $this->set_Braintree();
+                    $payment_method_nonce = $request->payment_method_nonce;
+                    $customer_id = $this->braintree_customer_id(); //exit;
+                    
+                    $customer  = Braintree_Customer::find($customer_id);
+                    $card_result = Braintree_PaymentMethod::create([
+                        'customerId' => $customer_id,
+                        'paymentMethodNonce' => $payment_method_nonce,
+                        'options' => [
+                            'verifyCard' => true
+                        ]
+                    ]);
+                    $exist = 0;
+                    if($card_result->success){
+                    
+                        $card =$card_result->paymentMethod;
+                    
+                        $exist = Card::where('user_id',Auth::user()->id)
+                                    ->where('last_four',$card->last4)
+                                    ->where('brand',$card->cardType)
+                                    ->where('card_type','braintree')
+                                    ->count();
+                    
+                        if($exist == 0){
 
-                $customer = Braintree_Customer::find($customer_id);
-                $card_result = Braintree_PaymentMethod::create([
-                    'customerId' => $customer_id,
-                    'paymentMethodNonce' => $payment_method_nonce,
-                    'options' => [
-                        'verifyCard' => true
-                    ]
-                ]);
-                $exist = 0;
-                if ($card_result->success) {
-
-                    $card = $card_result->paymentMethod;
-
-                    $exist = Card::where('user_id', Auth::user()->id)
-                        ->where('last_four', $card->last4)
-                        ->where('brand', $card->cardType)
-                        ->where('card_type', 'braintree')
-                        ->count();
-
-                    if ($exist == 0) {
-
-                        $all_card = Card::where('user_id', Auth::user()->id)->where('card_type', 'braintree')->update(['is_default' => '0']);
+                            $all_card = Card::where('user_id',Auth::user()->id)->where('card_type','braintree')->update(['is_default'=>'0']);
 
 
-                        $create_card = new Card;
-                        $create_card->user_id = Auth::user()->id;
-                        $create_card->card_id = $card->token;
-                        $create_card->last_four = $card->last4;
-                        $create_card->brand = $card->cardType;
-                        $create_card->card_type = 'braintree';
-                        $create_card->is_default = 1;
-                        $create_card->save();
+                            $create_card = new Card;
+                            $create_card->user_id = Auth::user()->id;
+                            $create_card->card_id = $card->token;
+                            $create_card->last_four = $card->last4;
+                            $create_card->brand = $card->cardType;
+                            $create_card->card_type = 'braintree';
+                            $create_card->is_default = 1;
+                            $create_card->save();
 
-                    } else {
-                        if ($request->ajax()) {
-                            return response()->json(['message' => 'Card Already Added']);
+                        }else{
+                            if($request->ajax()){
+                                return response()->json(['message' => 'Card Already Added']); 
+                            }
+                            return back()->with('flash_error','Card Already Added');
                         }
-                        return back()->with('flash_error', 'Card Already Added');
+                    }else{
+                        if($request->ajax()){
+                            return response()->json(['error' => 'This is invalid card'], 422);
+                        }else{
+                            return back()->with('flash_error','This is invalid card');
+                        }
                     }
-                } else {
-                    if ($request->ajax()) {
-                        return response()->json(['error' => 'This is invalid card'], 422);
-                    } else {
-                        return back()->with('flash_error', 'This is invalid card');
-                    }
+
+                if($request->ajax()){
+                    return response()->json(['message' => 'Card Added']); 
+                }else{
+                    return back()->with('flash_success','Card Added');
                 }
 
-                if ($request->ajax()) {
-                    return response()->json(['message' => 'Card Added']);
-                } else {
-                    return back()->with('flash_success', 'Card Added');
-                }
-
-            } catch (Exception $e) {
-                if ($request->ajax()) {
+            } catch(Exception $e){
+                if($request->ajax()){
                     return response()->json(['error' => $e->getMessage()], 500);
-                } else {
-                    return back()->with('flash_error', $e->getMessage());
+                }else{
+                    return back()->with('flash_error',$e->getMessage());
                 }
             }
-        }
-
+        } 
+         
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -245,7 +198,7 @@ class CardResource extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -256,8 +209,8 @@ class CardResource extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -268,51 +221,37 @@ class CardResource extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request,$id)
     {
 
         /*$this->validate($request,[
                 'card_id' => 'required|exists:cards,card_id,user_id,'.Auth::user()->id,
             ]);*/
 
-        try {
+        try{
 
 
-//            if ($request->has('bambora')) {
+            $this->set_stripe();
+            $card = Card::where('id',$id)->firstOrFail();
+            $customer = \Stripe\Customer::retrieve(Auth::user()->stripe_cust_id);
+            $customer->sources->retrieve($card->card_id)->delete();
 
-                $card = Card::where('id', $id)->firstOrFail();
+            Card::where('card_id',$card->card_id)->delete();
 
-                if ($card) {
-                    $card->delete();
-                } else {
-                    return response()->json(['message' => 'Card not found.']);
-                }
-//
-//            } else {
-//
-//                $this->set_stripe();
-//                $card = Card::where('id', $id)->firstOrFail();
-//                $customer = \Stripe\Customer::retrieve(Auth::user()->stripe_cust_id);
-//                $customer->sources->retrieve($card->card_id)->delete();
-//
-//                Card::where('card_id', $card->card_id)->delete();
-//
-//            }
-
-            if ($request->ajax()) {
-                return response()->json(['message' => 'Card Deleted']);
-            } else {
-                return back()->with('flash_success', 'Card Deleted');
+            if($request->ajax()){
+                return response()->json(['message' => 'Card Deleted']); 
+            }else{
+                return back()->with('flash_success','Card Deleted');
             }
 
-        } catch (Exception $e) {
-            if ($request->ajax()) {
+        } catch(Exception $e){
+            if($request->ajax()){
                 return response()->json(['error' => $e->getMessage()], 500);
-            } else {
-                return back()->with('flash_error', $e->getMessage());
+            }else{
+                return back()->with('flash_error',$e->getMessage());
             }
         }
     }
@@ -322,8 +261,7 @@ class CardResource extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function set_stripe()
-    {
+    public function set_stripe(){
         return \Stripe\Stripe::setApiKey(Setting::get('stripe_secret_key'));
     }
 
@@ -334,13 +272,13 @@ class CardResource extends Controller
      */
     public function customer_id()
     {
-        if (Auth::user()->stripe_cust_id != null) {
+        if(Auth::user()->stripe_cust_id != null){
 
             return Auth::user()->stripe_cust_id;
 
-        } else {
+        }else{
 
-            try {
+            try{
 
                 $stripe = $this->set_stripe();
 
@@ -348,38 +286,37 @@ class CardResource extends Controller
                     'email' => Auth::user()->email,
                 ]);
 
-                User::where('id', Auth::user()->id)->update(['stripe_cust_id' => $customer['id']]);
+                User::where('id',Auth::user()->id)->update(['stripe_cust_id' => $customer['id']]);
                 return $customer['id'];
 
-            } catch (Exception $e) {
+            } catch(Exception $e){
                 return $e;
             }
         }
     }
 
-    public function set_Braintree()
-    {
+    public function set_Braintree(){
 
-        \Braintree_Configuration::environment(Setting::get('BRAINTREE_ENV'));
+       \Braintree_Configuration::environment(Setting::get('BRAINTREE_ENV'));
         \Braintree_Configuration::merchantId(Setting::get('BRAINTREE_MERCHANT_ID'));
         \Braintree_Configuration::publicKey(Setting::get('BRAINTREE_PUBLIC_KEY'));
         \Braintree_Configuration::privateKey(Setting::get('BRAINTREE_PRIVATE_KEY'));
     }
 
-    /**
+     /**
      * Get a stripe customer id.
      *
      * @return \Illuminate\Http\Response
      */
     public function braintree_customer_id()
     {
-        if (Auth::user()->braintree_id != null) {
+        if(Auth::user()->braintree_id != null){
 
             return Auth::user()->braintree_id;
 
-        } else {
-            $this->set_Braintree();
-            try {
+        }else{
+                $this->set_Braintree();
+            try{ 
                 $user = Auth::user();
                 $customer = Braintree_Customer::create([
                     'firstName' => $user->name,
@@ -391,10 +328,10 @@ class CardResource extends Controller
                     //'website' => 'http://example.com'
                 ]);
 
-                User::where('id', Auth::user()->id)->update(['braintree_id' => $customer->customer->id]);
+                User::where('id',Auth::user()->id)->update(['braintree_id' => $customer->customer->id]);
                 return $customer->customer->id;
 
-            } catch (Exception $e) {
+            } catch(Exception $e){
                 return $e;
             }
         }
